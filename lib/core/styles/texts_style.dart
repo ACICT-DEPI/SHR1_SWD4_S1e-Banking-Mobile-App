@@ -89,4 +89,9 @@ abstract class TextsStyle {
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w600,
   );
+  static const TextStyle textStyleSemiBold35 = TextStyle(
+    fontSize: 35,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w600,
+  );
 }
