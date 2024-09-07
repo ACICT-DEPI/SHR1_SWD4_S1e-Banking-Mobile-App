@@ -10,4 +10,8 @@ abstract class Images {
   static const String imagesOnboarding2 = 'assets/images/Onboarding_2.svg';
   static const String imagesOnboarding3 = 'assets/images/Onboarding_3.svg';
   static const String imagesWorldMap = 'assets/images/worldmap.png';
+  static const String imagesEnglish = 'assets/images/english.svg';
+  static const String imagesFrench = 'assets/images/french.svg';
+  static const String imagesSpanish = 'assets/images/spanish.svg';
+  static const String imagesArabic = 'assets/images/arabic.svg';
 }
