@@ -1,3 +1,4 @@
+import 'package:bank_app/core/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 abstract class TextsStyle {
@@ -26,6 +27,7 @@ abstract class TextsStyle {
     fontSize: 14,
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w400,
+    color: AppColors.greyA7
   );
   static const TextStyle textStyleRegular15 = TextStyle(
     fontSize: 15,
@@ -78,6 +80,7 @@ abstract class TextsStyle {
     fontSize: 16,
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w600,
+    color: AppColors.white
   );
   static const TextStyle textStyleSemiBold24 = TextStyle(
     fontSize: 24,

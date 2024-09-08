@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'features/home/ui/home_view.dart';
+import 'core/styles/theme_style.dart';
+import 'features/authentication/presentation/views/login_view.dart';
+import 'features/home/presentation/views/home_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,8 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true),
-      home: const HomeView(),
+      theme: ThemeStyle.lightThemeData,
+      home: const LoginView(),
     );
   }
 }
