@@ -55,6 +55,7 @@ class CustomAppTextFormField extends StatelessWidget {
                       return "The password must contain at least one special character";
                     }
                   }
+                  return null;
                 },
                 obscureText: obscureText ?? false,
                 decoration: const InputDecoration(

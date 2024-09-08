@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
-import '../login_view.dart';
 
 class AlreadyHaveAccountRow extends StatelessWidget {
   const AlreadyHaveAccountRow({

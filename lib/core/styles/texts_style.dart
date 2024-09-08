@@ -33,6 +33,7 @@ abstract class TextsStyle {
     fontSize: 15,
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w400,
+    color: AppColors.greyA7
   );
   static const TextStyle textStyleRegular18 = TextStyle(
     fontSize: 18,
