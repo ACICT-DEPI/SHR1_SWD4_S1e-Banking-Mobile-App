@@ -1,3 +1,5 @@
+import 'package:bank_app/core/helpers/functions.dart';
+import 'package:bank_app/features/transaction_history/data/models/transaction_item_model.dart';
 import 'package:flutter/material.dart';
 
 import '../styles/colors.dart';
@@ -6,16 +8,10 @@ import '../styles/texts_style.dart';
 class TransactionItem extends StatelessWidget {
   const TransactionItem({
     super.key,
-    required this.icon,
-    required this.title,
-    required this.subTitle,
-    required this.amount,
+    required this.transactionItemModel,
   });
 
-  final IconData icon;
-  final String title;
-  final String subTitle;
-  final double amount;
+  final TransactionItemModel transactionItemModel;
 
   @override
   Widget build(BuildContext context) {
@@ -27,36 +23,44 @@ class TransactionItem extends StatelessWidget {
             shape: BoxShape.circle,
           ),
           padding: const EdgeInsets.all(10),
-          child: Icon(icon),
+          child: Functions.getTransactionIcon(transactionItemModel.type),
         ),
         const SizedBox(width: 20.0),
         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              title,
+              Functions.getTransactionTitle(transactionItemModel.type),
               style: TextsStyle.textStyleMedium16,
             ),
             Text(
-              subTitle,
+              Functions.getTransactionSubTitle(transactionItemModel.type),
               style: TextsStyle.textStyleRegular12
                   .copyWith(color: AppColors.greyA7),
             ),
           ],
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           getAmountText(),
-          style: TextsStyle.textStyleMedium16,
+          style: buildTextStyleMedium16(),
         )
       ],
     );
   }
 
-  String getAmountText() {
-    if (amount < 0) {
-      return "-\$${amount.abs()}";
-    }else{
-      return "\$${amount.abs()}";
+  TextStyle buildTextStyleMedium16() {
+    if (transactionItemModel.amount > 0) {
+      return TextsStyle.textStyleMedium16.copyWith(color: AppColors.green);
     }
+
+    return TextsStyle.textStyleMedium16.copyWith(color: AppColors.red);
+  }
+
+  String getAmountText() {
+    if (transactionItemModel.amount < 0) {
+      return "-\$${transactionItemModel.amount.abs()}";
+    }
+    return "+\$${transactionItemModel.amount.abs()}";
   }
 }

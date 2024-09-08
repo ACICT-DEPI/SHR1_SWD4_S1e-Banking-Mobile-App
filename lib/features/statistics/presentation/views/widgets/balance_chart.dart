@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
-import '../../../data/month_model.dart';
+import '../../../data/models/month_model.dart';
 import 'month_text.dart';
 
 class BalanceChart extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/helpers/functions.dart';
-import '../../../data/month_model.dart';
+import '../../../data/models/month_model.dart';
 import 'balance_chart.dart';
 import 'current_balance.dart';
 import 'statistics_app_bar.dart';
@@ -29,12 +29,15 @@ class StatisticsViewBody extends StatelessWidget {
                   const SizedBox(height: 30),
                   const CurrentBalance(currentBalance: currentBalance),
                   const SizedBox(height: 20),
-                  BalanceChart(
-                    lastSixMonthsModel: MonthModel.buildMonthModelList(
-                      lastSixMonthsDate,
-                      lastSixMonthsBalance,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: BalanceChart(
+                      lastSixMonthsModel: MonthModel.buildMonthModelList(
+                        lastSixMonthsDate,
+                        lastSixMonthsBalance,
+                      ),
+                      maxBalance: Functions.getMaxBalance(lastSixMonthsBalance),
                     ),
-                    maxBalance: Functions.getMaxBalance(lastSixMonthsBalance),
                   ),
                   const SizedBox(height: 30),
                   const TransactionSection()

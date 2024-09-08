@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'core/styles/theme_style.dart';
-import 'features/statistics/presentation/views/statistics_view.dart';
+import 'features/transaction_history/presentation/views/transaction_history.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeStyle.lightThemeData,
-      home: const StatisticsView(),
+      home: const TransactionHistory(),
     );
   }
 }

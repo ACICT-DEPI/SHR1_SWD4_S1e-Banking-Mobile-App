@@ -1,4 +1,4 @@
-import 'package:bank_app/features/statistics/data/month_model.dart';
+import 'package:bank_app/features/statistics/data/models/month_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/styles/colors.dart';
