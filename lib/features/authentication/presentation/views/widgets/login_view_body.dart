@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/custom_app_button.dart';
 import '../../../../../core/widgets/custom_app_icon_button.dart';
-import '../../../../../core/widgets/custom_app_text_field.dart';
+import '../../../../../core/widgets/custom_app_text_form_field.dart';
 import 'new_user_row.dart';
 
 class LoginViewBody extends StatefulWidget {
@@ -15,6 +15,8 @@ class LoginViewBody extends StatefulWidget {
 
 class _LoginViewBodyState extends State<LoginViewBody> {
   bool isObscureText = true;
+  final GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -22,47 +24,55 @@ class _LoginViewBodyState extends State<LoginViewBody> {
       physics: const BouncingScrollPhysics(),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 20),
-            CustomAppIconButton(
-              icon: Icons.arrow_back_ios_new_outlined,
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-            const SizedBox(height: 55),
-            const Text("Sign In", style: TextsStyle.textStyleMedium32),
-            const SizedBox(height: 40),
-            const CustomAppTextField(
-              title: "Email Address",
-              prefixIcon: Icons.email_outlined,
-              keyboardType: TextInputType.emailAddress,
-            ),
-            const SizedBox(height: 22),
-            CustomAppTextField(
-              title: "Password",
-              prefixIcon: Icons.lock_outline,
-              obscureText: isObscureText,
-              suffixIcon: Icons.remove_red_eye_outlined,
-              keyboardType: TextInputType.emailAddress,
-              onPressedIcon: () {
-                setState(() {
-                  isObscureText = !isObscureText;
-                });
-              },
-            ),
-            const SizedBox(height: 40),
-            CustomAppButton(
-              title: "Sign In",
-              onPressed: () {},
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            const NewUserRow()
-          ],
+        child: Form(
+          key: formKey,
+          autovalidateMode: autoValidateMode,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20),
+              CustomAppIconButton(
+                icon: Icons.arrow_back_ios_new_outlined,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              const SizedBox(height: 55),
+              const Text("Sign In", style: TextsStyle.textStyleMedium32),
+              const SizedBox(height: 40),
+              const CustomAppTextFormField(
+                title: "Email Address",
+                prefixIcon: Icons.email_outlined,
+                keyboardType: TextInputType.emailAddress,
+              ),
+              const SizedBox(height: 22),
+              CustomAppTextFormField(
+                title: "Password",
+                prefixIcon: Icons.lock_outline,
+                obscureText: isObscureText,
+                suffixIcon: Icons.remove_red_eye_outlined,
+                keyboardType: TextInputType.emailAddress,
+                onPressedIcon: () {
+                  setState(() {
+                    isObscureText = !isObscureText;
+                  });
+                },
+              ),
+              const SizedBox(height: 40),
+              CustomAppButton(
+                title: "Sign In",
+                onPressed: () {
+                  setState(() {
+                    autoValidateMode = AutovalidateMode.always;
+                  });
+                },
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const NewUserRow()
+            ],
+          ),
         ),
       ),
     );

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../styles/colors.dart';
 import '../styles/texts_style.dart';
 
-class CustomAppTextField extends StatelessWidget {
-  const CustomAppTextField({
+class CustomAppTextFormField extends StatelessWidget {
+  const CustomAppTextFormField({
     super.key,
     required this.title,
     required this.keyboardType,
@@ -39,7 +39,23 @@ class CustomAppTextField extends StatelessWidget {
             ),
             const SizedBox(width: 16.0),
             Expanded(
-              child: TextField(
+              child: TextFormField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "This field is required";
+                  }
+                  if (obscureText ?? false) {
+                    if (value.length < 8) {
+                      return "The password must be 8 at least";
+                    }
+                    if (!RegExp(r'[A-Za-z]').hasMatch(value)) {
+                      return "The password must contain at least one letter";
+                    }
+                    if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(value)) {
+                      return "The password must contain at least one special character";
+                    }
+                  }
+                },
                 obscureText: obscureText ?? false,
                 decoration: const InputDecoration(
                   border: InputBorder.none,
