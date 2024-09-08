@@ -1,11 +1,11 @@
-import 'package:bank_app/features/authentication/presentation/views/signup_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
+import '../login_view.dart';
 
-class NewUserRow extends StatelessWidget {
-  const NewUserRow({
+class AlreadyHaveAccountRow extends StatelessWidget {
+  const AlreadyHaveAccountRow({
     super.key,
   });
 
@@ -15,21 +15,16 @@ class NewUserRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text(
-          "I’m a new user.",
+          "Already have an account.",
           style: TextsStyle.textStyleRegular14,
         ),
         const SizedBox(width: 4.0),
         GestureDetector(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const SignupView(),
-              ),
-            );
+            Navigator.pop(context);
           },
           child: Text(
-            "Sign Up",
+            "Sign In",
             style: TextsStyle.textStyleMedium14.copyWith(
               color: AppColors.blue,
             ),

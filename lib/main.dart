@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'core/styles/theme_style.dart';
 import 'features/authentication/presentation/views/login_view.dart';
-import 'features/home/presentation/views/home_view.dart';
 
 void main() {
   runApp(const MyApp());
