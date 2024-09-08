@@ -70,12 +70,16 @@ class _BalanceChartState extends State<BalanceChart> {
               dotData: FlDotData(
                 show: true,
                 getDotPainter: (spot, percent, barData, index) {
-                  return FlDotCirclePainter(
-                    radius: 5,
-                    color: AppColors.white,
-                    strokeWidth: 5,
-                    strokeColor: AppColors.blue,
-                  );
+                  if (index == selectedMonthIndex) {
+                    return FlDotCirclePainter(
+                      radius: 5,
+                      color: Colors.white,
+                      strokeWidth: 5,
+                      strokeColor: Colors.blue,
+                    );
+                  } else {
+                    return FlDotCirclePainter(radius: 0, strokeWidth: 0);
+                  }
                 },
               ),
               belowBarData: buildBelowBarAreaData(),
@@ -112,19 +116,6 @@ class _BalanceChartState extends State<BalanceChart> {
                 });
               }
             },
-            handleBuiltInTouches: true,
-          ),
-          extraLinesData: ExtraLinesData(
-            verticalLines: selectedMonthIndex != null
-                ? [
-                    VerticalLine(
-                      x: selectedMonthIndex!.toDouble(),
-                      color: AppColors.blue,
-                      strokeWidth: 2,
-                      dashArray: [5, 5],
-                    )
-                  ]
-                : [],
           ),
         ),
       ),
