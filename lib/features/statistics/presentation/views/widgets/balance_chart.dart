@@ -67,7 +67,17 @@ class _BalanceChartState extends State<BalanceChart> {
               color: AppColors.blue,
               barWidth: 5,
               isStrokeCapRound: true,
-              dotData: const FlDotData(show: true),
+              dotData: FlDotData(
+                show: true,
+                getDotPainter: (spot, percent, barData, index) {
+                  return FlDotCirclePainter(
+                    radius: 5,
+                    color: AppColors.white,
+                    strokeWidth: 5,
+                    strokeColor: AppColors.blue,
+                  );
+                },
+              ),
               belowBarData: buildBelowBarAreaData(),
             ),
           ],
