@@ -1,8 +1,9 @@
-import 'package:bank_app/features/statistics/data/month_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/helpers/functions.dart';
+import '../../../data/month_model.dart';
 import 'balance_chart.dart';
+import 'current_balance.dart';
 import 'statistics_app_bar.dart';
 
 class StatisticsViewBody extends StatelessWidget {
@@ -10,7 +11,7 @@ class StatisticsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<double> lastSixMonthsBalance = [70, 10, 70, 60, 80.6, 50];
+    final List<double> lastSixMonthsBalance = [404, 1001, 700, 700, 110.6, 140];
     final List<String> lastSixMonthsDate = Functions.getLastSixMonths();
     const double currentBalance = 45045.58;
 
@@ -27,18 +28,14 @@ class StatisticsViewBody extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 30),
+                  const CurrentBalance(currentBalance: currentBalance),
+                  const SizedBox(height: 20),
                   BalanceChart(
-                    lastSixMonthsModel: List.generate(
-                      6,
-                      (index) {
-                        return MonthModel(
-                          month: lastSixMonthsDate[index],
-                          balance: lastSixMonthsBalance[index],
-                        );
-                      },
+                    lastSixMonthsModel: MonthModel.buildMonthModelList(
+                      lastSixMonthsDate,
+                      lastSixMonthsBalance,
                     ),
                     maxBalance: Functions.getMaxBalance(lastSixMonthsBalance),
-                    currentBalance: currentBalance,
                   ),
                 ],
               ),
