@@ -1,8 +1,8 @@
-import 'package:bank_app/features/authentication/presentation/views/signup_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
+import '../signup_view.dart';
 
 class NewUserRow extends StatelessWidget {
   const NewUserRow({
