@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; // Import this for TextInputFormatter
 
+import '../../../core/styles/colors.dart';
+import '../../../core/styles/texts_style.dart';
 import '../../../core/widgets/custom_app_button.dart';
 import '../../navigation_screen/data/models/card_model.dart';
 import '../../navigation_screen/presentation/home/presentation/views/widgets/bank_card_design.dart';
@@ -42,9 +44,9 @@ class _AddCardScreenState extends State<AddCardScreen> {
             Navigator.of(context).pop();
           },
         ),
-        title: const Text(
+        title:  Text(
           'Add New Card',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: TextsStyle.textStyleSemiBold26.copyWith(color: AppColors.black),
         ),
         centerTitle: true,
       ),
