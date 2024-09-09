@@ -59,7 +59,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                 cardNumber: _cardNumberController.text,
                 cardHolderName: _cardHolderNameController.text,
                 expiryDate: _expiryDateController.text,
-                cardType: "Mastercard",
+                cardType: "Mastercard ",
               )),
               // Custom Credit Card Widget
               const SizedBox(height: 20),
