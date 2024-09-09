@@ -51,7 +51,7 @@ class TransactionItem extends StatelessWidget {
 
   TextStyle buildTextStyleMedium16() {
     if (transactionItemModel.amount > 0) {
-      return TextsStyle.textStyleMedium16.copyWith(color: AppColors.green);
+      return TextsStyle.textStyleMedium16.copyWith(color: AppColors.green47);
     }
 
     return TextsStyle.textStyleMedium16.copyWith(color: AppColors.red);
