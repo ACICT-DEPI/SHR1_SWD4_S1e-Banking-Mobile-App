@@ -41,11 +41,9 @@ dependencies:
   font_awesome_flutter: ^10.7.0
   auto_size_text_pk: ^3.0.0
   smooth_page_indicator: ^1.2.0+3
-<<<<<<< HEAD
   flutter_screenutil: ^5.9.3
-=======
   syncfusion_flutter_charts: ^26.1.35
->>>>>>> c9de447b756271f20963a4f4e397591582e81fe0
+  animated_bottom_navigation_bar: ^1.3.3
 
 dev_dependencies:
   flutter_test:

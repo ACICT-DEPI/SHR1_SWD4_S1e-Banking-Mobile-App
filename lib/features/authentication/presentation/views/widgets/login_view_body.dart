@@ -1,10 +1,10 @@
-import 'package:bank_app/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/custom_app_button.dart';
 import '../../../../../core/widgets/custom_app_icon_button.dart';
 import '../../../../../core/widgets/custom_app_text_form_field.dart';
+import '../../../../navigation_screen/ui/home/presentation/views/home_view.dart';
 import 'new_user_row.dart';
 
 class LoginViewBody extends StatefulWidget {

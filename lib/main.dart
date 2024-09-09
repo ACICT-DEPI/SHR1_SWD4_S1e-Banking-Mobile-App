@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'core/styles/theme_style.dart';
-import 'features/transaction_history/presentation/views/transaction_history.dart';
+import 'features/category_chart/presentation/views/category_chart_view.dart';
+import 'features/navigation_screen/ui/navigation.dart';
+import 'features/onboardingScreen/ui/onboarding_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeStyle.lightThemeData,
-      home:  OnboardingScreen(),
+      home:  NavigationScreen(),
     );
   }
 }
+
+
