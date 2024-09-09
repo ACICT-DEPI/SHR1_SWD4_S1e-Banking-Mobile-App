@@ -2,12 +2,9 @@ import 'package:bank_app/core/styles/colors.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-
 import '../../../../../../statistics/presentation/views/widgets/transaction_section.dart';
 import 'BankCardDesign.dart';
 import 'BuildActionsRow.dart';
-import 'CustomNavigationBar.dart';
 import 'HomePageAppbarDesign.dart';
 
 class home_view_body extends StatelessWidget {
