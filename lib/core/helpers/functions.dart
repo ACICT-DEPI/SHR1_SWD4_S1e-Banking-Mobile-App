@@ -28,7 +28,7 @@ class Functions {
       case TransactionType.spotify:
         return const Icon(
           FontAwesomeIcons.spotify,
-          color: AppColors.green,
+          color: AppColors.green47,
         );
       case TransactionType.appleStore:
         return const Icon(FontAwesomeIcons.apple);

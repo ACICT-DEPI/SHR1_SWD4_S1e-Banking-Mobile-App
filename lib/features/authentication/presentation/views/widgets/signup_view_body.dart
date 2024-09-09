@@ -1,3 +1,4 @@
+import 'package:bank_app/features/authentication/presentation/views/login_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/styles/texts_style.dart';
@@ -72,16 +73,23 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               ),
               const SizedBox(height: 40),
               CustomAppButton(
-                title: "Sign In",
+                title: "Sign Up",
                 onPressed: () {
                   setState(() {
                     autoValidateMode = AutovalidateMode.always;
+                    if (formKey.currentState!.validate()) {
+                      Navigator.pop(context);
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginView(),
+                        ),
+                      );
+                    }
                   });
                 },
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              const SizedBox(height: 30),
               const AlreadyHaveAccountRow()
             ],
           ),

@@ -10,16 +10,14 @@ class OnboardingPage extends StatelessWidget {
   final String title;
   final String description;
   final double spacing = 40.0;
-  final EdgeInsets padding=const EdgeInsets.symmetric(horizontal: 16.0);
+  final EdgeInsets padding = const EdgeInsets.symmetric(horizontal: 16.0);
 
   const OnboardingPage({
-    Key? key,
+    super.key,
     required this.imagePath,
     required this.title,
     required this.description,
-  }) : super(key: key);
-
-  // Define text styles as constants for consistency and reuse
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +27,10 @@ class OnboardingPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           SizedBox(height: spacing),
-          SvgPicture.asset(imagePath, width: 350, height: 250),
+          SvgPicture.asset(
+            imagePath,
+            height: MediaQuery.sizeOf(context).height / 3.56,
+          ),
           SizedBox(height: spacing),
           Column(
             children: [
@@ -38,11 +39,13 @@ class OnboardingPage extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextsStyle.textStyleSemiBold26,
               ),
-              const SizedBox(height: 10), // Optional space between texts
+              const SizedBox(height: 10),
               AutoSizeText(
                 description,
                 textAlign: TextAlign.center,
-                style:TextsStyle.textStyleMedium14.copyWith(color: AppColors.grey8D),
+                style: TextsStyle.textStyleMedium14.copyWith(
+                  color: AppColors.grey8D,
+                ),
               ),
             ],
           ),
