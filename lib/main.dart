@@ -1,3 +1,4 @@
+import 'package:bank_app/features/transaction_history/presentation/views/transaction_history.dart';
 import 'package:flutter/material.dart';
 
 import 'core/styles/theme_style.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeStyle.lightThemeData,
-      home: const SearchView(),
+      home: const TransactionHistory(),
     );
   }
 }
