@@ -1,32 +1,31 @@
 import 'package:bank_app/core/styles/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../../core/styles/texts_style.dart';
 
 
 
-class Buildactionsrow extends StatefulWidget {
+class BuildActionsRow extends StatefulWidget {
   final Function onPressedSent;
   final Function onPressedReceive;
   final Function onPressedLoan;
-  final Function onPressedTopup;
+  final Function onPressedTopUp;
 
-  const Buildactionsrow({
+  const BuildActionsRow({
     super.key,
     required this.onPressedSent,
     required this.onPressedReceive,
     required this.onPressedLoan,
-    required this.onPressedTopup,
+    required this.onPressedTopUp,
   });
 
   @override
-  State<Buildactionsrow> createState() => _BuildactionsrowState();
+  State<BuildActionsRow> createState() => _BuildActionsRowState();
 }
 
-class _BuildactionsrowState extends State<Buildactionsrow> {
+class _BuildActionsRowState extends State<BuildActionsRow> {
   Widget _buildActionButton(IconData icon, String label, Function onPressed) {
-    return Container(
+    return SizedBox(
       width: 60,
       height: 120,
       child: Column(
@@ -53,7 +52,7 @@ class _BuildactionsrowState extends State<Buildactionsrow> {
         _buildActionButton(Icons.arrow_upward, "Sent", widget.onPressedSent),
         _buildActionButton(Icons.arrow_downward, "Receive", widget.onPressedReceive),
         _buildActionButton(Icons.monetization_on_outlined, "Loan", widget.onPressedLoan),
-        _buildActionButton(Icons.cloud_upload_outlined, "Topup", widget.onPressedTopup),
+        _buildActionButton(Icons.cloud_upload_outlined, "Topup", widget.onPressedTopUp),
       ],
     );
   }

@@ -11,7 +11,7 @@ class CustomAppTextFormField extends StatelessWidget {
     this.obscureText,
     required this.prefixIcon,
     this.suffixIcon,
-    this.onPressedIcon,
+    this.onPressedIcon, this.textEditingController,
   });
 
   final String title;
@@ -20,6 +20,7 @@ class CustomAppTextFormField extends StatelessWidget {
   final TextInputType keyboardType;
   final bool? obscureText;
   final Function()? onPressedIcon;
+  final TextEditingController? textEditingController;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +41,7 @@ class CustomAppTextFormField extends StatelessWidget {
             const SizedBox(width: 16.0),
             Expanded(
               child: TextFormField(
+                controller: textEditingController,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "This field is required";

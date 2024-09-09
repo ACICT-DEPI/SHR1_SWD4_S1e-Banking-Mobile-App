@@ -1,15 +1,14 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../../../core/styles/colors.dart';
 
-class Customnavigationbar extends StatelessWidget {
+class CustomNavigationBar extends StatelessWidget {
   final int bottomNavIndex;
   final ValueChanged<int> onTap;
 
-  Customnavigationbar({super.key, required this.bottomNavIndex, required this.onTap});
+  CustomNavigationBar({super.key, required this.bottomNavIndex, required this.onTap});
 
   // Create a list of SVG asset paths and corresponding labels
   final List<String> svgIcons = [
@@ -28,7 +27,7 @@ class Customnavigationbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 85,
       child: AnimatedBottomNavigationBar.builder(
         itemCount: svgIcons.length,

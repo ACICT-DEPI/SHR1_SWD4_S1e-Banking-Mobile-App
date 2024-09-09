@@ -1,11 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'core/styles/theme_style.dart';
-import 'features/category_chart/presentation/views/category_chart_view.dart';
-import 'features/navigation_screen/ui/navigation.dart';
 import 'features/onboardingScreen/ui/onboarding_screen.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -17,9 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeStyle.lightThemeData,
-      home:  NavigationScreen(),
+      home: const OnboardingScreen(),
     );
   }
 }
-
-

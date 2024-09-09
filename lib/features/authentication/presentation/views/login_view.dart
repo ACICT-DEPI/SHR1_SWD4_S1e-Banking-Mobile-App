@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../domain/cubits/login_cubit/login_cubit.dart';
 import 'widgets/login_view_body.dart';
 
 class LoginView extends StatelessWidget {
@@ -7,9 +9,12 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
-        child: LoginViewBody(),
+    return Scaffold(
+      body: BlocProvider(
+        create: (context) => LoginCubit(),
+        child: const SafeArea(
+          child: LoginViewBody(),
+        ),
       ),
     );
   }
