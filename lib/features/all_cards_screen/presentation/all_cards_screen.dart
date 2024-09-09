@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; // Import this for TextInputFormatter
 
 import '../../../core/widgets/custom_app_button.dart';
-import '../../navigation_screen/repo/models/card_model.dart';
-import '../../navigation_screen/ui/home/presentation/views/widgets/bank_card_design.dart';
+import '../../navigation_screen/data/models/card_model.dart';
+import '../../navigation_screen/presentation/home/presentation/views/widgets/bank_card_design.dart';
 
 class AllCardsScreen extends StatefulWidget {
   const AllCardsScreen({super.key});

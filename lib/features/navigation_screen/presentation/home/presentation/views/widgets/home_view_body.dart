@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../../../statistics/presentation/views/widgets/transaction_section.dart';
-import '../../../../../repo/models/card_model.dart';
+import '../../../../../data/models/card_model.dart';
 import 'bank_card_design.dart';
 import 'build_actions_row.dart';
 import 'home_page_app_bar.dart';

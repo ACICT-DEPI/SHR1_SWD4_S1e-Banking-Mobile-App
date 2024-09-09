@@ -1,9 +1,9 @@
-import 'package:bank_app/features/navigation_screen/ui/cards_screen/widgets/spending_limit_section.dart';
-import 'package:bank_app/features/navigation_screen/ui/cards_screen/widgets/cards_screen_Header.dart';
+import 'package:bank_app/features/navigation_screen/presentation/cards_screen/widgets/cards_screen_Header.dart';
+import 'package:bank_app/features/navigation_screen/presentation/cards_screen/widgets/spending_limit_section.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_app/core/styles/colors.dart';
 import '../../../statistics/presentation/views/widgets/transaction_section.dart';
-import '../../repo/models/card_model.dart';
+import '../../data/models/card_model.dart';
 import '../home/presentation/views/widgets/bank_card_design.dart';
 
 class CardsScreen extends StatelessWidget {

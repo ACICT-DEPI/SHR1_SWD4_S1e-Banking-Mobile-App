@@ -3,7 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:bank_app/core/styles/colors.dart';
 import 'package:bank_app/core/styles/texts_style.dart';
 
-import '../../../../../repo/models/card_model.dart';
+import '../../../../../data/models/card_model.dart';
+
 
 class BankCardDesign extends StatelessWidget {
   final CardModel card;
