@@ -11,13 +11,13 @@ class BankCardDesign extends StatelessWidget {
   final String cardType;
 
   const BankCardDesign({
-    Key? key,
+    super.key,
     required this.cardNumber,
     required this.cardHolderName,
     required this.expiryDate,
     required this.cvv,
     required this.cardType,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

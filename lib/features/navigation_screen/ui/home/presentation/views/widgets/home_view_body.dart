@@ -1,22 +1,25 @@
 import 'package:bank_app/core/styles/colors.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
-
 import '../../../../../../statistics/presentation/views/widgets/transaction_section.dart';
 import 'BankCardDesign.dart';
 import 'BuildActionsRow.dart';
-import 'CustomNavigationBar.dart';
 import 'HomePageAppbarDesign.dart';
 
-class home_view_body extends StatelessWidget {
-  int PageIndex = 0;
+class HomeViewBody extends StatefulWidget {
+
+  const HomeViewBody({super.key});
+
+  @override
+  State<HomeViewBody> createState() => _HomeViewBodyState();
+}
+
+class _HomeViewBodyState extends State<HomeViewBody> {
+  int pageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Homepageappbardesign(),
+      appBar: const HomePageAppBarDesign(),
       backgroundColor: AppColors.white,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -25,7 +28,7 @@ class home_view_body extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // Card Section
-              BankCardDesign(
+              const BankCardDesign(
                 cardNumber: "4562 1122 4595 7852",
                 cardHolderName: "AR Jonson",
                 expiryDate: "24/2000",
@@ -33,15 +36,15 @@ class home_view_body extends StatelessWidget {
                 cardType: "Mastercard",
               ),
               // Action buttons
-              Buildactionsrow(
+              BuildActionsRow(
                 onPressedSent: () {},
                 onPressedReceive: () {},
                 onPressedLoan: () {},
-                onPressedTopup: () {},
+                onPressedTopUp: () {},
               ),
-              SizedBox(height: 26),
+              const SizedBox(height: 26),
               // Transactions
-              TransactionSection()
+              const TransactionSection()
             ],
           ),
         ),

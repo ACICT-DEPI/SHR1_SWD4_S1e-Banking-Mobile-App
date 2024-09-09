@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../../core/styles/colors.dart';
@@ -6,8 +5,8 @@ import '../../../../../../../core/styles/texts_style.dart';
 
 
 
-class Homepageappbardesign extends StatelessWidget implements PreferredSizeWidget {
-  const Homepageappbardesign({super.key});
+class HomePageAppBarDesign extends StatelessWidget implements PreferredSizeWidget {
+  const HomePageAppBarDesign({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +15,11 @@ class Homepageappbardesign extends StatelessWidget implements PreferredSizeWidge
       elevation: 0,
       title: Row(
         children: [
-          CircleAvatar(
+          const CircleAvatar(
             radius: 25,
             backgroundImage: AssetImage('assets/images/person.png'), // Replace with your image
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -40,7 +39,7 @@ class Homepageappbardesign extends StatelessWidget implements PreferredSizeWidge
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: IconButton(
-            icon: Icon(Icons.search, color: AppColors.black,size: 30,),
+            icon: const Icon(Icons.search, color: AppColors.black,size: 30,),
             onPressed: () {},
           ),
         ),
