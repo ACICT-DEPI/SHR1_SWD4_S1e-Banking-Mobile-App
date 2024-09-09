@@ -1,52 +1,58 @@
-import 'package:bank_app/core/styles/colors.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
-
 import '../../../../../../statistics/presentation/views/widgets/transaction_section.dart';
-import 'BankCardDesign.dart';
-import 'BuildActionsRow.dart';
-import 'CustomNavigationBar.dart';
-import 'HomePageAppbarDesign.dart';
+import '../../../../../repo/models/card_model.dart';
+import 'bank_card_design.dart';
+import 'build_actions_row.dart';
+import 'home_page_app_bar.dart';
 
 class HomeViewBody extends StatelessWidget {
-  int PageIndex = 0;
+  int pageIndex = 0;
+
+  HomeViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomNavigationBar(bottomNavIndex:PageIndex, onTap: (int value) {  } ,),
-      backgroundColor: AppColors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // Card Section
-              BankCardDesign(
-                cardNumber: "4562 1122 4595 7852",
-                cardHolderName: "AR Jonson",
-                expiryDate: "24/2000",
-                cvv: "6986",
-                cardType: "Mastercard",
-              ),
-              // Action buttons
-              BuildActionsRow(
-                onPressedSent: () {},
-                onPressedReceive: () {},
-                onPressedLoan: () {},
-               onPressedTopUp: () {},
-              ),
-              SizedBox(height: 26),
-              // Transactions
-              TransactionSection()
-            ],
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // AppBar Section (Header remains fixed)
+          HomePageAppBarDesign(
+            username: "Tanya Myroniuk",
+            imagePath: 'assets/images/person.png',
+            onSearchPressed: () {
+              // Your search logic here
+            },
           ),
-        ),
-      ),
+          Expanded(
+            child: ListView(
+              children: [
+                // Card Section
+            BankCardDesign(card: CardModel(
+            cvv: "123",
+              cardNumber: "1234 5678 9012 3456",
+              cardHolderName: "Tanya Myroniuk",
+              expiryDate: "09/24",
+              cardType: "Mastercard",
+            )),
 
+                const SizedBox(height: 20),
+                // Action buttons
+                BuildActionsRow(
+                  onPressedSent: () {},
+                  onPressedReceive: () {},
+                  onPressedLoan: () {},
+                  onPressedTopUp: () {},
+                ),
+                const SizedBox(height: 26),
+                // Transactions
+                const TransactionSection(),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

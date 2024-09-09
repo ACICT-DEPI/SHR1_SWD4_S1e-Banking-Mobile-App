@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/styles/colors.dart';
+import 'cards_screen/cards_screen.dart';
 import 'home/presentation/views/home_view.dart';
-import 'home/presentation/views/widgets/CustomNavigationBar.dart';
+import 'home/presentation/views/widgets/custom_navigation_bar.dart';
 
 class NavigationScreen extends StatefulWidget {
   const NavigationScreen({super.key});
@@ -16,7 +17,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
 
   final List<Widget> screens = [
     const HomeView(),
-    Container(),
+    CardsScreen(),
     Container(),
     Container(),
     Container(),
@@ -25,7 +26,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
       body: screens[pageIndex],
       bottomNavigationBar: CustomNavigationBar(
         bottomNavIndex: pageIndex,

@@ -30,6 +30,7 @@ class CustomNavigationBar extends StatelessWidget {
     return SizedBox(
       height: 85,
       child: AnimatedBottomNavigationBar.builder(
+        borderColor: Colors.transparent,
         itemCount: svgIcons.length,
         tabBuilder: (int index, bool isActive) {
           final color = isActive ? AppColors.blue : Colors.grey;

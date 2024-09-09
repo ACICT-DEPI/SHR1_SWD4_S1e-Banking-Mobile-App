@@ -3,20 +3,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:bank_app/core/styles/colors.dart';
 import 'package:bank_app/core/styles/texts_style.dart';
 
+import '../../../../../repo/models/card_model.dart';
+
 class BankCardDesign extends StatelessWidget {
-  final String cardNumber;
-  final String cardHolderName;
-  final String expiryDate;
-  final String cvv;
-  final String cardType;
+  final CardModel card;
 
   const BankCardDesign({
     super.key,
-    required this.cardNumber,
-    required this.cardHolderName,
-    required this.expiryDate,
-    required this.cvv,
-    required this.cardType,
+    required this.card,
   });
 
   @override
@@ -49,7 +43,7 @@ class BankCardDesign extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  cardNumber,
+                  card.cardNumber,
                   style: TextsStyle.textStyleRegular24.copyWith(
                     color: Colors.white,
                     letterSpacing: 2.0,
@@ -62,7 +56,7 @@ class BankCardDesign extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  cardHolderName,
+                  card.cardHolderName,
                   style: TextsStyle.textStyleRegular13.copyWith(
                     color: Colors.white,
                   ),
@@ -84,7 +78,7 @@ class BankCardDesign extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          expiryDate,
+                          card.expiryDate,
                           style: TextsStyle.textStyleRegular13.copyWith(
                             color: Colors.white,
                           ),
@@ -102,7 +96,7 @@ class BankCardDesign extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          cvv,
+                          card.cvv,
                           style: TextsStyle.textStyleRegular13.copyWith(
                             color: Colors.white,
                           ),
@@ -119,7 +113,7 @@ class BankCardDesign extends StatelessWidget {
                       width: 20,
                     ),
                     Text(
-                      cardType,
+                      card.cardType,
                       style: TextsStyle.textStyleSemiBold16.copyWith(
                         color: Colors.white,
                         fontSize: 14,

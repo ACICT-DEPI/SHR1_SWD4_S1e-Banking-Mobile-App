@@ -48,6 +48,9 @@ dependencies:
   flutter_bloc: ^8.1.6
   modal_progress_hud_nsn: ^0.5.1
   animated_bottom_navigation_bar: ^1.3.3
+  flutter_credit_card:
+  date_format_field: ^0.1.0
+
 
 
 dev_dependencies:
