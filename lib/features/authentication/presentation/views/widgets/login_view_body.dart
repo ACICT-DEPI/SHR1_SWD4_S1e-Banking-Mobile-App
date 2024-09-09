@@ -1,3 +1,4 @@
+import 'package:bank_app/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/styles/texts_style.dart';
@@ -64,16 +65,30 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 onPressed: () {
                   setState(() {
                     autoValidateMode = AutovalidateMode.always;
+                    if (formKey.currentState!.validate()) {
+                      navigateHomeView(context);
+                    }
                   });
                 },
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              const SizedBox(height: 30),
               const NewUserRow()
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  void navigateHomeView(BuildContext context) {
+    while (Navigator.canPop(context)) {
+      Navigator.pop(context);
+    }
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const HomeView(),
       ),
     );
   }

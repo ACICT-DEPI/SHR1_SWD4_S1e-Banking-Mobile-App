@@ -1,10 +1,10 @@
-import 'package:bank_app/features/onboardingScreen/ui/widgets/OnboardingPage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../core/styles/colors.dart';
 import '../../../core/widgets/custom_app_button.dart';
+import '../../authentication/presentation/views/login_view.dart';
+import 'widgets/onboarding_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -25,7 +25,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         _currentPage = _controller.page!.round();
       });
     });
-
   }
 
   @override
@@ -41,24 +40,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 OnboardingPage(
                   imagePath: "assets/images/Onboarding_1.svg",
                   title: "Fastest Payment in \nthe world",
-                  description: "Integrate multiple payment methods\n to help you up the process quickly",
+                  description:
+                      "Integrate multiple payment methods\n to help you up the process quickly",
                 ),
                 OnboardingPage(
                   imagePath: "assets/images/Onboarding_2.svg",
                   title: "The most Secure\n Platform for Customers",
-                  description: "Built-in Fingerprint, face recognition\n and more, keeping you completely safe",
+                  description:
+                      "Built-in Fingerprint, face recognition\n and more, keeping you completely safe",
                 ),
                 OnboardingPage(
                   imagePath: "assets/images/Onboarding_3.svg",
                   title: "Paying for Everything is\n Easy and Convenient",
-                  description: "Built-in Fingerprint, face recognition\n and more, keeping you completely safe",
+                  description:
+                      "Built-in Fingerprint, face recognition\n and more, keeping you completely safe",
                 ),
               ],
             ),
             Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 16),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 40,
+                  horizontal: 16,
+                ),
                 child: CustomAppButton(
                   title: _currentPage == 2 ? "Get Started" : "Next",
                   onPressed: () {
@@ -68,10 +73,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         curve: Curves.easeIn,
                       );
                     } else {
-                      // Navigate to home screen
-                      /////////////////////////
-                      /////////////////////////
-                      /////////////////////////
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginView(),
+                        ),
+                      );
                     }
                   },
                 ),
@@ -83,7 +90,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               child: SmoothPageIndicator(
                 controller: _controller,
                 count: 3,
-                effect: ExpandingDotsEffect(
+                effect: const ExpandingDotsEffect(
                   activeDotColor: AppColors.blue,
                   dotHeight: 7,
                   dotWidth: 7,
