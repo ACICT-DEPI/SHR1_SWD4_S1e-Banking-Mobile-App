@@ -2,6 +2,7 @@ import 'package:bank_app/core/styles/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CardInputField extends StatelessWidget {
   final String label;
@@ -56,9 +57,8 @@ class CardInputField extends StatelessWidget {
               ),
               if (showCardIcons)
                 Row(
-                  children: const [
-                    Icon(Icons.credit_card, color: Colors.red),
-                    Icon(Icons.credit_card, color: Colors.orange),
+                  children: [
+                    SvgPicture.asset("assets/images/master_card.svg")
                   ],
                 ),
             ],

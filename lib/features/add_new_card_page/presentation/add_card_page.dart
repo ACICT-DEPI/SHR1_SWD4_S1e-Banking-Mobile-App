@@ -37,7 +37,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back_ios_sharp, color: Colors.black,size: 22,),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -62,7 +62,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                 cardType: "Mastercard ",
               )),
               // Custom Credit Card Widget
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
               // Cardholder Name Section
               CardInputField(
                 keyboardType: TextInputType.name,
@@ -74,7 +74,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                   LengthLimitingTextInputFormatter(16)
                 ], // Limit length to 16
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 4),
 
               // Expiry Date and CVV Section
               Row(
@@ -91,7 +91,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                       ], // Custom formatter for date
                     ),
                   ),
-                  SizedBox(width: 16),
+                  SizedBox(width: 4),
                   Expanded(
                     child: CardInputField(
                       keyboardType: TextInputType.number,
@@ -106,7 +106,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 4),
               // Card Number Section
               CardInputField(
                 keyboardType: TextInputType.number,
@@ -121,7 +121,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                   CardNumberInputFormatter(),
                 ],
               ),
-              const SizedBox(height: 60),
+              const SizedBox(height: 80),
               CustomAppButton(
                 title: 'Add Card ',
                 onPressed: () {},
