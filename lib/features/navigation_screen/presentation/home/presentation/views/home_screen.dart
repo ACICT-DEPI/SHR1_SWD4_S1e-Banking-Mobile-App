@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
-import '../../../../../../statistics/presentation/views/widgets/transaction_section.dart';
-import '../../../../../data/models/card_model.dart';
-import 'bank_card_design.dart';
-import 'build_actions_row.dart';
-import 'home_page_app_bar.dart';
+import '../../../../../statistics/presentation/views/widgets/transaction_section.dart';
+import '../../../../data/models/card_model.dart';
+import 'widgets/bank_card_design.dart';
+import 'widgets/build_actions_row.dart';
+import 'widgets/home_page_app_bar.dart';
 
-class HomeViewBody extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   int pageIndex = 0;
-
-  HomeViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.only(top: 20.0,right: 20.0,left: 20.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -25,6 +31,7 @@ class HomeViewBody extends StatelessWidget {
               // Your search logic here
             },
           ),
+          const SizedBox(height: 30),
           Expanded(
             child: ListView(
               children: [

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
 class DateInputFormatter extends TextInputFormatter {
@@ -12,7 +11,7 @@ class DateInputFormatter extends TextInputFormatter {
 
     // Add a slash after the month part
     if (newText.length > 2) {
-      newText = newText.substring(0, 2) + '/' + newText.substring(2);
+      newText = '${newText.substring(0, 2)}/${newText.substring(2)}';
     }
 
     // Limit the input to 5 characters (MM/YY)

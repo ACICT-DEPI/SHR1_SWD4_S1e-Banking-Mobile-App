@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // Import this for TextInputFormatter
 
 import '../../../core/styles/colors.dart';
 import '../../../core/styles/texts_style.dart';
@@ -11,7 +10,7 @@ class AllCardsScreen extends StatefulWidget {
   const AllCardsScreen({super.key});
 
   @override
-  _AllCardsScreenState createState() => _AllCardsScreenState();
+  State<AllCardsScreen> createState() => _AllCardsScreenState();
 }
 
 class _AllCardsScreenState extends State<AllCardsScreen> {

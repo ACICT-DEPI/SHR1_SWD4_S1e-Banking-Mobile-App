@@ -1,5 +1,4 @@
 import 'package:bank_app/core/styles/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,7 +11,7 @@ class CardInputField extends StatelessWidget {
   final Function(String) onChanged;
   final List<TextInputFormatter>? inputFormatters;
   final TextInputType keyboardType;
-  const CardInputField({
+  const CardInputField({super.key,
     required this.label,
     required this.icon,
     required this.controller,
@@ -34,7 +33,7 @@ class CardInputField extends StatelessWidget {
         const SizedBox(height: 8),
         Container(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             // border: Border.all(color: Colors.grey),
             // borderRadius: BorderRadius.circular(8),
           ),
@@ -47,7 +46,7 @@ class CardInputField extends StatelessWidget {
                   keyboardType: keyboardType,
                   controller: controller,
                   cursorColor: AppColors.blue,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: InputBorder.none,
                   ),
                   style: const TextStyle(fontSize: 16),

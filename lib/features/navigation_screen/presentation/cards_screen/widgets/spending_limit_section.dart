@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
@@ -8,7 +7,7 @@ class SpendingLimitSection extends StatefulWidget {
   const SpendingLimitSection({super.key});
 
   @override
-  _SpendingLimitSectionState createState() => _SpendingLimitSectionState();
+  State<SpendingLimitSection> createState() => _SpendingLimitSectionState();
 }
 
 class _SpendingLimitSectionState extends State<SpendingLimitSection> {

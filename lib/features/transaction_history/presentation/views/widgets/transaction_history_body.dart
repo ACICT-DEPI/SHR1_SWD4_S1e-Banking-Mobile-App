@@ -1,8 +1,8 @@
-import 'package:bank_app/features/transaction_history/presentation/views/widgets/transaction_history_app_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../../../data/models/transaction_item_model.dart';
 import 'day_transaction.dart';
+import 'transaction_history_app_bar.dart';
 
 class TransactionHistoryBody extends StatelessWidget {
   const TransactionHistoryBody({super.key});
@@ -30,13 +30,16 @@ class TransactionHistoryBody extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.only(top: 20.0, right: 20.0, left: 20.0),
-      child: Column(
-        children: [
-          const TransactionHistoryAppBar(),
-          const SizedBox(height: 30),
-          DayTransaction(
-            listOfTransactionTypes: listOfTransactionTypes,
-            listOfAmounts: listOfAmounts,
+      child: CustomScrollView(
+        physics: const NeverScrollableScrollPhysics(),
+        slivers: [
+          const SliverToBoxAdapter(child: TransactionHistoryAppBar()),
+          const SliverToBoxAdapter(child: SizedBox(height: 30)),
+          SliverFillRemaining(
+            child: DayTransaction(
+              listOfTransactionTypes: listOfTransactionTypes,
+              listOfAmounts: listOfAmounts,
+            ),
           ),
         ],
       ),

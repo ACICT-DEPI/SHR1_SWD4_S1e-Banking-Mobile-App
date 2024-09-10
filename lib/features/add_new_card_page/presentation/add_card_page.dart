@@ -14,7 +14,7 @@ class AddCardScreen extends StatefulWidget {
   const AddCardScreen({super.key});
 
   @override
-  _AddCardScreenState createState() => _AddCardScreenState();
+  State<AddCardScreen> createState() => _AddCardScreenState();
 }
 
 class _AddCardScreenState extends State<AddCardScreen> {
@@ -93,7 +93,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                       ], // Custom formatter for date
                     ),
                   ),
-                  SizedBox(width: 4),
+                  const SizedBox(width: 4),
                   Expanded(
                     child: CardInputField(
                       keyboardType: TextInputType.number,
