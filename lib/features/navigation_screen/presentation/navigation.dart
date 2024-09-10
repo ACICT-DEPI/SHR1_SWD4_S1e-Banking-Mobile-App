@@ -9,7 +9,7 @@ class NavigationScreen extends StatefulWidget {
   const NavigationScreen({super.key});
 
   @override
-  State<NavigationScreen> createState() => _NavigationScreenState();
+  _NavigationScreenState createState() => _NavigationScreenState();
 }
 
 class _NavigationScreenState extends State<NavigationScreen> {
@@ -25,9 +25,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: screens[pageIndex],
-      ),
+      body: screens[pageIndex],
       bottomNavigationBar: CustomNavigationBar(
         bottomNavIndex: pageIndex,
         onTap: (int newIndex) {

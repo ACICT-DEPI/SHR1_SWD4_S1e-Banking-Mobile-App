@@ -45,10 +45,10 @@ class _SignupViewBodyState extends State<SignupViewBody> {
         }
       },
       builder: (context, state) => ModalProgressHUD(
-        inAsyncCall: isLoading,
         progressIndicator: const CircularProgressIndicator(
           color: AppColors.lightBlue,
         ),
+        inAsyncCall: isLoading,
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Padding(

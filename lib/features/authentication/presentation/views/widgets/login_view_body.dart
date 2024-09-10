@@ -1,17 +1,17 @@
+import 'package:bank_app/core/styles/colors.dart';
+import 'package:bank_app/features/authentication/domain/cubits/login_cubit/login_cubit.dart';
+import 'package:bank_app/features/authentication/domain/cubits/login_cubit/login_state.dart';
+import 'package:bank_app/features/authentication/presentation/views/widgets/login_email_and_password.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/custom_app_button.dart';
 import '../../../../../core/widgets/custom_app_icon_button.dart';
 import '../../../../../core/widgets/custom_snack_bar.dart';
-import '../../../../navigation_screen/presentation/navigation.dart';
-import '../../../domain/cubits/login_cubit/login_cubit.dart';
-import '../../../domain/cubits/login_cubit/login_state.dart';
-import 'login_email_and_password.dart';
+import '../../../../navigation_screen/presentation/home/presentation/views/home_view.dart';
 import 'new_user_row.dart';
 
 class LoginViewBody extends StatefulWidget {
@@ -107,7 +107,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const NavigationScreen(),
+        builder: (context) => const HomeView(),
       ),
     );
   }

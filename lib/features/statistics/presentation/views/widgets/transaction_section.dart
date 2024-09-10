@@ -1,4 +1,3 @@
-import 'package:bank_app/features/transaction_history/presentation/views/transaction_history.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/styles/colors.dart';
@@ -21,20 +20,10 @@ class TransactionSection extends StatelessWidget {
               "Transaction",
               style: TextsStyle.textStyleMedium18,
             ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const TransactionHistory(),
-                  ),
-                );
-              },
-              child: Text(
-                "See All",
-                style: TextsStyle.textStyleMedium14
-                    .copyWith(color: AppColors.blue),
-              ),
+            Text(
+              "See All",
+              style:
+                  TextsStyle.textStyleMedium14.copyWith(color: AppColors.blue),
             ),
           ],
         ),
