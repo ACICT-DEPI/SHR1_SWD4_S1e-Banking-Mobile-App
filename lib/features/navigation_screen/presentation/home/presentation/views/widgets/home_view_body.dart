@@ -5,21 +5,15 @@ import 'bank_card_design.dart';
 import 'build_actions_row.dart';
 import 'home_page_app_bar.dart';
 
-class HomeViewBody extends StatefulWidget {
-
-  const HomeViewBody({super.key});
-
-  @override
-  State<HomeViewBody> createState() => _HomeViewBodyState();
-}
-
-class _HomeViewBodyState extends State<HomeViewBody> {
+class HomeViewBody extends StatelessWidget {
   int pageIndex = 0;
+
+  HomeViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20.0,right: 20.0,left: 20.0),
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -31,7 +25,6 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               // Your search logic here
             },
           ),
-          const SizedBox(height: 30),
           Expanded(
             child: ListView(
               children: [
@@ -42,7 +35,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               cardHolderName: "Tanya Myroniuk",
               expiryDate: "09/24",
               cardType: "Mastercard",
-            ),),
+            )),
 
                 const SizedBox(height: 20),
                 // Action buttons

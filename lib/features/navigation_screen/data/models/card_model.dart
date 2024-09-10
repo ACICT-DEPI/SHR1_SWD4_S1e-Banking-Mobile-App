@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class CardModel {
   final String cardNumber;
   final String cardHolderName;

@@ -1,6 +1,7 @@
 import 'package:bank_app/features/navigation_screen/presentation/cards_screen/widgets/cards_screen_Header.dart';
 import 'package:bank_app/features/navigation_screen/presentation/cards_screen/widgets/spending_limit_section.dart';
 import 'package:flutter/material.dart';
+import 'package:bank_app/core/styles/colors.dart';
 import '../../../statistics/presentation/views/widgets/transaction_section.dart';
 import '../../data/models/card_model.dart';
 import '../home/presentation/views/widgets/bank_card_design.dart';
@@ -11,13 +12,12 @@ class CardsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20.0,right: 20.0,left: 20.0),
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // AppBar Section (Header remains fixed)
-          const CardsPageHeader(),
-          const SizedBox(height: 30),
+          CardsPageHeader(),
           Expanded(
             child: ListView(
               children: [
@@ -34,7 +34,7 @@ class CardsScreen extends StatelessWidget {
                 // Transactions Section
                 const TransactionSection(),
                 // Spending Limit Section
-                const SpendingLimitSection(),
+                SpendingLimitSection(),
               ],
             ),
           ),
