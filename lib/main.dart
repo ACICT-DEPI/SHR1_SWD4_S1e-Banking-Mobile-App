@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'core/styles/theme_style.dart';
 
-import 'features/add_new_card_page/presentation/add_card_page.dart';
 import 'firebase_options.dart';
 
 void main() async {

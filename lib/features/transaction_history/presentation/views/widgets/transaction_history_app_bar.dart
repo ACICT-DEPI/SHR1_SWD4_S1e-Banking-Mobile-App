@@ -15,7 +15,9 @@ class TransactionHistoryAppBar extends StatelessWidget {
       children: [
         CustomAppIconButton(
           icon: Icons.arrow_back_ios_new_outlined,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         const Text(
           "Transaction History",
