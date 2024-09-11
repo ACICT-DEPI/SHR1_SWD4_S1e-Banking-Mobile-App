@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 
 import 'core/styles/theme_style.dart';
 
+import 'features/add_new_card_page/presentation/add_card_page.dart';
+import 'features/navigation_screen/presentation/navigation.dart';
+import 'features/send_money_screen/presentation/send_money_screen.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -22,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeStyle.lightThemeData,
-      home: const OnboardingScreen(),
+      home:   SendMoneyScreen(),
     );
   }
 }

@@ -32,13 +32,20 @@ class _BuildActionsRowState extends State<BuildActionsRow> {
         children: [
           CircleAvatar(
             radius: 50,
-            backgroundColor: AppColors.greyF4,
+            backgroundColor: AppColors.greyF4, // Background color for both CircleAvatar and IconButton
             child: IconButton(
-              icon: Icon(icon, color: Colors.black, size: 30),
+              icon: Icon(
+                icon,
+                color: Colors.black,
+                size: 30,
+              ),
               onPressed: () => onPressed(),
             ),
           ),
-          Text(label, style: TextsStyle.textStyleRegular12),
+          Text(
+            label,
+            style: TextsStyle.textStyleRegular12,
+          ),
         ],
       ),
     );

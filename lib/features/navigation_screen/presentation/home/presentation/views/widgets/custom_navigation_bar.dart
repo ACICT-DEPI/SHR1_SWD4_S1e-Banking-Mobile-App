@@ -54,7 +54,6 @@ class CustomNavigationBar extends StatelessWidget {
             ],
           );
         },
-        backgroundColor: AppColors.white,
         activeIndex: bottomNavIndex,
         notchSmoothness: NotchSmoothness.defaultEdge,
         gapLocation: GapLocation.none,

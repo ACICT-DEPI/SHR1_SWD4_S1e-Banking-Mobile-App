@@ -18,4 +18,20 @@ class ThemeStyle {
       ),
     ),
   );
+  static ThemeData darkThemeData = ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.dark,
+    scaffoldBackgroundColor: AppColors.black, // Set a dark background color
+    iconButtonTheme: const IconButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: WidgetStatePropertyAll(AppColors.grey94), // Darker grey for icons
+      ),
+    ),
+    elevatedButtonTheme: const ElevatedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: WidgetStatePropertyAll(AppColors.dark), // Darker shade of blue
+      ),
+    ),
+  );
+
 }
