@@ -16,7 +16,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
 
   final List<Widget> screens = [
     const HomeScreen(),
-    const CardsScreen(),
+    CardsScreen(),
     const StatisticsView(),
     Container(),
   ];

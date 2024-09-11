@@ -35,14 +35,14 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Container(
                   width: double.infinity, // Adjust to your needs
-                  height: 300,
+                  height: 220,
                   child: PageView.builder(
                     controller: pageController,
                     itemCount: cards.length,
@@ -68,6 +68,7 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                     },
                   ),
                 ),
+                SizedBox(height: 10),
                 SendIdTextField(textController: idController),
                 SizedBox(height: 10),
                 SendMonyTextField(textController: amountController),

@@ -25,7 +25,7 @@ class BuildActionsRow extends StatefulWidget {
 
 class _BuildActionsRowState extends State<BuildActionsRow> {
   Widget _buildActionButton(IconData icon, String label, Function onPressed) {
-    return SizedBox(
+    return  SizedBox(
       width: 60,
       height: 120,
       child: Column(
@@ -34,6 +34,7 @@ class _BuildActionsRowState extends State<BuildActionsRow> {
             radius: 50,
             backgroundColor: AppColors.greyF4, // Background color for both CircleAvatar and IconButton
             child: IconButton(
+              style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(AppColors.transparent)),
               icon: Icon(
                 icon,
                 color: Colors.black,
