@@ -1,3 +1,5 @@
+import 'package:bank_app/features/search/presentation/views/search_view.dart';
+import 'package:bank_app/features/send_money_screen/presentation/send_money_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../../../statistics/presentation/views/widgets/transaction_section.dart';
 import '../../../../data/models/card_model.dart';
@@ -6,7 +8,6 @@ import 'widgets/build_actions_row.dart';
 import 'widgets/home_page_app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
-
   const HomeScreen({super.key});
 
   @override
@@ -16,17 +17,30 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   PageController pageController = PageController();
   final List<Map<String, String>> cards = [
-    {'cardNumber': '1234 5678 9012 3456', 'cardHolderName': 'John Doe', 'expiryDate': '12/24', 'cardType': 'visa', 'cvv': '455'},
-    {'cardNumber': '5678 1234 9012 3456', 'cardHolderName': 'Jane Smith', 'expiryDate': '01/25', 'cardType': 'mastercard', 'cvv': '123'},
+    {
+      'cardNumber': '1234 5678 9012 3456',
+      'cardHolderName': 'John Doe',
+      'expiryDate': '12/24',
+      'cardType': 'visa',
+      'cvv': '455'
+    },
+    {
+      'cardNumber': '5678 1234 9012 3456',
+      'cardHolderName': 'Jane Smith',
+      'expiryDate': '01/25',
+      'cardType': 'mastercard',
+      'cvv': '123'
+    },
     // Add more card details here
   ];
 
   int pageIndex = 0;
   int selectedCardIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20.0,right: 20.0,left: 20.0),
+      padding: const EdgeInsets.only(top: 20.0, right: 20.0, left: 20.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -35,7 +49,12 @@ class _HomeScreenState extends State<HomeScreen> {
             username: "Tanya Myroniuk",
             imagePath: 'assets/images/person.png',
             onSearchPressed: () {
-              // Your search logic here
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SearchView(),
+                ),
+              );
             },
           ),
           const SizedBox(height: 15),
@@ -43,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: ListView(
               children: [
                 // Card Section
-                Container(
+                SizedBox(
                   width: double.infinity, // Adjust to your needs
                   height: 220,
                   child: PageView.builder(
@@ -73,10 +92,38 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 // Action buttons
                 BuildActionsRow(
-                  onPressedSent: () {},
-                  onPressedReceive: () {},
-                  onPressedLoan: () {},
-                  onPressedTopUp: () {},
+                  onPressedSent: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SendMoneyScreen(),
+                      ),
+                    );
+                  },
+                  onPressedReceive: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SendMoneyScreen(),
+                      ),
+                    );
+                  },
+                  onPressedLoan: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SendMoneyScreen(),
+                      ),
+                    );
+                  },
+                  onPressedTopUp: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SendMoneyScreen(),
+                      ),
+                    );
+                  },
                 ),
                 const SizedBox(height: 26),
                 // Transactions

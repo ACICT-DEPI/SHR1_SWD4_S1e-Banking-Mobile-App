@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/widgets/transaction_item.dart';
 import '../../../../transaction_history/data/models/transaction_item_model.dart';
-import 'search_app_bar.dart';
 import 'search_text_field.dart';
 
 class SearchViewBody extends StatelessWidget {
@@ -33,7 +33,13 @@ class SearchViewBody extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20.0, right: 20.0, left: 20.0),
       child: Column(
         children: [
-          const SearchAppBar(),
+          CustomAppBar(
+            appBarTitle: "Search",
+            leftIcon: Icons.arrow_back_ios_new_outlined,
+            onPressedLeft: () {
+              Navigator.pop(context);
+            },
+          ),
           const SizedBox(height: 32),
           const SearchTextField(),
           const SizedBox(height: 30),

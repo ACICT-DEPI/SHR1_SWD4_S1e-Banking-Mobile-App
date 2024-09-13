@@ -1,18 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_app/core/styles/colors.dart';
 import 'package:bank_app/core/styles/texts_style.dart';
 
-class SendIdTextField extends StatefulWidget {
+class SendIdTextField extends StatelessWidget {
   TextEditingController textController ;
 
    SendIdTextField({super.key, required this.textController});
 
-  @override
-  State<SendIdTextField> createState() => _SendIdTextFieldState();
-}
-
-class _SendIdTextFieldState extends State<SendIdTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,7 +45,7 @@ class _SendIdTextFieldState extends State<SendIdTextField> {
               const SizedBox(width: 16.0),
               Expanded(
                 child: TextField(
-                  controller: widget.textController,
+                  controller: textController,
                   cursorColor: AppColors.blue,
                   decoration: InputDecoration(
                     suffixIcon: IconButton(
@@ -64,7 +58,7 @@ class _SendIdTextFieldState extends State<SendIdTextField> {
                       onPressed: () {
                         // Your onPressed logic
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.qr_code,
                         color: AppColors.blue,
                       ),

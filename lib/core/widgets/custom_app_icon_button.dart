@@ -1,3 +1,4 @@
+import 'package:bank_app/core/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppIconButton extends StatelessWidget {
@@ -8,7 +9,7 @@ class CustomAppIconButton extends StatelessWidget {
   });
 
   final Function()? onPressed;
-  final IconData icon;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +20,8 @@ class CustomAppIconButton extends StatelessWidget {
         size: 22,
       ),
       style: ButtonStyle(
+        backgroundColor:
+            WidgetStatePropertyAll(icon == null ? AppColors.transparent : null),
         fixedSize: const WidgetStatePropertyAll(Size(48, 48)),
         shape: WidgetStatePropertyAll(
           ContinuousRectangleBorder(

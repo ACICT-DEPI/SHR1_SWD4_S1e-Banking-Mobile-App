@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/helpers/functions.dart';
+import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../data/models/month_model.dart';
 import 'balance_chart.dart';
 import 'current_balance.dart';
-import 'statistics_app_bar.dart';
 import 'transaction_section.dart';
 
 class StatisticsViewBody extends StatelessWidget {
@@ -20,7 +20,11 @@ class StatisticsViewBody extends StatelessWidget {
       padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
       child: Column(
         children: [
-          const StatisticsAppBar(),
+          CustomAppBar(
+            appBarTitle: "Statistics",
+            rightIcon: Icons.notifications_none,
+            onPressedRight: () {},
+          ),
           Expanded(
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),

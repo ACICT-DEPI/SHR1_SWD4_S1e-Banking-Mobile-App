@@ -32,11 +32,11 @@ class HomePageAppBarDesign extends StatelessWidget {
               children: [
                 Text(
                   "Welcome back,",
-                  style: TextsStyle.textStyleRegular12.copyWith(color: AppColors.grey8D),
+                  style: TextsStyle.textStyleRegular12.copyWith(color: AppColors.grey8D,),
                 ),
                 Text(
                   username, // Use the parameter username
-                  style: TextsStyle.textStyleMedium18.copyWith(color: AppColors.black),
+                  style: TextsStyle.textStyleMedium18.copyWith(color: AppColors.black,),
                 ),
               ],
             ),

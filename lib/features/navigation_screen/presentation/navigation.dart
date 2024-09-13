@@ -1,3 +1,4 @@
+import 'package:bank_app/features/settings/presentation/views/settings.dart';
 import 'package:flutter/material.dart';
 import '../../statistics/presentation/views/statistics_view.dart';
 import 'cards_screen/cards_screen.dart';
@@ -16,9 +17,9 @@ class _NavigationScreenState extends State<NavigationScreen> {
 
   final List<Widget> screens = [
     const HomeScreen(),
-    CardsScreen(),
+    const CardsScreen(),
     const StatisticsView(),
-    Container(),
+   const Setting(),
   ];
 
   @override

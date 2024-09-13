@@ -1,17 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_app/core/styles/colors.dart';
 import 'package:bank_app/core/styles/texts_style.dart';
 
-class SendMonyTextField extends StatefulWidget {
-  TextEditingController textController ;
-   SendMonyTextField({super.key, required this.textController});
+class SendMoneyTextField extends StatefulWidget {
+  TextEditingController textController;
+
+  SendMoneyTextField({super.key, required this.textController});
 
   @override
-  State<SendMonyTextField> createState() => _SendMonyTextFieldState();
+  State<SendMoneyTextField> createState() => _SendMoneyTextFieldState();
 }
 
-class _SendMonyTextFieldState extends State<SendMonyTextField> {
+class _SendMoneyTextFieldState extends State<SendMoneyTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,8 +19,9 @@ class _SendMonyTextFieldState extends State<SendMonyTextField> {
       height: 140,
       width: 360,
       decoration: BoxDecoration(
-
-        border: Border.all(color: AppColors.lightGrey,),
+        border: Border.all(
+          color: AppColors.lightGrey,
+        ),
         borderRadius: BorderRadius.circular(14),
       ),
       child: Column(
@@ -75,7 +76,6 @@ class _SendMonyTextFieldState extends State<SendMonyTextField> {
                   keyboardType: TextInputType.number,
                 ),
               ),
-
             ],
           ),
         ],

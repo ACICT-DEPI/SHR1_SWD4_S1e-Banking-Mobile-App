@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/styles/texts_style.dart';
-import '../../../../../core/widgets/custom_app_icon_button.dart';
+import '../../../../../core/widgets/custom_app_bar.dart';
 
 class TransactionHistoryAppBar extends StatelessWidget {
   const TransactionHistoryAppBar({
@@ -10,24 +9,14 @@ class TransactionHistoryAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        CustomAppIconButton(
-          icon: Icons.arrow_back_ios_new_outlined,
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        const Text(
-          "Transaction History",
-          style: TextsStyle.textStyleMedium18,
-        ),
-        CustomAppIconButton(
-          icon: Icons.history_outlined,
-          onPressed: () {},
-        )
-      ],
+    return CustomAppBar(
+      appBarTitle: "Transaction History",
+      onPressedLeft: () {
+        Navigator.pop(context);
+      },
+      onPressedRight: () {},
+      leftIcon: Icons.arrow_back_ios_new_outlined,
+      rightIcon: Icons.history_outlined,
     );
   }
 }
