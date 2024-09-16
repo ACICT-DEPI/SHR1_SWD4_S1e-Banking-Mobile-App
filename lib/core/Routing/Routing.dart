@@ -7,7 +7,7 @@ import '../../features/authentication/presentation/views/login_view.dart';
 import '../../features/authentication/presentation/views/signup_view.dart';
 import '../../features/category_chart/presentation/views/category_chart_view.dart';
 import '../../features/change_password/presentation/views/change_password.dart';
-import '../../features/languages/presentation/views/languges.dart';
+import '../../features/languages/presentation/views/languages_view.dart';
 import '../../features/navigation_screen/presentation/navigation.dart';
 import '../../features/onboardingScreen/presentation/onboarding_screen.dart';
 import '../../features/privacy_policy/presentation/views/privacy_policy.dart';
@@ -27,7 +27,7 @@ class Routing {
   static String signupView = '/SignupView';
   static String categoryChart = '/CategoryChart';
   static String changePassword = '/ChangePassword';
-  static String languages = '/Languages';
+  static String languagesView = '/LanguagesView';
   static String navigationScreen = '/NavigationScreen';
   static String privacyPolicy = '/PrivacyPolicy';
   static String editProfileScreen = '/EditProfileScreen';
@@ -39,7 +39,7 @@ class Routing {
   static String transactionHistoryView = '/TransactionHistoryView';
 
   static final GoRouter _router = GoRouter(
-    initialLocation: onboardingScreen, // Set your initial route here
+    initialLocation: navigationScreen, // Set your initial route here
 
     routes: <RouteBase>[
       GoRoute(
@@ -85,9 +85,9 @@ class Routing {
         },
       ),
       GoRoute(
-        path: languages,
+        path: languagesView,
         builder: (BuildContext context, GoRouterState state) {
-          return const Languages();
+          return const LanguagesView();
         },
       ),
       GoRoute(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../change_password/presentation/views/change_password.dart';
-import '../../../../languages/presentation/views/languges.dart';
+import '../../../../languages/presentation/views/languages_view.dart';
 import '../../../../privacy_policy/presentation/views/privacy_policy.dart';
 import '../../../../profile/presentation/views/profile.dart';
 import 'biometric_switch_button.dart';
@@ -36,7 +36,7 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const Languages(),
+                    builder: (context) => const LanguagesView(),
                   ),
                 );
               },
