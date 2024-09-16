@@ -1,7 +1,10 @@
-import 'package:bank_app/core/widgets/custom_app_bar.dart';
+import 'package:bank_app/features/all_cards_screen/presentation/views/all_cards_screen.dart';
+import 'package:bank_app/features/category_chart/presentation/views/category_chart_view.dart';
+import 'package:bank_app/features/privacy_policy/presentation/views/privacy_policy.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/helpers/images.dart';
+import '../../../../../core/widgets/custom_app_bar.dart';
 import '../edit_profile.dart';
 import 'profile_information.dart';
 import 'profile_row.dart';
@@ -29,7 +32,7 @@ class ProfileViewBody extends StatelessWidget {
               profileImage: Images.imagesPerson,
               profileName: "Mohamed Gehad",
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 52),
             ProfileRow(
               text: "Edit Profile",
               icon: Icons.account_circle_outlined,
@@ -46,13 +49,27 @@ class ProfileViewBody extends StatelessWidget {
             ProfileRow(
               text: "All Cards",
               icon: Icons.credit_card_sharp,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AllCardsScreen(),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 28),
             ProfileRow(
               text: "Category Chart",
               icon: Icons.bar_chart,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CategoryChart(),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 28),
             ProfileRow(
@@ -64,7 +81,14 @@ class ProfileViewBody extends StatelessWidget {
             ProfileRow(
               text: "Privacy Policy ",
               icon: Icons.privacy_tip,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PrivacyPolicy(),
+                  ),
+                );
+              },
             )
           ],
         ),
