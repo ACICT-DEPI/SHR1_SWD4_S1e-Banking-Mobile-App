@@ -24,7 +24,7 @@ import '../../features/transaction_history/presentation/views/transaction_histor
 
 class Routing {
 
-  static String initialRoute = '/OnboardingScreen';
+  static String initialRoute = '/AddCardScreen';
 
   static final GoRouter _router = GoRouter(
     initialLocation: initialRoute,  // Set your initial route here

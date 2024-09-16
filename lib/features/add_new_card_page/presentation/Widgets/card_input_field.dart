@@ -11,14 +11,16 @@ class CardInputField extends StatelessWidget {
   final Function(String) onChanged;
   final List<TextInputFormatter>? inputFormatters;
   final TextInputType keyboardType;
-  const CardInputField({super.key,
+
+  const CardInputField({
+    super.key,
     required this.label,
     required this.icon,
     required this.controller,
     this.showCardIcons = false,
     required this.onChanged,
     this.inputFormatters,
-    required this.keyboardType ,
+    required this.keyboardType,
   });
 
   @override
@@ -28,42 +30,45 @@ class CardInputField extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(color: Colors.grey),
+          style: const TextStyle(color: AppColors.greyA7, fontSize: 14),
         ),
         const SizedBox(height: 8),
-        Container(
-          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-          decoration: const BoxDecoration(
-            // border: Border.all(color: Colors.grey),
-            // borderRadius: BorderRadius.circular(8),
-          ),
-          child: Row(
-            children: [
-              Icon(icon, color: Colors.grey),
-              const SizedBox(width: 10),
-              Expanded(
-                child: TextField(
-                  keyboardType: keyboardType,
-                  controller: controller,
-                  cursorColor: AppColors.blue,
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                  ),
-                  style: const TextStyle(fontSize: 16),
-                  onChanged: onChanged,
-                  inputFormatters: inputFormatters,
+        Row(
+          children: [
+            Icon(
+              icon,
+              color: AppColors.greyA7,
+              size: 22,
+            ),
+            const SizedBox(width: 16.0),
+            Expanded(
+              child: TextFormField(
+                controller: controller,
+                onChanged: onChanged,
+                keyboardType: keyboardType,
+                inputFormatters: inputFormatters,
+                cursorColor: AppColors.blue,
+                decoration: const InputDecoration(
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.zero,
+                ),
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: AppColors.black,
                 ),
               ),
-              if (showCardIcons)
-                Row(
-                  children: [
-                    SvgPicture.asset("assets/images/master_card.svg")
-                  ],
-                ),
-            ],
-          ),
+            ),
+            if (showCardIcons)
+              SvgPicture.asset(
+                "assets/images/master_card.svg",
+                height: 22,
+              ),
+          ],
         ),
-        Divider(color: Colors.grey.shade300),
+        const Divider(
+          color: AppColors.greyF4,
+          height: 1,
+        ),
       ],
     );
   }
