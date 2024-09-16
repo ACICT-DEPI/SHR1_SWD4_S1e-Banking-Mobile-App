@@ -19,7 +19,7 @@ class Setting extends StatefulWidget {
 class _SettingState extends State<Setting> {
   @override
   Widget build(BuildContext context) {
-    bool switch_value = false;
+    bool switchValue = false;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.white,
@@ -162,10 +162,10 @@ class _SettingState extends State<Setting> {
                     flex: 4,
                   ),
                   Switch(
-                    value: switch_value,
+                    value: switchValue,
                     onChanged: (value) {
                       setState(() {
-                        switch_value = value;
+                        switchValue = value;
                       });
                     },
                     activeColor: AppColors.blue,

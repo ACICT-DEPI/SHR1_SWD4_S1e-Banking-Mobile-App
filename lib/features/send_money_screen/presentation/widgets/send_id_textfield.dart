@@ -3,9 +3,9 @@ import 'package:bank_app/core/styles/colors.dart';
 import 'package:bank_app/core/styles/texts_style.dart';
 
 class SendIdTextField extends StatelessWidget {
-  TextEditingController textController ;
+  final TextEditingController textController;
 
-   SendIdTextField({super.key, required this.textController});
+  const SendIdTextField({super.key, required this.textController});
 
   @override
   Widget build(BuildContext context) {

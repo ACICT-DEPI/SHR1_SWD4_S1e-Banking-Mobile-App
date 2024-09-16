@@ -36,9 +36,12 @@ class StatisticsViewBody extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12.0),
                     child: BalanceChart(
-                      lastSixMonthsModel: MonthModel.buildMonthModelList(
-                        lastSixMonthsDate,
-                        lastSixMonthsBalance,
+                      lastSixMonthsModel:
+                          MonthModel.fromJsonBuildMonthModelList(
+                        {
+                          "lastSixMonthsDate": lastSixMonthsDate,
+                          "lastSixMonthsBalance": lastSixMonthsBalance,
+                        },
                       ),
                       maxBalance: Functions.getMaxBalance(lastSixMonthsBalance),
                     ),
