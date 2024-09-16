@@ -3,13 +3,17 @@ import 'package:flutter/material.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
 
-class SettingsButton extends StatelessWidget {
+class ProfileRow extends StatelessWidget {
   final String text;
+  final IconData icon;
   final Function()? onPressed;
-  final String? label;
 
-  const SettingsButton(
-      {super.key, required this.text, required this.onPressed, this.label});
+  const ProfileRow({
+    super.key,
+    required this.text,
+    required this.icon,
+    this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,23 +22,23 @@ class SettingsButton extends StatelessWidget {
         GestureDetector(
           onTap: onPressed,
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              Icon(
+                icon,
+                color: AppColors.greyA7,
+              ),
+              const SizedBox(
+                width: 16.0,
+              ),
               Text(
                 text,
-                style: TextsStyle.textStyleMedium16.copyWith(
-                  color: AppColors.black,
-                ),
+                style: TextsStyle.textStyleRegular15
+                    .copyWith(color: AppColors.black),
               ),
               const Spacer(),
-              if (label != null)
-                Text(
-                  label!,
-                  style: TextsStyle.textStyleMedium14.copyWith(
-                    color: AppColors.greyA7,
-                  ),
-                ),
               const Icon(
-                Icons.keyboard_arrow_right,
+                Icons.arrow_forward_ios_sharp,
                 color: AppColors.greyA7,
               ),
             ],

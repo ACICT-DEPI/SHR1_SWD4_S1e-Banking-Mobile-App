@@ -12,7 +12,7 @@ import '../../features/navigation_screen/presentation/navigation.dart';
 import '../../features/onboardingScreen/presentation/onboarding_screen.dart';
 import '../../features/privacy_policy/presentation/views/privacy_policy.dart';
 import '../../features/profile/presentation/views/edit_profile.dart';
-import '../../features/profile/presentation/views/profile.dart';
+import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/send_money_screen/presentation/send_money_screen.dart';
 import '../../features/settings/presentation/views/settings.dart';
@@ -20,10 +20,7 @@ import '../../features/statistics/presentation/views/statistics_view.dart';
 import '../../features/transaction_history/presentation/views/transaction_history_view.dart';
 
 class Routing {
-<<<<<<< HEAD
-
   static String initialRoute = '/AddCardScreen';
-=======
   static String onboardingScreen = '/OnboardingScreen';
   static String addCardScreen = '/AddCardScreen';
   static String allCardsScreen = '/AllCardsScreen';
@@ -35,13 +32,12 @@ class Routing {
   static String navigationScreen = '/NavigationScreen';
   static String privacyPolicy = '/PrivacyPolicy';
   static String editProfileScreen = '/EditProfileScreen';
-  static String profile = '/Profile';
+  static String profileView = '/ProfileView';
   static String searchView = '/SearchView';
   static String sendMoneyScreen = '/SendMoneyScreen';
   static String setting = '/Setting';
   static String statisticsView = '/StatisticsView';
   static String transactionHistoryView = '/TransactionHistoryView';
->>>>>>> 27f0683d1d9ad6fde439a8257bf3eb38882206cc
 
   static final GoRouter _router = GoRouter(
     initialLocation: navigationScreen, // Set your initial route here
@@ -114,9 +110,9 @@ class Routing {
         },
       ),
       GoRoute(
-        path: profile,
+        path: profileView,
         builder: (BuildContext context, GoRouterState state) {
-          return const Profile();
+          return const ProfileView();
         },
       ),
       GoRoute(
