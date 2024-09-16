@@ -3,9 +3,9 @@ import 'package:bank_app/core/styles/colors.dart';
 import 'package:bank_app/core/styles/texts_style.dart';
 
 class SendMoneyTextField extends StatefulWidget {
-  TextEditingController textController;
+  final TextEditingController textController;
 
-  SendMoneyTextField({super.key, required this.textController});
+  const SendMoneyTextField({super.key, required this.textController});
 
   @override
   State<SendMoneyTextField> createState() => _SendMoneyTextFieldState();

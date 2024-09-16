@@ -6,16 +6,35 @@ class MonthModel {
   MonthModel(
       {required this.month, required this.balance, this.isClicked = false});
 
-  static List<MonthModel> buildMonthModelList(
-      List<String> lastSixMonthsDate, List<double> lastSixMonthsBalance) {
+  static List<MonthModel> fromJsonBuildMonthModelList(json) {
     return List.generate(
-      lastSixMonthsDate.length,
+      6,
       (index) {
         return MonthModel(
-          month: lastSixMonthsDate[index],
-          balance: lastSixMonthsBalance[index],
+          month: json["lastSixMonthsDate"][index],
+          balance: json["lastSixMonthsBalance"][index],
         );
       },
     );
+  }
+
+  static Map toJsonBuildList(
+      List<String> lastSixMonthsDate, List<double> lastSixMonthsBalance) {
+    return {
+      "lastSixMonthsDate": List.generate(
+        6,
+        (index) {
+          return {
+            "month": lastSixMonthsDate[index],
+          };
+        },
+      ),
+      "lastSixMonthsBalance": List.generate(
+        6,
+        (index) {
+          return {"balance": lastSixMonthsBalance[index]};
+        },
+      ),
+    };
   }
 }

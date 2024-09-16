@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/add_new_card_page/presentation/add_card_page.dart';
@@ -7,8 +7,7 @@ import '../../features/authentication/presentation/views/login_view.dart';
 import '../../features/authentication/presentation/views/signup_view.dart';
 import '../../features/category_chart/presentation/views/category_chart_view.dart';
 import '../../features/change_password/presentation/views/change_password.dart';
-import '../../features/languages/presentation/views/languges.dart';
-import '../../features/navigation_screen/presentation/home/presentation/views/home_screen.dart';
+import '../../features/languages/presentation/views/languages_view.dart';
 import '../../features/navigation_screen/presentation/navigation.dart';
 import '../../features/onboardingScreen/presentation/onboarding_screen.dart';
 import '../../features/privacy_policy/presentation/views/privacy_policy.dart';
@@ -20,121 +19,136 @@ import '../../features/settings/presentation/views/settings.dart';
 import '../../features/statistics/presentation/views/statistics_view.dart';
 import '../../features/transaction_history/presentation/views/transaction_history_view.dart';
 
-
-
 class Routing {
+<<<<<<< HEAD
 
   static String initialRoute = '/AddCardScreen';
+=======
+  static String onboardingScreen = '/OnboardingScreen';
+  static String addCardScreen = '/AddCardScreen';
+  static String allCardsScreen = '/AllCardsScreen';
+  static String loginView = '/LoginView';
+  static String signupView = '/SignupView';
+  static String categoryChart = '/CategoryChart';
+  static String changePassword = '/ChangePassword';
+  static String languagesView = '/LanguagesView';
+  static String navigationScreen = '/NavigationScreen';
+  static String privacyPolicy = '/PrivacyPolicy';
+  static String editProfileScreen = '/EditProfileScreen';
+  static String profile = '/Profile';
+  static String searchView = '/SearchView';
+  static String sendMoneyScreen = '/SendMoneyScreen';
+  static String setting = '/Setting';
+  static String statisticsView = '/StatisticsView';
+  static String transactionHistoryView = '/TransactionHistoryView';
+>>>>>>> 27f0683d1d9ad6fde439a8257bf3eb38882206cc
 
   static final GoRouter _router = GoRouter(
-    initialLocation: initialRoute,  // Set your initial route here
+    initialLocation: navigationScreen, // Set your initial route here
 
     routes: <RouteBase>[
       GoRoute(
-        path: '/OnboardingScreen',
+        path: onboardingScreen,
         builder: (BuildContext context, GoRouterState state) {
-          return  OnboardingScreen();
+          return const OnboardingScreen();
         },
       ),
       GoRoute(
-        path: '/AddCardScreen',
+        path: addCardScreen,
         builder: (BuildContext context, GoRouterState state) {
-          return  AddCardScreen();
+          return const AddCardScreen();
         },
       ),
       GoRoute(
-        path: '/AllCardsScreen',
+        path: allCardsScreen,
         builder: (BuildContext context, GoRouterState state) {
-          return  AllCardsScreen();
+          return const AllCardsScreen();
         },
       ),
       GoRoute(
-        path: '/LoginView',
+        path: loginView,
         builder: (BuildContext context, GoRouterState state) {
-          return  LoginView();
+          return const LoginView();
         },
       ),
       GoRoute(
-        path: '/SignupView',
+        path: signupView,
         builder: (BuildContext context, GoRouterState state) {
-          return  SignupView();
+          return const SignupView();
         },
       ),
       GoRoute(
-        path: '/CategoryChart',
+        path: categoryChart,
         builder: (BuildContext context, GoRouterState state) {
-          return  CategoryChart();
-        },
-      ),
-
-      GoRoute(
-        path: '/ChangePassword',
-        builder: (BuildContext context, GoRouterState state) {
-          return  ChangePassword();
-        },
-      ),
-
-      GoRoute(
-        path: '/Languages',
-        builder: (BuildContext context, GoRouterState state) {
-          return  Languages();
-        },
-      ),
-
-      GoRoute(
-        path: '/NavigationScreen',
-        builder: (BuildContext context, GoRouterState state) {
-          return  NavigationScreen();
-        },
-      ), GoRoute(
-        path: '/PrivacyPolicy',
-        builder: (BuildContext context, GoRouterState state) {
-          return  PrivacyPolicy();
+          return const CategoryChart();
         },
       ),
       GoRoute(
-        path: '/EditProfileScreen',
+        path: changePassword,
         builder: (BuildContext context, GoRouterState state) {
-          return  EditProfileScreen();
+          return const ChangePassword();
         },
       ),
       GoRoute(
-        path: '/Profile',
+        path: languagesView,
         builder: (BuildContext context, GoRouterState state) {
-          return  Profile();
+          return const LanguagesView();
         },
       ),
       GoRoute(
-        path: '/SearchView',
+        path: navigationScreen,
         builder: (BuildContext context, GoRouterState state) {
-          return  SearchView();
+          return const NavigationScreen();
         },
       ),
       GoRoute(
-        path: '/SendMoneyScreen',
+        path: privacyPolicy,
         builder: (BuildContext context, GoRouterState state) {
-          return  SendMoneyScreen();
+          return const PrivacyPolicy();
         },
       ),
       GoRoute(
-        path: '/Setting',
+        path: editProfileScreen,
         builder: (BuildContext context, GoRouterState state) {
-          return  Setting();
+          return const EditProfileScreen();
         },
       ),
       GoRoute(
-        path: '/StatisticsView',
+        path: profile,
         builder: (BuildContext context, GoRouterState state) {
-          return  StatisticsView();
+          return const Profile();
         },
       ),
       GoRoute(
-        path: '/TransactionHistoryView',
+        path: searchView,
         builder: (BuildContext context, GoRouterState state) {
-          return  TransactionHistoryView();
+          return const SearchView();
         },
       ),
-
+      GoRoute(
+        path: sendMoneyScreen,
+        builder: (BuildContext context, GoRouterState state) {
+          return const SendMoneyScreen();
+        },
+      ),
+      GoRoute(
+        path: setting,
+        builder: (BuildContext context, GoRouterState state) {
+          return const Setting();
+        },
+      ),
+      GoRoute(
+        path: statisticsView,
+        builder: (BuildContext context, GoRouterState state) {
+          return const StatisticsView();
+        },
+      ),
+      GoRoute(
+        path: transactionHistoryView,
+        builder: (BuildContext context, GoRouterState state) {
+          return const TransactionHistoryView();
+        },
+      ),
     ],
   );
 

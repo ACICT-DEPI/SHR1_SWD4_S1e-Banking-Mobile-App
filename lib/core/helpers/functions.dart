@@ -90,4 +90,25 @@ class Functions {
         return "Transaction";
     }
   }
+
+  static TransactionType getTransactionType(String transactionTitle) {
+    switch (transactionTitle) {
+      case "Spotify":
+        return TransactionType.spotify;
+      case "Apple Store":
+        return TransactionType.appleStore;
+      case "Money Transfer":
+        return TransactionType.moneyTransfer;
+      case "Grocery":
+        return TransactionType.grocery;
+      case "Google Play":
+        return TransactionType.googlePlay;
+      case "Amazon Pay":
+        return TransactionType.amazonPay;
+      case "Paypal":
+        return TransactionType.paypal;
+      default:
+        return TransactionType.moneyTransfer;
+    }
+  }
 }
