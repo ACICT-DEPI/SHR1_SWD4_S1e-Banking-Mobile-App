@@ -2,6 +2,7 @@ import 'package:bank_app/features/onboardingScreen/presentation/onboarding_scree
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
+import 'core/Routing/Routing.dart';
 import 'core/styles/theme_style.dart';
 
 import 'features/add_new_card_page/presentation/add_card_page.dart';
@@ -20,11 +21,12 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
+    return MaterialApp.router(
       theme: ThemeStyle.lightThemeData,
-      home: const NavigationScreen(),
+      debugShowCheckedModeBanner: false,
+      routerConfig: Routing.router,
     );
   }
 }

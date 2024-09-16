@@ -50,6 +50,7 @@ dependencies:
   animated_bottom_navigation_bar: ^1.3.3
   flutter_credit_card:
   date_format_field: ^0.1.0
+  go_router: ^14.2.7
 
 
 
