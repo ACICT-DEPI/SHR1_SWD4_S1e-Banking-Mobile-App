@@ -1,14 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+import '../../../../../core/Routing/Routing.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/custom_app_button.dart';
 import '../../../../../core/widgets/custom_app_icon_button.dart';
 import '../../../../../core/widgets/custom_snack_bar.dart';
-import '../../../../navigation_screen/presentation/navigation.dart';
 import '../../../domain/cubits/login_cubit/login_cubit.dart';
 import '../../../domain/cubits/login_cubit/login_state.dart';
 import 'login_email_and_password.dart';
@@ -41,8 +41,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
         } else if (state is LoginSuccessState) {
           isLoading = false;
           navigateHomeView(context);
-          UserCredential user = state.user;
-          buildShowSnackBar(context, 'Welcome ${user.user!.email}');
+          buildShowSnackBar(context, 'Welcome ${state.user.emailAddress}');
         }
       },
       builder: (context, state) => ModalProgressHUD(
@@ -100,15 +99,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   }
 
   void navigateHomeView(BuildContext context) {
-    while (Navigator.canPop(context)) {
-      Navigator.pop(context);
+    while (GoRouter.of(context).canPop()) {
+      GoRouter.of(context).pop();
     }
-
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const NavigationScreen(),
-      ),
-    );
+    GoRouter.of(context).push(Routing.navigationScreen);
   }
 }

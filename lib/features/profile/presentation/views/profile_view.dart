@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'widgets/edit_profile_body.dart';
+import 'widgets/profile_view_body.dart';
 
-class EditProfileScreen extends StatelessWidget {
-  const EditProfileScreen({super.key});
+class ProfileView extends StatelessWidget {
+  const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       body: SafeArea(
-        child: EditProfileBody(),
+        child: ProfileViewBody(),
       ),
     );
   }

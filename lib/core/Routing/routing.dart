@@ -12,15 +12,17 @@ import '../../features/navigation_screen/presentation/navigation.dart';
 import '../../features/onboardingScreen/presentation/onboarding_screen.dart';
 import '../../features/privacy_policy/presentation/views/privacy_policy.dart';
 import '../../features/profile/presentation/views/edit_profile.dart';
-import '../../features/profile/presentation/views/profile.dart';
+import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/send_money_screen/presentation/send_money_screen.dart';
-import '../../features/settings/presentation/views/settings.dart';
-import '../../features/statistics/presentation/views/statistics_view.dart';
 import '../../features/transaction_history/presentation/views/transaction_history_view.dart';
+import '../network/firebase.dart';
 
 class Routing {
+<<<<<<< HEAD:lib/core/Routing/Routing.dart
 
+=======
+>>>>>>> 0ab1f9612a7b30bd42fb9aa22db304c1b581c9f9:lib/core/Routing/routing.dart
   static String initialRoute = '/AddCardScreen';
   static String onboardingScreen = '/OnboardingScreen';
   static String addCardScreen = '/AddCardScreen';
@@ -33,21 +35,30 @@ class Routing {
   static String navigationScreen = '/NavigationScreen';
   static String privacyPolicy = '/PrivacyPolicy';
   static String editProfileScreen = '/EditProfileScreen';
-  static String profile = '/Profile';
+  static String profileView = '/ProfileView';
   static String searchView = '/SearchView';
   static String sendMoneyScreen = '/SendMoneyScreen';
-  static String setting = '/Setting';
-  static String statisticsView = '/StatisticsView';
   static String transactionHistoryView = '/TransactionHistoryView';
 
   static final GoRouter _router = GoRouter(
+<<<<<<< HEAD:lib/core/Routing/Routing.dart
     initialLocation: initialRoute, // Set your initial route here
+=======
+    initialLocation: onboardingScreen, // Set your initial route here
+>>>>>>> 0ab1f9612a7b30bd42fb9aa22db304c1b581c9f9:lib/core/Routing/routing.dart
 
     routes: <RouteBase>[
       GoRoute(
         path: onboardingScreen,
         builder: (BuildContext context, GoRouterState state) {
           return const OnboardingScreen();
+        },
+        redirect: (context, state) {
+          // Implement the route guard logic here
+          if (Firebase.isUserLogin()) {
+            return '/NavigationScreen'; // Redirect to login if not authenticated
+          }
+          return null; // Continue to the requested route if authenticated
         },
       ),
       GoRoute(
@@ -111,9 +122,9 @@ class Routing {
         },
       ),
       GoRoute(
-        path: profile,
+        path: profileView,
         builder: (BuildContext context, GoRouterState state) {
-          return const Profile();
+          return const ProfileView();
         },
       ),
       GoRoute(
@@ -126,18 +137,6 @@ class Routing {
         path: sendMoneyScreen,
         builder: (BuildContext context, GoRouterState state) {
           return const SendMoneyScreen();
-        },
-      ),
-      GoRoute(
-        path: setting,
-        builder: (BuildContext context, GoRouterState state) {
-          return const Setting();
-        },
-      ),
-      GoRoute(
-        path: statisticsView,
-        builder: (BuildContext context, GoRouterState state) {
-          return const StatisticsView();
         },
       ),
       GoRoute(

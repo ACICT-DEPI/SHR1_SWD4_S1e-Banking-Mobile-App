@@ -1,5 +1,5 @@
-import 'package:bank_app/features/settings/presentation/views/settings.dart';
 import 'package:flutter/material.dart';
+import '../../settings/presentation/views/settings.dart';
 import '../../statistics/presentation/views/statistics_view.dart';
 import 'cards_screen/cards_screen.dart';
 import 'home/presentation/views/home_screen.dart';
@@ -15,15 +15,14 @@ class NavigationScreen extends StatefulWidget {
 class _NavigationScreenState extends State<NavigationScreen> {
   int pageIndex = 0;
 
-  final List<Widget> screens = [
-    const HomeScreen(),
-    const CardsScreen(),
-    const StatisticsView(),
-   const Setting(),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final List<Widget> screens = [
+      const HomeScreen(),
+      const CardsScreen(),
+      const StatisticsView(),
+      const Setting(),
+    ];
     return Scaffold(
       body: SafeArea(
         child: screens[pageIndex],

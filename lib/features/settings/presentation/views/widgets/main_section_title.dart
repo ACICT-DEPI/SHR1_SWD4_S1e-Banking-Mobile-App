@@ -12,7 +12,7 @@ class MainSectionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: TextsStyle.textStyleMedium14.copyWith(
+      style: TextsStyle.textStyleMedium16.copyWith(
         color: AppColors.greyA7,
       ),
     );

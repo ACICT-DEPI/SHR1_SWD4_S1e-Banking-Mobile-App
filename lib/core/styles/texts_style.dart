@@ -65,6 +65,10 @@ abstract class TextsStyle {
     fontSize: 18,
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w500,
+  ); static const TextStyle textStyleMedium22 = TextStyle(
+    fontSize: 18,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w500,
   );
   static const TextStyle textStyleMedium26 = TextStyle(
     fontSize: 26,

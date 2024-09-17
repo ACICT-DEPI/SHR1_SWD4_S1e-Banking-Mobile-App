@@ -30,7 +30,7 @@ class CustomAppBar extends StatelessWidget {
         ),
         Text(
           appBarTitle,
-          style: TextsStyle.textStyleMedium18,
+          style: TextsStyle.textStyleMedium22,
         ),
         CustomAppIconButton(
           icon: rightIcon,

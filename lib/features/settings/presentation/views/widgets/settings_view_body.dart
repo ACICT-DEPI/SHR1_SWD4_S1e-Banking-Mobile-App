@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/Routing/Routing.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../change_password/presentation/views/change_password.dart';
 import '../../../../languages/presentation/views/languages_view.dart';
 import '../../../../privacy_policy/presentation/views/privacy_policy.dart';
-import '../../../../profile/presentation/views/profile.dart';
 import 'biometric_switch_button.dart';
 import 'main_section_title.dart';
 import 'settings_button.dart';
@@ -29,7 +30,7 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
             const CustomAppBar(appBarTitle: "Settings"),
             const SizedBox(height: 38),
             const MainSectionTitle(text: "General"),
-            const SizedBox(height: 16.0),
+            const SizedBox(height: 20.0),
             SettingsButton(
               text: "Language",
               onPressed: () {
@@ -42,23 +43,23 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
               },
               label: "English",
             ),
+            const SizedBox(height: 28.0),
             SettingsButton(
               text: "My Profile",
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const Profile(),
-                    ));
+                GoRouter.of(context).push(
+                  Routing.profileView,
+                );
               },
             ),
+            const SizedBox(height: 28.0),
             SettingsButton(
               text: "Contact Us",
               onPressed: () {},
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 32),
             const MainSectionTitle(text: "Security"),
-            const SizedBox(height: 16.0),
+            const SizedBox(height: 20.0),
             SettingsButton(
               text: "Change Password",
               onPressed: () {
@@ -70,6 +71,7 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
                 );
               },
             ),
+            const SizedBox(height: 28.0),
             SettingsButton(
               text: "Privacy Policy",
               onPressed: () {

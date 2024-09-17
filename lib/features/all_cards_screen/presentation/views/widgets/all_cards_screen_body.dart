@@ -53,11 +53,11 @@ class _AllCardsScreenBodyState extends State<AllCardsScreenBody> {
                 final card = cards[index];
                 return BankCardDesign(
                     card: CardModel(
-                  cvv: cards[index]['cvv'].toString(),
-                  cardNumber: cards[index]['cardNumber'].toString(),
-                  cardHolderName: cards[index]['cardHolderName'].toString(),
-                  expiryDate: cards[index]['expiryDate'].toString(),
-                  cardType: cards[index]['cardType'].toString(),
+                  cvv: card['cvv'].toString(),
+                  cardNumber: card['cardNumber'].toString(),
+                  cardHolderName: card['cardHolderName'].toString(),
+                  expiryDate: card['expiryDate'].toString(),
+                  cardType: card['cardType'].toString(),
                 ));
               },
             ),
