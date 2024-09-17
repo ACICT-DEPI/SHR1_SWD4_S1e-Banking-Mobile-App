@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 
+import '../../../authentication/data/models/user_model.dart';
 import 'widgets/settings_view_body.dart';
 
 class Setting extends StatelessWidget {
-  const Setting({super.key});
+  const Setting({super.key, required this.user});
+
+  final UserModel user;
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
-        child: SettingsViewBody(),
+        child: SettingsViewBody(
+          user: user,
+        ),
       ),
     );
   }

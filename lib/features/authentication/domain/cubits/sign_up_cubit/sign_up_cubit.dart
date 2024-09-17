@@ -1,33 +1,44 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../../../../../core/network/firebase.dart';
+import '../../../data/models/user_model.dart';
 import 'sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
   SignUpCubit() : super(SignUpInitialState());
 
-  Future<void> userRegister(
-      {required String email, required String password}) async {
-    emit(SignUpLoadingState());
+  /// Registers a new user using the provided [UserModel].
+  Future<void> userRegister({required UserModel user}) async {
+    emit(
+        SignUpLoadingState()); // Emit loading state while registration is in progress
     try {
-      await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
+      // Call the Firebase method to register the user
+      await Firebase.signUpUser(user);
+
+      // Emit success state if registration is successful
       emit(SignUpSuccessState());
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        emit(SignUpFailureState(errMessage: 'The password is too weak.'));
-      } else if (e.code == 'email-already-in-use') {
-        emit(SignUpFailureState(
-            errMessage: 'The email address is already in use.'));
-      } else if (e.code == 'invalid-email') {
-        emit(SignUpFailureState(
-            errMessage: 'The email address is badly formatted.'));
-      } else if (e.code == 'operation-not-allowed') {
-        emit(SignUpFailureState(
-            errMessage: 'Email/password accounts are not enabled.'));
-      } else {
-        emit(SignUpFailureState(errMessage: 'The email may be wrong'));
+      // Handle specific FirebaseAuth exceptions and emit corresponding failure state
+      String errorMessage;
+      switch (e.code) {
+        case 'weak-password':
+          errorMessage = 'The password is too weak.';
+          break;
+        case 'email-already-in-use':
+          errorMessage = 'The email address is already in use.';
+          break;
+        case 'invalid-email':
+          errorMessage = 'The email address is badly formatted.';
+          break;
+        case 'operation-not-allowed':
+          errorMessage = 'Email/password accounts are not enabled.';
+          break;
+        default:
+          errorMessage = 'An unknown error occurred.';
       }
+      emit(SignUpFailureState(errMessage: errorMessage));
     } catch (e) {
+      // Catch any other exceptions and emit a general failure state
       emit(SignUpFailureState(errMessage: 'An unexpected error occurred.'));
     }
   }

@@ -1,6 +1,7 @@
 import 'package:bank_app/features/search/presentation/views/search_view.dart';
 import 'package:bank_app/features/send_money_screen/presentation/send_money_screen.dart';
 import 'package:flutter/material.dart';
+import '../../../../../authentication/data/models/user_model.dart';
 import '../../../../../statistics/presentation/views/widgets/transaction_section.dart';
 import '../../../../data/models/card_model.dart';
 import 'widgets/bank_card_design.dart';
@@ -8,7 +9,9 @@ import 'widgets/build_actions_row.dart';
 import 'widgets/home_page_app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({super.key, required this.user});
+
+  final UserModel user;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -46,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           // AppBar Section (Header remains fixed)
           HomePageAppBarDesign(
-            username: "Tanya Myroniuk",
+            username: widget.user.fullName,
             imagePath: 'assets/images/person.png',
             onSearchPressed: () {
               Navigator.push(

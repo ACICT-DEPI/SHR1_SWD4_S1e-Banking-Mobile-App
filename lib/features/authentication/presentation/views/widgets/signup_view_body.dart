@@ -1,3 +1,4 @@
+import 'package:bank_app/features/authentication/data/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -82,8 +83,12 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                         autoValidateMode = AutovalidateMode.always;
                         if (formKey.currentState!.validate()) {
                           BlocProvider.of<SignUpCubit>(context).userRegister(
-                            email: emailTextController.text,
-                            password: passwordTextController.text,
+                            user: UserModel(
+                              fullName: nameTextController.text,
+                              phoneNumber: phoneTextController.text,
+                              emailAddress: emailTextController.text,
+                              password: passwordTextController.text,
+                            ),
                           );
                         }
                       });

@@ -11,7 +11,7 @@ class CustomAppTextFormField extends StatelessWidget {
     this.obscureText,
     required this.prefixIcon,
     this.suffixIcon,
-    this.onPressedIcon, this.textEditingController,
+    this.onPressedIcon, this.textEditingController, this.enable,
   });
 
   final String title;
@@ -19,6 +19,7 @@ class CustomAppTextFormField extends StatelessWidget {
   final IconData? suffixIcon;
   final TextInputType keyboardType;
   final bool? obscureText;
+  final bool? enable;
   final Function()? onPressedIcon;
   final TextEditingController? textEditingController;
 
@@ -41,6 +42,7 @@ class CustomAppTextFormField extends StatelessWidget {
             const SizedBox(width: 16.0),
             Expanded(
               child: TextFormField(
+                enabled: enable,
                 controller: textEditingController,
                 validator: (value) {
                   if (value!.isEmpty) {

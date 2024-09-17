@@ -1,14 +1,17 @@
-import 'package:bank_app/core/styles/colors.dart';
-import 'package:bank_app/core/styles/texts_style.dart';
-import 'package:bank_app/core/widgets/custom_app_bar.dart';
-import 'package:bank_app/core/widgets/custom_app_text_form_field.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/helpers/images.dart';
+import '../../../../../core/styles/colors.dart';
+import '../../../../../core/styles/texts_style.dart';
+import '../../../../../core/widgets/custom_app_bar.dart';
+import '../../../../../core/widgets/custom_app_text_form_field.dart';
+import '../../../../authentication/data/models/user_model.dart';
 import 'birth_date_selector.dart';
 
 class EditProfileBody extends StatelessWidget {
-  const EditProfileBody({super.key});
+  const EditProfileBody({super.key, required this.user});
+
+  final UserModel user;
 
   @override
   Widget build(BuildContext context) {
@@ -30,28 +33,38 @@ class EditProfileBody extends StatelessWidget {
             backgroundImage: AssetImage(Images.imagesPerson),
           ),
           const SizedBox(height: 50),
-          const CustomAppTextFormField(
+          CustomAppTextFormField(
             title: "Full Name",
             keyboardType: TextInputType.name,
             prefixIcon: Icons.account_circle_outlined,
+            textEditingController: TextEditingController(text: user.fullName),
+            enable: false,
           ),
           const SizedBox(height: 20),
-          const CustomAppTextFormField(
+          CustomAppTextFormField(
             title: "Email Address",
             keyboardType: TextInputType.emailAddress,
             prefixIcon: Icons.email_outlined,
+            textEditingController: TextEditingController(
+              text: user.emailAddress,
+            ),
+            enable: false,
           ),
           const SizedBox(height: 20),
-          const CustomAppTextFormField(
+          CustomAppTextFormField(
             title: "Phone Number",
             keyboardType: TextInputType.phone,
             prefixIcon: Icons.phone,
+            textEditingController: TextEditingController(
+              text: user.phoneNumber,
+            ),
+            enable: false,
           ),
           const SizedBox(height: 20),
           const BirthDateSelector(),
           const SizedBox(height: 20),
           Text(
-            'Joined at 28 Jan 2021',
+            'Joined at ${user.joinedAt}',
             style: TextsStyle.textStyleMedium14.copyWith(
               color: AppColors.greyA7,
             ),

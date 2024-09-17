@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/add_new_card_page/presentation/add_card_page.dart';
 import '../../features/all_cards_screen/presentation/views/all_cards_screen.dart';
+import '../../features/authentication/data/models/user_model.dart';
 import '../../features/authentication/presentation/views/login_view.dart';
 import '../../features/authentication/presentation/views/signup_view.dart';
 import '../../features/category_chart/presentation/views/category_chart_view.dart';
@@ -15,8 +16,6 @@ import '../../features/profile/presentation/views/edit_profile.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/send_money_screen/presentation/send_money_screen.dart';
-import '../../features/settings/presentation/views/settings.dart';
-import '../../features/statistics/presentation/views/statistics_view.dart';
 import '../../features/transaction_history/presentation/views/transaction_history_view.dart';
 
 class Routing {
@@ -35,12 +34,10 @@ class Routing {
   static String profileView = '/ProfileView';
   static String searchView = '/SearchView';
   static String sendMoneyScreen = '/SendMoneyScreen';
-  static String setting = '/Setting';
-  static String statisticsView = '/StatisticsView';
   static String transactionHistoryView = '/TransactionHistoryView';
 
   static final GoRouter _router = GoRouter(
-    initialLocation: navigationScreen, // Set your initial route here
+    initialLocation: onboardingScreen, // Set your initial route here
 
     routes: <RouteBase>[
       GoRoute(
@@ -94,7 +91,10 @@ class Routing {
       GoRoute(
         path: navigationScreen,
         builder: (BuildContext context, GoRouterState state) {
-          return const NavigationScreen();
+          UserModel user = state.extra as UserModel;
+          return NavigationScreen(
+            user: user,
+          );
         },
       ),
       GoRoute(
@@ -106,13 +106,20 @@ class Routing {
       GoRoute(
         path: editProfileScreen,
         builder: (BuildContext context, GoRouterState state) {
-          return const EditProfileScreen();
+          UserModel user = state.extra as UserModel;
+
+          return EditProfileScreen(
+            user: user,
+          );
         },
       ),
       GoRoute(
         path: profileView,
         builder: (BuildContext context, GoRouterState state) {
-          return const ProfileView();
+          UserModel user = state.extra as UserModel;
+          return ProfileView(
+            user: user,
+          );
         },
       ),
       GoRoute(
@@ -125,18 +132,6 @@ class Routing {
         path: sendMoneyScreen,
         builder: (BuildContext context, GoRouterState state) {
           return const SendMoneyScreen();
-        },
-      ),
-      GoRoute(
-        path: setting,
-        builder: (BuildContext context, GoRouterState state) {
-          return const Setting();
-        },
-      ),
-      GoRoute(
-        path: statisticsView,
-        builder: (BuildContext context, GoRouterState state) {
-          return const StatisticsView();
         },
       ),
       GoRoute(

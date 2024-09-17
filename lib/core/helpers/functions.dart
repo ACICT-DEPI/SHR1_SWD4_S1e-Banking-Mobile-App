@@ -111,4 +111,14 @@ class Functions {
         return TransactionType.moneyTransfer;
     }
   }
+  static String getCurrentDate() {
+    DateTime date = DateTime.now();
+
+    // Create a DateFormat instance
+    DateFormat formatter = DateFormat('dd MMM yyyy');
+
+    // Format the date
+    String formattedDate = formatter.format(date);
+    return formattedDate;
+  }
 }

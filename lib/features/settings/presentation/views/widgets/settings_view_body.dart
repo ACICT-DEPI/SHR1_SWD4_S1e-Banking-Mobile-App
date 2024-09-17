@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/Routing/Routing.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
+import '../../../../authentication/data/models/user_model.dart';
 import '../../../../change_password/presentation/views/change_password.dart';
 import '../../../../languages/presentation/views/languages_view.dart';
 import '../../../../privacy_policy/presentation/views/privacy_policy.dart';
-import '../../../../profile/presentation/views/profile_view.dart';
 import 'biometric_switch_button.dart';
 import 'main_section_title.dart';
 import 'settings_button.dart';
 
 class SettingsViewBody extends StatefulWidget {
-  const SettingsViewBody({super.key});
+  const SettingsViewBody({super.key, required this.user});
+
+  final UserModel user;
 
   @override
   State<SettingsViewBody> createState() => _SettingsViewBodyState();
@@ -46,11 +50,10 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
             SettingsButton(
               text: "My Profile",
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ProfileView(),
-                    ));
+                GoRouter.of(context).push(
+                  Routing.profileView,
+                  extra: widget.user,
+                );
               },
             ),
             const SizedBox(height: 28.0),
