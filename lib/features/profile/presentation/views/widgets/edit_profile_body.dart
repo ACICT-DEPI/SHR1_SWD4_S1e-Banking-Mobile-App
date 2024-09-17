@@ -20,7 +20,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Firebase.getUserModel(),
+      future: FirebaseService.getUserModel(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           UserModel userModel = snapshot.data as UserModel;

@@ -19,10 +19,7 @@ import '../../features/transaction_history/presentation/views/transaction_histor
 import '../network/firebase.dart';
 
 class Routing {
-<<<<<<< HEAD:lib/core/Routing/Routing.dart
 
-=======
->>>>>>> 0ab1f9612a7b30bd42fb9aa22db304c1b581c9f9:lib/core/Routing/routing.dart
   static String initialRoute = '/AddCardScreen';
   static String onboardingScreen = '/OnboardingScreen';
   static String addCardScreen = '/AddCardScreen';
@@ -41,11 +38,7 @@ class Routing {
   static String transactionHistoryView = '/TransactionHistoryView';
 
   static final GoRouter _router = GoRouter(
-<<<<<<< HEAD:lib/core/Routing/Routing.dart
-    initialLocation: initialRoute, // Set your initial route here
-=======
     initialLocation: onboardingScreen, // Set your initial route here
->>>>>>> 0ab1f9612a7b30bd42fb9aa22db304c1b581c9f9:lib/core/Routing/routing.dart
 
     routes: <RouteBase>[
       GoRoute(
@@ -55,7 +48,7 @@ class Routing {
         },
         redirect: (context, state) {
           // Implement the route guard logic here
-          if (Firebase.isUserLogin()) {
+          if (FirebaseService.isUserLogin()) {
             return '/NavigationScreen'; // Redirect to login if not authenticated
           }
           return null; // Continue to the requested route if authenticated

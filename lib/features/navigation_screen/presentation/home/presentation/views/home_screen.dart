@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Firebase.getUserModel(),
+      future: FirebaseService.getUserModel(),
       builder: (context, snap) {
         if (snap.hasData) {
           UserModel userModel = snap.data as UserModel;

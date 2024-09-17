@@ -13,7 +13,7 @@ class SignUpCubit extends Cubit<SignUpState> {
         SignUpLoadingState()); // Emit loading state while registration is in progress
     try {
       // Call the Firebase method to register the user
-      await Firebase.signUpUser(user);
+      await FirebaseService.signUpUser(user);
 
       // Emit success state if registration is successful
       emit(SignUpSuccessState());

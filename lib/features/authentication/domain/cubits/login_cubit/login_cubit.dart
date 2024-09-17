@@ -14,7 +14,7 @@ class LoginCubit extends Cubit<LoginState> {
   }) async {
     emit(LoginLoadingState());
     try {
-      UserModel? user = await Firebase.loginUser(
+      UserModel? user = await FirebaseService.loginUser(
         email: email,
         password: password,
       );
