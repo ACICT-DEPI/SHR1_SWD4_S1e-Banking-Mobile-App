@@ -20,10 +20,8 @@ import '../../features/statistics/presentation/views/statistics_view.dart';
 import '../../features/transaction_history/presentation/views/transaction_history_view.dart';
 
 class Routing {
-<<<<<<< HEAD
 
   static String initialRoute = '/AddCardScreen';
-=======
   static String onboardingScreen = '/OnboardingScreen';
   static String addCardScreen = '/AddCardScreen';
   static String allCardsScreen = '/AllCardsScreen';
@@ -41,10 +39,9 @@ class Routing {
   static String setting = '/Setting';
   static String statisticsView = '/StatisticsView';
   static String transactionHistoryView = '/TransactionHistoryView';
->>>>>>> 27f0683d1d9ad6fde439a8257bf3eb38882206cc
 
   static final GoRouter _router = GoRouter(
-    initialLocation: navigationScreen, // Set your initial route here
+    initialLocation: initialRoute, // Set your initial route here
 
     routes: <RouteBase>[
       GoRoute(
