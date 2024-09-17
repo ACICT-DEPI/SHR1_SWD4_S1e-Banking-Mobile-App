@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/add_new_card_page/presentation/add_card_page.dart';
 import '../../features/all_cards_screen/presentation/views/all_cards_screen.dart';
-import '../../features/authentication/data/models/user_model.dart';
 import '../../features/authentication/presentation/views/login_view.dart';
 import '../../features/authentication/presentation/views/signup_view.dart';
 import '../../features/category_chart/presentation/views/category_chart_view.dart';
@@ -17,6 +16,7 @@ import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/send_money_screen/presentation/send_money_screen.dart';
 import '../../features/transaction_history/presentation/views/transaction_history_view.dart';
+import '../network/firebase.dart';
 
 class Routing {
   static String initialRoute = '/AddCardScreen';
@@ -44,6 +44,13 @@ class Routing {
         path: onboardingScreen,
         builder: (BuildContext context, GoRouterState state) {
           return const OnboardingScreen();
+        },
+        redirect: (context, state) {
+          // Implement the route guard logic here
+          if (Firebase.isUserLogin()) {
+            return '/NavigationScreen'; // Redirect to login if not authenticated
+          }
+          return null; // Continue to the requested route if authenticated
         },
       ),
       GoRoute(
@@ -91,10 +98,7 @@ class Routing {
       GoRoute(
         path: navigationScreen,
         builder: (BuildContext context, GoRouterState state) {
-          UserModel user = state.extra as UserModel;
-          return NavigationScreen(
-            user: user,
-          );
+          return const NavigationScreen();
         },
       ),
       GoRoute(
@@ -106,20 +110,13 @@ class Routing {
       GoRoute(
         path: editProfileScreen,
         builder: (BuildContext context, GoRouterState state) {
-          UserModel user = state.extra as UserModel;
-
-          return EditProfileScreen(
-            user: user,
-          );
+          return const EditProfileScreen();
         },
       ),
       GoRoute(
         path: profileView,
         builder: (BuildContext context, GoRouterState state) {
-          UserModel user = state.extra as UserModel;
-          return ProfileView(
-            user: user,
-          );
+          return const ProfileView();
         },
       ),
       GoRoute(

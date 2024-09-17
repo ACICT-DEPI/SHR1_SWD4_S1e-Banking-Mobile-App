@@ -9,7 +9,6 @@ import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/custom_app_button.dart';
 import '../../../../../core/widgets/custom_app_icon_button.dart';
 import '../../../../../core/widgets/custom_snack_bar.dart';
-import '../../../data/models/user_model.dart';
 import '../../../domain/cubits/login_cubit/login_cubit.dart';
 import '../../../domain/cubits/login_cubit/login_state.dart';
 import 'login_email_and_password.dart';
@@ -41,7 +40,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           buildShowSnackBar(context, state.errMessage);
         } else if (state is LoginSuccessState) {
           isLoading = false;
-          navigateHomeView(context, state.user);
+          navigateHomeView(context);
           buildShowSnackBar(context, 'Welcome ${state.user.emailAddress}');
         }
       },
@@ -99,10 +98,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     );
   }
 
-  void navigateHomeView(BuildContext context, UserModel user) {
+  void navigateHomeView(BuildContext context) {
     while (GoRouter.of(context).canPop()) {
       GoRouter.of(context).pop();
     }
-    GoRouter.of(context).push(Routing.navigationScreen, extra: user);
+    GoRouter.of(context).push(Routing.navigationScreen);
   }
 }

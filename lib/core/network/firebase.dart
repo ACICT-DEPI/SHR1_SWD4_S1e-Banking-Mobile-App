@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -20,9 +22,11 @@ class Firebase {
         email: user.emailAddress,
         password: user.password,
       );
+
       // Assign the unique user ID from Firebase Auth to the user model
       user.userId = userCredential.user!.uid;
 
+      // Set the current date as the user's join date
       user.joinedAt = Functions.getCurrentDate();
 
       // Store the user data in FireStore under the 'users' collection
@@ -48,8 +52,9 @@ class Firebase {
 
       // Retrieve the user ID from the signed-in user
       String userId = userCredential.user!.uid;
+
       // Return the user data as a UserModel
-      return getUserInformation(userId);
+      return _getUserInformation(userId);
     } catch (e) {
       // Handle any exceptions that occur during the login process
     }
@@ -57,10 +62,9 @@ class Firebase {
   }
 
   // Method to retrieve user information from FireStore based on user ID
-  static Future<UserModel?> getUserInformation(String userId) async {
+  static Future<UserModel?> _getUserInformation(String userId) async {
     // Reference to the 'users' collection in FireStore
     CollectionReference users = _fireStore.collection('users');
-
     try {
       // Get the user document from FireStore using the provided user ID
       DocumentSnapshot userSnapshot = await users.doc(userId).get();
@@ -80,5 +84,20 @@ class Firebase {
 
     // If no user data is found or an error occurs, return null
     return null;
+  }
+
+  static Future<UserModel> getUserModel() async {
+    final user = _auth.currentUser;
+    String userId = user!.uid;
+    UserModel? userModel = await _getUserInformation(userId);
+    return userModel!;
+  }
+
+  // Method to check if a user is currently logged in
+  static bool isUserLogin() {
+    final user = _auth.currentUser;
+
+    // Return true if the user is logged in, otherwise false
+    return user != null;
   }
 }
