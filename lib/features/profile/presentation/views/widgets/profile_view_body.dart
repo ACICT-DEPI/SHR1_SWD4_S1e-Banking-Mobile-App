@@ -1,14 +1,18 @@
 import 'package:bank_app/core/styles/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/Routing/Routing.dart';
 import '../../../../../core/helpers/images.dart';
 import '../../../../../core/network/firebase.dart';
+import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
+import '../../../../../core/widgets/error_screen.dart';
 import '../../../../all_cards_screen/presentation/views/all_cards_screen.dart';
 import '../../../../authentication/data/models/user_model.dart';
 import '../../../../category_chart/presentation/views/category_chart_view.dart';
+import '../../../../navigation_screen/logic/home_screen_cubit.dart';
 import '../../../../privacy_policy/presentation/views/privacy_policy.dart';
 import 'profile_information.dart';
 import 'profile_row.dart';
@@ -23,11 +27,10 @@ class ProfileViewBody extends StatefulWidget {
 class _ProfileViewBodyState extends State<ProfileViewBody> {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: FirebaseService.getUserModel(),
+    return BlocBuilder<HomeScreenCubit, HomeScreenState>(
       builder: (context, snap) {
-        if (snap.hasData) {
-          UserModel userModel = snap.data as UserModel;
+        if (snap is HomeScreenLoaded) {
+          UserModel userModel = snap.userModel;
           return Padding(
             padding: const EdgeInsets.only(right: 20.0, top: 20.0, left: 20.0),
             child: SingleChildScrollView(
@@ -105,13 +108,13 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
               ),
             ),
           );
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(
-              color: AppColors.blue,
-            ),
-          );
+        } else if (snap is HomeScreenError) {
+          return ErrorScreen(message: snap.message);
+
+        }else{
+          return const LoadingScreen();
         }
+
       },
     );
   }

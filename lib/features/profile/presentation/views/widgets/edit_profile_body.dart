@@ -1,4 +1,6 @@
+import 'package:bank_app/features/navigation_screen/logic/home_screen_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/helpers/images.dart';
 import '../../../../../core/network/firebase.dart';
@@ -19,11 +21,10 @@ class EditProfileBody extends StatefulWidget {
 class _EditProfileBodyState extends State<EditProfileBody> {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: FirebaseService.getUserModel(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          UserModel userModel = snapshot.data as UserModel;
+    return BlocBuilder<HomeScreenCubit, HomeScreenState>(
+      builder: (context, state) {
+        if (state is HomeScreenLoaded) {
+          UserModel userModel = state.userModel;
           return Padding(
             padding: const EdgeInsets.only(left: 20.0, top: 20.0, right: 20.0),
             child: Column(
