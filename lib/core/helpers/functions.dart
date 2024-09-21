@@ -1,12 +1,13 @@
-import 'package:bank_app/core/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
+import '../../features/navigation_screen/data/models/card_model.dart';
 import '../../features/transaction_history/data/models/transaction_item_model.dart';
+import '../styles/colors.dart';
 
 class Functions {
-  static List<String> getLastSixMonths() {
+  static List<String> getDateLastSixMonths() {
     DateTime now = DateTime.now();
     List<String> months = [];
 
@@ -16,6 +17,10 @@ class Functions {
     }
 
     return months;
+  }
+
+  static String getCurrentMonth() {
+    return DateFormat.MMM().format(DateTime.now());
   }
 
   static double getMaxBalance(List<double> last6MonthsBalance) {
@@ -111,6 +116,7 @@ class Functions {
         return TransactionType.moneyTransfer;
     }
   }
+
   static String getCurrentDate() {
     DateTime date = DateTime.now();
 
@@ -120,5 +126,13 @@ class Functions {
     // Format the date
     String formattedDate = formatter.format(date);
     return formattedDate;
+  }
+
+  static Future<double> calculateCurrentBalance(List<CardModel> cards) async {
+    double currentBalance = 0;
+    for (var card in cards) {
+      currentBalance += card.cardBalance;
+    }
+    return currentBalance;
   }
 }

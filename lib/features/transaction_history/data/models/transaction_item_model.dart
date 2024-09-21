@@ -3,17 +3,28 @@ import 'package:bank_app/core/helpers/functions.dart';
 class TransactionItemModel {
   final TransactionType type;
   final double amount;
+  final DateTime _createdAt;
 
-  TransactionItemModel({required this.type, required this.amount});
+  TransactionItemModel({
+    DateTime? createdAt,
+    required this.type,
+    required this.amount,
+  }) : _createdAt = createdAt ?? DateTime.now();
 
   factory TransactionItemModel.fromJson(json) {
     return TransactionItemModel(
-        type: Functions.getTransactionType(json["type"]),
-        amount: json["amount"]);
+      type: Functions.getTransactionType(json["type"]),
+      amount: json["amount"],
+      createdAt: json["createdAt"],
+    );
   }
 
-  static toJson({required TransactionType type, required double amount}) {
-    return {"type": Functions.getTransactionTitle(type), "amount": amount};
+  static toJson({required TransactionItemModel transactionModel}) {
+    return {
+      "type": Functions.getTransactionTitle(transactionModel.type),
+      "amount": transactionModel.amount,
+      "createdAt": transactionModel._createdAt,
+    };
   }
 }
 
