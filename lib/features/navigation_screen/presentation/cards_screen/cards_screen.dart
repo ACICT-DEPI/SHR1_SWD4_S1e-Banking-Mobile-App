@@ -1,4 +1,3 @@
-import 'package:bank_app/features/navigation_screen/presentation/cards_screen/widgets/spending_limit_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/widgets/Loading_screen.dart';
@@ -6,9 +5,9 @@ import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/error_screen.dart';
 import '../../../all_cards_screen/presentation/views/all_cards_screen.dart';
 import '../../../statistics/presentation/views/widgets/transaction_section.dart';
-import '../../data/models/card_model.dart';
 import '../../logic/home_screen_cubit.dart';
 import '../home/presentation/views/widgets/bank_card_design.dart';
+import 'widgets/spending_limit_section.dart';
 
 class CardsScreen extends StatefulWidget {
   const CardsScreen({super.key});
@@ -22,13 +21,12 @@ class _CardsScreenState extends State<CardsScreen> {
 
   PageController pageController = PageController();
 
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeScreenCubit, HomeScreenState>(
       builder: (context, state) {
         if (state is HomeScreenLoaded) {
-          final cards = state.cards;
+          final cards = state.homeModel.cards;
 
           return Padding(
             padding: const EdgeInsets.only(top: 20.0, right: 20.0, left: 20.0),
@@ -87,8 +85,7 @@ class _CardsScreenState extends State<CardsScreen> {
               ],
             ),
           );
-
-        }else if (state is HomeScreenError) {
+        } else if (state is HomeScreenError) {
           return ErrorScreen(message: state.message);
         } else {
           return const LoadingScreen();

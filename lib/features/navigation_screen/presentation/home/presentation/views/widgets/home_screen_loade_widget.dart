@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../statistics/presentation/views/widgets/transaction_section.dart';
 import '../../../../../data/models/card_model.dart';
@@ -7,7 +6,6 @@ import '../../../../../logic/home_screen_cubit.dart';
 import 'bank_card_design.dart';
 import 'build_actions_row.dart';
 import 'home_page_app_bar.dart';
-
 
 class HomeScreenLoadedWidget extends StatelessWidget {
   final HomeScreenLoaded state;
@@ -18,14 +16,14 @@ class HomeScreenLoadedWidget extends StatelessWidget {
   final VoidCallback onNavigateToSendMoney;
 
   const HomeScreenLoadedWidget({
-    Key? key,
+    super.key,
     required this.state,
     required this.pageController,
     required this.selectedCardIndex,
     required this.onPageChanged,
     required this.onNavigateToSearch,
     required this.onNavigateToSendMoney,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +33,7 @@ class HomeScreenLoadedWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           HomePageAppBarDesign(
-            username: state.userModel.fullName,
+            username: state.homeModel.userModel.fullName,
             imagePath: 'assets/images/person.png',
             onSearchPressed: onNavigateToSearch,
           ),
@@ -43,7 +41,7 @@ class HomeScreenLoadedWidget extends StatelessWidget {
           Expanded(
             child: ListView(
               children: [
-                _buildCardSection(state.cards),
+                _buildCardSection(state.homeModel.cards),
                 const SizedBox(height: 15),
                 BuildActionsRow(
                   onPressedSent: onNavigateToSendMoney,

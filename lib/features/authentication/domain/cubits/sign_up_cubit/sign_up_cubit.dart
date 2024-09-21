@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../../../../../core/network/firebase.dart';
+import '../../../../../core/network/firebase_authentication.dart';
 import '../../../data/models/user_model.dart';
 import 'sign_up_state.dart';
 
@@ -13,7 +13,7 @@ class SignUpCubit extends Cubit<SignUpState> {
         SignUpLoadingState()); // Emit loading state while registration is in progress
     try {
       // Call the Firebase method to register the user
-      await FirebaseService.signUpUser(user);
+      await FirebaseAuthentication.signUpUser(user);
 
       // Emit success state if registration is successful
       emit(SignUpSuccessState());

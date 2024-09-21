@@ -6,7 +6,6 @@ import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_button.dart';
 import '../../../../../core/widgets/error_screen.dart';
 import '../../../../add_new_card_page/presentation/add_card_page.dart';
-import '../../../../navigation_screen/data/models/card_model.dart';
 import '../../../../navigation_screen/logic/home_screen_cubit.dart';
 import '../../../../navigation_screen/presentation/home/presentation/views/widgets/bank_card_design.dart';
 
@@ -25,7 +24,7 @@ class _AllCardsScreenBodyState extends State<AllCardsScreenBody> {
     return BlocBuilder<HomeScreenCubit, HomeScreenState>(
       builder: (context, state) {
         if (state is HomeScreenLoaded) {
-          final cards = state.cards;
+          final cards = state.homeModel.cards;
 
           return Padding(
             padding: const EdgeInsets.only(right: 20.0, left: 20.0, top: 20.0),

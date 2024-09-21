@@ -1,26 +1,19 @@
 part of 'home_screen_cubit.dart';
 
-@immutable
 abstract class HomeScreenState {}
 
 class HomeScreenInitial extends HomeScreenState {}
-class HomeScreenLoaded extends HomeScreenState {
 
-  UserModel userModel;
-  List<TransactionItemModel> transactions;
-  List<CardModel> cards;
+class HomeScreenLoaded extends HomeScreenState {
+  final HomeModel homeModel;
 
   HomeScreenLoaded({
-    required this.userModel,
-    required this.transactions,
-    required this.cards
+    required this.homeModel,
   });
-
-
 }
-class HomeScreenError extends HomeScreenState {
 
-  String message;
+class HomeScreenError extends HomeScreenState {
+  final String message;
 
   HomeScreenError({required this.message});
 }

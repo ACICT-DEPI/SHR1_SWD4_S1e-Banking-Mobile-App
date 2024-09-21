@@ -16,10 +16,9 @@ import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/send_money_screen/presentation/send_money_screen.dart';
 import '../../features/transaction_history/presentation/views/transaction_history_view.dart';
-import '../network/firebase.dart';
+import '../network/firebase_authentication.dart';
 
 class Routing {
-
   static String initialRoute = '/AddCardScreen';
   static String onboardingScreen = '/OnboardingScreen';
   static String addCardScreen = '/AddCardScreen';
@@ -48,7 +47,7 @@ class Routing {
         },
         redirect: (context, state) {
           // Implement the route guard logic here
-          if (FirebaseService.isUserLogin()) {
+          if (FirebaseAuthentication.isUserLogin()) {
             return '/NavigationScreen'; // Redirect to login if not authenticated
           }
           return null; // Continue to the requested route if authenticated

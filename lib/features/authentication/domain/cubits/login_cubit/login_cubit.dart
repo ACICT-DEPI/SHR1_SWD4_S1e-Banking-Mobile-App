@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../../../core/network/firebase.dart';
+import '../../../../../core/network/firebase_authentication.dart';
 import '../../../data/models/user_model.dart';
 import 'login_state.dart';
 
@@ -14,7 +14,7 @@ class LoginCubit extends Cubit<LoginState> {
   }) async {
     emit(LoginLoadingState());
     try {
-      UserModel? user = await FirebaseService.loginUser(
+      UserModel? user = await FirebaseAuthentication.loginUser(
         email: email,
         password: password,
       );

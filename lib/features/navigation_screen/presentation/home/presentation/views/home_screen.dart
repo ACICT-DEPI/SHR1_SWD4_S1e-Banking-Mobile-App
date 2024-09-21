@@ -1,19 +1,11 @@
 import 'package:bank_app/features/navigation_screen/presentation/home/presentation/views/widgets/home_screen_loade_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../../core/styles/colors.dart';
 import '../../../../../../core/widgets/error_screen.dart';
 import '../../../../../../core/widgets/Loading_screen.dart';
-import '../../../../data/models/card_model.dart';
 import '../../../../logic/home_screen_cubit.dart';
-import 'widgets/bank_card_design.dart';
-import 'widgets/build_actions_row.dart';
-import 'widgets/home_page_app_bar.dart';
 import '../../../../../search/presentation/views/search_view.dart';
 import '../../../../../send_money_screen/presentation/send_money_screen.dart';
-import '../../../../../statistics/presentation/views/widgets/transaction_section.dart';
-import '../../../../../transaction_history/data/models/transaction_item_model.dart';
-import '../../../../../authentication/data/models/user_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import '../../../../../../core/styles/colors.dart';
 
 class LoadingScreen extends StatelessWidget {
-  const LoadingScreen({Key? key}) : super(key: key);
+  const LoadingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: CircularProgressIndicator(color: AppColors.blue),
+      child: CircularProgressIndicator(
+        color: AppColors.blue,
+      ),
     );
   }
 }

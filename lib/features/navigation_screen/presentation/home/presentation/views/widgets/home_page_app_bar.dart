@@ -8,11 +8,11 @@ class HomePageAppBarDesign extends StatelessWidget {
   final VoidCallback? onSearchPressed;
 
   const HomePageAppBarDesign({
-    Key? key,
+    super.key,
     required this.username,
     required this.imagePath,
     this.onSearchPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

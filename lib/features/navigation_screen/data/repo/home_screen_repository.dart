@@ -1,6 +1,6 @@
-import 'package:bank_app/features/authentication/data/models/user_model.dart';
 
-import '../../../../core/network/firebase.dart';
+import '../../../../core/network/firebase_authentication.dart';
+import '../../../authentication/data/models/user_model.dart';
 import '../../../transaction_history/data/models/transaction_item_model.dart';
 import '../models/card_model.dart';
 
@@ -36,7 +36,7 @@ class HomeScreenRepository {
   }
 
   Future<UserModel> getUserModel()  {
-    return  FirebaseService.getUserModel();
+    return  FirebaseAuthentication.getUserModel();
   }
 
   List<TransactionItemModel> getTransactions() {

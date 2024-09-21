@@ -1,10 +1,8 @@
-import 'package:bank_app/features/authentication/data/models/user_model.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/Routing/Routing.dart';
-import 'core/network/firebase.dart';
 import 'core/styles/theme_style.dart';
 
 import 'features/navigation_screen/logic/home_screen_cubit.dart';
