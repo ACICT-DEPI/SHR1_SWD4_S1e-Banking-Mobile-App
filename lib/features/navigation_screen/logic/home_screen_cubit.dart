@@ -9,10 +9,10 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
   HomeScreenRepository homeScreenRepository = HomeScreenRepository();
 
   HomeScreenCubit() : super(HomeScreenInitial()) {
-    _initialize();
+    initialize();
   }
 
-  void _initialize() async {
+  void initialize() async {
     emit(HomeScreenLoading());
     try {
       // Use await to get the actual values from the futures
