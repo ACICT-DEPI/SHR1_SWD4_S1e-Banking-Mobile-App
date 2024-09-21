@@ -22,7 +22,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeScreenCubit, HomeScreenState>(
       builder: (context, state) {
-        if (state is HomeScreenLoaded) {
+        if (state is HomeScreenSuccess) {
           UserModel userModel = state.homeModel.userModel;
           return Padding(
             padding: const EdgeInsets.only(left: 20.0, top: 20.0, right: 20.0),

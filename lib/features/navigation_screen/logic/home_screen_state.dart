@@ -4,10 +4,12 @@ abstract class HomeScreenState {}
 
 class HomeScreenInitial extends HomeScreenState {}
 
-class HomeScreenLoaded extends HomeScreenState {
+class HomeScreenLoading extends HomeScreenState {}
+
+class HomeScreenSuccess extends HomeScreenState {
   final HomeModel homeModel;
 
-  HomeScreenLoaded({
+  HomeScreenSuccess({
     required this.homeModel,
   });
 }

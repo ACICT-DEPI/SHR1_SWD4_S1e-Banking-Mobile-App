@@ -25,9 +25,8 @@ class _CardsScreenState extends State<CardsScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeScreenCubit, HomeScreenState>(
       builder: (context, state) {
-        if (state is HomeScreenLoaded) {
+        if (state is HomeScreenSuccess) {
           final cards = state.homeModel.cards;
-
           return Padding(
             padding: const EdgeInsets.only(top: 20.0, right: 20.0, left: 20.0),
             child: Column(

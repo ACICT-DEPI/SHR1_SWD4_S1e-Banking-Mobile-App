@@ -93,6 +93,12 @@ class FirebaseAuthentication {
     return userModel!;
   }
 
+  static String getUserId() {
+    final user = _auth.currentUser;
+    String userId = user!.uid;
+    return userId;
+  }
+
   // Method to check if a user is currently logged in
   static bool isUserLogin() {
     final user = _auth.currentUser;

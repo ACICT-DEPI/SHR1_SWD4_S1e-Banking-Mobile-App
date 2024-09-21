@@ -27,7 +27,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeScreenCubit, HomeScreenState>(
       builder: (context, snap) {
-        if (snap is HomeScreenLoaded) {
+        if (snap is HomeScreenSuccess) {
           UserModel userModel = snap.homeModel.userModel;
           return Padding(
             padding: const EdgeInsets.only(right: 20.0, top: 20.0, left: 20.0),

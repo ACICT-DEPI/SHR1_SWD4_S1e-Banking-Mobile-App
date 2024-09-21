@@ -23,7 +23,7 @@ class _AllCardsScreenBodyState extends State<AllCardsScreenBody> {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeScreenCubit, HomeScreenState>(
       builder: (context, state) {
-        if (state is HomeScreenLoaded) {
+        if (state is HomeScreenSuccess) {
           final cards = state.homeModel.cards;
 
           return Padding(

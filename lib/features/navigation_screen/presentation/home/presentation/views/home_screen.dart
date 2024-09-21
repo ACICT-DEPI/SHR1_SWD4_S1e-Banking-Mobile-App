@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeScreenCubit, HomeScreenState>(
       builder: (context, state) {
-        if (state is HomeScreenLoaded) {
+        if (state is HomeScreenSuccess) {
           return HomeScreenLoadedWidget(
             state: state,
             pageController: _pageController,

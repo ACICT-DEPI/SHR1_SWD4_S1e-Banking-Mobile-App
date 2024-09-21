@@ -1,3 +1,4 @@
+import 'package:bank_app/core/network/firebase_service.dart';
 
 import '../../../../core/network/firebase_authentication.dart';
 import '../../../authentication/data/models/user_model.dart';
@@ -5,7 +6,6 @@ import '../../../transaction_history/data/models/transaction_item_model.dart';
 import '../models/card_model.dart';
 
 class HomeScreenRepository {
-
   final List<TransactionItemModel> transactions = [
     TransactionItemModel(
       type: TransactionType.spotify,
@@ -13,30 +13,12 @@ class HomeScreenRepository {
     )
   ];
 
-  final List<CardModel> cards = [
-    CardModel(
-      cardNumber: '1234 5678 9012 3456',
-      cardHolderName: 'ahmed salah',
-      expiryDate: '12/24',
-      cardType: 'visa',
-      cvv: '455',
-    ),
-    CardModel(
-      cardNumber: '5678 1234 9012 3456',
-      cardHolderName: 'Jane Smith',
-      expiryDate: '01/25',
-      cardType: 'mastercard',
-      cvv: '123',
-    ),
-    // Add more CardModel instances as needed
-  ];
-
-  List<CardModel> getUserCards() {
-    return cards;
+  Future<List<CardModel>> getUserCards() async {
+    return await FirebaseService.getAllCards();
   }
 
-  Future<UserModel> getUserModel()  {
-    return  FirebaseAuthentication.getUserModel();
+  Future<UserModel> getUserModel() async {
+    return await FirebaseAuthentication.getUserModel();
   }
 
   List<TransactionItemModel> getTransactions() {

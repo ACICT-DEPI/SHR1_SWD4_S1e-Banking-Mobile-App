@@ -1,5 +1,3 @@
-// import 'package:flutter/foundation.dart';
-
 class CardModel {
   final String cardNumber;
   final String cardHolderName;
@@ -27,18 +25,13 @@ class CardModel {
   }
 
   // Method to convert CardModel to a map
-  Map<String, dynamic> toMap() {
+  static Map<String, dynamic> toMap(CardModel cardModel) {
     return {
-      'cardNumber': cardNumber,
-      'cardHolderName': cardHolderName,
-      'expiryDate': expiryDate,
-      'cardType': cardType,
-      'cvv': cvv,
+      'cardNumber': cardModel.cardNumber,
+      'cardHolderName': cardModel.cardHolderName,
+      'expiryDate': cardModel.expiryDate,
+      'cardType': cardModel.cardType,
+      'cvv': cardModel.cvv,
     };
-  }
-
-  @override
-  String toString() {
-    return 'CardModel(cardNumber: $cardNumber, cardHolderName: $cardHolderName, expiryDate: $expiryDate, cardType: $cardType, cvv: $cvv)';
   }
 }

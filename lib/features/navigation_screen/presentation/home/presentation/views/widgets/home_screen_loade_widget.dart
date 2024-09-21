@@ -8,7 +8,7 @@ import 'build_actions_row.dart';
 import 'home_page_app_bar.dart';
 
 class HomeScreenLoadedWidget extends StatelessWidget {
-  final HomeScreenLoaded state;
+  final HomeScreenSuccess state;
   final PageController pageController;
   final int selectedCardIndex;
   final void Function(int) onPageChanged;
