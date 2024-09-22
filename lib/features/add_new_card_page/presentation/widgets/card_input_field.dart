@@ -11,11 +11,14 @@ class CardInputField extends StatelessWidget {
   final Function(String) onChanged;
   final List<TextInputFormatter>? inputFormatters;
   final TextInputType keyboardType;
+  FormFieldValidator<String>? validator;
 
-  const CardInputField({
+  CardInputField({
     super.key,
     required this.label,
     required this.icon,
+    required this.validator,
+
     required this.controller,
     this.showCardIcons = false,
     required this.onChanged,
@@ -43,6 +46,7 @@ class CardInputField extends StatelessWidget {
             const SizedBox(width: 16.0),
             Expanded(
               child: TextFormField(
+                validator: validator,
                 controller: controller,
                 onChanged: onChanged,
                 keyboardType: keyboardType,

@@ -1,3 +1,4 @@
+import 'package:bank_app/features/add_new_card_page/presentation/widgets/card_validator.dart';
 import 'package:bank_app/features/navigation_screen/logic/home_screen_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,6 +23,7 @@ class AddCardScreenBody extends StatefulWidget {
 }
 
 class _AddCardScreenBodyState extends State<AddCardScreenBody> {
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _cardNumberController = TextEditingController();
   final TextEditingController _cardHolderNameController =
       TextEditingController();
@@ -53,7 +55,8 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
           return ErrorScreen(message: state.message);
         } else {
           return Padding(
-            padding: const EdgeInsets.only(right: 20.0, left: 20.0, top: 20.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -74,80 +77,85 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                       cardType: "Mastercard",
                     ),
                   ),
-                  // Custom Credit Card Widget
                   const SizedBox(height: 10),
-                  // Cardholder Name Section
-                  CardInputField(
-                    keyboardType: TextInputType.name,
-                    label: 'Cardholder Name',
-                    icon: Icons.person,
-                    controller: _cardHolderNameController,
-                    onChanged: updateCardInfo,
-                    inputFormatters: [
-                      LengthLimitingTextInputFormatter(16)
-                    ], // Limit length to 16
-                  ),
-                  const SizedBox(height: 4),
-
-                  // Expiry Date and CVV Section
-                  Row(
-                    children: [
-                      Expanded(
-                        child: CardInputField(
-                          keyboardType: TextInputType.number,
-                          label: 'Expiry Date',
-                          icon: Icons.calendar_today,
-                          controller: _expiryDateController,
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        // Cardholder Name Section
+                        CardInputField(
+                          validator: CardValidator.validateName,
+                          keyboardType: TextInputType.name,
+                          label: 'Cardholder Name',
+                          icon: Icons.person,
+                          controller: _cardHolderNameController,
                           onChanged: updateCardInfo,
                           inputFormatters: [
-                            DateInputFormatter()
-                          ], // Custom formatter for date
+                            LengthLimitingTextInputFormatter(16)
+                          ],
                         ),
-                      ),
-                      const SizedBox(width: 4),
-                      Expanded(
-                        child: CardInputField(
+                        const SizedBox(height: 4),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: CardInputField(
+                                validator: CardValidator.validateExpiryDate,
+                                keyboardType: TextInputType.number,
+                                label: 'Expiry Date',
+                                icon: Icons.calendar_today,
+                                controller: _expiryDateController,
+                                onChanged: updateCardInfo,
+                                inputFormatters: [DateInputFormatter()],
+                              ),
+                            ),
+                            const SizedBox(width: 4),
+                            Expanded(
+                              child: CardInputField(
+                                validator: CardValidator.validateCvv,
+                                keyboardType: TextInputType.number,
+                                label: 'CVV',
+                                icon: Icons.lock,
+                                controller: _cvvController,
+                                onChanged: updateCardInfo,
+                                inputFormatters: [
+                                  LengthLimitingTextInputFormatter(3)
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 4),
+                        CardInputField(
+                          validator: CardValidator.validateCardNumber,
                           keyboardType: TextInputType.number,
-                          label: 'CVV',
-                          icon: Icons.lock,
-                          controller: _cvvController,
+                          label: 'Card Number',
+                          icon: Icons.credit_card,
+                          controller: _cardNumberController,
+                          showCardIcons: true,
                           onChanged: updateCardInfo,
                           inputFormatters: [
-                            LengthLimitingTextInputFormatter(3)
-                          ], // Limit length to 3
+                            LengthLimitingTextInputFormatter(19),
+                            CardNumberInputFormatter()
+                          ],
                         ),
-                      ),
-                    ],
+                        const SizedBox(height: 80),
+                      ],
+                    ),
                   ),
-                  const SizedBox(height: 4),
-                  // Card Number Section
-                  CardInputField(
-                    keyboardType: TextInputType.number,
-                    label: 'Card Number',
-                    icon: Icons.credit_card,
-                    controller: _cardNumberController,
-                    showCardIcons: true,
-                    onChanged: updateCardInfo,
-                    inputFormatters: [
-                      LengthLimitingTextInputFormatter(19),
-                      // Limit length to 19 characters (16 digits + 3 spaces)
-                      CardNumberInputFormatter(),
-                    ],
-                  ),
-                  const SizedBox(height: 80),
                   CustomAppButton(
-                    title: 'Add Card ',
+                    title: 'Add Card',
                     onPressed: () {
-                      ///Add Validate
-                      BlocProvider.of<AddCardCubit>(context).addNewCard(
-                        CardModel(
-                          cardNumber: _cardNumberController.text,
-                          cardHolderName: _cardHolderNameController.text,
-                          expiryDate: _expiryDateController.text,
-                          cardType: "Mastercard",
-                          cvv: _cvvController.text,
-                        ),
-                      );
+                      if (_formKey.currentState!.validate()) {
+                        BlocProvider.of<AddCardCubit>(context).addNewCard(
+                          CardModel(
+                            cardNumber: _cardNumberController.text,
+                            cardHolderName: _cardHolderNameController.text,
+                            expiryDate: _expiryDateController.text,
+                            cardType: "Mastercard",
+                            cvv: _cvvController.text,
+                          ),
+                        );
+                      }
                     },
                   ),
                 ],

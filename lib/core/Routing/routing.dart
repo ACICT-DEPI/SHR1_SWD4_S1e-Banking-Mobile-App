@@ -18,6 +18,7 @@ import '../../features/send_money_screen/presentation/send_money_screen.dart';
 import '../../features/send_money_screen/presentation/success_sending_screen.dart';
 import '../../features/transaction_history/presentation/views/transaction_history_view.dart';
 import '../network/firebase_authentication.dart';
+import '../widgets/error_screen.dart';
 
 class Routing {
   static String initialRoute = '/AddCardScreen';
@@ -37,9 +38,12 @@ class Routing {
   static String sendMoneyScreen = '/SendMoneyScreen';
   static String transactionHistoryView = '/TransactionHistoryView';
   static String successSendingScreen = '/SuccessSendingScreen';
+  static String errorScreen = '/ErrorScreen';
+
+
 
   static final GoRouter _router = GoRouter(
-    initialLocation: onboardingScreen, // Set your initial route here
+    initialLocation: addCardScreen, // Set your initial route here
 
     routes: <RouteBase>[
       GoRoute(
@@ -143,6 +147,12 @@ class Routing {
         path: successSendingScreen,
         builder: (BuildContext context, GoRouterState state) {
           return const SuccessSendingScreen();
+        },
+      ),
+      GoRoute(
+        path: errorScreen,
+        builder: (BuildContext context, GoRouterState state) {
+          return  ErrorScreen(message: "Something went wrong",);
         },
       ),
     ],

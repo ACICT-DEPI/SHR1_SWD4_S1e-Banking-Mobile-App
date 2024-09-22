@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import '../../../../../../core/styles/colors.dart';
 
 class LoadingScreen extends StatelessWidget {
@@ -6,10 +7,8 @@ class LoadingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: CircularProgressIndicator(
-        color: AppColors.blue,
-      ),
+    return  Center(
+      child: Lottie.asset("assets/images/indicator.json"),
     );
   }
 }
