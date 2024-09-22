@@ -62,11 +62,6 @@ class CardInputField extends StatelessWidget {
                 ),
               ),
             ),
-            if (showCardIcons)
-              SvgPicture.asset(
-                "assets/images/master_card.svg",
-                height: 22,
-              ),
           ],
         ),
         const Divider(

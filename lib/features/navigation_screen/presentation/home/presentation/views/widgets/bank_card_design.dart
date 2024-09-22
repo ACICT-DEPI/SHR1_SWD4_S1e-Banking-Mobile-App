@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:bank_app/core/styles/colors.dart';
 import 'package:bank_app/core/styles/texts_style.dart';
 
+import '../../../../../../add_new_card_page/presentation/widgets/card_type_detector.dart';
 import '../../../../../data/models/card_model.dart';
 
 
@@ -106,22 +107,7 @@ class BankCardDesign extends StatelessWidget {
                     ),
                   ],
                 ),
-                Column(
-                  children: [
-                    SvgPicture.asset(
-                      'assets/images/master_card.svg',
-                      height: 20,
-                      width: 20,
-                    ),
-                    Text(
-                      card.cardType,
-                      style: TextsStyle.textStyleSemiBold16.copyWith(
-                        color: Colors.white,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ],
-                ),
+                CardInfoWidget(cardNumber: card.cardNumber,)
               ],
             ),
             const SizedBox(width: 5),

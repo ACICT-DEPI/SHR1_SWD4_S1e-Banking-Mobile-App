@@ -8,7 +8,10 @@ class LoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Center(
-      child: Lottie.asset("assets/images/indicator.json"),
+      child: Container(
+          width: 50,
+          height:50,
+          child: Lottie.asset("assets/images/indicator.json")),
     );
   }
 }
