@@ -15,6 +15,7 @@ import '../../features/profile/presentation/views/edit_profile.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/send_money_screen/presentation/send_money_screen.dart';
+import '../../features/send_money_screen/presentation/success_sending_screen.dart';
 import '../../features/transaction_history/presentation/views/transaction_history_view.dart';
 import '../network/firebase_authentication.dart';
 
@@ -35,6 +36,7 @@ class Routing {
   static String searchView = '/SearchView';
   static String sendMoneyScreen = '/SendMoneyScreen';
   static String transactionHistoryView = '/TransactionHistoryView';
+  static String successSendingScreen = '/SuccessSendingScreen';
 
   static final GoRouter _router = GoRouter(
     initialLocation: onboardingScreen, // Set your initial route here
@@ -135,6 +137,12 @@ class Routing {
         path: transactionHistoryView,
         builder: (BuildContext context, GoRouterState state) {
           return const TransactionHistoryView();
+        },
+      ),
+      GoRoute(
+        path: successSendingScreen,
+        builder: (BuildContext context, GoRouterState state) {
+          return const SuccessSendingScreen();
         },
       ),
     ],

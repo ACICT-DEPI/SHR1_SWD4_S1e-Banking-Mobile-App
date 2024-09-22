@@ -1,3 +1,4 @@
+import 'package:bank_app/features/authentication/data/models/user_model.dart';
 import 'package:bank_app/features/statistics/data/models/month_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../features/navigation_screen/data/models/card_model.dart';
@@ -60,15 +61,15 @@ class FirebaseService {
     }
   }
 
-  /// Retrieve all cards from the user's 'cards' subcollection
+  /// Retrieve all cards from the user's 'cards' subCollection
   static Future<List<MonthModel>> getAllMonths() async {
     List<MonthModel> allMonths = [];
 
-// Get all documents in the 'cards' subcollection
+    // Get all documents in the 'cards' subCollection
     final QuerySnapshot cardsCollection =
         await _userDocument.collection("monthsBalance").orderBy("index").get();
 
-// Loop through the documents and add them to the list
+    // Loop through the documents and add them to the list
     for (var cardDoc in cardsCollection.docs) {
       allMonths.add(
         MonthModel.fromJson(cardDoc.data() as Map<String, dynamic>),
@@ -76,5 +77,78 @@ class FirebaseService {
     }
 
     return allMonths;
+  }
+
+  static Future<List<UserModel>> getAllUsers() async {
+    List<UserModel> allUsers = [];
+
+    // Fetch all documents in the 'users' collection
+    var querySnapshot = await _userCollection.get();
+
+    // Loop through the documents and add them to the list
+    for (var userDoc in querySnapshot.docs) {
+      allUsers.add(
+        UserModel.fromJson(userDoc.data()),
+      );
+    }
+
+    return allUsers;
+  }
+
+  static Future<void> sendMoney(double amount, String cardNumber) async {
+    // Query the 'cards' collection to find the document with the provided 'cardNumber'
+    var querySnapshot = await _userDocument
+        .collection('cards')
+        .where('cardNumber', isEqualTo: cardNumber)
+        .get();
+
+    // Check if any document is found with the given card number
+    if (querySnapshot.docs.isNotEmpty) {
+      // Get a reference to the first document found
+      var docRef = querySnapshot.docs.first.reference;
+
+      // Get the current data from the document
+      var docSnapshot = await docRef.get();
+
+      // Retrieve the current balance, defaulting to 0.0 if not found
+      double currentBalance = docSnapshot.data()?['cardBalance'] ?? 0.0;
+
+      // Calculate the updated balance
+      double updatedBalance = currentBalance - amount;
+
+      // Update the document with the new balance
+      await docRef.update({'cardBalance': updatedBalance});
+    }
+  }
+
+  static Future<void> receiveMoney(String id, double amount) async {
+    // Query the user collection to find the document matching the provided 'uid'
+    var userSnapshot = await _userCollection.where('uid', isEqualTo: id).get();
+
+    if (userSnapshot.docs.isNotEmpty) {
+      // Get the reference to the user document
+      var userDocRef = userSnapshot.docs.first.reference;
+
+      // Query the 'cards' collection within the user document
+      var cardSnapshot = await userDocRef.collection('cards').get();
+
+      // Check if any card document is found
+      if (cardSnapshot.docs.isNotEmpty) {
+        // Get the reference to the first card document found
+        var cardDocRef = cardSnapshot.docs.first.reference;
+
+        // Get the current data from the card document
+        var cardDocSnapshot = await cardDocRef.get();
+
+        // Retrieve the current card balance, defaulting to 0.0 if not found
+        double currentBalance = cardDocSnapshot.data()?['cardBalance'] ?? 0.0;
+
+        // Calculate the updated card balance
+        double updatedBalance = currentBalance + amount;
+
+        // Update the document with the new balance
+        await cardDocRef.update({'cardBalance': updatedBalance});
+      }
+    }
   }
 }
