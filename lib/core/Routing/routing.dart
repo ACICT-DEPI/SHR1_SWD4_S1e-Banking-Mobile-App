@@ -21,7 +21,7 @@ import '../network/firebase_authentication.dart';
 import '../widgets/error_screen.dart';
 
 class Routing {
-  static String initialRoute = '/AddCardScreen';
+  static String initialRoute = '/OnboardingScreen';
   static String onboardingScreen = '/OnboardingScreen';
   static String addCardScreen = '/AddCardScreen';
   static String allCardsScreen = '/AllCardsScreen';
@@ -43,7 +43,7 @@ class Routing {
 
 
   static final GoRouter _router = GoRouter(
-    initialLocation: addCardScreen, // Set your initial route here
+    initialLocation: initialRoute, // Set your initial route here
 
     routes: <RouteBase>[
       GoRoute(
