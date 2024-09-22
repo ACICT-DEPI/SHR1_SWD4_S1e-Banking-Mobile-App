@@ -15,7 +15,7 @@ class DateInputFormatter extends TextInputFormatter {
     }
 
     // Limit the input to 5 characters (MM/YY)
-    if (newText.length > 5) {
+    if (newText.length > 5 ) {
       newText = newText.substring(0, 5);
     }
 
