@@ -3,7 +3,9 @@ import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
 
 class BirthDateSelector extends StatefulWidget {
-  const BirthDateSelector({super.key});
+  const BirthDateSelector({super.key, required this.enabled});
+
+  final bool enabled;
 
   @override
   State<BirthDateSelector> createState() => _BirthDateSelectorState();
@@ -36,12 +38,14 @@ class _BirthDateSelectorState extends State<BirthDateSelector> {
                 dropdownColor: AppColors.white,
                 value: year,
                 items: _yearItems(),
-                onChanged: (int? newValue) {
-                  setState(() {
-                    year = newValue!;
-                    _updateDaysInMonth();
-                  });
-                },
+                onChanged: widget.enabled
+                    ? (int? newValue) {
+                        setState(() {
+                          year = newValue!;
+                          _updateDaysInMonth();
+                        });
+                      }
+                    : null,
               ),
             ),
             const SizedBox(width: 10),
@@ -53,12 +57,14 @@ class _BirthDateSelectorState extends State<BirthDateSelector> {
                 value: month,
                 dropdownColor: AppColors.white,
                 items: _monthItems(),
-                onChanged: (int? newValue) {
-                  setState(() {
-                    month = newValue!;
-                    _updateDaysInMonth();
-                  });
-                },
+                onChanged: widget.enabled
+                    ? (int? newValue) {
+                        setState(() {
+                          month = newValue!;
+                          _updateDaysInMonth();
+                        });
+                      }
+                    : null,
               ),
             ),
             const SizedBox(width: 10),
@@ -70,11 +76,13 @@ class _BirthDateSelectorState extends State<BirthDateSelector> {
                 value: day,
                 dropdownColor: AppColors.white,
                 items: _dayItems(),
-                onChanged: (int? newValue) {
-                  setState(() {
-                    day = newValue!;
-                  });
-                },
+                onChanged: widget.enabled
+                    ? (int? newValue) {
+                        setState(() {
+                          day = newValue!;
+                        });
+                      }
+                    : null,
               ),
             ),
           ],

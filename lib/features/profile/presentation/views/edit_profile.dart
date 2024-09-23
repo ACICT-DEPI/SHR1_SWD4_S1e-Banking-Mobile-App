@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../domain/cubits/edit_user_cubit/edit_user_cubit.dart';
 import 'widgets/edit_profile_body.dart';
 
 class EditProfileScreen extends StatelessWidget {
@@ -7,9 +9,12 @@ class EditProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
-        child: EditProfileBody(),
+    return BlocProvider(
+      create: (context) => EditUserCubit(),
+      child: const Scaffold(
+        body: SafeArea(
+          child: EditProfileBody(),
+        ),
       ),
     );
   }

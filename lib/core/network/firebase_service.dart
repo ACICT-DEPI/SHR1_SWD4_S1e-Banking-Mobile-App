@@ -112,6 +112,27 @@ class FirebaseService {
     return userModel;
   }
 
+  static Future<void> updateUser({
+    String? fullName,
+    String? emailAddress,
+    String? phoneNumber,
+    String? password,
+  }) async {
+    UserModel defaultUser = await FirebaseAuthentication.getUserModel();
+
+    UserModel updatedUser = UserModel(
+      fullName: fullName ?? defaultUser.fullName,
+      phoneNumber: phoneNumber ?? defaultUser.phoneNumber,
+      emailAddress: emailAddress ?? defaultUser.emailAddress,
+      password: password ?? defaultUser.password,
+      joinedAt: defaultUser.joinedAt,
+      userId: defaultUser.userId,
+    );
+    await _fireStore.collection('users').doc(defaultUser.userId).set(
+          UserModel.toJson(updatedUser),
+        );
+  }
+
   static Future<void> sendMoney(double amount, String cardNumber) async {
     // Query the 'cards' collection to find the document with the provided 'cardNumber'
     var querySnapshot = await _userDocument

@@ -43,7 +43,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                   ),
                   const SizedBox(height: 32),
                   ProfileInformation(
-                    profileBalance: 45243.25,
+                    id: userModel.userId!,
                     profileImage: Images.imagesPerson,
                     profileName: userModel.fullName,
                   ),

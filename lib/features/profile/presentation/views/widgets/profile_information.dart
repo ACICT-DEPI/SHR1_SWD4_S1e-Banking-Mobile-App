@@ -8,12 +8,12 @@ class ProfileInformation extends StatelessWidget {
     super.key,
     required this.profileImage,
     required this.profileName,
-    required this.profileBalance,
+    required this.id,
   });
 
   final String profileImage;
   final String profileName;
-  final double profileBalance;
+  final String id;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class ProfileInformation extends StatelessWidget {
             ),
             const SizedBox(height: 6.0),
             Text(
-              "Balance: $profileBalance\$",
+              "Id: $id\$",
               style: TextsStyle.textStyleRegular12.copyWith(
                 color: AppColors.grey8D,
               ),
