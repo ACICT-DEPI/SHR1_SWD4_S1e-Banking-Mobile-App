@@ -6,14 +6,12 @@ import '../../../../../../../core/styles/texts_style.dart';
 class BuildActionsRow extends StatefulWidget {
   final Function onPressedSent;
   final Function onPressedReceive;
-  final Function onPressedLoan;
   final Function onPressedTopUp;
 
   const BuildActionsRow({
     super.key,
     required this.onPressedSent,
     required this.onPressedReceive,
-    required this.onPressedLoan,
     required this.onPressedTopUp,
   });
 
@@ -58,13 +56,11 @@ class _BuildActionsRowState extends State<BuildActionsRow> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         _buildActionButton(Icons.arrow_upward, "Sent", widget.onPressedSent),
         _buildActionButton(
             Icons.arrow_downward, "Receive", widget.onPressedReceive),
-        _buildActionButton(
-            Icons.monetization_on_outlined, "Loan", widget.onPressedLoan),
         _buildActionButton(
             Icons.payment_rounded, "Service", widget.onPressedTopUp),
       ],

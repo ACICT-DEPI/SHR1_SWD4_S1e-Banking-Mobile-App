@@ -46,7 +46,6 @@ class HomeScreenLoadedWidget extends StatelessWidget {
                 BuildActionsRow(
                   onPressedSent: onNavigateToSendMoney,
                   onPressedReceive: onNavigateToSendMoney,
-                  onPressedLoan: onNavigateToSendMoney,
                   onPressedTopUp: onNavigateToSendMoney,
                 ),
                 const SizedBox(height: 26),
