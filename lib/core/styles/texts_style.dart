@@ -24,17 +24,15 @@ abstract class TextsStyle {
     fontWeight: FontWeight.w400,
   );
   static const TextStyle textStyleRegular14 = TextStyle(
-    fontSize: 14,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w400,
-    color: AppColors.greyA7
-  );
+      fontSize: 14,
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w400,
+      color: AppColors.greyA7);
   static const TextStyle textStyleRegular15 = TextStyle(
-    fontSize: 15,
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.w400,
-    color: AppColors.greyA7
-  );
+      fontSize: 15,
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.w400,
+      color: AppColors.greyA7);
   static const TextStyle textStyleRegular18 = TextStyle(
     fontSize: 18,
     fontFamily: 'Poppins',
@@ -65,7 +63,8 @@ abstract class TextsStyle {
     fontSize: 18,
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w500,
-  ); static const TextStyle textStyleMedium22 = TextStyle(
+  );
+  static const TextStyle textStyleMedium22 = TextStyle(
     fontSize: 18,
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w500,
@@ -85,7 +84,12 @@ abstract class TextsStyle {
     fontSize: 16,
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w600,
-    color: AppColors.white
+    color: AppColors.white,
+  );
+  static const TextStyle textStyleSemiBold18 = TextStyle(
+    fontSize: 18,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w600,
   );
   static const TextStyle textStyleSemiBold24 = TextStyle(
     fontSize: 24,

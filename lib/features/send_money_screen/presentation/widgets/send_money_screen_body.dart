@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'dart:math';
 
 import '../../../../core/Routing/Routing.dart';
 import '../../../../core/network/firebase_authentication.dart';
@@ -50,9 +51,15 @@ class _SendMoneyScreenBodyState extends State<SendMoneyScreenBody> {
             if (sendMoneyState is SendMoneyLoadingState) {
               return const LoadingScreen();
             } else if (getAllCardsState is GetCardsFailedState) {
-              return ErrorScreen(message: getAllCardsState.errMessage);
+              return ErrorScreen(
+                message: getAllCardsState.errMessage,
+                onPressed: () => GoRouter.of(context).pop(),
+              );
             } else if (sendMoneyState is SendMoneyFailedState) {
-              return ErrorScreen(message: sendMoneyState.message);
+              return ErrorScreen(
+                message: sendMoneyState.message,
+                onPressed: () => GoRouter.of(context).pop(),
+              );
             } else if (getAllCardsState is GetCardsSuccessState) {
               return Padding(
                 padding:
@@ -144,8 +151,8 @@ class _SendMoneyScreenBodyState extends State<SendMoneyScreenBody> {
       receiverName: receiverUser.fullName,
       receiverId: receiverUser.userId!,
       receiverPhone: receiverUser.phoneNumber,
-      referenceNumber: "referenceNumber",
-      date: DateTime.now().toString(),
+      referenceNumber: (1000000 + Random().nextInt(9000000)).toString(),
+      date: DateTime.now(),
     );
   }
 }

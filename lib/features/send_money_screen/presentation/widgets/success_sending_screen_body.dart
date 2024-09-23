@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-
-import '../../../../core/styles/colors.dart';
-import '../../../../core/styles/texts_style.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../../core/styles/colors.dart';
+import '../../../../core/styles/texts_style.dart';
 import '../../../../core/widgets/custom_app_button.dart';
 import '../../data/models/success_model.dart';
 
@@ -16,7 +15,7 @@ class SuccessSendingScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -44,7 +43,7 @@ class SuccessSendingScreenBody extends StatelessWidget {
             style: TextsStyle.textStyleRegular15
                 .copyWith(color: AppColors.greyA7, fontSize: 18),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 40),
 
           // Sender Information Section
           Row(
@@ -97,7 +96,7 @@ class SuccessSendingScreenBody extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 40),
 
           // Transaction Details Section
           Row(
@@ -111,9 +110,8 @@ class SuccessSendingScreenBody extends StatelessWidget {
                     style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                   ),
                   Text(
-                    successModel.referenceNumber,
-                    style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.w600),
+                    "#${successModel.referenceNumber}",
+                    style: TextsStyle.textStyleSemiBold18,
                   ),
                 ],
               ),
@@ -125,21 +123,21 @@ class SuccessSendingScreenBody extends StatelessWidget {
                     style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                   ),
                   Text(
-                    successModel.date,
-                    style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.w600),
+                    "${successModel.date.year}/${successModel.date.month}/${successModel.date.day} ${successModel.date.hour}:${successModel.date.minute}",
+                    style: TextsStyle.textStyleSemiBold18,
                   ),
                 ],
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 25),
 
           // Back to Home Button
           CustomAppButton(
             title: "Back to Home",
             onPressed: () {
-              context.pop();
+              GoRouter.of(context).pop();
+              GoRouter.of(context).pop();
             },
           ),
         ],

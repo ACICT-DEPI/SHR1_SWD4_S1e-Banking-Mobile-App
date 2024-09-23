@@ -8,7 +8,7 @@ class SuccessModel {
   final String receiverId;
   final String receiverPhone;
   final String referenceNumber;
-  final String date;
+  final DateTime date;
 
   SuccessModel({
     required this.currencyType,

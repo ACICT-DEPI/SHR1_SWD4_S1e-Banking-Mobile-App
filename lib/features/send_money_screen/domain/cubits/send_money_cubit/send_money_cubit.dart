@@ -25,7 +25,7 @@ class SendMoneyCubit extends Cubit<SendMoneyState> {
       } else {
         emit(
           SendMoneyFailedState(
-            message: "Please check the ID or enter enough AMOUNT",
+            message: "Please check the ID or Enter enough amount",
           ),
         );
       }

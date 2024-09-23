@@ -66,7 +66,7 @@ class _BuildActionsRowState extends State<BuildActionsRow> {
         _buildActionButton(
             Icons.monetization_on_outlined, "Loan", widget.onPressedLoan),
         _buildActionButton(
-            Icons.cloud_upload_outlined, "Topup", widget.onPressedTopUp),
+            Icons.payment_rounded, "Service", widget.onPressedTopUp),
       ],
     );
   }
