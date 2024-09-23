@@ -9,7 +9,6 @@ import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/widgets/error_screen.dart';
 import '../../../../all_cards_screen/presentation/views/all_cards_screen.dart';
 import '../../../../authentication/data/models/user_model.dart';
-import '../../../../category_chart/presentation/views/category_chart_view.dart';
 import '../../../../navigation_screen/logic/home_screen_cubit.dart';
 import '../../../../privacy_policy/presentation/views/privacy_policy.dart';
 import 'profile_information.dart';
@@ -72,19 +71,6 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                   ),
                   const SizedBox(height: 28),
                   ProfileRow(
-                    text: "Category Chart",
-                    icon: Icons.bar_chart,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const CategoryChart(),
-                        ),
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 28),
-                  ProfileRow(
                     text: "Contact Us",
                     icon: Icons.phone,
                     onPressed: () {},
@@ -108,11 +94,9 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
           );
         } else if (snap is HomeScreenError) {
           return ErrorScreen(message: snap.message);
-
-        }else{
+        } else {
           return const LoadingScreen();
         }
-
       },
     );
   }
