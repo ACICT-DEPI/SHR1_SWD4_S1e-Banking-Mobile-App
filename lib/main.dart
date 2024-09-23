@@ -6,6 +6,9 @@ import 'core/Routing/Routing.dart';
 import 'core/styles/theme_style.dart';
 
 import 'features/navigation_screen/logic/home_screen_cubit.dart';
+import 'features/wifi_screen/Logic/conection_cubit.dart';
+import 'features/wifi_screen/Logic/conection_state.dart';
+import 'features/wifi_screen/ui/no_connection_screen.dart'; // No Connection UI
 import 'firebase_options.dart';
 
 void main() async {
@@ -13,12 +16,16 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MultiBlocProvider(providers: [
-    BlocProvider(create: (context) => HomeScreenCubit()),
 
-
-
-  ], child: const MyApp()));
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => HomeScreenCubit()),
+        BlocProvider(create: (context) => ConnectionScreenCubit()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -26,10 +33,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      theme: ThemeStyle.lightThemeData,
-      debugShowCheckedModeBanner: false,
-      routerConfig: Routing.router,
+    return BlocBuilder<ConnectionScreenCubit, WifiState>(
+      builder: (context, state) {
+        if (state is Disconnected) {
+          return NoConnectionScreen(); // Display no connection screen
+        } else {
+          return MaterialApp.router(
+            theme: ThemeStyle.lightThemeData,
+            debugShowCheckedModeBanner: false,
+            routerConfig: Routing.router,
+          );
+        }
+      },
     );
   }
 }

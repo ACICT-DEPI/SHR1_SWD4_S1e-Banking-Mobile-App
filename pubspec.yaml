@@ -54,6 +54,8 @@ dependencies:
   cloud_firestore: ^4.17.5
   lottie: ^3.1.2
   credit_card_type_detector: ^3.0.0
+  connectivity_plus: ^6.0.5
+
 
 
 

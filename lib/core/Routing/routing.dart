@@ -46,7 +46,7 @@ class Routing {
       GoRoute(
         path: onboardingScreen,
         builder: (BuildContext context, GoRouterState state) {
-          return const OnboardingScreen();
+          return  OnboardingScreen();
         },
         redirect: (context, state) {
           // Implement the route guard logic here
