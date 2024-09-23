@@ -14,6 +14,7 @@ import '../../features/privacy_policy/presentation/views/privacy_policy.dart';
 import '../../features/profile/presentation/views/edit_profile.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
+import '../../features/send_money_screen/data/models/success_model.dart';
 import '../../features/send_money_screen/presentation/send_money_screen.dart';
 import '../../features/send_money_screen/presentation/success_sending_screen.dart';
 import '../../features/transaction_history/presentation/views/transaction_history_view.dart';
@@ -39,8 +40,6 @@ class Routing {
   static String transactionHistoryView = '/TransactionHistoryView';
   static String successSendingScreen = '/SuccessSendingScreen';
   static String errorScreen = '/ErrorScreen';
-
-
 
   static final GoRouter _router = GoRouter(
     initialLocation: initialRoute, // Set your initial route here
@@ -146,13 +145,19 @@ class Routing {
       GoRoute(
         path: successSendingScreen,
         builder: (BuildContext context, GoRouterState state) {
-          return const SuccessSendingScreen();
+          final SuccessModel successModel = state.extra as SuccessModel;
+          return SuccessSendingScreen(
+            successModel: successModel,
+          );
         },
       ),
       GoRoute(
         path: errorScreen,
         builder: (BuildContext context, GoRouterState state) {
-          return  ErrorScreen(message: "Something went wrong",);
+          final String message = state.extra as String;
+          return ErrorScreen(
+            message: message.isEmpty ? "Something went wrong" : message,
+          );
         },
       ),
     ],

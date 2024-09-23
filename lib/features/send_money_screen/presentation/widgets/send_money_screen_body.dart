@@ -1,16 +1,20 @@
-import 'package:bank_app/features/send_money_screen/domain/cubits/get_cards_cubit/get_cards_cubit.dart';
-import 'package:bank_app/features/send_money_screen/domain/cubits/get_cards_cubit/get_cards_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/Routing/Routing.dart';
+import '../../../../core/network/firebase_authentication.dart';
+import '../../../../core/network/firebase_service.dart';
 import '../../../../core/widgets/Loading_screen.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_app_button.dart';
 import '../../../../core/widgets/error_screen.dart';
+import '../../../authentication/data/models/user_model.dart';
 import '../../../navigation_screen/data/models/card_model.dart';
 import '../../../navigation_screen/presentation/home/presentation/views/widgets/bank_card_design.dart';
+import '../../data/models/success_model.dart';
+import '../../domain/cubits/get_cards_cubit/get_cards_cubit.dart';
+import '../../domain/cubits/get_cards_cubit/get_cards_state.dart';
 import '../../domain/cubits/send_money_cubit/send_money_cubit.dart';
 import '../../domain/cubits/send_money_cubit/send_money_state.dart';
 import 'send_id_textfield.dart';
@@ -32,10 +36,11 @@ class _SendMoneyScreenBodyState extends State<SendMoneyScreenBody> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SendMoneyCubit, SendMoneyState>(
-      listener: (context, sendMoneyState) {
+      listener: (context, sendMoneyState) async {
         if (sendMoneyState is SendMoneySuccessState) {
           GoRouter.of(context).push(
             Routing.successSendingScreen,
+            extra: await buildSuccessModel(),
           );
         }
       },
@@ -124,6 +129,23 @@ class _SendMoneyScreenBodyState extends State<SendMoneyScreenBody> {
           },
         );
       },
+    );
+  }
+
+  Future<SuccessModel> buildSuccessModel() async {
+    UserModel senderUser = await (FirebaseAuthentication.getUserModel());
+    UserModel receiverUser =
+        await (FirebaseService.getUser(idController.text)) as UserModel;
+    return SuccessModel(
+      currencyType: 'USD',
+      amount: double.parse(amountController.text),
+      senderId: senderUser.userId!,
+      senderName: senderUser.fullName,
+      receiverName: receiverUser.fullName,
+      receiverId: receiverUser.userId!,
+      receiverPhone: receiverUser.phoneNumber,
+      referenceNumber: "referenceNumber",
+      date: DateTime.now().toString(),
     );
   }
 }

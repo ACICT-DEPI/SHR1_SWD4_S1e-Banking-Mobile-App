@@ -95,6 +95,23 @@ class FirebaseService {
     return allUsers;
   }
 
+  static Future<UserModel?> getUser(String userId) async {
+    UserModel? userModel;
+
+    // Fetch all documents in the 'users' collection
+    var querySnapshot = await _userCollection.get();
+
+    for (var userDoc in querySnapshot.docs) {
+      UserModel user = UserModel.fromJson(userDoc.data());
+      if (user.userId == userId) {
+        userModel = user;
+        break;
+      }
+    }
+
+    return userModel;
+  }
+
   static Future<void> sendMoney(double amount, String cardNumber) async {
     // Query the 'cards' collection to find the document with the provided 'cardNumber'
     var querySnapshot = await _userDocument

@@ -20,19 +20,15 @@ class HomeScreenCubit extends Cubit<HomeScreenState> {
       final cards = await homeScreenRepository.getUserCards();
       final transactions = await homeScreenRepository.getTransactions();
 
-      if (userModel != null && transactions != null && cards != null) {
-        emit(
-          HomeScreenSuccess(
-            homeModel: HomeModel(
-              userModel: userModel,
-              transactions: transactions,
-              cards: cards,
-            ),
+      emit(
+        HomeScreenSuccess(
+          homeModel: HomeModel(
+            userModel: userModel,
+            transactions: transactions,
+            cards: cards,
           ),
-        );
-      } else {
-        emit(HomeScreenError(message: 'Failed to load data'));
-      }
+        ),
+      );
     } catch (e) {
       // Handle any errors that occur during fetching
       emit(

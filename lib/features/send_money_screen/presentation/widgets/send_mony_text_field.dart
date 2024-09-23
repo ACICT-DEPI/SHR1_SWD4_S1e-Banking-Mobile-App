@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:bank_app/core/styles/colors.dart';
-import 'package:bank_app/core/styles/texts_style.dart';
+
+import '../../../../core/styles/colors.dart';
+import '../../../../core/styles/texts_style.dart';
+
 
 class SendMoneyTextField extends StatefulWidget {
   final TextEditingController textController;

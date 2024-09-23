@@ -1,7 +1,6 @@
 import 'package:bank_app/core/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class CardInputField extends StatelessWidget {
   final String label;
@@ -11,14 +10,13 @@ class CardInputField extends StatelessWidget {
   final Function(String) onChanged;
   final List<TextInputFormatter>? inputFormatters;
   final TextInputType keyboardType;
-  FormFieldValidator<String>? validator;
+  final FormFieldValidator<String>? validator;
 
-  CardInputField({
+  const CardInputField({
     super.key,
     required this.label,
     required this.icon,
     required this.validator,
-
     required this.controller,
     this.showCardIcons = false,
     required this.onChanged,

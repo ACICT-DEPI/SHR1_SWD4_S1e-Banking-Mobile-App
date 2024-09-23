@@ -10,15 +10,15 @@ class SuccessModel {
   final String referenceNumber;
   final String date;
 
-  SuccessModel(
-      {required this.currencyType,
-        required this.amount,
-        required this.senderName,
-        required this.senderId,
-        required this.receiverName,
-        required this.receiverId,
-        required this.receiverPhone,
-        required this.referenceNumber,
-        required this.date,
-      });
+  SuccessModel({
+    required this.currencyType,
+    required this.amount,
+    required this.senderName,
+    required this.senderId,
+    required this.receiverName,
+    required this.receiverId,
+    required this.receiverPhone,
+    required this.referenceNumber,
+    required this.date,
+  });
 }
