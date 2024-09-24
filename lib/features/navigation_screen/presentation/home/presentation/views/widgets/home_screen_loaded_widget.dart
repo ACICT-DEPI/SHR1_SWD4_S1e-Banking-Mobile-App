@@ -53,7 +53,7 @@ class HomeScreenLoadedWidget extends StatelessWidget {
                   onPressedTopUp: onNavigateToService,
                 ),
                 const SizedBox(height: 26),
-                const TransactionSection(),
+                 TransactionSection(transactions: state.homeModel.transactions,),
               ],
             ),
           ),

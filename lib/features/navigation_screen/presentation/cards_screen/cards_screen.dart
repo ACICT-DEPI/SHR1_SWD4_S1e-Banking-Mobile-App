@@ -75,7 +75,9 @@ class _CardsScreenState extends State<CardsScreen> {
 
                       const SizedBox(height: 20),
                       // Transactions Section
-                      const TransactionSection(),
+                      TransactionSection(
+                        transactions: state.homeModel.transactions,
+                      ),
                       // Spending Limit Section
                       const SpendingLimitSection(),
                     ],

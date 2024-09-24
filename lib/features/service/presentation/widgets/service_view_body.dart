@@ -1,3 +1,4 @@
+import 'package:bank_app/features/navigation_screen/logic/home_screen_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -39,7 +40,8 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
     return BlocConsumer<ServiceCubit, ServiceState>(
       listener: (context, sendMoneyState) async {
         if (sendMoneyState is ServiceSuccessState) {
-          GoRouter.of(context).push(
+          BlocProvider.of<HomeScreenCubit>(context).initialize();
+          GoRouter.of(context).pushReplacement(
             Routing.transactionHistoryView,
           );
         }
