@@ -15,7 +15,7 @@ class TransactionItemModel {
     return TransactionItemModel(
       type: Functions.getTransactionType(json["type"]),
       amount: json["amount"],
-      createdAt: json["createdAt"],
+      createdAt: json["createdAt"].toDate(),
     );
   }
 

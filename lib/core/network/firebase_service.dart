@@ -35,7 +35,10 @@ class FirebaseService {
   }
 
   static Future<void> addNewTransaction(
-      TransactionItemModel transactionModel) async {
+    TransactionItemModel transactionModel,
+    String cardNumber
+  ) async {
+    await sendMoney(-transactionModel.amount, cardNumber);
     await _userDocument.collection('transactions').add(
           TransactionItemModel.toJson(
             transactionModel: transactionModel,
@@ -46,8 +49,10 @@ class FirebaseService {
   static Future<List<TransactionItemModel>> getAllTransactions() async {
     List<TransactionItemModel> allTransactions = [];
 
-    final QuerySnapshot transactionCollection =
-        await _userDocument.collection('transactions').get();
+    final QuerySnapshot transactionCollection = await _userDocument
+        .collection('transactions')
+        .orderBy("createdAt")
+        .get();
 
     for (var transactionDoc in transactionCollection.docs) {
       allTransactions.add(
@@ -56,7 +61,7 @@ class FirebaseService {
       );
     }
 
-    return allTransactions;
+    return allTransactions.reversed.toList();
   }
 
   static Future<void> addNewMonth(MonthModel month) async {

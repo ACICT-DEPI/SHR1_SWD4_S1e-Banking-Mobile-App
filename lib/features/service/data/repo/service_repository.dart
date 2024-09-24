@@ -8,7 +8,10 @@ class ServiceRepository {
       required TransactionItemModel transactionItemModel,
       required CardModel card}) async {
     if (card.cardBalance > transactionItemModel.amount) {
-      await FirebaseService.addNewTransaction(transactionItemModel);
+      await FirebaseService.addNewTransaction(
+        transactionItemModel,
+        card.cardNumber,
+      );
 
       return true;
     }

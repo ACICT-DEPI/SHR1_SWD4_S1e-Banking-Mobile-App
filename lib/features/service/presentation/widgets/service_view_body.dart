@@ -157,7 +157,7 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
       type: Functions.getTransactionType(
         Constants.services[serviceIndex],
       ),
-      amount: double.parse(amountController.text),
+      amount: -double.parse(amountController.text),
     );
   }
 }
