@@ -1,11 +1,11 @@
-import 'package:bank_app/core/Routing/Routing.dart';
-import 'package:bank_app/features/navigation_screen/presentation/home/presentation/views/widgets/home_screen_loade_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../../../core/Routing/Routing.dart';
 import '../../../../../../core/widgets/error_screen.dart';
 import '../../../../../../core/widgets/Loading_screen.dart';
 import '../../../../logic/home_screen_cubit.dart';
+import 'widgets/home_screen_loaded_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -47,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onNavigateToSearch: _navigateToSearch,
             onNavigateToSendMoney: _navigateToSendMoney,
             onNavigateToReceiveMoney: _navigateToReceiveMoney,
+            onNavigateToService: _navigateToService,
           );
         } else if (state is HomeScreenError) {
           return ErrorScreen(message: state.message);
@@ -67,5 +68,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _navigateToReceiveMoney() {
     GoRouter.of(context).push(Routing.receiveMoneyView);
+  }
+
+  void _navigateToService() {
+    GoRouter.of(context).push(Routing.serviceView);
   }
 }

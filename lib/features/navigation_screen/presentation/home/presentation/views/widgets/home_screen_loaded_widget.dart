@@ -15,6 +15,7 @@ class HomeScreenLoadedWidget extends StatelessWidget {
   final VoidCallback onNavigateToSearch;
   final VoidCallback onNavigateToSendMoney;
   final VoidCallback onNavigateToReceiveMoney;
+  final VoidCallback onNavigateToService;
 
   const HomeScreenLoadedWidget({
     super.key,
@@ -25,6 +26,7 @@ class HomeScreenLoadedWidget extends StatelessWidget {
     required this.onNavigateToSearch,
     required this.onNavigateToSendMoney,
     required this.onNavigateToReceiveMoney,
+    required this.onNavigateToService,
   });
 
   @override
@@ -48,7 +50,7 @@ class HomeScreenLoadedWidget extends StatelessWidget {
                 BuildActionsRow(
                   onPressedSent: onNavigateToSendMoney,
                   onPressedReceive: onNavigateToReceiveMoney,
-                  onPressedTopUp: onNavigateToSendMoney,
+                  onPressedTopUp: onNavigateToService,
                 ),
                 const SizedBox(height: 26),
                 const TransactionSection(),

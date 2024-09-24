@@ -17,6 +17,7 @@ import '../../features/search/presentation/views/search_view.dart';
 import '../../features/send_money_screen/data/models/success_model.dart';
 import '../../features/send_money_screen/presentation/send_money_screen.dart';
 import '../../features/send_money_screen/presentation/success_sending_screen.dart';
+import '../../features/service/presentation/service_view.dart';
 import '../../features/transaction_history/presentation/views/transaction_history_view.dart';
 import '../network/firebase_authentication.dart';
 import '../widgets/error_screen.dart';
@@ -37,6 +38,7 @@ class Routing {
   static String searchView = '/SearchView';
   static String sendMoneyScreen = '/SendMoneyScreen';
   static String receiveMoneyView = '/ReceiveMoneyView';
+  static String serviceView = '/ServiceView';
   static String transactionHistoryView = '/TransactionHistoryView';
   static String successSendingScreen = '/SuccessSendingScreen';
   static String errorScreen = '/ErrorScreen';
@@ -134,6 +136,12 @@ class Routing {
         path: receiveMoneyView,
         builder: (BuildContext context, GoRouterState state) {
           return const ReceiveMoneyView();
+        },
+      ),
+      GoRoute(
+        path: serviceView,
+        builder: (BuildContext context, GoRouterState state) {
+          return const ServiceView();
         },
       ),
       GoRoute(
