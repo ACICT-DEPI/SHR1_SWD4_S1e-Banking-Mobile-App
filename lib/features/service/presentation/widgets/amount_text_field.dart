@@ -16,8 +16,7 @@ class _AmountTextFieldState extends State<AmountTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      height: 130,
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
       width: MediaQuery.sizeOf(context).width,
       decoration: BoxDecoration(
         border: Border.all(
@@ -27,7 +26,6 @@ class _AmountTextFieldState extends State<AmountTextField> {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,7 +57,13 @@ class _AmountTextFieldState extends State<AmountTextField> {
               ),
               const SizedBox(width: 16.0),
               Expanded(
-                child: TextField(
+                child: TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter the amount';
+                    }
+                    return null;
+                  },
                   controller: widget.textController,
                   cursorColor: AppColors.blue,
                   decoration: InputDecoration(
@@ -79,6 +83,7 @@ class _AmountTextFieldState extends State<AmountTextField> {
               ),
             ],
           ),
+          const SizedBox(height: 8.0),
         ],
       ),
     );

@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 
 import '../../../../../core/helpers/functions.dart';
 import '../../../../../core/network/firebase_service.dart';
-import '../../../../transaction_history/data/models/transaction_item_model.dart';
 import '../../../data/models/month_model.dart';
 import '../../../data/models/statistics_model.dart';
 import '../../../data/repos/statistics_repo.dart';
@@ -109,10 +108,6 @@ class StatisticsCubit extends Cubit<StatisticsState> {
     // Get the maximum balance from the last six months
     double maxBalance = Functions.getMaxBalance(lastSixMonthsBalance);
 
-    // Fetch the list of transactions from the repository
-    List<TransactionItemModel> transactions =
-        await _statisticsRepo.getTransactions();
-
     // Return the statistics model with all the fetched data
     return StatisticsModel(
       lastSixMonthsDate: lastSixMonthsDate,
@@ -122,8 +117,6 @@ class StatisticsCubit extends Cubit<StatisticsState> {
       lastSixMonthsBalance: lastSixMonthsBalance,
       // List of balances
       currentBalance: currentBalance,
-      // Current balance
-      transactions: transactions, // List of transactions
     );
   }
 }

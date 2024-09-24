@@ -1,4 +1,6 @@
+import 'package:bank_app/features/navigation_screen/logic/home_screen_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 
@@ -136,6 +138,7 @@ class SuccessSendingScreenBody extends StatelessWidget {
           CustomAppButton(
             title: "Back to Home",
             onPressed: () {
+              BlocProvider.of<HomeScreenCubit>(context).initialize();
               GoRouter.of(context).pop();
               GoRouter.of(context).pop();
             },

@@ -14,9 +14,7 @@ class TransactionHistoryAppBar extends StatelessWidget {
       onPressedLeft: () {
         Navigator.pop(context);
       },
-      onPressedRight: () {},
       leftIcon: Icons.arrow_back_ios_new_outlined,
-      rightIcon: Icons.history_outlined,
     );
   }
 }

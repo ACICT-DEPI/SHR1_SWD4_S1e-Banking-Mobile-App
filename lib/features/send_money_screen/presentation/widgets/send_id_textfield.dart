@@ -11,8 +11,7 @@ class SendIdTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16.0),
-      height: 120,
-      width: 360,
+      width: MediaQuery.sizeOf(context).width,
       decoration: BoxDecoration(
         border: Border.all(
           color: AppColors.lightGrey,
@@ -21,19 +20,15 @@ class SendIdTextField extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                "Enter ID",
-                style: TextsStyle.textStyleRegular12.copyWith(
-                  color: AppColors.grey94,
-                ),
-              ),
-            ],
+          Text(
+            "Enter ID",
+            style: TextsStyle.textStyleRegular12.copyWith(
+              color: AppColors.grey94,
+            ),
           ),
+          const SizedBox(height: 16.0),
           Row(
             children: <Widget>[
               Text(
@@ -44,25 +39,18 @@ class SendIdTextField extends StatelessWidget {
               ),
               const SizedBox(width: 16.0),
               Expanded(
-                child: TextField(
+                child: TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter the id';
+                    } else if (value.length < 25) {
+                      return 'Please enter valid id';
+                    }
+                    return null;
+                  },
                   controller: textController,
                   cursorColor: AppColors.blue,
                   decoration: InputDecoration(
-                    suffixIcon: IconButton(
-                      iconSize: 40,
-                      style: const ButtonStyle(
-                        backgroundColor: WidgetStatePropertyAll(
-                          AppColors.white,
-                        ),
-                      ),
-                      onPressed: () {
-                        // Your onPressed logic
-                      },
-                      icon: const Icon(
-                        Icons.qr_code,
-                        color: AppColors.blue,
-                      ),
-                    ),
                     hintStyle: TextsStyle.textStyleRegular12.copyWith(
                       color: AppColors.grey94,
                     ),
@@ -75,6 +63,21 @@ class SendIdTextField extends StatelessWidget {
                     color: AppColors.black,
                   ),
                   keyboardType: TextInputType.number,
+                ),
+              ),
+              IconButton(
+                iconSize: 40,
+                style: const ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(
+                    AppColors.white,
+                  ),
+                ),
+                onPressed: () {
+                  // Your onPressed logic
+                },
+                icon: const Icon(
+                  Icons.qr_code,
+                  color: AppColors.blue,
                 ),
               ),
             ],

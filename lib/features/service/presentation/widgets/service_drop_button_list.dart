@@ -23,8 +23,7 @@ class _ServiceDragButtonListState extends State<ServiceDragButtonList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16.0),
-      height: 120,
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 15.0),
       width: MediaQuery.sizeOf(context).width,
       decoration: BoxDecoration(
         border: Border.all(
@@ -42,6 +41,7 @@ class _ServiceDragButtonListState extends State<ServiceDragButtonList> {
               color: AppColors.grey94,
             ),
           ),
+          const SizedBox(height: 16.0),
           DropdownButtonFormField<int>(
             iconSize: 0,
             decoration: _inputDecoration(),

@@ -135,4 +135,42 @@ class Functions {
     }
     return currentBalance;
   }
+
+  static List<TransactionItemModel> getToDayTransactions(
+      List<TransactionItemModel> transactions) {
+    List<TransactionItemModel> toDayTransactions = [];
+    for (var trans in transactions) {
+      if (trans.createdAt.day == DateTime.now().day) {
+        toDayTransactions.add(trans);
+      }
+    }
+    return toDayTransactions;
+  }
+
+  static List<TransactionItemModel> getLastDaysTransactions(
+      List<TransactionItemModel> transactions, int days) {
+    List<TransactionItemModel> toDayTransactions = [];
+    List<DateTime> lastDaysDateTime = _getLastDaysDateTime(days);
+    for (var trans in transactions) {
+      for (var date in lastDaysDateTime) {
+        if (trans.createdAt.day == date.day) {
+          toDayTransactions.add(trans);
+          break;
+        }
+      }
+    }
+    return toDayTransactions;
+  }
+
+  static List<DateTime> _getLastDaysDateTime(int days) {
+    DateTime today = DateTime.now();
+    List<DateTime> last7Days = List.generate(
+      days,
+      (i) => today.subtract(
+        Duration(days: i),
+      ),
+    );
+
+    return last7Days.reversed.toList();
+  }
 }

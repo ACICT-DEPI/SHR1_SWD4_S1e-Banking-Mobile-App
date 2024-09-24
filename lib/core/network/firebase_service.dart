@@ -35,9 +35,7 @@ class FirebaseService {
   }
 
   static Future<void> addNewTransaction(
-    TransactionItemModel transactionModel,
-    String cardNumber
-  ) async {
+      TransactionItemModel transactionModel, String cardNumber) async {
     await sendMoney(-transactionModel.amount, cardNumber);
     await _userDocument.collection('transactions').add(
           TransactionItemModel.toJson(

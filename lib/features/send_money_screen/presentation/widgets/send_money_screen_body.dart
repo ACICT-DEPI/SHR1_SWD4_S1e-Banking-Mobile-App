@@ -33,6 +33,8 @@ class _SendMoneyScreenBodyState extends State<SendMoneyScreenBody> {
   TextEditingController idController = TextEditingController();
   TextEditingController amountController = TextEditingController();
   PageController pageController = PageController();
+  GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -64,70 +66,78 @@ class _SendMoneyScreenBodyState extends State<SendMoneyScreenBody> {
               return Padding(
                 padding:
                     const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
-                child: Column(
-                  children: [
-                    CustomAppBar(
-                      appBarTitle: "Send Money",
-                      leftIcon: Icons.arrow_back_ios_new_outlined,
-                      onPressedLeft: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                    const SizedBox(height: 35),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        SizedBox(
-                          width: double.infinity, // Adjust to your needs
-                          height: 220,
-                          child: PageView.builder(
-                            controller: pageController,
-                            itemCount: getAllCardsState.cards.length,
-                            itemBuilder: (context, index) {
-                              final CardModel card =
-                                  getAllCardsState.cards[index];
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: BankCardDesign(
-                                  card: CardModel(
-                                    cvv: card.cvv,
-                                    cardNumber: card.cardNumber,
-                                    cardHolderName: card.cardHolderName,
-                                    expiryDate: card.expiryDate,
-                                    cardType: card.cardType,
-                                  ),
-                                ),
-                              );
-                            },
-                            onPageChanged: (index) {
-                              setState(() {
-                                selectedCardIndex = index;
-                              });
-                            },
-                          ),
-                        ),
-                        const SizedBox(height: 30),
-                        SendIdTextField(textController: idController),
-                        const SizedBox(height: 10),
-                        SendMoneyTextField(textController: amountController),
-                      ],
-                    ),
-                    const Spacer(),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: CustomAppButton(
-                        title: 'Send Money',
-                        onPressed: () {
-                          BlocProvider.of<SendMoneyCubit>(context).sendMoney(
-                            id: idController.text,
-                            amount: double.parse(amountController.text),
-                            card: getAllCardsState.cards[selectedCardIndex],
-                          );
+                child: Form(
+                  key: formKey,
+                  autovalidateMode: autoValidateMode,
+                  child: Column(
+                    children: [
+                      CustomAppBar(
+                        appBarTitle: "Send Money",
+                        leftIcon: Icons.arrow_back_ios_new_outlined,
+                        onPressedLeft: () {
+                          Navigator.pop(context);
                         },
                       ),
-                    ),
-                    const SizedBox(height: 50),
-                  ],
+                      const SizedBox(height: 35),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          SizedBox(
+                            width: double.infinity, // Adjust to your needs
+                            height: 220,
+                            child: PageView.builder(
+                              controller: pageController,
+                              itemCount: getAllCardsState.cards.length,
+                              itemBuilder: (context, index) {
+                                final CardModel card =
+                                    getAllCardsState.cards[index];
+                                return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: BankCardDesign(
+                                    card: CardModel(
+                                      cvv: card.cvv,
+                                      cardNumber: card.cardNumber,
+                                      cardHolderName: card.cardHolderName,
+                                      expiryDate: card.expiryDate,
+                                      cardType: card.cardType,
+                                    ),
+                                  ),
+                                );
+                              },
+                              onPageChanged: (index) {
+                                setState(() {
+                                  selectedCardIndex = index;
+                                });
+                              },
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                          SendIdTextField(textController: idController),
+                          const SizedBox(height: 10),
+                          SendMoneyTextField(textController: amountController),
+                        ],
+                      ),
+                      const Spacer(),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: CustomAppButton(
+                          title: 'Send Money',
+                          onPressed: () {
+                            autoValidateMode = AutovalidateMode.always;
+                            if (formKey.currentState!.validate()) {
+                              BlocProvider.of<SendMoneyCubit>(context)
+                                  .sendMoney(
+                                id: idController.text,
+                                amount: double.parse(amountController.text),
+                                card: getAllCardsState.cards[selectedCardIndex],
+                              );
+                            }
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 50),
+                    ],
+                  ),
                 ),
               );
             } else {
