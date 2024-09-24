@@ -12,6 +12,7 @@ import '../../features/onboardingScreen/presentation/onboarding_screen.dart';
 import '../../features/privacy_policy/presentation/views/privacy_policy.dart';
 import '../../features/profile/presentation/views/edit_profile.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
+import '../../features/receive_money_screen/presentation/receive_money_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/send_money_screen/data/models/success_model.dart';
 import '../../features/send_money_screen/presentation/send_money_screen.dart';
@@ -35,6 +36,7 @@ class Routing {
   static String profileView = '/ProfileView';
   static String searchView = '/SearchView';
   static String sendMoneyScreen = '/SendMoneyScreen';
+  static String receiveMoneyView = '/ReceiveMoneyView';
   static String transactionHistoryView = '/TransactionHistoryView';
   static String successSendingScreen = '/SuccessSendingScreen';
   static String errorScreen = '/ErrorScreen';
@@ -126,6 +128,12 @@ class Routing {
         path: sendMoneyScreen,
         builder: (BuildContext context, GoRouterState state) {
           return const SendMoneyScreen();
+        },
+      ),
+      GoRoute(
+        path: receiveMoneyView,
+        builder: (BuildContext context, GoRouterState state) {
+          return const ReceiveMoneyView();
         },
       ),
       GoRoute(

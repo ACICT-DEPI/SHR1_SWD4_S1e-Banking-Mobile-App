@@ -14,6 +14,7 @@ class HomeScreenLoadedWidget extends StatelessWidget {
   final void Function(int) onPageChanged;
   final VoidCallback onNavigateToSearch;
   final VoidCallback onNavigateToSendMoney;
+  final VoidCallback onNavigateToReceiveMoney;
 
   const HomeScreenLoadedWidget({
     super.key,
@@ -23,6 +24,7 @@ class HomeScreenLoadedWidget extends StatelessWidget {
     required this.onPageChanged,
     required this.onNavigateToSearch,
     required this.onNavigateToSendMoney,
+    required this.onNavigateToReceiveMoney,
   });
 
   @override
@@ -45,7 +47,7 @@ class HomeScreenLoadedWidget extends StatelessWidget {
                 const SizedBox(height: 15),
                 BuildActionsRow(
                   onPressedSent: onNavigateToSendMoney,
-                  onPressedReceive: onNavigateToSendMoney,
+                  onPressedReceive: onNavigateToReceiveMoney,
                   onPressedTopUp: onNavigateToSendMoney,
                 ),
                 const SizedBox(height: 26),

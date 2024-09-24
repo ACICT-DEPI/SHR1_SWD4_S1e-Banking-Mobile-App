@@ -1,11 +1,11 @@
+import 'package:bank_app/core/Routing/Routing.dart';
 import 'package:bank_app/features/navigation_screen/presentation/home/presentation/views/widgets/home_screen_loade_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../../../core/widgets/error_screen.dart';
 import '../../../../../../core/widgets/Loading_screen.dart';
 import '../../../../logic/home_screen_cubit.dart';
-import '../../../../../search/presentation/views/search_view.dart';
-import '../../../../../send_money_screen/presentation/send_money_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -46,6 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             onNavigateToSearch: _navigateToSearch,
             onNavigateToSendMoney: _navigateToSendMoney,
+            onNavigateToReceiveMoney: _navigateToReceiveMoney,
           );
         } else if (state is HomeScreenError) {
           return ErrorScreen(message: state.message);
@@ -57,16 +58,14 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _navigateToSearch() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const SearchView()),
-    );
+    GoRouter.of(context).push(Routing.searchView);
   }
 
   void _navigateToSendMoney() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const SendMoneyScreen()),
-    );
+    GoRouter.of(context).push(Routing.sendMoneyScreen);
+  }
+
+  void _navigateToReceiveMoney() {
+    GoRouter.of(context).push(Routing.receiveMoneyView);
   }
 }
