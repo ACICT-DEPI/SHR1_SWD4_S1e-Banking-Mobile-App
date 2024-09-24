@@ -1,5 +1,6 @@
 import 'package:bank_app/features/authentication/data/models/user_model.dart';
 import 'package:bank_app/features/statistics/data/models/month_model.dart';
+import 'package:bank_app/features/transaction_history/data/models/transaction_item_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../features/navigation_screen/data/models/card_model.dart';
 import 'firebase_authentication.dart';
@@ -31,6 +32,31 @@ class FirebaseService {
     }
 
     return allCards;
+  }
+
+  static Future<void> addNewTransaction(
+      TransactionItemModel transactionModel) async {
+    await _userDocument.collection('transactions').add(
+          TransactionItemModel.toJson(
+            transactionModel: transactionModel,
+          ),
+        );
+  }
+
+  static Future<List<TransactionItemModel>> getAllTransactions() async {
+    List<TransactionItemModel> allTransactions = [];
+
+    final QuerySnapshot transactionCollection =
+        await _userDocument.collection('transactions').get();
+
+    for (var transactionDoc in transactionCollection.docs) {
+      allTransactions.add(
+        TransactionItemModel.fromJson(
+            transactionDoc.data() as Map<String, dynamic>),
+      );
+    }
+
+    return allTransactions;
   }
 
   static Future<void> addNewMonth(MonthModel month) async {

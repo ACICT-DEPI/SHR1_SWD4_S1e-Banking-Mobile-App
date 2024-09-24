@@ -2,13 +2,13 @@ import 'package:bloc/bloc.dart';
 
 import '../../../../navigation_screen/data/models/card_model.dart';
 import '../../../../transaction_history/data/models/transaction_item_model.dart';
-import '../../../data/repo/send_money_repository.dart';
+import '../../../data/repo/service_repository.dart';
 import 'service_state.dart';
 
 class ServiceCubit extends Cubit<ServiceState> {
   ServiceCubit() : super(ServiceInitialState());
 
-  final SendMoneyRepository _moneyRepository = SendMoneyRepository();
+  final ServiceRepository _moneyRepository = ServiceRepository();
 
   Future<void> sendMoney(
       {required String id,

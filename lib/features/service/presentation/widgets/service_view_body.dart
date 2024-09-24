@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'dart:math';
-
 import '../../../../core/Routing/Routing.dart';
 import '../../../../core/helpers/constants.dart';
 import '../../../../core/helpers/functions.dart';
-import '../../../../core/network/firebase_authentication.dart';
-import '../../../../core/network/firebase_service.dart';
 import '../../../../core/widgets/Loading_screen.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_app_button.dart';
 import '../../../../core/widgets/error_screen.dart';
-import '../../../authentication/data/models/user_model.dart';
 import '../../../navigation_screen/data/models/card_model.dart';
 import '../../../navigation_screen/presentation/home/presentation/views/widgets/bank_card_design.dart';
 import '../../../transaction_history/data/models/transaction_item_model.dart';
-import '../../data/models/success_model.dart';
 import '../../domain/cubits/get_cards_cubit/get_cards_cubit.dart';
 import '../../domain/cubits/get_cards_cubit/get_cards_state.dart';
 
@@ -164,23 +158,6 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
         Constants.services[serviceIndex],
       ),
       amount: double.parse(amountController.text),
-    );
-  }
-
-  Future<SuccessModel> buildSuccessModel() async {
-    UserModel senderUser = await (FirebaseAuthentication.getUserModel());
-    UserModel receiverUser =
-        await (FirebaseService.getUser(idController.text)) as UserModel;
-    return SuccessModel(
-      currencyType: 'USD',
-      amount: double.parse(amountController.text),
-      senderId: senderUser.userId!,
-      senderName: senderUser.fullName,
-      receiverName: receiverUser.fullName,
-      receiverId: receiverUser.userId!,
-      receiverPhone: receiverUser.phoneNumber,
-      referenceNumber: (1000000 + Random().nextInt(9000000)).toString(),
-      date: DateTime.now(),
     );
   }
 }
