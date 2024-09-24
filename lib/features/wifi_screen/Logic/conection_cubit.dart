@@ -18,7 +18,7 @@ class ConnectionScreenCubit extends Cubit<WifiState> {
   Future<void> _checkInitialConnection() async {
     final connectivityResult = await _connectivity.checkConnectivity();
     print(connectivityResult);
-    if (connectivityResult == ConnectivityResult.none) {
+    if (connectivityResult.contains(ConnectivityResult.none) )  {
       emit(Disconnected());
     } else {
       emit(Connected());
@@ -28,7 +28,7 @@ class ConnectionScreenCubit extends Cubit<WifiState> {
   // Listen to connectivity changes
   void _listenToConnectivityChanges() {
     _connectivity.onConnectivityChanged.listen((connectivityResult) async {
-      if (connectivityResult == ConnectivityResult.none) {
+      if (connectivityResult.contains(ConnectivityResult.none) ) {
         emit(Disconnected());
       } else {
         emit(Connected());
