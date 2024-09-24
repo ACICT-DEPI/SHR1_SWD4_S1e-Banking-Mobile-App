@@ -1,11 +1,11 @@
-import 'package:bank_app/core/helpers/constants.dart';
-import 'package:bank_app/features/service/presentation/widgets/amount_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'dart:math';
 
 import '../../../../core/Routing/Routing.dart';
+import '../../../../core/helpers/constants.dart';
+import '../../../../core/helpers/functions.dart';
 import '../../../../core/network/firebase_authentication.dart';
 import '../../../../core/network/firebase_service.dart';
 import '../../../../core/widgets/Loading_screen.dart';
@@ -15,12 +15,14 @@ import '../../../../core/widgets/error_screen.dart';
 import '../../../authentication/data/models/user_model.dart';
 import '../../../navigation_screen/data/models/card_model.dart';
 import '../../../navigation_screen/presentation/home/presentation/views/widgets/bank_card_design.dart';
+import '../../../transaction_history/data/models/transaction_item_model.dart';
 import '../../data/models/success_model.dart';
 import '../../domain/cubits/get_cards_cubit/get_cards_cubit.dart';
 import '../../domain/cubits/get_cards_cubit/get_cards_state.dart';
 
 import '../../domain/cubits/service_cubit/service_cubit.dart';
 import '../../domain/cubits/service_cubit/service_state.dart';
+import 'amount_text_field.dart';
 import 'payment_id_text_field.dart';
 import 'service_drop_button_list.dart';
 
@@ -44,8 +46,7 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
       listener: (context, sendMoneyState) async {
         if (sendMoneyState is ServiceSuccessState) {
           GoRouter.of(context).push(
-            Routing.successSendingScreen,
-            extra: await buildSuccessModel(),
+            Routing.transactionHistoryView,
           );
         }
       },
@@ -111,10 +112,12 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
                           ),
                         ),
                         const SizedBox(height: 30),
-                        PaymentIdTextField(textController: idController),
+                        PaymentIdTextField(
+                          textController: idController,
+                        ),
                         const SizedBox(height: 16),
                         AmountTextField(
-                          textController: TextEditingController(),
+                          textController: amountController,
                         ),
                         const SizedBox(height: 16),
                         ServiceDragButtonList(
@@ -136,7 +139,7 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
                         onPressed: () {
                           BlocProvider.of<ServiceCubit>(context).sendMoney(
                             id: idController.text,
-                            amount: double.parse(amountController.text),
+                            transactionItem: buildTransactionItemModel(),
                             card: getAllCardsState.cards[selectedCardIndex],
                           );
                         },
@@ -152,6 +155,15 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
           },
         );
       },
+    );
+  }
+
+  TransactionItemModel buildTransactionItemModel() {
+    return TransactionItemModel(
+      type: Functions.getTransactionType(
+        Constants.services[serviceIndex],
+      ),
+      amount: double.parse(amountController.text),
     );
   }
 

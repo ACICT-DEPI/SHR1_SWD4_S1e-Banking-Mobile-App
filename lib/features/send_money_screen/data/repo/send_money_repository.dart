@@ -1,7 +1,6 @@
 import 'package:bank_app/core/network/firebase_authentication.dart';
 import 'package:bank_app/features/authentication/data/models/user_model.dart';
 
-import '../../../../core/helpers/functions.dart';
 import '../../../../core/network/firebase_service.dart';
 import '../../../navigation_screen/data/models/card_model.dart';
 
@@ -25,13 +24,5 @@ class SendMoneyRepository {
       return false;
     }
     return false;
-  }
-
-  Future<double> getCurrentBalance() async {
-    return Functions.calculateCurrentBalance(await _getUserCards());
-  }
-
-  Future<List<CardModel>> _getUserCards() async {
-    return await FirebaseService.getAllCards();
   }
 }

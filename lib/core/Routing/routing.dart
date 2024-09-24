@@ -12,7 +12,7 @@ import '../../features/onboardingScreen/presentation/onboarding_screen.dart';
 import '../../features/privacy_policy/presentation/views/privacy_policy.dart';
 import '../../features/profile/presentation/views/edit_profile.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
-import '../../features/receive_money_screen/presentation/receive_money_view.dart';
+import '../../features/receive_money/presentation/receive_money_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/send_money_screen/data/models/success_model.dart';
 import '../../features/send_money_screen/presentation/send_money_screen.dart';

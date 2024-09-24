@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter/services.dart';
 
 import '../../../../core/styles/colors.dart';
@@ -16,7 +15,7 @@ class ReceiveIdTextField extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16.0),
       height: 120,
-      width: 360,
+      width: MediaQuery.sizeOf(context).width,
       decoration: BoxDecoration(
         border: Border.all(
           color: AppColors.lightGrey,
@@ -70,7 +69,7 @@ class ReceiveIdTextField extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                      iconSize: 40,
+                      iconSize: 30,
                       style: const ButtonStyle(
                         backgroundColor: WidgetStatePropertyAll(
                           AppColors.white,
