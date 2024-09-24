@@ -23,6 +23,9 @@ class _CardsScreenState extends State<CardsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final double widthFactor = MediaQuery.of(context).size.width/411;
+    final double heightFactor = MediaQuery.of(context).size.height/890;
+
     return BlocBuilder<HomeScreenCubit, HomeScreenState>(
       builder: (context, state) {
         if (state is HomeScreenSuccess) {
@@ -52,14 +55,14 @@ class _CardsScreenState extends State<CardsScreen> {
                       // Card Section
                       SizedBox(
                         width: double.infinity, // Adjust to your needs
-                        height: 220,
+                        height: 300*heightFactor,
                         child: PageView.builder(
                           controller: pageController,
                           itemCount: cards.length,
                           itemBuilder: (context, index) {
                             final card = cards[index];
                             return Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(5.0),
                               child: BankCardDesign(
                                 card: card,
                               ),

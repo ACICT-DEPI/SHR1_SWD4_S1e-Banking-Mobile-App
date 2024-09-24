@@ -29,6 +29,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final double widthFactor = MediaQuery.of(context).size.width/411;
+    final double heightFactor = MediaQuery.of(context).size.height/890;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -60,9 +62,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 40,
-                  horizontal: 16,
+                padding:  EdgeInsets.symmetric(
+                  vertical: 40*heightFactor,
+                  horizontal: 16*widthFactor,
                 ),
                 child: CustomAppButton(
                   title: _currentPage == 2 ? "Get Started" : "Next",
@@ -85,8 +87,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
             Positioned(
-              bottom: 320,
-              left: 150,
+              bottom: 320*heightFactor,
+              left: 150*widthFactor,
               child: SmoothPageIndicator(
                 controller: _controller,
                 count: 3,

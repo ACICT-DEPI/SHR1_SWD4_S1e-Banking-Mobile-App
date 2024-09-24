@@ -21,9 +21,10 @@ class BuildActionsRow extends StatefulWidget {
 
 class _BuildActionsRowState extends State<BuildActionsRow> {
   Widget _buildActionButton(IconData icon, String label, Function onPressed) {
+    final double widthFactor = MediaQuery.of(context).size.width/411;
+    final double heightFactor = MediaQuery.of(context).size.height/870;
     return SizedBox(
-      width: 60,
-      height: 120,
+      width: 60*widthFactor,
       child: Column(
         children: [
           CircleAvatar(
@@ -56,6 +57,7 @@ class _BuildActionsRowState extends State<BuildActionsRow> {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         _buildActionButton(Icons.arrow_upward, "Sent", widget.onPressedSent),

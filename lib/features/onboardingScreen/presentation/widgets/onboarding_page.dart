@@ -21,6 +21,8 @@ class OnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double widthFactor = MediaQuery.of(context).size.width/411;
+    final double heightFactor = MediaQuery.of(context).size.height/890;
     return Padding(
       padding: padding,
       child: Column(
@@ -29,22 +31,30 @@ class OnboardingPage extends StatelessWidget {
           SizedBox(height: spacing),
           SvgPicture.asset(
             imagePath,
-            height: MediaQuery.sizeOf(context).height / 3.56,
+            height: 250*heightFactor,
           ),
           SizedBox(height: spacing),
           Column(
             children: [
-              AutoSizeText(
-                title,
-                textAlign: TextAlign.center,
-                style: TextsStyle.textStyleSemiBold26,
+              Container(
+                width: 250*widthFactor,
+                child: AutoSizeText(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: TextsStyle.textStyleSemiBold26,
+                  maxLines: 2,
+                ),
               ),
               const SizedBox(height: 10),
-              AutoSizeText(
-                description,
-                textAlign: TextAlign.center,
-                style: TextsStyle.textStyleMedium14.copyWith(
-                  color: AppColors.grey8D,
+              Container(
+                width: 400*widthFactor,
+                child: AutoSizeText(
+                  description,
+                  textAlign: TextAlign.center,
+                  style: TextsStyle.textStyleMedium14.copyWith(
+                    color: AppColors.grey8D,
+                  ),
+                  maxLines: 2,
                 ),
               ),
             ],

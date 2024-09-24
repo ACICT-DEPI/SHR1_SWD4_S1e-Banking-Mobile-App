@@ -31,8 +31,11 @@ class HomeScreenLoadedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double widthFactor = MediaQuery.of(context).size.width/411;
+    final double heightFactor = MediaQuery.of(context).size.height/890;
+
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+      padding: EdgeInsets.symmetric(horizontal: 20.0*widthFactor, vertical: 20.0*heightFactor),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -41,18 +44,18 @@ class HomeScreenLoadedWidget extends StatelessWidget {
             imagePath: 'assets/images/person.png',
             onSearchPressed: onNavigateToSearch,
           ),
-          const SizedBox(height: 15),
+          SizedBox(height: heightFactor*20),
           Expanded(
             child: ListView(
+              shrinkWrap: true,
               children: [
-                _buildCardSection(state.homeModel.cards),
-                const SizedBox(height: 15),
+                _buildCardSection(state.homeModel.cards,heightFactor),
                 BuildActionsRow(
                   onPressedSent: onNavigateToSendMoney,
                   onPressedReceive: onNavigateToReceiveMoney,
                   onPressedTopUp: onNavigateToService,
                 ),
-                const SizedBox(height: 26),
+                SizedBox(height: 26*heightFactor),
                  TransactionSection(transactions: state.homeModel.transactions,),
               ],
             ),
@@ -62,10 +65,10 @@ class HomeScreenLoadedWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildCardSection(List<CardModel> cards) {
+  Widget _buildCardSection(List<CardModel> cards,double heightFactor) {
     return SizedBox(
       width: double.infinity,
-      height: 220,
+      height: 300* heightFactor,
       child: PageView.builder(
         controller: pageController,
         itemCount: cards.length,
