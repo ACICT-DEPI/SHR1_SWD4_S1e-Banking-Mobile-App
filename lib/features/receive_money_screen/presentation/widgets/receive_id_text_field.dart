@@ -79,7 +79,7 @@ class ReceiveIdTextField extends StatelessWidget {
                       onPressed: () {
                         Clipboard.setData(ClipboardData(text: id));
 
-                        buildShowSnackBar(context, 'Copied to clipboard!');
+                        buildShowSnackBar(context, 'Copied to clipboard');
                       },
                       icon: const Icon(
                         Icons.copy,

@@ -1,3 +1,4 @@
+import 'package:bank_app/core/network/firebase_authentication.dart';
 import 'package:bank_app/features/authentication/data/models/user_model.dart';
 
 import '../../../../core/helpers/functions.dart';
@@ -12,7 +13,8 @@ class SendMoneyRepository {
     List<UserModel> allUsers = await FirebaseService.getAllUsers();
     if (card.cardBalance > amount) {
       for (UserModel user in allUsers) {
-        if (user.userId == id) {
+        if (user.userId == id &&
+            user.userId != FirebaseAuthentication.getUserId()) {
           Future.wait([
             FirebaseService.sendMoney(amount, card.cardNumber),
             FirebaseService.receiveMoney(id, amount),
