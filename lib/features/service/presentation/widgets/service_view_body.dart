@@ -1,4 +1,5 @@
 import 'package:bank_app/core/helpers/constants.dart';
+import 'package:bank_app/features/service/presentation/widgets/amount_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -67,7 +68,7 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
               return Padding(
                 padding:
                     const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
-                child: Column(
+                child: ListView(
                   children: [
                     CustomAppBar(
                       appBarTitle: "Service",
@@ -112,6 +113,10 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
                         const SizedBox(height: 30),
                         PaymentIdTextField(textController: idController),
                         const SizedBox(height: 16),
+                        AmountTextField(
+                          textController: TextEditingController(),
+                        ),
+                        const SizedBox(height: 16),
                         ServiceDragButtonList(
                           services: Constants.services,
                           serviceIndex: serviceIndex,
@@ -123,7 +128,7 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
                         ),
                       ],
                     ),
-                    const Spacer(),
+                    const SizedBox(height: 30),
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: CustomAppButton(
