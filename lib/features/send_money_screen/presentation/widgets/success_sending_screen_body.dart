@@ -1,4 +1,3 @@
-import 'package:bank_app/features/navigation_screen/logic/home_screen_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -7,6 +6,8 @@ import 'package:lottie/lottie.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/texts_style.dart';
 import '../../../../core/widgets/custom_app_button.dart';
+import '../../../navigation_screen/logic/home_screen_cubit.dart';
+import '../../../statistics/domain/cubits/statistics_cubit/statistics_cubit.dart';
 import '../../data/models/success_model.dart';
 
 class SuccessSendingScreenBody extends StatelessWidget {
@@ -139,6 +140,7 @@ class SuccessSendingScreenBody extends StatelessWidget {
             title: "Back to Home",
             onPressed: () {
               BlocProvider.of<HomeScreenCubit>(context).initialize();
+              BlocProvider.of<StatisticsCubit>(context).initialize();
               GoRouter.of(context).pop();
               GoRouter.of(context).pop();
             },

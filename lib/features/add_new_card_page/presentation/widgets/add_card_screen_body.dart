@@ -1,5 +1,3 @@
-import 'package:bank_app/features/add_new_card_page/presentation/widgets/card_validator.dart';
-import 'package:bank_app/features/navigation_screen/logic/home_screen_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,11 +6,14 @@ import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_app_button.dart';
 import '../../../../core/widgets/error_screen.dart';
 import '../../../navigation_screen/data/models/card_model.dart';
+import '../../../navigation_screen/logic/home_screen_cubit.dart';
 import '../../../navigation_screen/presentation/home/presentation/views/widgets/bank_card_design.dart';
+import '../../../statistics/domain/cubits/statistics_cubit/statistics_cubit.dart';
 import '../../domain/cubits/add_card_cubit.dart';
 import '../../domain/cubits/add_card_state.dart';
 import 'card_input_field.dart';
 import 'card_number_Input_formatter.dart';
+import 'card_validator.dart';
 import 'date_input_formatter.dart';
 
 class AddCardScreenBody extends StatefulWidget {
@@ -45,6 +46,7 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
       listener: (context, state) {
         if (state is AddCardSuccessState) {
           BlocProvider.of<HomeScreenCubit>(context).initialize();
+          BlocProvider.of<StatisticsCubit>(context).initialize();
           Navigator.pop(context);
         }
       },

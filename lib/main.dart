@@ -6,6 +6,7 @@ import 'core/Routing/Routing.dart';
 import 'core/styles/theme_style.dart';
 
 import 'features/navigation_screen/logic/home_screen_cubit.dart';
+import 'features/statistics/domain/cubits/statistics_cubit/statistics_cubit.dart';
 import 'features/wifi_screen/Logic/conection_cubit.dart';
 import 'features/wifi_screen/Logic/conection_state.dart';
 import 'features/wifi_screen/ui/no_connection_screen.dart'; // No Connection UI
@@ -22,6 +23,9 @@ void main() async {
       providers: [
         BlocProvider(create: (context) => HomeScreenCubit()),
         BlocProvider(create: (context) => ConnectionScreenCubit()),
+        BlocProvider(
+          create: (context) => StatisticsCubit()..initialize(),
+        )
       ],
       child: const MyApp(),
     ),
@@ -36,7 +40,7 @@ class MyApp extends StatelessWidget {
     return BlocBuilder<ConnectionScreenCubit, WifiState>(
       builder: (context, state) {
         if (state is Disconnected) {
-          return NoConnectionScreen(); // Display no connection screen
+          return const NoConnectionScreen(); // Display no connection screen
         } else {
           return MaterialApp.router(
             theme: ThemeStyle.lightThemeData,
