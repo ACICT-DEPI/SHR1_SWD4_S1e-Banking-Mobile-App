@@ -1,10 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/services.dart';
-import 'package:meta/meta.dart';
 import 'dart:async';
 
-import 'conection_state.dart'; // Needed for async/await functions
+import 'conection_state.dart';
 
 class ConnectionScreenCubit extends Cubit<WifiState> {
   final Connectivity _connectivity = Connectivity();
@@ -17,8 +15,7 @@ class ConnectionScreenCubit extends Cubit<WifiState> {
   // Check the initial connection state
   Future<void> _checkInitialConnection() async {
     final connectivityResult = await _connectivity.checkConnectivity();
-    print(connectivityResult);
-    if (connectivityResult.contains(ConnectivityResult.none) )  {
+    if (connectivityResult.contains(ConnectivityResult.none)) {
       emit(Disconnected());
     } else {
       emit(Connected());
@@ -28,13 +25,11 @@ class ConnectionScreenCubit extends Cubit<WifiState> {
   // Listen to connectivity changes
   void _listenToConnectivityChanges() {
     _connectivity.onConnectivityChanged.listen((connectivityResult) async {
-      if (connectivityResult.contains(ConnectivityResult.none) ) {
+      if (connectivityResult.contains(ConnectivityResult.none)) {
         emit(Disconnected());
       } else {
         emit(Connected());
       }
     });
   }
-
-
 }

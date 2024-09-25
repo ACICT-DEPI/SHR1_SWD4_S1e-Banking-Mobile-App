@@ -1,8 +1,3 @@
-import 'package:bank_app/core/widgets/Loading_screen.dart';
-import 'package:bank_app/core/widgets/custom_app_button.dart';
-import 'package:bank_app/core/widgets/error_screen.dart';
-import 'package:bank_app/features/profile/domain/cubits/edit_user_cubit/edit_user_cubit.dart';
-import 'package:bank_app/features/profile/domain/cubits/edit_user_cubit/edit_user_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -10,10 +5,16 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/helpers/images.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
+import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
+import '../../../../../core/widgets/custom_app_button.dart';
 import '../../../../../core/widgets/custom_app_text_form_field.dart';
+import '../../../../../core/widgets/custom_snack_bar.dart';
+import '../../../../../core/widgets/error_screen.dart';
 import '../../../../authentication/data/models/user_model.dart';
 import '../../../../navigation_screen/logic/home_screen_cubit.dart';
+import '../../../domain/cubits/edit_user_cubit/edit_user_cubit.dart';
+import '../../../domain/cubits/edit_user_cubit/edit_user_state.dart';
 import 'birth_date_selector.dart';
 
 class EditProfileBody extends StatefulWidget {
@@ -36,6 +37,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
         if (state is EditUserSuccessState) {
           BlocProvider.of<HomeScreenCubit>(context).initialize();
           GoRouter.of(context).pop();
+          buildShowSnackBar(context, "Profile edited successfully");
         }
       },
       builder: (context, editUserState) {

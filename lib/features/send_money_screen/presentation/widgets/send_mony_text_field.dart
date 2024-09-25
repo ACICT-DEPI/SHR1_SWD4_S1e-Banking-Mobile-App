@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/texts_style.dart';
 
-
 class SendMoneyTextField extends StatefulWidget {
   final TextEditingController textController;
 
@@ -17,9 +16,8 @@ class _SendMoneyTextFieldState extends State<SendMoneyTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16.0),
-      height: 140,
-      width: 360,
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      width: MediaQuery.sizeOf(context).width,
       decoration: BoxDecoration(
         border: Border.all(
           color: AppColors.lightGrey,
@@ -50,6 +48,7 @@ class _SendMoneyTextFieldState extends State<SendMoneyTextField> {
               ),
             ],
           ),
+          const SizedBox(height: 16.0),
           Row(
             children: <Widget>[
               Text(
@@ -60,7 +59,13 @@ class _SendMoneyTextFieldState extends State<SendMoneyTextField> {
               ),
               const SizedBox(width: 16.0),
               Expanded(
-                child: TextField(
+                child: TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter the amount';
+                    }
+                    return null;
+                  },
                   controller: widget.textController,
                   cursorColor: AppColors.blue,
                   decoration: InputDecoration(
@@ -80,6 +85,7 @@ class _SendMoneyTextFieldState extends State<SendMoneyTextField> {
               ),
             ],
           ),
+          const SizedBox(height: 8.0),
         ],
       ),
     );

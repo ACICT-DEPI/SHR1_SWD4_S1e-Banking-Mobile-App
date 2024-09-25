@@ -7,22 +7,22 @@ import '../../../data/models/transaction_item_model.dart';
 class DayTransaction extends StatelessWidget {
   const DayTransaction({
     super.key,
-    required this.listOfTransactionTypes,
-    required this.listOfAmounts,
+    required this.listOfTransactions,
+    required this.day,
   });
 
-  final List<TransactionType> listOfTransactionTypes;
-  final List<double> listOfAmounts;
+  final List<TransactionItemModel> listOfTransactions;
+  final String day;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              "Today",
+              day,
               style: TextsStyle.textStyleMedium18,
             ),
           ],
@@ -30,16 +30,16 @@ class DayTransaction extends StatelessWidget {
         const SizedBox(height: 30),
         Expanded(
           child: ListView.separated(
-            physics: const BouncingScrollPhysics(),
-            itemCount: listOfTransactionTypes.length,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: listOfTransactions.length,
             separatorBuilder: (context, index) => const SizedBox(
               height: 22,
             ),
             itemBuilder: (context, index) {
               return TransactionItem(
                 transactionItemModel: TransactionItemModel(
-                  type: listOfTransactionTypes[index],
-                  amount: listOfAmounts[index],
+                  type: listOfTransactions[index].type,
+                  amount: listOfTransactions[index].amount,
                 ),
               );
             },

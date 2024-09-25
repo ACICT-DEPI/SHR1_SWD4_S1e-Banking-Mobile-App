@@ -1,12 +1,18 @@
 import 'package:bank_app/features/navigation_screen/data/models/card_model.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../../../data/repo/send_money_repository.dart';
 import 'send_money_state.dart';
 
 class SendMoneyCubit extends Cubit<SendMoneyState> {
   SendMoneyCubit() : super(SendMoneyInitialState());
+  TextEditingController idController = TextEditingController();
 
+  updateId(String id) {
+    idController.text = id;
+    emit(SendMoneyInitialState());
+  }
   final SendMoneyRepository _moneyRepository = SendMoneyRepository();
 
   Future<void> sendMoney(

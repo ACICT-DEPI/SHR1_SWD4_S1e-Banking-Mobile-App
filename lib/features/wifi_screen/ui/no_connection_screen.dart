@@ -1,6 +1,5 @@
 import 'package:android_intent_plus/android_intent.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -9,6 +8,8 @@ import '../../../core/styles/theme_style.dart';
 import '../../../core/widgets/custom_app_button.dart';
 
 class NoConnectionScreen extends StatelessWidget {
+  const NoConnectionScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,8 +22,8 @@ class NoConnectionScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Lottie.asset('assets/images/internet.json'),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text(
                   "No Internet Connection",
                   textAlign: TextAlign.center,
@@ -45,14 +46,14 @@ class NoConnectionScreen extends StatelessWidget {
 
   void _openWiFiSettings(BuildContext context) async {
     if (Theme.of(context).platform == TargetPlatform.android) {
-      final AndroidIntent intent = AndroidIntent(
+      const AndroidIntent intent = AndroidIntent(
         action: 'android.settings.WIFI_SETTINGS',
       );
       await intent.launch();
     } else if (Theme.of(context).platform == TargetPlatform.iOS) {
       const url = 'App-Prefs:root=WIFI';
-      if (await canLaunch(url)) {
-        await launch(url);
+      if (await canLaunchUrl(Uri(path: url))) {
+        await launchUrl(Uri(path: url));
       } else {
         throw 'Could not open WiFi settings';
       }

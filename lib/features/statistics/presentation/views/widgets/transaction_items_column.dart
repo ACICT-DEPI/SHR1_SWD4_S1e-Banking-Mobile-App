@@ -4,58 +4,25 @@ import '../../../../../core/widgets/transaction_item.dart';
 import '../../../../transaction_history/data/models/transaction_item_model.dart';
 
 class TransactionItemsColumn extends StatelessWidget {
-  const TransactionItemsColumn({super.key});
+  const TransactionItemsColumn({super.key, required this.transactions});
+
+  final List<TransactionItemModel> transactions;
 
   @override
   Widget build(BuildContext context) {
-    final List<TransactionType> listOfTransactionTypes = [
-      TransactionType.paypal,
-      TransactionType.amazonPay,
-      TransactionType.googlePlay,
-      TransactionType.grocery,
-      TransactionType.spotify,
-      TransactionType.moneyTransfer,
-      TransactionType.appleStore
-    ];
-    final List<double> listOfAmounts = [
-      -70.58,
-      10.58,
-      580.2,
-      -585.50,
-      70,
-      70.58,
-      -70
-    ];
-    return Column(
-      children: [
-        TransactionItem(
+    return ListView.separated(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: transactions.length > 5 ? 4 : transactions.length,
+      separatorBuilder: (context, index) => const SizedBox(height: 24),
+      itemBuilder: (context, index) {
+        return TransactionItem(
           transactionItemModel: TransactionItemModel(
-            amount: listOfAmounts[0],
-            type: listOfTransactionTypes[0],
+            amount: transactions[index].amount,
+            type: transactions[index].type,
           ),
-        ),
-        const SizedBox(
-          height: 24,
-        ),
-        TransactionItem(
-          transactionItemModel: TransactionItemModel(
-            amount: listOfAmounts[1],
-            type: listOfTransactionTypes[1],
-          ),
-        ),
-        const SizedBox(
-          height: 24,
-        ),
-        TransactionItem(
-          transactionItemModel: TransactionItemModel(
-            amount: listOfAmounts[2],
-            type: listOfTransactionTypes[2],
-          ),
-        ),
-        const SizedBox(
-          height: 24,
-        ),
-      ],
+        );
+      },
     );
   }
 }
