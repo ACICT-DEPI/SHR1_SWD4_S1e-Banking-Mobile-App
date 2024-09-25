@@ -12,10 +12,13 @@ import '../../features/onboardingScreen/presentation/onboarding_screen.dart';
 import '../../features/privacy_policy/presentation/views/privacy_policy.dart';
 import '../../features/profile/presentation/views/edit_profile.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
+import '../../features/receive_money/presentation/receive_money_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/send_money_screen/data/models/success_model.dart';
+import '../../features/send_money_screen/presentation/scan_qr_sacn_screen.dart';
 import '../../features/send_money_screen/presentation/send_money_screen.dart';
 import '../../features/send_money_screen/presentation/success_sending_screen.dart';
+import '../../features/service/presentation/service_view.dart';
 import '../../features/transaction_history/presentation/views/transaction_history_view.dart';
 import '../network/firebase_authentication.dart';
 import '../widgets/error_screen.dart';
@@ -35,9 +38,13 @@ class Routing {
   static String profileView = '/ProfileView';
   static String searchView = '/SearchView';
   static String sendMoneyScreen = '/SendMoneyScreen';
+  static String receiveMoneyView = '/ReceiveMoneyView';
+  static String serviceView = '/ServiceView';
   static String transactionHistoryView = '/TransactionHistoryView';
   static String successSendingScreen = '/SuccessSendingScreen';
   static String errorScreen = '/ErrorScreen';
+  static String qrScanScreen = '/QrScanScreen';
+
 
   static final GoRouter _router = GoRouter(
     initialLocation: initialRoute, // Set your initial route here
@@ -46,7 +53,7 @@ class Routing {
       GoRoute(
         path: onboardingScreen,
         builder: (BuildContext context, GoRouterState state) {
-          return  OnboardingScreen();
+          return const OnboardingScreen();
         },
         redirect: (context, state) {
           // Implement the route guard logic here
@@ -126,6 +133,24 @@ class Routing {
         path: sendMoneyScreen,
         builder: (BuildContext context, GoRouterState state) {
           return const SendMoneyScreen();
+        },
+      ),
+      GoRoute(
+        path: receiveMoneyView,
+        builder: (BuildContext context, GoRouterState state) {
+          return const ReceiveMoneyView();
+        },
+      ),
+      GoRoute(
+        path: serviceView,
+        builder: (BuildContext context, GoRouterState state) {
+          return const ServiceView();
+        },
+      ),
+      GoRoute(
+        path: qrScanScreen,
+        builder: (BuildContext context, GoRouterState state) {
+          return  const QrScanScreen();
         },
       ),
       GoRoute(
