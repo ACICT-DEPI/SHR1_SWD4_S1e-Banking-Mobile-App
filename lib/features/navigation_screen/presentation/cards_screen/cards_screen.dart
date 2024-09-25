@@ -23,7 +23,7 @@ class _CardsScreenState extends State<CardsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final double widthFactor = MediaQuery.of(context).size.width/411;
+  //  final double widthFactor = MediaQuery.of(context).size.width/411;
     final double heightFactor = MediaQuery.of(context).size.height/890;
 
     return BlocBuilder<HomeScreenCubit, HomeScreenState>(

@@ -22,7 +22,7 @@ class BuildActionsRow extends StatefulWidget {
 class _BuildActionsRowState extends State<BuildActionsRow> {
   Widget _buildActionButton(IconData icon, String label, Function onPressed) {
     final double widthFactor = MediaQuery.of(context).size.width/411;
-    final double heightFactor = MediaQuery.of(context).size.height/870;
+   // final double heightFactor = MediaQuery.of(context).size.height/870;
     return SizedBox(
       width: 60*widthFactor,
       child: Column(

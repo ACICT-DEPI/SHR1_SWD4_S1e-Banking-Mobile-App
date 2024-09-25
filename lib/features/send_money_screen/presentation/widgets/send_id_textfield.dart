@@ -1,17 +1,16 @@
-import 'package:bank_app/core/Routing/Routing.dart';
-import 'package:bank_app/features/send_money_screen/presentation/scan_qr_sacn_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_app/core/styles/colors.dart';
 import 'package:bank_app/core/styles/texts_style.dart';
-import 'package:go_router/go_router.dart';
+
+import '../scan_qr_sacn_screen.dart';
 
 class SendIdTextField extends StatefulWidget {
   final TextEditingController textController;
 
-  const SendIdTextField({Key? key, required this.textController}) : super(key: key);
+  const SendIdTextField({super.key, required this.textController});
 
   @override
-  _SendIdTextFieldState createState() => _SendIdTextFieldState();
+  State<SendIdTextField> createState() => _SendIdTextFieldState();
 }
 
 class _SendIdTextFieldState extends State<SendIdTextField> {

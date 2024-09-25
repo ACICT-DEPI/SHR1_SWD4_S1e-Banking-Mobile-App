@@ -150,7 +150,7 @@ class Routing {
       GoRoute(
         path: qrScanScreen,
         builder: (BuildContext context, GoRouterState state) {
-          return  QrScanScreen();
+          return  const QrScanScreen();
         },
       ),
       GoRoute(

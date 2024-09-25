@@ -21,7 +21,8 @@ class BankCardDesign extends StatelessWidget {
     final double heightFactor = MediaQuery.of(context).size.height / 890;
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(25 * widthFactor),  // Adjusted border radius
+        borderRadius: BorderRadius.circular(25 * widthFactor),
+        // Adjusted border radius
         image: const DecorationImage(
           image: AssetImage("assets/images/CardBackground.png"),
           fit: BoxFit.fitWidth,
@@ -29,39 +30,36 @@ class BankCardDesign extends StatelessWidget {
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: 16 * widthFactor,  // Adjusted horizontal padding
+          horizontal: 16 * widthFactor, // Adjusted horizontal padding
           vertical: 0,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20 * heightFactor),  // Adjusted vertical space
+            SizedBox(height: 20 * heightFactor), // Adjusted vertical space
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SvgPicture.asset(
                   "assets/images/chip_1.svg",
-
                 ),
                 SvgPicture.asset(
                   "assets/images/nfc.svg",
-
                 ),
               ],
             ),
-            SizedBox(height: 20 * heightFactor),  // Adjusted vertical space
+            SizedBox(height: 20 * heightFactor), // Adjusted vertical space
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: 300 * widthFactor,  // Adjusted width
+                SizedBox(
+                  width: 300 * widthFactor, // Adjusted width
                   child: AutoSizeText(
                     card.cardNumber,
                     style: TextsStyle.textStyleRegular24.copyWith(
                       color: Colors.white,
                       letterSpacing: 2.0,
-
                     ),
                     textAlign: TextAlign.center,
                     maxLines: 1,
@@ -69,12 +67,12 @@ class BankCardDesign extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 25 * heightFactor),  // Adjusted vertical space
+            SizedBox(height: 25 * heightFactor), // Adjusted vertical space
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: 100 * widthFactor,  // Adjusted width
+                SizedBox(
+                  width: 100 * widthFactor, // Adjusted width
                   child: AutoSizeText(
                     card.cardHolderName,
                     style: TextsStyle.textStyleRegular13.copyWith(
@@ -83,7 +81,6 @@ class BankCardDesign extends StatelessWidget {
                     maxLines: 1,
                   ),
                 ),
-
               ],
             ),
             Row(
@@ -94,8 +91,8 @@ class BankCardDesign extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          width: 80 * widthFactor,  // Adjusted width
+                        SizedBox(
+                          width: 80 * widthFactor, // Adjusted width
                           child: AutoSizeText(
                             "Expiry Date:",
                             style: TextsStyle.textStyleRegular9.copyWith(
@@ -104,8 +101,8 @@ class BankCardDesign extends StatelessWidget {
                             maxLines: 1,
                           ),
                         ),
-                        Container(
-                          width: 80 * widthFactor,  // Adjusted width
+                        SizedBox(
+                          width: 80 * widthFactor, // Adjusted width
                           child: AutoSizeText(
                             card.expiryDate,
                             style: TextsStyle.textStyleRegular13.copyWith(
@@ -116,12 +113,13 @@ class BankCardDesign extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(width: 20 * widthFactor),  // Adjusted horizontal space
+                    SizedBox(width: 20 * widthFactor),
+                    // Adjusted horizontal space
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          width: 80 * widthFactor,  // Adjusted width
+                        SizedBox(
+                          width: 80 * widthFactor, // Adjusted width
                           child: AutoSizeText(
                             maxLines: 1,
                             "CVV:",
@@ -130,8 +128,8 @@ class BankCardDesign extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Container(
-                          width: 80 * widthFactor,  // Adjusted width
+                        SizedBox(
+                          width: 80 * widthFactor, // Adjusted width
                           child: AutoSizeText(
                             maxLines: 1,
                             card.cvv,
@@ -149,7 +147,7 @@ class BankCardDesign extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20 * heightFactor),  // Adjusted horizontal space
+            SizedBox(height: 20 * heightFactor), // Adjusted horizontal space
           ],
         ),
       ),

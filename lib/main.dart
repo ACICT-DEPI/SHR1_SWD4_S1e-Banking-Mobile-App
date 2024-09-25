@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
     return BlocBuilder<ConnectionScreenCubit, WifiState>(
       builder: (context, state) {
         if (state is Disconnected) {
-          return NoConnectionScreen(); // Display no connection screen
+          return const NoConnectionScreen(); // Display no connection screen
         } else {
           return MaterialApp.router(
             theme: ThemeStyle.lightThemeData,
