@@ -1,12 +1,20 @@
+import 'package:bank_app/core/Routing/Routing.dart';
+import 'package:bank_app/features/send_money_screen/presentation/scan_qr_sacn_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bank_app/core/styles/colors.dart';
 import 'package:bank_app/core/styles/texts_style.dart';
+import 'package:go_router/go_router.dart';
 
-class SendIdTextField extends StatelessWidget {
+class SendIdTextField extends StatefulWidget {
   final TextEditingController textController;
 
-  const SendIdTextField({super.key, required this.textController});
+  const SendIdTextField({Key? key, required this.textController}) : super(key: key);
 
+  @override
+  _SendIdTextFieldState createState() => _SendIdTextFieldState();
+}
+
+class _SendIdTextFieldState extends State<SendIdTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,11 +52,11 @@ class SendIdTextField extends StatelessWidget {
                     if (value!.isEmpty) {
                       return 'Please enter the id';
                     } else if (value.length < 25) {
-                      return 'Please enter valid id';
+                      return 'Please enter a valid id';
                     }
                     return null;
                   },
-                  controller: textController,
+                  controller: widget.textController,
                   cursorColor: AppColors.blue,
                   decoration: InputDecoration(
                     hintStyle: TextsStyle.textStyleRegular12.copyWith(
@@ -72,8 +80,19 @@ class SendIdTextField extends StatelessWidget {
                     AppColors.white,
                   ),
                 ),
-                onPressed: () {
-                  // Your onPressed logic
+                onPressed: () async {
+                  // Navigate to QrScanScreen and wait for the result
+                  final scannedId = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const QrScanScreen(),
+                    ),
+                  );
+
+                  // If a scanned ID is returned, set it to the text controller
+                  if (scannedId != null) {
+                    widget.textController.text = scannedId;
+                  }
                 },
                 icon: const Icon(
                   Icons.qr_code,

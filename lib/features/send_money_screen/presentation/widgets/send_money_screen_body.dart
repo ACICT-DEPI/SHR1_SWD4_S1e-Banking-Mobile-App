@@ -30,7 +30,6 @@ class SendMoneyScreenBody extends StatefulWidget {
 
 class _SendMoneyScreenBodyState extends State<SendMoneyScreenBody> {
   int selectedCardIndex = 0;
-  TextEditingController idController = TextEditingController();
   TextEditingController amountController = TextEditingController();
   PageController pageController = PageController();
   GlobalKey<FormState> formKey = GlobalKey();
@@ -112,8 +111,10 @@ class _SendMoneyScreenBodyState extends State<SendMoneyScreenBody> {
                             ),
                           ),
                           const SizedBox(height: 30),
-                          SendIdTextField(textController: idController),
+                          SendIdTextField(textController: context.read<SendMoneyCubit>().idController),
                           const SizedBox(height: 10),
+
+
                           SendMoneyTextField(textController: amountController),
                         ],
                       ),
@@ -127,7 +128,7 @@ class _SendMoneyScreenBodyState extends State<SendMoneyScreenBody> {
                             if (formKey.currentState!.validate()) {
                               BlocProvider.of<SendMoneyCubit>(context)
                                   .sendMoney(
-                                id: idController.text,
+                                id: context.read<SendMoneyCubit>().idController.text,
                                 amount: double.parse(amountController.text),
                                 card: getAllCardsState.cards[selectedCardIndex],
                               );
@@ -152,7 +153,7 @@ class _SendMoneyScreenBodyState extends State<SendMoneyScreenBody> {
   Future<SuccessModel> buildSuccessModel() async {
     UserModel senderUser = await (FirebaseAuthentication.getUserModel());
     UserModel receiverUser =
-        await (FirebaseService.getUser(idController.text)) as UserModel;
+        await (FirebaseService.getUser(context.read<SendMoneyCubit>().idController.text)) as UserModel;
     return SuccessModel(
       currencyType: 'USD',
       amount: double.parse(amountController.text),

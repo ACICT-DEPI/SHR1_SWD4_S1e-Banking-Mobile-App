@@ -60,6 +60,7 @@ dependencies:
   url_launcher: ^6.1.5
   auto_size_text: ^3.0.0
   device_preview: ^1.2.0
+  ai_barcode_scanner: ^5.2.1
 
 
 

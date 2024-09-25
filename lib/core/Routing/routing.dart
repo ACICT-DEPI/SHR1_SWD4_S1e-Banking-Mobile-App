@@ -15,6 +15,7 @@ import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/receive_money/presentation/receive_money_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/send_money_screen/data/models/success_model.dart';
+import '../../features/send_money_screen/presentation/scan_qr_sacn_screen.dart';
 import '../../features/send_money_screen/presentation/send_money_screen.dart';
 import '../../features/send_money_screen/presentation/success_sending_screen.dart';
 import '../../features/service/presentation/service_view.dart';
@@ -42,6 +43,8 @@ class Routing {
   static String transactionHistoryView = '/TransactionHistoryView';
   static String successSendingScreen = '/SuccessSendingScreen';
   static String errorScreen = '/ErrorScreen';
+  static String qrScanScreen = '/QrScanScreen';
+
 
   static final GoRouter _router = GoRouter(
     initialLocation: initialRoute, // Set your initial route here
@@ -142,6 +145,12 @@ class Routing {
         path: serviceView,
         builder: (BuildContext context, GoRouterState state) {
           return const ServiceView();
+        },
+      ),
+      GoRoute(
+        path: qrScanScreen,
+        builder: (BuildContext context, GoRouterState state) {
+          return  QrScanScreen();
         },
       ),
       GoRoute(
