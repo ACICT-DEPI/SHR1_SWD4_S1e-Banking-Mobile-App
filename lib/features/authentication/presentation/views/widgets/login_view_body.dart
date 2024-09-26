@@ -9,6 +9,7 @@ import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/custom_app_button.dart';
 import '../../../../../core/widgets/custom_app_icon_button.dart';
 import '../../../../../core/widgets/custom_snack_bar.dart';
+import '../../../../navigation_screen/logic/home_screen_cubit.dart';
 import '../../../domain/cubits/login_cubit/login_cubit.dart';
 import '../../../domain/cubits/login_cubit/login_state.dart';
 import 'login_email_and_password.dart';
@@ -41,6 +42,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
         } else if (state is LoginSuccessState) {
           isLoading = false;
           navigateHomeView(context);
+          BlocProvider.of<HomeScreenCubit>(context).initialize();
           buildShowSnackBar(context, 'Welcome ${state.user.emailAddress}');
         }
       },

@@ -59,6 +59,8 @@ class FirebaseAuthentication {
   }
 
   static Future<void> deleteUser() async {
+    UserModel user = await getUserModel();
+    await _fireStore.collection('users').doc(user.userId).delete();
     await _auth.currentUser?.delete();
   }
 

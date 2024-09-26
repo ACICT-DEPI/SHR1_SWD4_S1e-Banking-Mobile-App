@@ -77,9 +77,9 @@ class _CardsScreenState extends State<CardsScreen> {
                         ),
                       ),
 
-                      const SizedBox(height: 20),
                       // Transactions Section
                       if (state.homeModel.transactions.isNotEmpty) ...[
+                        const SizedBox(height: 20),
                         TransactionSection(
                           transactions: state.homeModel.transactions,
                         ),
