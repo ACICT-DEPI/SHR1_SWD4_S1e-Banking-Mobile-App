@@ -78,12 +78,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     onPressed: () {
                       setState(() {
                         autoValidateMode = AutovalidateMode.always;
-                        if (formKey.currentState!.validate()) {
+
                           BlocProvider.of<LoginCubit>(context).userLogin(
                             email: emailTextController.text,
                             password: passwordTextController.text,
                           );
-                        }
+
                       });
                     },
                   ),
