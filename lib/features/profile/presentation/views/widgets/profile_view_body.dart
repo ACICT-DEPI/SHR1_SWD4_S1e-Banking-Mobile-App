@@ -1,3 +1,4 @@
+import 'package:bank_app/core/network/firebase_authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -71,23 +72,19 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                   ),
                   const SizedBox(height: 28),
                   ProfileRow(
-                    text: "Contact Us",
-                    icon: Icons.phone,
-                    onPressed: () {},
-                  ),
-                  const SizedBox(height: 28),
-                  ProfileRow(
-                    text: "Privacy Policy ",
-                    icon: Icons.privacy_tip,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const PrivacyPolicy(),
-                        ),
+                    text: "Logout",
+                    icon: Icons.exit_to_app,
+                    onPressed: () async {
+                      await FirebaseAuthentication.logoutUser();
+                      while (GoRouter.of(context).canPop()) {
+                        GoRouter.of(context).pop();
+                      }
+                      GoRouter.of(context).pushReplacement(
+                        Routing.onboardingScreen,
                       );
                     },
-                  )
+                  ),
+
                 ],
               ),
             ),

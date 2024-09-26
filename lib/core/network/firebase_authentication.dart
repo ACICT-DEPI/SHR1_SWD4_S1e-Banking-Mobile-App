@@ -54,6 +54,10 @@ class FirebaseAuthentication {
     return _getUserInformation(userId);
   }
 
+  static Future<void> logoutUser() async {
+    await _auth.signOut();
+  }
+
   // Method to retrieve user information from FireStore based on user ID
   static Future<UserModel?> _getUserInformation(String userId) async {
     // Reference to the 'users' collection in FireStore
