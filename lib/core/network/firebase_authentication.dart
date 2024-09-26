@@ -15,27 +15,25 @@ class FirebaseAuthentication {
 
   // Method to register a new user using email and password
   static Future<void> signUpUser(UserModel user) async {
-    try {
-      // Creating a new user with Firebase Authentication
-      UserCredential userCredential =
-          await _auth.createUserWithEmailAndPassword(
-        email: user.emailAddress,
-        password: user.password,
-      );
+    // Creating a new user with Firebase Authentication
+    UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+      email: user.emailAddress,
+      password: user.password,
+    );
 
-      // Assign the unique user ID from Firebase Auth to the user model
-      user.userId = userCredential.user!.uid;
+    // Assign the unique user ID from Firebase Auth to the user model
+    user.userId = userCredential.user!.uid;
 
-      // Set the current date as the user's join date
-      user.joinedAt = Functions.getCurrentDate();
+    // Set the current date as the user's join date
+    user.joinedAt = Functions.getCurrentDate();
 
-      // Store the user data in FireStore under the 'users' collection
-      await _fireStore.collection('users').doc(user.userId).set(
-            UserModel.toJson(user),
-          );
-    } catch (e) {
-      // Handle any exceptions that occur during the sign-up process
-    }
+    // Store the user data in FireStore under the 'users' collection
+    await _fireStore.collection('users').doc(user.userId).set(
+          UserModel.toJson(user),
+          SetOptions(
+            merge: true,
+          ),
+        );
   }
 
   // Method to log in a user with email and password
@@ -43,22 +41,17 @@ class FirebaseAuthentication {
     required String email,
     required String password,
   }) async {
-    try {
-      // Sign in with Firebase Authentication using email and password
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+    // Sign in with Firebase Authentication using email and password
+    UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
 
-      // Retrieve the user ID from the signed-in user
-      String userId = userCredential.user!.uid;
+    // Retrieve the user ID from the signed-in user
+    String userId = userCredential.user!.uid;
 
-      // Return the user data as a UserModel
-      return _getUserInformation(userId);
-    } catch (e) {
-      // Handle any exceptions that occur during the login process
-    }
-    return null;
+    // Return the user data as a UserModel
+    return _getUserInformation(userId);
   }
 
   // Method to retrieve user information from FireStore based on user ID
@@ -79,7 +72,7 @@ class FirebaseAuthentication {
         }
       }
     } catch (e) {
-      // Handle any exceptions that occur during the data retrieval process
+      throw Exception("Error When Get User Information");
     }
 
     // If no user data is found or an error occurs, return null
