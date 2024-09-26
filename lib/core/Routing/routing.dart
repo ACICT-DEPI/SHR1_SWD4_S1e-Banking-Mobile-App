@@ -25,7 +25,6 @@ import '../network/firebase_service.dart';
 import '../widgets/error_screen.dart';
 
 class Routing {
-  static String initialRoute = '/OnboardingScreen';
   static String onboardingScreen = '/OnboardingScreen';
   static String addCardScreen = '/AddCardScreen';
   static String allCardsScreen = '/AllCardsScreen';
@@ -47,7 +46,7 @@ class Routing {
   static String qrScanScreen = '/QrScanScreen';
 
   static final GoRouter _router = GoRouter(
-    initialLocation: initialRoute, // Set your initial route here
+    initialLocation: onboardingScreen, // Set your initial route here
 
     routes: <RouteBase>[
       GoRoute(
@@ -58,11 +57,7 @@ class Routing {
         redirect: (context, state) async {
           // Implement the route guard logic here
           if (FirebaseAuthentication.isUserLogin()) {
-            if (await FirebaseService.getNumberOfCards() == 0) {
-              return allCardsScreen;
-            } else {
-              return navigationScreen; // Redirect to login if not authenticated
-            }
+            return navigationScreen; // Redirect to login if not authenticated
           }
           return null; // Continue to the requested route if authenticated
         },
@@ -107,6 +102,13 @@ class Routing {
         path: navigationScreen,
         builder: (BuildContext context, GoRouterState state) {
           return const NavigationScreen();
+        },
+        redirect: (context, state) async {
+          if (await FirebaseService.getNumberOfCards() == 0) {
+            return allCardsScreen;
+          } else {
+            return null;
+          }
         },
       ),
       GoRoute(

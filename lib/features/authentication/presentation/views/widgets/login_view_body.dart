@@ -102,6 +102,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     while (GoRouter.of(context).canPop()) {
       GoRouter.of(context).pop();
     }
-    GoRouter.of(context).push(Routing.navigationScreen);
+    GoRouter.of(context).pushReplacement(Routing.navigationScreen);
   }
 }

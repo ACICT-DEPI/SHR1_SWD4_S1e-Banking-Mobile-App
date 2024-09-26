@@ -92,9 +92,12 @@ class FirebaseService {
       // Assuming only one document matches the 'index'
       var docRef = querySnapshot.docs.first.reference;
 
-      await docRef.set(MonthModel.toJson(month), SetOptions(
-        merge: true,
-      ),);
+      await docRef.set(
+        MonthModel.toJson(month),
+        SetOptions(
+          merge: true,
+        ),
+      );
     }
   }
 
@@ -108,12 +111,29 @@ class FirebaseService {
 
     // Loop through the documents and add them to the list
     for (var cardDoc in cardsCollection.docs) {
-      allMonths.add(
-        MonthModel.fromJson(cardDoc.data() as Map<String, dynamic>),
-      );
+      Map<String, dynamic> data = cardDoc.data() as Map<String, dynamic>;
+
+      bool isDuplicate = checkMonthDuplicate(allMonths, data);
+
+      if (!isDuplicate) {
+        allMonths.add(
+          MonthModel.fromJson(data),
+        );
+      }
     }
 
     return allMonths;
+  }
+
+  static bool checkMonthDuplicate(
+      List<MonthModel> allMonths, Map<String, dynamic> data) {
+    bool isDuplicate = false;
+    for (var month in allMonths) {
+      if (month.index == data['index']) {
+        isDuplicate = true;
+      }
+    }
+    return isDuplicate;
   }
 
   static Future<List<UserModel>> getAllUsers() async {

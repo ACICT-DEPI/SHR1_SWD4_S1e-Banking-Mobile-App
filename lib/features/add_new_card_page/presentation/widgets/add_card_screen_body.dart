@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/Routing/Routing.dart';
 import '../../../../core/widgets/Loading_screen.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_app_button.dart';
@@ -47,7 +49,8 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
         if (state is AddCardSuccessState) {
           BlocProvider.of<HomeScreenCubit>(context).initialize();
           BlocProvider.of<StatisticsCubit>(context).initialize();
-          Navigator.pop(context);
+          GoRouter.of(context).pop();
+          GoRouter.of(context).pushReplacement(Routing.navigationScreen);
         }
       },
       builder: (context, state) {
