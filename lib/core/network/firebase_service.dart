@@ -34,6 +34,12 @@ class FirebaseService {
     return allCards;
   }
 
+  static Future<int> getNumberOfCards() async {
+    List<CardModel> allCards = await getAllCards();
+
+    return allCards.length;
+  }
+
   static Future<void> addNewTransaction(
       TransactionItemModel transactionModel, String cardNumber) async {
     await sendMoney(-transactionModel.amount, cardNumber);
@@ -86,7 +92,9 @@ class FirebaseService {
       // Assuming only one document matches the 'index'
       var docRef = querySnapshot.docs.first.reference;
 
-      await docRef.set(MonthModel.toJson(month));
+      await docRef.set(MonthModel.toJson(month), SetOptions(
+        merge: true,
+      ),);
     }
   }
 

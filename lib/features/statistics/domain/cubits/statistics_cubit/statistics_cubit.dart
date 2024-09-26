@@ -34,6 +34,7 @@ class StatisticsCubit extends Cubit<StatisticsState> {
 
       // If the last month does not match the current month, add the new month
       if (lastMonth.month != currentMonth) {
+        print("Ok");
         await FirebaseService.addNewMonth(
           MonthModel(
             index: lastMonth.index + 1, // Increment index for the new month

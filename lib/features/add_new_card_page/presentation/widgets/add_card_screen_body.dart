@@ -70,6 +70,7 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                       Navigator.pop(context);
                     },
                   ),
+                  const SizedBox(height: 30),
                   BankCardDesign(
                     card: CardModel(
                       cvv: _cvvController.text,
@@ -79,7 +80,7 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                       cardType: "Mastercard",
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 40),
                   Form(
                     key: _formKey,
                     child: Column(
@@ -96,7 +97,7 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                             LengthLimitingTextInputFormatter(16)
                           ],
                         ),
-                        const SizedBox(height: 4),
+                        const SizedBox(height: 30),
                         Row(
                           children: [
                             Expanded(
@@ -110,7 +111,7 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                                 inputFormatters: [DateInputFormatter()],
                               ),
                             ),
-                            const SizedBox(width: 4),
+                            const SizedBox(width: 5),
                             Expanded(
                               child: CardInputField(
                                 validator: CardValidator.validateCvv,
@@ -126,7 +127,7 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                             ),
                           ],
                         ),
-                        const SizedBox(height: 4),
+                        const SizedBox(height: 30),
                         CardInputField(
                           validator: CardValidator.validateCardNumber,
                           keyboardType: TextInputType.number,
@@ -140,7 +141,7 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                             CardNumberInputFormatter()
                           ],
                         ),
-                        const SizedBox(height: 80),
+                        const SizedBox(height: 100),
                       ],
                     ),
                   ),

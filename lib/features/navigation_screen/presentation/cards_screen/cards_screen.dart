@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../core/widgets/Loading_screen.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/error_screen.dart';
@@ -23,8 +24,8 @@ class _CardsScreenState extends State<CardsScreen> {
 
   @override
   Widget build(BuildContext context) {
-  //  final double widthFactor = MediaQuery.of(context).size.width/411;
-    final double heightFactor = MediaQuery.of(context).size.height/890;
+    //  final double widthFactor = MediaQuery.of(context).size.width/411;
+    final double heightFactor = MediaQuery.of(context).size.height / 890;
 
     return BlocBuilder<HomeScreenCubit, HomeScreenState>(
       builder: (context, state) {
@@ -48,14 +49,14 @@ class _CardsScreenState extends State<CardsScreen> {
                     );
                   },
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 18),
                 Expanded(
                   child: ListView(
                     children: [
                       // Card Section
                       SizedBox(
                         width: double.infinity, // Adjust to your needs
-                        height: 300*heightFactor,
+                        height: 240 * heightFactor,
                         child: PageView.builder(
                           controller: pageController,
                           itemCount: cards.length,

@@ -1,8 +1,9 @@
-import 'package:bank_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/widgets/Loading_screen.dart';
+import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/widgets/custom_app_button.dart';
 import '../../../../../core/widgets/error_screen.dart';
 import '../../../../add_new_card_page/presentation/add_card_page.dart';
@@ -17,34 +18,40 @@ class AllCardsScreenBody extends StatefulWidget {
 }
 
 class _AllCardsScreenBodyState extends State<AllCardsScreenBody> {
-
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeScreenCubit, HomeScreenState>(
       builder: (context, state) {
         if (state is HomeScreenSuccess) {
           final cards = state.homeModel.cards;
-
           return Padding(
             padding: const EdgeInsets.only(right: 20.0, left: 20.0, top: 20.0),
             child: Column(
               children: [
                 CustomAppBar(
                   appBarTitle: "All Cards",
-                  leftIcon: Icons.arrow_back_ios_new_outlined,
-                  onPressedLeft: () {
-                    Navigator.pop(context);
-                  },
+                  leftIcon: (canPop(context))
+                      ? Icons.arrow_back_ios_new_outlined
+                      : null,
+                  onPressedLeft: (canPop(context))
+                      ? () {
+                          GoRouter.of(context).pop();
+                        }
+                      : null,
                 ),
+                const SizedBox(height: 20.0),
                 Expanded(
-                  child: ListView.builder(
-                    padding: const EdgeInsets.all(16.0),
+                  child: ListView.separated(
+                    separatorBuilder: (context, index) => const SizedBox(
+                      height: 16,
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0,
+                    ),
                     itemCount: cards.length,
                     itemBuilder: (context, index) {
                       final card = cards[index];
-                      return BankCardDesign(
-                          card: card);
+                      return BankCardDesign(card: card);
                     },
                   ),
                 ),
@@ -65,16 +72,14 @@ class _AllCardsScreenBodyState extends State<AllCardsScreenBody> {
               ],
             ),
           );
-
-        }else if (state is HomeScreenError) {
+        } else if (state is HomeScreenError) {
           return ErrorScreen(message: state.message);
         } else {
           return const LoadingScreen();
         }
-
-
-
       },
     );
   }
+
+  bool canPop(BuildContext context) => GoRouter.of(context).canPop();
 }
