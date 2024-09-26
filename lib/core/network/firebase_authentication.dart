@@ -58,6 +58,10 @@ class FirebaseAuthentication {
     await _auth.signOut();
   }
 
+  static Future<void> deleteUser() async {
+    await _auth.currentUser?.delete();
+  }
+
   // Method to retrieve user information from FireStore based on user ID
   static Future<UserModel?> _getUserInformation(String userId) async {
     // Reference to the 'users' collection in FireStore
