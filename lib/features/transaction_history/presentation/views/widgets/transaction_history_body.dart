@@ -20,41 +20,58 @@ class TransactionHistoryBody extends StatelessWidget {
       builder: (context, state) {
         if (state is TransactionSuccessState) {
           List<TransactionItemModel> transactions = state.transactionModels;
+          List<TransactionItemModel> todayTransactions =
+              Functions.getToDayTransactions(
+            transactions,
+          );
+          List<TransactionItemModel> lastSevenTransactions =
+              Functions.getLastDaysTransactions(
+            transactions,
+            7,
+          );
+          List<TransactionItemModel> lastThirtyTransactions =
+              Functions.getLastDaysTransactions(
+            transactions,
+            30,
+          );
+
           return Padding(
             padding: const EdgeInsets.only(top: 20.0, right: 20.0, left: 20.0),
-            child: CustomScrollView(
-              physics: const BouncingScrollPhysics(),
-              slivers: [
-                const SliverToBoxAdapter(child: TransactionHistoryAppBar()),
-                const SliverToBoxAdapter(child: SizedBox(height: 30)),
-                SliverFillRemaining(
-                  child: DayTransaction(
-                    day: "Today",
-                    listOfTransactions: Functions.getToDayTransactions(
-                      transactions,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const TransactionHistoryAppBar(),
+                  const SizedBox(height: 30),
+                  if (todayTransactions.isNotEmpty) ...[
+                    DayTransaction(
+                      day: "Today",
+                      listOfTransactions: todayTransactions,
                     ),
-                  ),
-                ),
-                SliverFillRemaining(
-                  child: DayTransaction(
-                    day: "Last 7 days",
-                    listOfTransactions: Functions.getLastDaysTransactions(
-                      transactions,
-                      7,
+                    if (lastSevenTransactions.isNotEmpty ||
+                        lastThirtyTransactions.isNotEmpty) ...[
+                      const SizedBox(height: 10),
+                      const Divider(height: 20),
+                    ]
+                  ],
+                  if (lastSevenTransactions.isNotEmpty) ...[
+                    DayTransaction(
+                      day: "Last 7 days",
+                      listOfTransactions: lastSevenTransactions,
                     ),
-                  ),
-                ),
-                SliverFillRemaining(
-                  child: DayTransaction(
-                    day: "Last 30 days",
-                    listOfTransactions: Functions.getLastDaysTransactions(
-                      transactions,
-                      30,
-                    ),
-                  ),
-                ),
-                const SliverToBoxAdapter(child: SizedBox(height: 20)),
-              ],
+                    if (lastThirtyTransactions.isNotEmpty) ...[
+                      const SizedBox(height: 10),
+                      const Divider(height: 20),
+                    ]
+                  ],
+                  if (lastThirtyTransactions.isNotEmpty) ...[
+                    DayTransaction(
+                      day: "Last 30 days",
+                      listOfTransactions: lastThirtyTransactions,
+                    )
+                  ],
+                  const SizedBox(height: 20),
+                ],
+              ),
             ),
           );
         } else if (state is TransactionFailedState) {
