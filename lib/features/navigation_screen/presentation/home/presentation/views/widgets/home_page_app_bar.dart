@@ -20,7 +20,8 @@ class HomePageAppBarDesign extends StatelessWidget {
     final double heightFactor = MediaQuery.of(context).size.height / 890;
 
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 12 * heightFactor), // Adjusted vertical padding
+      padding: EdgeInsets.symmetric(vertical: 12 * heightFactor),
+      // Adjusted vertical padding
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -28,7 +29,8 @@ class HomePageAppBarDesign extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 25, // Adjusted radius for responsiveness
-                backgroundImage: AssetImage(imagePath), // Use the parameter imagePath
+                backgroundImage:
+                    AssetImage(imagePath), // Use the parameter imagePath
               ),
               SizedBox(width: 10 * widthFactor), // Adjusted horizontal spacing
               Column(
@@ -36,20 +38,29 @@ class HomePageAppBarDesign extends StatelessWidget {
                 children: [
                   Text(
                     "Welcome back,",
-                    style: TextsStyle.textStyleRegular12.copyWith(color: AppColors.grey8D),
+                    style: TextsStyle.textStyleRegular12.copyWith(
+                      color: AppColors.grey8D,
+                    ),
                   ),
                   Text(
                     username, // Use the parameter username
-                    style: TextsStyle.textStyleMedium18.copyWith(color: AppColors.black),
+                    style: TextsStyle.textStyleMedium18.copyWith(
+                      color: AppColors.black,
+                    ),
                   ),
                 ],
               ),
             ],
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16 * widthFactor), // Adjusted horizontal padding
+            padding: EdgeInsets.symmetric(horizontal: 16 * widthFactor),
+            // Adjusted horizontal padding
             child: IconButton(
-              icon: Icon(Icons.search, color: AppColors.black, size: 30 * heightFactor), // Adjusted icon size
+              icon: Icon(
+                Icons.search,
+                color: AppColors.black,
+                size: 30 * heightFactor,
+              ), // Adjusted icon size
               onPressed: onSearchPressed, // Use the onSearchPressed callback
             ),
           ),

@@ -9,6 +9,7 @@ import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/custom_app_button.dart';
 import '../../../../../core/widgets/custom_app_icon_button.dart';
 import '../../../../../core/widgets/custom_snack_bar.dart';
+import '../../../../navigation_screen/logic/home_screen_cubit.dart';
 import '../../../domain/cubits/login_cubit/login_cubit.dart';
 import '../../../domain/cubits/login_cubit/login_state.dart';
 import 'login_email_and_password.dart';
@@ -41,6 +42,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
         } else if (state is LoginSuccessState) {
           isLoading = false;
           navigateHomeView(context);
+          BlocProvider.of<HomeScreenCubit>(context).initialize();
           buildShowSnackBar(context, 'Welcome ${state.user.emailAddress}');
         }
       },
@@ -80,8 +82,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                         autoValidateMode = AutovalidateMode.always;
 
                           BlocProvider.of<LoginCubit>(context).userLogin(
-                            email: emailTextController.text,
-                            password: passwordTextController.text,
+                            email: emailTextController.text.trim(),
+                            password: passwordTextController.text.trim(),
                           );
 
                       });
@@ -102,6 +104,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     while (GoRouter.of(context).canPop()) {
       GoRouter.of(context).pop();
     }
-    GoRouter.of(context).push(Routing.navigationScreen);
+    GoRouter.of(context).pushReplacement(Routing.navigationScreen);
   }
 }

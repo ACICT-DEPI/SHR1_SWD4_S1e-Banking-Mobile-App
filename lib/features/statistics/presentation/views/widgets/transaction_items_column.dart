@@ -13,7 +13,7 @@ class TransactionItemsColumn extends StatelessWidget {
     return ListView.separated(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: transactions.length > 5 ? 4 : transactions.length,
+      itemCount: transactions.length > 4 ? 4 : transactions.length,
       separatorBuilder: (context, index) => const SizedBox(height: 24),
       itemBuilder: (context, index) {
         return TransactionItem(

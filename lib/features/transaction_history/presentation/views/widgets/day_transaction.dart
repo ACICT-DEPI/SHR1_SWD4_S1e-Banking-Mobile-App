@@ -27,23 +27,22 @@ class DayTransaction extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 30),
-        Expanded(
-          child: ListView.separated(
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: listOfTransactions.length,
-            separatorBuilder: (context, index) => const SizedBox(
-              height: 22,
-            ),
-            itemBuilder: (context, index) {
-              return TransactionItem(
-                transactionItemModel: TransactionItemModel(
-                  type: listOfTransactions[index].type,
-                  amount: listOfTransactions[index].amount,
-                ),
-              );
-            },
+        const SizedBox(height: 12),
+        ListView.separated(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: listOfTransactions.length,
+          separatorBuilder: (context, index) => const SizedBox(
+            height: 22,
           ),
+          itemBuilder: (context, index) {
+            return TransactionItem(
+              transactionItemModel: TransactionItemModel(
+                type: listOfTransactions[index].type,
+                amount: listOfTransactions[index].amount,
+              ),
+            );
+          },
         ),
       ],
     );

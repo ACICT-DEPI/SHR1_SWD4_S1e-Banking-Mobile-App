@@ -33,7 +33,7 @@ class CardInputField extends StatelessWidget {
           label,
           style: const TextStyle(color: AppColors.greyA7, fontSize: 14),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 2),
         Row(
           children: [
             Icon(

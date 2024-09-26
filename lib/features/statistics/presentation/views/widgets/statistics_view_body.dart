@@ -67,7 +67,12 @@ class StatisticsViewBody extends StatelessWidget {
             ),
           );
         } else if (state is StatisticsFailedState) {
-          return ErrorScreen(message: state.errMessage);
+          return ErrorScreen(
+            message: state.errMessage,
+            onPressed: () {
+              BlocProvider.of<StatisticsCubit>(context).initialize();
+            },
+          );
         } else {
           return const ErrorScreen(message: "error");
         }

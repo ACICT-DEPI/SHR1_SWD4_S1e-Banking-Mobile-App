@@ -1,18 +1,21 @@
-import 'package:bank_app/features/add_new_card_page/presentation/widgets/card_validator.dart';
-import 'package:bank_app/features/navigation_screen/logic/home_screen_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../core/Routing/Routing.dart';
 import '../../../../core/widgets/Loading_screen.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_app_button.dart';
 import '../../../../core/widgets/error_screen.dart';
 import '../../../navigation_screen/data/models/card_model.dart';
+import '../../../navigation_screen/logic/home_screen_cubit.dart';
 import '../../../navigation_screen/presentation/home/presentation/views/widgets/bank_card_design.dart';
+import '../../../statistics/domain/cubits/statistics_cubit/statistics_cubit.dart';
 import '../../domain/cubits/add_card_cubit.dart';
 import '../../domain/cubits/add_card_state.dart';
 import 'card_input_field.dart';
 import 'card_number_Input_formatter.dart';
+import 'card_validator.dart';
 import 'date_input_formatter.dart';
 
 class AddCardScreenBody extends StatefulWidget {
@@ -45,7 +48,9 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
       listener: (context, state) {
         if (state is AddCardSuccessState) {
           BlocProvider.of<HomeScreenCubit>(context).initialize();
-          Navigator.pop(context);
+          BlocProvider.of<StatisticsCubit>(context).initialize();
+          GoRouter.of(context).pop();
+          GoRouter.of(context).pushReplacement(Routing.navigationScreen);
         }
       },
       builder: (context, state) {
@@ -68,6 +73,7 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                       Navigator.pop(context);
                     },
                   ),
+                  const SizedBox(height: 30),
                   BankCardDesign(
                     card: CardModel(
                       cvv: _cvvController.text,
@@ -77,7 +83,7 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                       cardType: "Mastercard",
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 40),
                   Form(
                     key: _formKey,
                     child: Column(
@@ -94,7 +100,7 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                             LengthLimitingTextInputFormatter(16)
                           ],
                         ),
-                        const SizedBox(height: 4),
+                        const SizedBox(height: 30),
                         Row(
                           children: [
                             Expanded(
@@ -108,7 +114,7 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                                 inputFormatters: [DateInputFormatter()],
                               ),
                             ),
-                            const SizedBox(width: 4),
+                            const SizedBox(width: 5),
                             Expanded(
                               child: CardInputField(
                                 validator: CardValidator.validateCvv,
@@ -124,7 +130,7 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                             ),
                           ],
                         ),
-                        const SizedBox(height: 4),
+                        const SizedBox(height: 30),
                         CardInputField(
                           validator: CardValidator.validateCardNumber,
                           keyboardType: TextInputType.number,
@@ -138,7 +144,7 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                             CardNumberInputFormatter()
                           ],
                         ),
-                        const SizedBox(height: 80),
+                        const SizedBox(height: 100),
                       ],
                     ),
                   ),

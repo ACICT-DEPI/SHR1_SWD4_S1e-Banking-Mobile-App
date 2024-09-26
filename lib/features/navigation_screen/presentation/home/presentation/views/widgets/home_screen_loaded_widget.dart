@@ -31,11 +31,11 @@ class HomeScreenLoadedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double widthFactor = MediaQuery.of(context).size.width/411;
-    final double heightFactor = MediaQuery.of(context).size.height/890;
+    // final double widthFactor = MediaQuery.of(context).size.width / 411;
+    final double heightFactor = MediaQuery.of(context).size.height / 890;
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.0*widthFactor, vertical: 20.0*heightFactor),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -44,19 +44,23 @@ class HomeScreenLoadedWidget extends StatelessWidget {
             imagePath: 'assets/images/person.png',
             onSearchPressed: onNavigateToSearch,
           ),
-          SizedBox(height: heightFactor*20),
+          const SizedBox(height: 18),
           Expanded(
             child: ListView(
               shrinkWrap: true,
               children: [
-                _buildCardSection(state.homeModel.cards,heightFactor),
+                _buildCardSection(state.homeModel.cards, heightFactor),
                 BuildActionsRow(
                   onPressedSent: onNavigateToSendMoney,
                   onPressedReceive: onNavigateToReceiveMoney,
                   onPressedTopUp: onNavigateToService,
                 ),
-                SizedBox(height: 26*heightFactor),
-                 TransactionSection(transactions: state.homeModel.transactions,),
+                const SizedBox(height: 28.0),
+                if (state.homeModel.transactions.isNotEmpty) ...[
+                  TransactionSection(
+                    transactions: state.homeModel.transactions,
+                  ),
+                ]
               ],
             ),
           ),
@@ -65,10 +69,10 @@ class HomeScreenLoadedWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildCardSection(List<CardModel> cards,double heightFactor) {
+  Widget _buildCardSection(List<CardModel> cards, double heightFactor) {
     return SizedBox(
       width: double.infinity,
-      height: 300* heightFactor,
+      height: 240 * heightFactor,
       child: PageView.builder(
         controller: pageController,
         itemCount: cards.length,

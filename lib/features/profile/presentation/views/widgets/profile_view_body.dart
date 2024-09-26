@@ -1,3 +1,4 @@
+import 'package:bank_app/core/network/firebase_authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -10,7 +11,6 @@ import '../../../../../core/widgets/error_screen.dart';
 import '../../../../all_cards_screen/presentation/views/all_cards_screen.dart';
 import '../../../../authentication/data/models/user_model.dart';
 import '../../../../navigation_screen/logic/home_screen_cubit.dart';
-import '../../../../privacy_policy/presentation/views/privacy_policy.dart';
 import 'profile_information.dart';
 import 'profile_row.dart';
 
@@ -71,23 +71,32 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                   ),
                   const SizedBox(height: 28),
                   ProfileRow(
-                    text: "Contact Us",
-                    icon: Icons.phone,
-                    onPressed: () {},
+                    text: "Logout",
+                    icon: Icons.exit_to_app,
+                    onPressed: () async {
+                      await FirebaseAuthentication.logoutUser();
+                      while (GoRouter.of(context).canPop()) {
+                        GoRouter.of(context).pop();
+                      }
+                      GoRouter.of(context).pushReplacement(
+                        Routing.onboardingScreen,
+                      );
+                    },
                   ),
                   const SizedBox(height: 28),
                   ProfileRow(
-                    text: "Privacy Policy ",
-                    icon: Icons.privacy_tip,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const PrivacyPolicy(),
-                        ),
+                    text: "Delete Account",
+                    icon: Icons.delete_forever_sharp,
+                    onPressed: () async {
+                      await FirebaseAuthentication.deleteUser();
+                      while (GoRouter.of(context).canPop()) {
+                        GoRouter.of(context).pop();
+                      }
+                      GoRouter.of(context).pushReplacement(
+                        Routing.onboardingScreen,
                       );
                     },
-                  )
+                  ),
                 ],
               ),
             ),

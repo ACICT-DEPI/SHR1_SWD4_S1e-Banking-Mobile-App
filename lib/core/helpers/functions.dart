@@ -164,12 +164,22 @@ class Functions {
 
   static List<DateTime> _getLastDaysDateTime(int days) {
     DateTime today = DateTime.now();
-    List<DateTime> last7Days = List.generate(
-      days,
-      (i) => today.subtract(
-        Duration(days: i),
-      ),
-    );
+    List<DateTime> last7Days = [];
+    if (days == 7) {
+      last7Days = List.generate(
+        6,
+        (i) => today.subtract(
+          Duration(days: i + 1),
+        ),
+      );
+    } else {
+      last7Days = List.generate(
+        23,
+        (i) => today.subtract(
+          Duration(days: i + 7),
+        ),
+      );
+    }
 
     return last7Days.reversed.toList();
   }

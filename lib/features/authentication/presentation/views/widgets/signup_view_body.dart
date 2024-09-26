@@ -84,10 +84,10 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                         if (formKey.currentState!.validate()) {
                           BlocProvider.of<SignUpCubit>(context).userRegister(
                             user: UserModel(
-                              fullName: nameTextController.text,
-                              phoneNumber: phoneTextController.text,
-                              emailAddress: emailTextController.text,
-                              password: passwordTextController.text,
+                              fullName: nameTextController.text.trim(),
+                              phoneNumber: phoneTextController.text.trim(),
+                              emailAddress: emailTextController.text.trim(),
+                              password: passwordTextController.text.trim(),
                             ),
                           );
                         }

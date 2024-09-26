@@ -11,6 +11,7 @@ import '../../../../core/widgets/error_screen.dart';
 import '../../../navigation_screen/data/models/card_model.dart';
 import '../../../navigation_screen/logic/home_screen_cubit.dart';
 import '../../../navigation_screen/presentation/home/presentation/views/widgets/bank_card_design.dart';
+import '../../../statistics/domain/cubits/statistics_cubit/statistics_cubit.dart';
 import '../../../transaction_history/data/models/transaction_item_model.dart';
 import '../../domain/cubits/get_cards_cubit/get_cards_cubit.dart';
 import '../../domain/cubits/get_cards_cubit/get_cards_state.dart';
@@ -43,6 +44,7 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
       listener: (context, sendMoneyState) async {
         if (sendMoneyState is ServiceSuccessState) {
           BlocProvider.of<HomeScreenCubit>(context).initialize();
+          BlocProvider.of<StatisticsCubit>(context).initialize();
           GoRouter.of(context).pushReplacement(
             Routing.transactionHistoryView,
           );

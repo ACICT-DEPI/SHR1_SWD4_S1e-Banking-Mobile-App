@@ -8,7 +8,8 @@ class CustomNavigationBar extends StatelessWidget {
   final int bottomNavIndex;
   final ValueChanged<int> onTap;
 
-  CustomNavigationBar({super.key, required this.bottomNavIndex, required this.onTap});
+  CustomNavigationBar(
+      {super.key, required this.bottomNavIndex, required this.onTap});
 
   // Create a list of SVG asset paths and corresponding labels
   final List<String> svgIcons = [
@@ -31,7 +32,7 @@ class CustomNavigationBar extends StatelessWidget {
     final double heightFactor = MediaQuery.of(context).size.height / 890;
 
     return SizedBox(
-      height: 90 * heightFactor,  // Adjusted height for responsiveness
+      height: 90 * heightFactor, // Adjusted height for responsiveness
       child: AnimatedBottomNavigationBar.builder(
         borderColor: Colors.transparent,
         itemCount: svgIcons.length,
@@ -44,14 +45,15 @@ class CustomNavigationBar extends StatelessWidget {
               SvgPicture.asset(
                 svgIcons[index],
                 color: color,
-                height: 24 * heightFactor,  // Adjusted height of icons
+                height: 24 * heightFactor, // Adjusted height of icons
               ),
-              SizedBox(height: 4 * heightFactor),  // Adjusted spacing between icon and text
+              SizedBox(height: 4 * heightFactor),
+              // Adjusted spacing between icon and text
               Text(
                 labels[index],
                 style: TextStyle(
                   color: color,
-                  fontSize: 12 * widthFactor,  // Adjusted font size
+                  fontSize: 12 * widthFactor, // Adjusted font size
                 ),
               ),
             ],
