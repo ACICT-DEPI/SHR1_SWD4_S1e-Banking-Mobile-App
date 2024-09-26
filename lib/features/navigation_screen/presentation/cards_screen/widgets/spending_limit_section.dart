@@ -18,13 +18,11 @@ class _SpendingLimitSectionState extends State<SpendingLimitSection> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            "Monthly spending limit",
-            style: TextsStyle.textStyleSemiBold24.copyWith(fontSize: 18),
-          ),
+        Text(
+          "Monthly spending limit",
+          style: TextsStyle.textStyleSemiBold24.copyWith(fontSize: 18),
         ),
+        const SizedBox(height: 12.0),
         Container(
           decoration: BoxDecoration(
             color: AppColors.greyF4,
@@ -38,7 +36,7 @@ class _SpendingLimitSectionState extends State<SpendingLimitSection> {
                 const SizedBox(height: 10),
                 Text(
                   "Amount: \$${_currentSliderValue.toStringAsFixed(2)}",
-                   style: TextsStyle.textStyleRegular13,
+                  style: TextsStyle.textStyleRegular13,
                 ),
                 Slider(
                   value: _currentSliderValue,
@@ -65,8 +63,8 @@ class _SpendingLimitSectionState extends State<SpendingLimitSection> {
                     ),
                     Text(
                       "\$${_currentSliderValue.toStringAsFixed(2)}",
-                      style: TextsStyle.textStyleRegular15.copyWith(color: AppColors.black,fontWeight: FontWeight.bold),
-
+                      style: TextsStyle.textStyleRegular15.copyWith(
+                          color: AppColors.black, fontWeight: FontWeight.bold),
                     ),
                     const Text(
                       "\$10,000",
