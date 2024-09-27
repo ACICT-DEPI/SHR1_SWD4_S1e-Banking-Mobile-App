@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
+import '../../../../authentication/data/models/user_model.dart';
 
 class BirthDateSelector extends StatefulWidget {
-  const BirthDateSelector({super.key, required this.enabled});
+  const BirthDateSelector({
+    super.key,
+    required this.userModel,
+    required this.enabled,
+  });
 
   final bool enabled;
+  final UserModel userModel;
 
   @override
   State<BirthDateSelector> createState() => _BirthDateSelectorState();
 }
 
 class _BirthDateSelectorState extends State<BirthDateSelector> {
-  int day = DateTime.now().day;
-  int month = DateTime.now().month;
-  int year = DateTime.now().year;
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,12 +38,12 @@ class _BirthDateSelectorState extends State<BirthDateSelector> {
               child: DropdownButtonFormField<int>(
                 decoration: _inputDecoration(),
                 dropdownColor: AppColors.white,
-                value: year,
+                value: widget.userModel.birthYear,
                 items: _yearItems(),
                 onChanged: widget.enabled
                     ? (int? newValue) {
                         setState(() {
-                          year = newValue!;
+                          widget.userModel.birthYear = newValue!;
                           _updateDaysInMonth();
                         });
                       }
@@ -54,13 +56,13 @@ class _BirthDateSelectorState extends State<BirthDateSelector> {
             Expanded(
               child: DropdownButtonFormField<int>(
                 decoration: _inputDecoration(),
-                value: month,
+                value: widget.userModel.birthMonth,
                 dropdownColor: AppColors.white,
                 items: _monthItems(),
                 onChanged: widget.enabled
                     ? (int? newValue) {
                         setState(() {
-                          month = newValue!;
+                          widget.userModel.birthMonth = newValue!;
                           _updateDaysInMonth();
                         });
                       }
@@ -73,13 +75,13 @@ class _BirthDateSelectorState extends State<BirthDateSelector> {
             Expanded(
               child: DropdownButtonFormField<int>(
                 decoration: _inputDecoration(),
-                value: day,
+                value: widget.userModel.birthDay,
                 dropdownColor: AppColors.white,
                 items: _dayItems(),
                 onChanged: widget.enabled
                     ? (int? newValue) {
                         setState(() {
-                          day = newValue!;
+                          widget.userModel.birthDay = newValue!;
                         });
                       }
                     : null,
@@ -130,8 +132,12 @@ class _BirthDateSelectorState extends State<BirthDateSelector> {
   }
 
   List<DropdownMenuItem<int>> _dayItems() {
-    return List<int>.generate(daysInMonth(year, month), (index) => index + 1)
-        .map((int value) {
+    return List<int>.generate(
+        daysInMonth(
+          widget.userModel.birthYear!,
+          widget.userModel.birthMonth!,
+        ),
+        (index) => index + 1).map((int value) {
       return DropdownMenuItem<int>(
         value: value,
         child: Text(value.toString()),
@@ -140,10 +146,11 @@ class _BirthDateSelectorState extends State<BirthDateSelector> {
   }
 
   void _updateDaysInMonth() {
-    int maxDays = daysInMonth(year, month);
-    if (day > maxDays) {
+    int maxDays =
+        daysInMonth(widget.userModel.birthYear!, widget.userModel.birthMonth!);
+    if (widget.userModel.birthDay! > maxDays) {
       setState(() {
-        day = maxDays;
+        widget.userModel.birthDay = maxDays;
       });
     }
   }

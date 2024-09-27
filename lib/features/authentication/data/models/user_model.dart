@@ -3,8 +3,11 @@ class UserModel {
   final String phoneNumber;
   final String emailAddress;
   final String password;
-   String? joinedAt;
+  String? joinedAt;
   String? userId;
+  int? birthDay;
+  int? birthMonth;
+  int? birthYear;
 
   UserModel({
     this.userId,
@@ -13,6 +16,9 @@ class UserModel {
     required this.emailAddress,
     required this.password,
     this.joinedAt,
+    this.birthDay,
+    this.birthMonth,
+    this.birthYear,
   });
 
   factory UserModel.fromJson(json) {
@@ -23,6 +29,9 @@ class UserModel {
       password: json["password"],
       userId: json["uid"],
       joinedAt: json["joinedAt"],
+      birthDay: json["birthDay"],
+      birthMonth: json["birthMonth"],
+      birthYear: json["birthYear"],
     );
   }
 
@@ -34,6 +43,9 @@ class UserModel {
       "password": user.password,
       "uid": user.userId,
       "joinedAt": user.joinedAt,
+      "birthDay": user.birthDay,
+      "birthMonth": user.birthMonth,
+      "birthYear": user.birthYear,
     };
   }
 }

@@ -102,6 +102,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                     const SizedBox(height: 20),
                     BirthDateSelector(
                       enabled: enabled,
+                      userModel: homeState.homeModel.userModel,
                     ),
                     const SizedBox(height: 20),
                     Text(
@@ -119,6 +120,9 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                             fullName: nameController.text,
                             emailAddress: emailController.text,
                             phoneNumber: phoneController.text,
+                            birthDay: userModel.birthDay!,
+                            birthMonth: userModel.birthMonth!,
+                            birthYear: userModel.birthYear!,
                           );
                         },
                       ),

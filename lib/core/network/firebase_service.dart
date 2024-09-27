@@ -174,6 +174,9 @@ class FirebaseService {
     String? emailAddress,
     String? phoneNumber,
     String? password,
+    int? birthDay,
+    int? birthMonth,
+    int? birthYear,
   }) async {
     UserModel defaultUser = await FirebaseAuthentication.getUserModel();
 
@@ -182,6 +185,9 @@ class FirebaseService {
       phoneNumber: phoneNumber ?? defaultUser.phoneNumber,
       emailAddress: emailAddress ?? defaultUser.emailAddress,
       password: password ?? defaultUser.password,
+      birthDay: birthDay ?? defaultUser.birthDay,
+      birthMonth: birthMonth ?? defaultUser.birthMonth,
+      birthYear: birthYear ?? defaultUser.birthYear,
       joinedAt: defaultUser.joinedAt,
       userId: defaultUser.userId,
     );
