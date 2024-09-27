@@ -198,4 +198,19 @@ class Functions {
 
     return searchResult;
   }
+
+  static double getTransactionPercent(
+      String type, List<TransactionItemModel> allTransactions) {
+    int numOfTransactionType = 0;
+
+    for (var trans in allTransactions) {
+      if (type == getTransactionSubTitle(trans.type)) {
+        numOfTransactionType++;
+      }
+    }
+
+    double percent = numOfTransactionType / allTransactions.length;
+    percent = (percent == 0) ? 0.00001 : percent;
+    return percent * 100;
+  }
 }

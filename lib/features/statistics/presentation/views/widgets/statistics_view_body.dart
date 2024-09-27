@@ -5,6 +5,7 @@ import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/widgets/error_screen.dart';
+import '../../../data/models/category_model.dart';
 import 'category_chart_body.dart';
 import '../../../data/models/month_model.dart';
 import '../../../domain/cubits/statistics_cubit/statistics_cubit.dart';
@@ -59,7 +60,28 @@ class StatisticsViewBody extends StatelessWidget {
                         "Category Chart",
                         style: TextsStyle.textStyleMedium22,
                       ),
-                      const CategoryChartBody(),
+                      CategoryChartBody(
+                        listOfCategoryModel: [
+                          CategoryModel(
+                            category: "Transaction",
+                            percentage:
+                                state.statisticsModel.transactionPercent,
+                          ),
+                          CategoryModel(
+                            category: "Entertainment",
+                            percentage:
+                                state.statisticsModel.entertainmentPercent,
+                          ),
+                          CategoryModel(
+                            category: "Music",
+                            percentage: state.statisticsModel.musicPercent,
+                          ),
+                          CategoryModel(
+                            category: "Shopping",
+                            percentage: state.statisticsModel.shoppingPercent,
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
