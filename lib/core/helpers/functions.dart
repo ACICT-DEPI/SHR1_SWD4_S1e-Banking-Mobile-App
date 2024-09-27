@@ -183,4 +183,19 @@ class Functions {
 
     return last7Days.reversed.toList();
   }
+
+  static List<TransactionItemModel> searchInTransactions(
+      List<TransactionItemModel> transactions, String title) {
+    List<TransactionItemModel> searchResult = [];
+
+    for (var trans in transactions) {
+      if (getTransactionTitle(trans.type)
+          .toLowerCase()
+          .contains(title.toLowerCase())) {
+        searchResult.add(trans);
+      }
+    }
+
+    return searchResult;
+  }
 }

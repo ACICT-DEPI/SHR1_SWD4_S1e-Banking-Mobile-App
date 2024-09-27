@@ -7,15 +7,18 @@ import '../../../../../core/styles/texts_style.dart';
 class SearchTextField extends StatefulWidget {
   const SearchTextField({
     super.key,
+    this.onChanged,
+    required this.searchController,
   });
+
+  final Function(String)? onChanged;
+  final TextEditingController searchController;
 
   @override
   State<SearchTextField> createState() => _SearchTextFieldState();
 }
 
 class _SearchTextFieldState extends State<SearchTextField> {
-  final TextEditingController searchController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +28,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
       ),
       height: 44,
       child: TextField(
-        controller: searchController,
+        controller: widget.searchController,
         decoration: InputDecoration(
           border: InputBorder.none,
           prefixIcon: const Icon(
@@ -35,7 +38,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
           suffixIcon: IconButton(
             onPressed: () {
               setState(() {
-                searchController.clear();
+                widget.searchController.clear();
               });
             },
             icon: const Icon(
@@ -46,6 +49,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
           hintText: "Search...",
           hintStyle: TextsStyle.textStyleRegular14,
         ),
+        onChanged: widget.onChanged,
         style: TextsStyle.textStyleRegular14.copyWith(
           color: AppColors.grey8D,
         ),
