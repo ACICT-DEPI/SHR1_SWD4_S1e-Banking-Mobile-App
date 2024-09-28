@@ -6,6 +6,7 @@ import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/widgets/error_screen.dart';
 import '../../../data/models/category_model.dart';
+import '../../../data/models/statistics_model.dart';
 import 'category_chart_body.dart';
 import '../../../data/models/month_model.dart';
 import '../../../domain/cubits/statistics_cubit/statistics_cubit.dart';
@@ -23,6 +24,7 @@ class StatisticsViewBody extends StatelessWidget {
         if (state is StatisticsLoadingState) {
           return const LoadingScreen();
         } else if (state is StatisticsSuccessState) {
+          StatisticsModel statisticsModel = state.statisticsModel;
           return Padding(
             padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
             child: Column(
@@ -30,7 +32,11 @@ class StatisticsViewBody extends StatelessWidget {
                 CustomAppBar(
                   appBarTitle: "Statistics",
                   rightIcon: Icons.notifications_none,
-                  onPressedRight: () {},
+                  onPressedRight: () {
+                    ///
+                    /// Add Notifications View
+                    ///
+                  },
                 ),
                 Expanded(
                   child: ListView(
@@ -48,40 +54,40 @@ class StatisticsViewBody extends StatelessWidget {
                                 MonthModel.fromJsonBuildMonthModelList(
                               {
                                 "lastSixMonthsDate":
-                                    state.statisticsModel.lastSixMonthsDate,
+                                    statisticsModel.lastSixMonthsDate,
                                 "lastSixMonthsBalance":
-                                    state.statisticsModel.lastSixMonthsBalance,
+                                    statisticsModel.lastSixMonthsBalance,
                               },
                             ),
-                            maxBalance: state.statisticsModel.maxBalance),
+                            maxBalance: statisticsModel.maxBalance),
                       ),
-                      const Divider(height: 40),
-                      const Text(
-                        "Category Chart",
-                        style: TextsStyle.textStyleMedium22,
-                      ),
-                      CategoryChartBody(
-                        listOfCategoryModel: [
-                          CategoryModel(
-                            category: "Transaction",
-                            percentage:
-                                state.statisticsModel.transactionPercent,
-                          ),
-                          CategoryModel(
-                            category: "Entertainment",
-                            percentage:
-                                state.statisticsModel.entertainmentPercent,
-                          ),
-                          CategoryModel(
-                            category: "Music",
-                            percentage: state.statisticsModel.musicPercent,
-                          ),
-                          CategoryModel(
-                            category: "Shopping",
-                            percentage: state.statisticsModel.shoppingPercent,
-                          ),
-                        ],
-                      ),
+                      if (showCategoryChart(statisticsModel)) ...[
+                        const Divider(height: 40),
+                        const Text(
+                          "Category Chart",
+                          style: TextsStyle.textStyleMedium22,
+                        ),
+                        CategoryChartBody(
+                          listOfCategoryModel: [
+                            CategoryModel(
+                              category: "Transaction",
+                              percentage: statisticsModel.transactionPercent,
+                            ),
+                            CategoryModel(
+                              category: "Entertainment",
+                              percentage: statisticsModel.entertainmentPercent,
+                            ),
+                            CategoryModel(
+                              category: "Music",
+                              percentage: statisticsModel.musicPercent,
+                            ),
+                            CategoryModel(
+                              category: "Shopping",
+                              percentage: statisticsModel.shoppingPercent,
+                            ),
+                          ],
+                        ),
+                      ]
                     ],
                   ),
                 ),
@@ -100,5 +106,13 @@ class StatisticsViewBody extends StatelessWidget {
         }
       },
     );
+  }
+
+  bool showCategoryChart(StatisticsModel statisticsModel) {
+    return !(statisticsModel.transactionPercent +
+            statisticsModel.entertainmentPercent +
+            statisticsModel.musicPercent +
+            statisticsModel.shoppingPercent)
+        .isNaN;
   }
 }
