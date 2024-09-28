@@ -176,17 +176,17 @@ class Routing {
       ),
       GoRoute(
         path: errorScreen,
-        builder: (BuildContext context, GoRouterState state,) {
-          // Cast state.extra to String for the message, and optionally to Function for onPressed
-          final String message = state.extra is String ? state.extra as String : "";
-          final Function()? onClick = state.extra is Function ? state.extra as Function() : null;
+        builder: (BuildContext context, GoRouterState state) {
+          // Retrieve the ErrorScreenData from state.extra
+          final errorScreenData = state.extra as ErrorScreenData;
 
           return ErrorScreen(
-            onPressed: onClick ?? () {}, // Default to an empty function if onClick is null
-            message: message.isEmpty ? "Something went wrong" : message,
+            message: errorScreenData.message,
+            onPressed: errorScreenData.onPressed,
           );
         },
       ),
+
 
     ],
   );

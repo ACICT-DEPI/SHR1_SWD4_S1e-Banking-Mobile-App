@@ -3,7 +3,12 @@ import 'package:lottie/lottie.dart';
 
 import '../styles/texts_style.dart';
 import 'custom_app_button.dart';
+class ErrorScreenData {
+  final String message;
+  final Function() onPressed;
 
+  ErrorScreenData({required this.message, required this.onPressed});
+}
 class ErrorScreen extends StatelessWidget {
   final String message;
   final Function()? onPressed;

@@ -35,16 +35,14 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocListener<HomeScreenCubit, HomeScreenState>(
       listener: (context, state) {
         if (state is HomeScreenError) {
-          Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-              builder: (context) => ErrorScreen(
-                message: state.message,
-                onPressed: () {
-                  context.go(Routing.navigationScreen);
-                },
-              ),
+          context.go(
+            Routing.errorScreen,
+            extra: ErrorScreenData(
+              message: "An error occurred",
+              onPressed: () {
+                context.go(Routing.navigationScreen); // Navigate to the next screen
+              },
             ),
-                (Route<dynamic> route) => false, // This removes all previous routes
           );
 
         }
