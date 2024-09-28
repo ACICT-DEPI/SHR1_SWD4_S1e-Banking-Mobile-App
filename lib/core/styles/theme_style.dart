@@ -9,7 +9,7 @@ class ThemeStyle {
     scaffoldBackgroundColor: AppColors.white,
     iconButtonTheme: const IconButtonThemeData(
       style: ButtonStyle(
-        iconColor: WidgetStatePropertyAll(AppColors.blue),
+        iconColor: WidgetStatePropertyAll(AppColors.black),
         backgroundColor: WidgetStatePropertyAll(AppColors.greyF4),
       ),
     ),
