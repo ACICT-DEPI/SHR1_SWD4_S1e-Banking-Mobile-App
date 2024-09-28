@@ -32,29 +32,34 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeScreenCubit, HomeScreenState>(
-      builder: (context, state) {
-        if (state is HomeScreenSuccess) {
-          return HomeScreenLoadedWidget(
-            state: state,
-            pageController: _pageController,
-            selectedCardIndex: _selectedCardIndex,
-            onPageChanged: (index) {
-              setState(() {
-                _selectedCardIndex = index;
-              });
-            },
-            onNavigateToSearch: _navigateToSearch,
-            onNavigateToSendMoney: _navigateToSendMoney,
-            onNavigateToReceiveMoney: _navigateToReceiveMoney,
-            onNavigateToService: _navigateToService,
-          );
-        } else if (state is HomeScreenError) {
-          return ErrorScreen(message: state.message);
-        } else {
-          return const LoadingScreen();
+    return BlocListener<HomeScreenCubit, HomeScreenState>(
+      listener: (context, state) {
+        if (state is HomeScreenError) {
+         context.go(Routing.errorScreen, extra: state.message);
         }
       },
+      child: BlocBuilder<HomeScreenCubit, HomeScreenState>(
+        builder: (context, state) {
+          if (state is HomeScreenSuccess) {
+            return HomeScreenLoadedWidget(
+              state: state,
+              pageController: _pageController,
+              selectedCardIndex: _selectedCardIndex,
+              onPageChanged: (index) {
+                setState(() {
+                  _selectedCardIndex = index;
+                });
+              },
+              onNavigateToSearch: _navigateToSearch,
+              onNavigateToSendMoney: _navigateToSendMoney,
+              onNavigateToReceiveMoney: _navigateToReceiveMoney,
+              onNavigateToService: _navigateToService,
+            );
+          } else {
+            return const LoadingScreen();
+          }
+        },
+      ),
     );
   }
 
