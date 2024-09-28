@@ -70,7 +70,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
   void _navigateToSearch() {
     GoRouter.of(context).push(Routing.searchView);
   }

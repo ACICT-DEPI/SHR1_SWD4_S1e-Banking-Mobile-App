@@ -7,6 +7,7 @@ import '../../features/authentication/presentation/views/signup_view.dart';
 import '../../features/change_password/presentation/views/change_password.dart';
 import '../../features/languages/presentation/views/languages_view.dart';
 import '../../features/navigation_screen/presentation/navigation.dart';
+import '../../features/notification/presentation/notifications_screen.dart';
 import '../../features/onboardingScreen/presentation/onboarding_screen.dart';
 import '../../features/privacy_policy/presentation/views/privacy_policy.dart';
 import '../../features/profile/presentation/views/edit_profile.dart';
@@ -43,7 +44,7 @@ class Routing {
   static String successSendingScreen = '/SuccessSendingScreen';
   static String errorScreen = '/ErrorScreen';
   static String qrScanScreen = '/QrScanScreen';
-
+  static String notificationsScreen = '/NotificationsScreen';
   static final GoRouter _router = GoRouter(
     initialLocation: onboardingScreen, // Set your initial route here
 
@@ -171,6 +172,12 @@ class Routing {
           return SuccessSendingScreen(
             successModel: successModel,
           );
+        },
+      ),
+      GoRoute(
+        path: notificationsScreen,
+        builder: (BuildContext context, GoRouterState state) {
+          return  NotificationsScreen();
         },
       ),
       GoRoute(

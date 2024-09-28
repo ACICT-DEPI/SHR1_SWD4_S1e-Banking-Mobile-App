@@ -1,3 +1,4 @@
+import 'package:bank_app/features/notification/domain/notifications_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,6 +22,8 @@ void main() async {
   runApp(
     MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => NotificationsCubit()),
+
         BlocProvider(create: (context) => HomeScreenCubit()),
         BlocProvider(create: (context) => ConnectionScreenCubit()),
         BlocProvider(
