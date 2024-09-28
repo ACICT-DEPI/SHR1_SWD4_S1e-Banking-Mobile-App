@@ -6,6 +6,7 @@ import '../../features/authentication/presentation/views/login_view.dart';
 import '../../features/authentication/presentation/views/signup_view.dart';
 import '../../features/change_password/presentation/views/change_password.dart';
 import '../../features/languages/presentation/views/languages_view.dart';
+import '../../features/local_auth/ui/local_auth.dart';
 import '../../features/navigation_screen/presentation/navigation.dart';
 import '../../features/notification/presentation/notifications_screen.dart';
 import '../../features/onboardingScreen/presentation/onboarding_screen.dart';
@@ -45,10 +46,17 @@ class Routing {
   static String errorScreen = '/ErrorScreen';
   static String qrScanScreen = '/QrScanScreen';
   static String notificationsScreen = '/NotificationsScreen';
+  static String localauthscreen = '/LocalAuthScreen';
   static final GoRouter _router = GoRouter(
     initialLocation: onboardingScreen, // Set your initial route here
 
     routes: <RouteBase>[
+      GoRoute(
+        path: localauthscreen,
+        builder: (BuildContext context, GoRouterState state) {
+          return  LocalAuthScreen();
+        },
+      ),
       GoRoute(
         path: onboardingScreen,
         builder: (BuildContext context, GoRouterState state) {
@@ -57,7 +65,7 @@ class Routing {
         redirect: (context, state) async {
           // Implement the route guard logic here
           if (FirebaseAuthentication.isUserLogin()) {
-            return navigationScreen; // Redirect to login if not authenticated
+            return localauthscreen; // Redirect to login if not authenticated
           }
           return null; // Continue to the requested route if authenticated
         },

@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/Routing/Routing.dart';
 import 'core/styles/theme_style.dart';
 
+import 'features/local_auth/ui/local_auth.dart';
 import 'features/navigation_screen/logic/home_screen_cubit.dart';
 import 'features/statistics/domain/cubits/statistics_cubit/statistics_cubit.dart';
 import 'features/wifi_screen/Logic/conection_cubit.dart';
@@ -30,7 +31,7 @@ void main() async {
           create: (context) => StatisticsCubit()..initialize(),
         )
       ],
-      child: const MyApp(),
+      child:  const MyApp(),
     ),
   );
 }

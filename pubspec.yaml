@@ -63,6 +63,7 @@ dependencies:
   ai_barcode_scanner: ^5.2.1
   image_picker: ^1.1.2
   firebase_storage: ^11.6.5
+  local_auth: ^2.1.3
 
 
 
