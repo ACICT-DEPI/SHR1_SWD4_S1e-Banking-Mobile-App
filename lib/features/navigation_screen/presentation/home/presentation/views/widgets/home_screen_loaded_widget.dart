@@ -41,7 +41,7 @@ class HomeScreenLoadedWidget extends StatelessWidget {
         children: [
           HomePageAppBarDesign(
             username: state.homeModel.userModel.fullName,
-            imagePath: 'assets/images/person.png',
+            imagePath: 'assets/images/person2.jpeg',
             onSearchPressed: onNavigateToSearch,
           ),
           const SizedBox(height: 18),
