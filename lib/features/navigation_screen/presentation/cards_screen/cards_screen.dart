@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/network/firebase_service.dart';
 import '../../../../core/widgets/Loading_screen.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
+import '../../../../core/widgets/custom_snack_bar.dart';
 import '../../../../core/widgets/error_screen.dart';
 import '../../../all_cards_screen/presentation/views/all_cards_screen.dart';
 import '../../../authentication/data/models/user_model.dart';
@@ -101,8 +102,10 @@ class _CardsScreenState extends State<CardsScreen> {
                           await FirebaseService.updateUser(
                             monthlyLimit: user.monthlyLimit,
                           );
-                          BlocProvider.of<HomeScreenCubit>(context)
-                              .initialize();
+                          buildShowSnackBar(
+                            context,
+                            "Saved New Monthly Limit",
+                          );
                         },
                       ),
                     ],
