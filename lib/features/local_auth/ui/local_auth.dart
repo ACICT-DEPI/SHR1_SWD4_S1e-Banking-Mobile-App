@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:local_auth/local_auth.dart';
 
 import '../../../core/Routing/Routing.dart';
+import '../domain/biometric_auth.dart';
 
 // Main Auth Screen
 class LocalAuthScreen extends StatefulWidget {
@@ -16,9 +17,14 @@ class LocalAuthScreen extends StatefulWidget {
 }
 
 class _LocalAuthScreenState extends State<LocalAuthScreen> {
+
   final LocalAuthentication _auth = LocalAuthentication();
   String enteredPin = "";
-
+@override
+  void initState() {
+    super.initState();
+    BiometricAuth.authenticateWithBiometrics(context);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,9 +46,7 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
               },
             ),
             SizedBox(height: 20),
-            FingerprintAuth(
-              onAuthenticate: _authenticateWithBiometrics,
-            ),
+
             SizedBox(height: 20),
             ForgotPinText(),
           ],
@@ -71,26 +75,6 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
     }
   }
 
-  Future<void> _authenticateWithBiometrics() async {
-    try {
-      bool authenticated = await _auth.authenticate(
-        localizedReason: 'Please authenticate to access',
-        options: const AuthenticationOptions(
-          useErrorDialogs: true,
-          stickyAuth: true,
-          biometricOnly: true,
-        ),
-      );
-
-      if (authenticated) {
-        context.go(Routing.navigationScreen);
-      } else {
-        print('Authentication failed');
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
 
 }
 

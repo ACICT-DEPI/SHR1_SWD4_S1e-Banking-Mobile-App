@@ -14,7 +14,7 @@ class PinCircles extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 4.0),
           child: CircleAvatar(
-            radius: 12,
+            radius: 8,
             backgroundColor: index < enteredPin.length
                 ? Colors.greenAccent
                 : Colors.grey,
