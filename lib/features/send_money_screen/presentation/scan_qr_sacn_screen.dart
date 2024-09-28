@@ -13,6 +13,7 @@ class QrScanScreen extends StatefulWidget {
 
 class _QrScanScreenState extends State<QrScanScreen> {
   bool isFlashOn = false;
+  bool hasScanned = false; // Flag to prevent multiple pops
 
   // Initialize the controller once
 
@@ -24,7 +25,6 @@ class _QrScanScreenState extends State<QrScanScreen> {
   PreferredSizeWidget appBarBuilder(
       BuildContext context, MobileScannerController controller) {
     return AppBar(
-
       leading: IconButton(
         style: const ButtonStyle(
           backgroundColor: WidgetStatePropertyAll(AppColors.transparent),
@@ -53,31 +53,32 @@ class _QrScanScreenState extends State<QrScanScreen> {
   @override
   Widget build(BuildContext context) {
     return AiBarcodeScanner(
-
       extendBodyBehindAppBar: true,
       hideSheetDragHandler: true,
       hideSheetTitle: true,
-
       successColor: Colors.green,
       errorColor: Colors.red,
-      onDispose: () {},
+      onDispose: () {
+        // Reset the flag when the scanner is disposed
+        hasScanned = false;
+      },
       hideGalleryButton: false,
       // Enable the gallery button
       onDetect: (BarcodeCapture capture) {
         // Get the scanned barcode value
         final String? scannedValue = capture.barcodes.first.rawValue;
 
-        if (scannedValue != null) {
+        if (scannedValue != null && !hasScanned) {
+          hasScanned = true; // Set the flag to prevent multiple pops
           // Return the scanned value and pop the screen
           Navigator.pop(context, scannedValue);
-        } else {}
+        }
       },
       validator: (value) {
         if (value.barcodes.isEmpty) {
           return false;
         }
-        if (!(value.barcodes.first.rawValue?.contains('flutter.dev') ??
-            false)) {
+        if (!(value.barcodes.first.rawValue?.contains('flutter.dev') ?? false)) {
           return false;
         }
         return true;

@@ -1,5 +1,7 @@
+import 'package:bank_app/core/Routing/Routing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
@@ -33,9 +35,7 @@ class StatisticsViewBody extends StatelessWidget {
                   appBarTitle: "Statistics",
                   rightIcon: Icons.notifications_none,
                   onPressedRight: () {
-                    ///
-                    /// Add Notifications View
-                    ///
+                    context.push(Routing.notificationsScreen);
                   },
                 ),
                 Expanded(
