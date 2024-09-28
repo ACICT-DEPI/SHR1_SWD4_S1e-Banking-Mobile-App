@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/texts_style.dart';
+import '../../../send_money_screen/presentation/scan_qr_sacn_screen.dart';
 
 class PaymentIdTextField extends StatelessWidget {
   final TextEditingController textController;
@@ -74,8 +75,19 @@ class PaymentIdTextField extends StatelessWidget {
                     AppColors.white,
                   ),
                 ),
-                onPressed: () {
-                  // Your onPressed logic
+                onPressed: () async {
+                  // Navigate to QrScanScreen and wait for the result
+                  final scannedId = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const QrScanScreen(),
+                    ),
+                  );
+
+                  // If a scanned ID is returned, set it to the text controller
+                  if (scannedId != null) {
+                    textController.text = scannedId;
+                  }
                 },
                 icon: const Icon(
                   Icons.qr_code,
@@ -89,3 +101,22 @@ class PaymentIdTextField extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -24,9 +24,10 @@ class _QrScanScreenState extends State<QrScanScreen> {
   PreferredSizeWidget appBarBuilder(
       BuildContext context, MobileScannerController controller) {
     return AppBar(
+
       leading: IconButton(
         style: const ButtonStyle(
-          backgroundColor: WidgetStatePropertyAll(AppColors.white),
+          backgroundColor: WidgetStatePropertyAll(AppColors.transparent),
         ),
         icon: const Icon(Icons.arrow_back),
         onPressed: () {
@@ -52,9 +53,11 @@ class _QrScanScreenState extends State<QrScanScreen> {
   @override
   Widget build(BuildContext context) {
     return AiBarcodeScanner(
+
+      extendBodyBehindAppBar: true,
+      hideSheetDragHandler: true,
       hideSheetTitle: true,
-      appBarBuilder: (context, controller) =>
-          appBarBuilder(context, controller),
+
       successColor: Colors.green,
       errorColor: Colors.red,
       onDispose: () {},
