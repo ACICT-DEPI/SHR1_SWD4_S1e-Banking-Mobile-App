@@ -52,6 +52,7 @@ class _QrScanScreenState extends State<QrScanScreen> {
   @override
   Widget build(BuildContext context) {
     return AiBarcodeScanner(
+      hideSheetTitle: true,
       appBarBuilder: (context, controller) =>
           appBarBuilder(context, controller),
       successColor: Colors.green,
