@@ -1,67 +1,75 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
-import '../../../../../core/widgets/transaction_item.dart';
+import '../../../../../core/widgets/error_screen.dart';
 import '../../../../transaction_history/data/models/transaction_item_model.dart';
+import '../../../domain/cubits/search_cubit.dart';
 import 'search_text_field.dart';
+import 'search_transaction_item.dart';
 
 class SearchViewBody extends StatelessWidget {
   const SearchViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<TransactionType> listOfTransactionTypes = [
-      TransactionType.paypal,
-      TransactionType.amazonPay,
-      TransactionType.googlePlay,
-      TransactionType.grocery,
-      TransactionType.spotify,
-      TransactionType.moneyTransfer,
-      TransactionType.appleStore
-    ];
+    final TextEditingController searchController = TextEditingController();
 
-    final List<double> listOfAmounts = [
-      -70.58,
-      10.58,
-      580.2,
-      -585.50,
-      70,
-      70.58,
-      -70
-    ];
-    return Padding(
-      padding: const EdgeInsets.only(top: 20.0, right: 20.0, left: 20.0),
-      child: Column(
-        children: [
-          CustomAppBar(
-            appBarTitle: "Search",
-            leftIcon: Icons.arrow_back_ios_new_outlined,
-            onPressedLeft: () {
-              Navigator.pop(context);
-            },
-          ),
-          const SizedBox(height: 32),
-          const SearchTextField(),
-          const SizedBox(height: 30),
-          Expanded(
-            child: ListView.separated(
-              physics: const BouncingScrollPhysics(),
-              itemCount: listOfTransactionTypes.length,
-              separatorBuilder: (context, index) => const SizedBox(
-                height: 22,
+    return BlocBuilder<SearchCubit, SearchState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.only(top: 20.0, right: 20.0, left: 20.0),
+          child: Column(
+            children: [
+              CustomAppBar(
+                appBarTitle: "Search",
+                leftIcon: Icons.arrow_back_ios_new_outlined,
+                onPressedLeft: () {
+                  Navigator.pop(context);
+                },
               ),
-              itemBuilder: (context, index) {
-                return TransactionItem(
-                  transactionItemModel: TransactionItemModel(
-                    type: listOfTransactionTypes[index],
-                    amount: listOfAmounts[index],
+              const SizedBox(height: 32),
+              SearchTextField(
+                searchController: searchController,
+                onChanged: (p0) {
+                  BlocProvider.of<SearchCubit>(context).getTransactions(
+                    searchController.text,
+                  );
+                },
+              ),
+              const SizedBox(height: 30),
+              if (state is SearchSuccess) ...{
+                Expanded(
+                  child: ListView.separated(
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: state.transactions.length,
+                    separatorBuilder: (context, index) => const SizedBox(
+                      height: 22,
+                    ),
+                    itemBuilder: (context, index) {
+                      return SearchTransactionItem(
+                        transactionItemModel: TransactionItemModel(
+                            type: state.transactions[index].type,
+                            amount: state.transactions[index].amount,
+                            createdAt: state.transactions[index].createdAt),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
+                ),
+              } else if (state is SearchFailed) ...{
+                ErrorScreen(message: state.errMessage),
+              } else if (state is SearchInitial) ...{
+                const Center(
+                  child: Text("Start Searching..."),
+                )
+              } else ...{
+                const LoadingScreen()
+              }
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

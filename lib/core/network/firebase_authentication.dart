@@ -27,6 +27,12 @@ class FirebaseAuthentication {
     // Set the current date as the user's join date
     user.joinedAt = Functions.getCurrentDate();
 
+    user.birthDay = DateTime.now().day;
+
+    user.birthMonth = DateTime.now().month;
+
+    user.birthYear = DateTime.now().year;
+
     // Store the user data in FireStore under the 'users' collection
     await _fireStore.collection('users').doc(user.userId).set(
           UserModel.toJson(user),

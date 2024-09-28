@@ -11,13 +11,20 @@ class EditUserCubit extends Cubit<EditUserState> {
     required String fullName,
     required String emailAddress,
     required String phoneNumber,
+    required int birthDay,
+    required int birthMonth,
+    required int birthYear,
   }) async {
     emit(EditUserInitialState());
     try {
       await _editUserRepo.updateUser(
-          fullName: fullName,
-          emailAddress: emailAddress,
-          phoneNumber: phoneNumber);
+        fullName: fullName,
+        emailAddress: emailAddress,
+        phoneNumber: phoneNumber,
+        birthDay: birthDay,
+        birthMonth: birthMonth,
+        birthYear: birthYear,
+      );
       emit(EditUserSuccessState());
     } catch (e) {
       emit(EditUserFailedState(errMessage: e.toString()));

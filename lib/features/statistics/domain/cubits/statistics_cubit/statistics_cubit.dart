@@ -1,3 +1,4 @@
+import 'package:bank_app/features/transaction_history/data/models/transaction_item_model.dart';
 import 'package:bloc/bloc.dart';
 
 import '../../../../../core/helpers/functions.dart';
@@ -34,7 +35,6 @@ class StatisticsCubit extends Cubit<StatisticsState> {
 
       // If the last month does not match the current month, add the new month
       if (lastMonth.month != currentMonth) {
-        print("Ok");
         await FirebaseService.addNewMonth(
           MonthModel(
             index: lastMonth.index + 1, // Increment index for the new month
@@ -109,6 +109,21 @@ class StatisticsCubit extends Cubit<StatisticsState> {
     // Get the maximum balance from the last six months
     double maxBalance = Functions.getMaxBalance(lastSixMonthsBalance);
 
+    List<TransactionItemModel> allTransactions =
+        await FirebaseService.getAllTransactions();
+
+    double transactionPercent =
+        Functions.getTransactionPercent('Transaction', allTransactions);
+
+    double musicPercent =
+        Functions.getTransactionPercent('Music', allTransactions);
+
+    double entertainmentPercent =
+        Functions.getTransactionPercent('Entertainment', allTransactions);
+
+    double shoppingPercent =
+        Functions.getTransactionPercent('Shopping', allTransactions);
+
     // Return the statistics model with all the fetched data
     return StatisticsModel(
       lastSixMonthsDate: lastSixMonthsDate,
@@ -118,6 +133,10 @@ class StatisticsCubit extends Cubit<StatisticsState> {
       lastSixMonthsBalance: lastSixMonthsBalance,
       // List of balances
       currentBalance: currentBalance,
+      transactionPercent: transactionPercent,
+      musicPercent: musicPercent,
+      entertainmentPercent: entertainmentPercent,
+      shoppingPercent: shoppingPercent,
     );
   }
 }

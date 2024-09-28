@@ -174,6 +174,9 @@ class FirebaseService {
     String? emailAddress,
     String? phoneNumber,
     String? password,
+    int? birthDay,
+    int? birthMonth,
+    int? birthYear,
   }) async {
     UserModel defaultUser = await FirebaseAuthentication.getUserModel();
 
@@ -182,6 +185,9 @@ class FirebaseService {
       phoneNumber: phoneNumber ?? defaultUser.phoneNumber,
       emailAddress: emailAddress ?? defaultUser.emailAddress,
       password: password ?? defaultUser.password,
+      birthDay: birthDay ?? defaultUser.birthDay,
+      birthMonth: birthMonth ?? defaultUser.birthMonth,
+      birthYear: birthYear ?? defaultUser.birthYear,
       joinedAt: defaultUser.joinedAt,
       userId: defaultUser.userId,
     );
@@ -230,20 +236,40 @@ class FirebaseService {
       // Check if any card document is found
       if (cardSnapshot.docs.isNotEmpty) {
         // Get the reference to the first card document found
-        var cardDocRef = cardSnapshot.docs.first.reference;
-
-        // Get the current data from the card document
-        var cardDocSnapshot = await cardDocRef.get();
-
-        // Retrieve the current card balance, defaulting to 0.0 if not found
-        double currentBalance = cardDocSnapshot.data()?['cardBalance'] ?? 0.0;
-
-        // Calculate the updated card balance
-        double updatedBalance = currentBalance + amount;
-
-        // Update the document with the new balance
-        await cardDocRef.update({'cardBalance': updatedBalance});
+        await _addAmountToCard(cardSnapshot, amount);
       }
+
+      var transactionsCollection = userDocRef.collection('transactions');
+
+      addTransaction(transactionsCollection, amount);
     }
+  }
+
+  static void addTransaction(var transactionsCollection, double amount) {
+    transactionsCollection.add(
+      TransactionItemModel.toJson(
+        transactionModel: TransactionItemModel(
+          type: TransactionType.moneyTransfer,
+          amount: amount,
+        ),
+      ),
+    );
+  }
+
+  static Future<void> _addAmountToCard(var cardSnapshot, double amount) async {
+    // Get the reference to the first card document found
+    var cardDocRef = cardSnapshot.docs.first.reference;
+
+    // Get the current data from the card document
+    var cardDocSnapshot = await cardDocRef.get();
+
+    // Retrieve the current card balance, defaulting to 0.0 if not found
+    double currentBalance = cardDocSnapshot.data()?['cardBalance'] ?? 0.0;
+
+    // Calculate the updated card balance
+    double updatedBalance = currentBalance + amount;
+
+    // Update the document with the new balance
+    await cardDocRef.update({'cardBalance': updatedBalance});
   }
 }
