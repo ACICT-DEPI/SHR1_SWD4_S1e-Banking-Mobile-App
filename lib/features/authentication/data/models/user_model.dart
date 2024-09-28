@@ -3,6 +3,7 @@ class UserModel {
   final String phoneNumber;
   final String emailAddress;
   final String password;
+  String? image;
   String? joinedAt;
   String? userId;
   int? birthDay;
@@ -21,6 +22,7 @@ class UserModel {
     this.birthMonth,
     this.birthYear,
     this.monthlyLimit,
+    this.image,
   });
 
   factory UserModel.fromJson(json) {
@@ -35,6 +37,7 @@ class UserModel {
       birthMonth: json["birthMonth"],
       birthYear: json["birthYear"],
       monthlyLimit: json["monthlyLimit"],
+      image: json["image"],
     );
   }
 
@@ -50,6 +53,7 @@ class UserModel {
       "birthMonth": user.birthMonth,
       "birthYear": user.birthYear,
       "monthlyLimit": user.monthlyLimit,
+      "image": user.image,
     };
   }
 }

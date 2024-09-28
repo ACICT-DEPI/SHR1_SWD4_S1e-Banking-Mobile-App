@@ -30,7 +30,7 @@ class HomePageAppBarDesign extends StatelessWidget {
               CircleAvatar(
                 radius: 25, // Adjusted radius for responsiveness
                 backgroundImage:
-                    AssetImage(imagePath), // Use the parameter imagePath
+                    NetworkImage(imagePath), // Use the parameter imagePath
               ),
               SizedBox(width: 10 * widthFactor), // Adjusted horizontal spacing
               Column(

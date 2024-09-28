@@ -1,10 +1,9 @@
-import 'package:bank_app/core/network/firebase_authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/Routing/Routing.dart';
-import '../../../../../core/helpers/images.dart';
+import '../../../../../core/network/firebase_authentication.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/widgets/error_screen.dart';
@@ -43,7 +42,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                   const SizedBox(height: 32),
                   ProfileInformation(
                     id: userModel.userId!,
-                    profileImage: Images.imagesPerson,
+                    profileImage: userModel.image!,
                     profileName: userModel.fullName,
                   ),
                   const SizedBox(height: 52),

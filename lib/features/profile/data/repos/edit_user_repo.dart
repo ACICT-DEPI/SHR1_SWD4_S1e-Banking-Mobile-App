@@ -7,6 +7,7 @@ class EditUserRepo {
     required int birthDay,
     required int birthMonth,
     required int birthYear,
+    String? image,
   }) async {
     await FirebaseService.updateUser(
       fullName: fullName,
@@ -14,6 +15,7 @@ class EditUserRepo {
       birthDay: birthDay,
       birthMonth: birthMonth,
       birthYear: birthYear,
+      image: image,
     );
   }
 }

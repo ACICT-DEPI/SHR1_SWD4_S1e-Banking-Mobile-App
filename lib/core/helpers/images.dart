@@ -1,5 +1,4 @@
 abstract class Images {
-
   static const String imagesArabic = 'assets/images/arabic.svg';
   static const String imagesCardBackground = 'assets/images/CardBackground.png';
   static const String imagesChip1 = 'assets/images/chip_1.svg';
@@ -16,7 +15,6 @@ abstract class Images {
   static const String imagesOnboarding1 = 'assets/images/Onboarding_1.svg';
   static const String imagesOnboarding2 = 'assets/images/Onboarding_2.svg';
   static const String imagesOnboarding3 = 'assets/images/Onboarding_3.svg';
-  static const String imagesPerson = 'assets/images/person.png';
   static const String imagesSettingsIcon = 'assets/images/SettingsIcon.svg';
   static const String imagesWorldmap = 'assets/images/worldmap.png';
   static const String imagesCheckIcon = 'assets/images/check_icon.svg';

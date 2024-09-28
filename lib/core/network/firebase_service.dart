@@ -178,6 +178,7 @@ class FirebaseService {
     String? fullName,
     String? phoneNumber,
     String? password,
+    String? image,
     int? birthDay,
     int? birthMonth,
     int? birthYear,
@@ -194,6 +195,7 @@ class FirebaseService {
       birthMonth: birthMonth ?? defaultUser.birthMonth,
       birthYear: birthYear ?? defaultUser.birthYear,
       monthlyLimit: monthlyLimit ?? defaultUser.monthlyLimit,
+      image: image ?? defaultUser.image,
       joinedAt: defaultUser.joinedAt,
       userId: defaultUser.userId,
     );

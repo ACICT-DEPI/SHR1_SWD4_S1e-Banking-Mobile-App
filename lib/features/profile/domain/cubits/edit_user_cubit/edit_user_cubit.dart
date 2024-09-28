@@ -13,8 +13,9 @@ class EditUserCubit extends Cubit<EditUserState> {
     required int birthDay,
     required int birthMonth,
     required int birthYear,
+    String? image,
   }) async {
-    emit(EditUserInitialState());
+    emit(EditUserLoadingState());
     try {
       await _editUserRepo.updateUser(
         fullName: fullName,
@@ -22,6 +23,7 @@ class EditUserCubit extends Cubit<EditUserState> {
         birthDay: birthDay,
         birthMonth: birthMonth,
         birthYear: birthYear,
+        image: image,
       );
       emit(EditUserSuccessState());
     } catch (e) {

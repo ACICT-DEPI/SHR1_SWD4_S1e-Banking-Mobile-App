@@ -1,8 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../../../core/helpers/images.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
@@ -29,6 +30,8 @@ class _EditProfileBodyState extends State<EditProfileBody> {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  final ImagePicker _picker = ImagePicker();
+  File? _image;
 
   @override
   Widget build(BuildContext context) {
@@ -43,13 +46,19 @@ class _EditProfileBodyState extends State<EditProfileBody> {
       builder: (context, editUserState) {
         return BlocBuilder<HomeScreenCubit, HomeScreenState>(
           builder: (context, homeState) {
-            if (homeState is HomeScreenSuccess) {
+            if (editUserState is EditUserLoadingState) {
+              return const LoadingScreen();
+            } else if (homeState is HomeScreenSuccess) {
               UserModel userModel = homeState.homeModel.userModel;
-              nameController = TextEditingController(text: userModel.fullName);
-              emailController =
-                  TextEditingController(text: userModel.emailAddress);
-              phoneController =
-                  TextEditingController(text: userModel.phoneNumber);
+              nameController = TextEditingController(
+                text: userModel.fullName,
+              );
+              emailController = TextEditingController(
+                text: userModel.emailAddress,
+              );
+              phoneController = TextEditingController(
+                text: userModel.phoneNumber,
+              );
 
               return Padding(
                 padding:
@@ -70,10 +79,39 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                         });
                       },
                     ),
-                    const SizedBox(height: 32),
-                    const CircleAvatar(
-                      radius: 50,
-                      backgroundImage: AssetImage(Images.imagesPerson),
+                    const SizedBox(height: 30),
+                    GestureDetector(
+                      onTap: (enabled)
+                          ? () {
+                              _pickImage();
+                            }
+                          : null,
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          CircleAvatar(
+                            radius: 50,
+                            backgroundImage: (_image != null)
+                                ? FileImage(_image!)
+                                : NetworkImage(
+                                    userModel.image!,
+                                  ),
+                          ),
+                          if (enabled)
+                            Positioned(
+                              right: 0,
+                              bottom: 0,
+                              child: Container(
+                                padding: const EdgeInsets.all(3),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppColors.greyC1.withOpacity(.7),
+                                ),
+                                child: const Icon(Icons.add),
+                              ),
+                            )
+                        ],
+                      ),
                     ),
                     const SizedBox(height: 50),
                     CustomAppTextFormField(
@@ -122,6 +160,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                             birthDay: userModel.birthDay!,
                             birthMonth: userModel.birthMonth!,
                             birthYear: userModel.birthYear!,
+                            image: userModel.image,
                           );
                         },
                       ),
@@ -139,5 +178,15 @@ class _EditProfileBodyState extends State<EditProfileBody> {
         );
       },
     );
+  }
+
+  Future<void> _pickImage() async {
+    final XFile? pickedFile =
+        await _picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+    }
   }
 }
