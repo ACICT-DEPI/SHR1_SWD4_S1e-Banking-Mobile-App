@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
+import 'package:auto_size_text/auto_size_text.dart'; // Import the package
 
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/texts_style.dart';
@@ -17,6 +18,8 @@ class SuccessSendingScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width/400;
+    final height = MediaQuery.of(context).size.height/900;
     return Padding(
       padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
       child: Column(
@@ -25,26 +28,39 @@ class SuccessSendingScreenBody extends StatelessWidget {
         children: [
           // Success Icon Animation
           Lottie.asset('assets/images/success.json', width: 150, height: 150),
-          const SizedBox(height: 16),
+          SizedBox(height: 16*height),
 
           // Transaction Status Message
-          Text(
+          AutoSizeText(
             'Transaction Successful',
             style: TextsStyle.textStyleSemiBold24.copyWith(color: Colors.black),
             textAlign: TextAlign.center,
+            maxLines: 1,
           ),
-          const SizedBox(height: 16),
+           SizedBox(height: 16*height),
 
           // Transferred Amount with currency
-          Text(
-            '${successModel.amount} ${successModel.currencyType}',
-            style: TextsStyle.textStyleSemiBold24
-                .copyWith(color: Colors.black, fontSize: 36),
+          Container(
+            width: 300*width,
+            child: AutoSizeText(
+
+              '${successModel.amount.toStringAsFixed(2)} ${successModel.currencyType}',
+              textAlign: TextAlign.center,
+              style: TextsStyle.textStyleSemiBold24
+                  .copyWith(color: Colors.black, fontSize: 36),
+              maxLines: 1,
+            ),
           ),
-          Text(
-            'Total amount transferred',
-            style: TextsStyle.textStyleRegular15
-                .copyWith(color: AppColors.greyA7, fontSize: 18),
+          Container(
+            width: 300*width,
+            child: AutoSizeText(
+              textAlign: TextAlign.center,
+
+              'Total amount transferred',
+              style: TextsStyle.textStyleRegular15
+                  .copyWith(color: AppColors.greyA7, fontSize: 18),
+              maxLines: 1,
+            ),
           ),
           const SizedBox(height: 40),
 
@@ -52,19 +68,26 @@ class SuccessSendingScreenBody extends StatelessWidget {
           Row(
             children: [
               const Icon(Icons.person_outline, color: Colors.green, size: 32),
-              // أيقونة المرسل
               const SizedBox(width: 8),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    successModel.senderName,
-                    style: TextsStyle.textStyleMedium18,
+                  Container(
+                    width: 300*width,
+                    child: AutoSizeText(
+                      successModel.senderName,
+                      style: TextsStyle.textStyleMedium18,
+                      maxLines: 1,
+                    ),
                   ),
-                  Text(
-                    "ID: ${successModel.senderId}",
-                    style: TextsStyle.textStyleRegular15
-                        .copyWith(color: AppColors.greyA7),
+                  Container(
+                    width: 300*width,
+                    child: AutoSizeText(
+                      "ID: ${successModel.senderId}",
+                      style: TextsStyle.textStyleRegular15
+                          .copyWith(color: AppColors.greyA7),
+                      maxLines: 1,
+                    ),
                   ),
                 ],
               ),
@@ -76,24 +99,38 @@ class SuccessSendingScreenBody extends StatelessWidget {
           Row(
             children: [
               const Icon(Icons.person, color: Colors.blue, size: 32),
-              // أيقونة المستلم
               const SizedBox(width: 8),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    successModel.receiverName,
-                    style: TextsStyle.textStyleMedium18,
+                  Container(
+                    width: 300*width,
+
+                    child: AutoSizeText(
+                      successModel.receiverName,
+                      style: TextsStyle.textStyleMedium18,
+                      maxLines: 1,
+                    ),
                   ),
-                  Text(
-                    "ID: ${successModel.receiverId}",
-                    style: TextsStyle.textStyleRegular15
-                        .copyWith(color: AppColors.greyA7),
+                  Container(
+                    width: 300*width,
+
+                    child: AutoSizeText(
+                      "ID: ${successModel.receiverId}",
+                      style: TextsStyle.textStyleRegular15
+                          .copyWith(color: AppColors.greyA7),
+                      maxLines: 1,
+                    ),
                   ),
-                  Text(
-                    "phone: ${successModel.receiverPhone}",
-                    style: TextsStyle.textStyleRegular15
-                        .copyWith(color: AppColors.greyA7),
+                  Container(
+                    width: 300*width,
+
+                    child: AutoSizeText(
+                      "phone: ${successModel.receiverPhone}",
+                      style: TextsStyle.textStyleRegular15
+                          .copyWith(color: AppColors.greyA7),
+                      maxLines: 1,
+                    ),
                   ),
                 ],
               ),
@@ -108,26 +145,40 @@ class SuccessSendingScreenBody extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Reference',
-                    style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+                  Container(
+                    width: 150*width,
+
+                    child: AutoSizeText(
+                      'Reference',
+                      style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+                      maxLines: 1,
+                    ),
                   ),
-                  Text(
+                  AutoSizeText(
                     "#${successModel.referenceNumber}",
                     style: TextsStyle.textStyleSemiBold18,
+                    maxLines: 1,
                   ),
                 ],
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Date',
-                    style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+                  Container(
+                    width: 150*width,
+                    child: AutoSizeText(
+                      'Date',
+                      style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+                      maxLines: 1,
+                    ),
                   ),
-                  Text(
-                    "${successModel.date.year}/${successModel.date.month}/${successModel.date.day} ${successModel.date.hour}:${successModel.date.minute}",
-                    style: TextsStyle.textStyleSemiBold18,
+                  Container(
+                    width: 150*width,
+                    child: AutoSizeText(
+                      "${successModel.date.year}/${successModel.date.month}/${successModel.date.day} ${successModel.date.hour}:${successModel.date.minute}",
+                      style: TextsStyle.textStyleSemiBold18,
+                      maxLines: 1,
+                    ),
                   ),
                 ],
               ),
