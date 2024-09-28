@@ -39,6 +39,10 @@ class _ChangePasswordBodyState extends State<ChangePasswordBody> {
     return BlocConsumer<ChangePasswordCubit, ChangePasswordState>(
       listener: (context, state) {
         if (state is ChangePasswordSuccessState) {
+          buildShowSnackBar(
+            context,
+            "The password changed successfully",
+          );
           GoRouter.of(context).pop();
         }
       },
@@ -96,10 +100,6 @@ class _ChangePasswordBodyState extends State<ChangePasswordBody> {
                           if (matchNewPasswords()) {
                             BlocProvider.of<ChangePasswordCubit>(context)
                                 .updatePassword(newPasswordController.text);
-                            buildShowSnackBar(
-                              context,
-                              "The password changed successfully",
-                            );
                           } else {
                             buildShowSnackBar(
                               context,

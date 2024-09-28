@@ -89,7 +89,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                       keyboardType: TextInputType.emailAddress,
                       prefixIcon: Icons.email_outlined,
                       textEditingController: emailController,
-                      enable: enabled,
+                      enable: false,
                     ),
                     const SizedBox(height: 20),
                     CustomAppTextFormField(
@@ -118,7 +118,6 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                         onPressed: () {
                           BlocProvider.of<EditUserCubit>(context).updateUser(
                             fullName: nameController.text,
-                            emailAddress: emailController.text,
                             phoneNumber: phoneController.text,
                             birthDay: userModel.birthDay!,
                             birthMonth: userModel.birthMonth!,

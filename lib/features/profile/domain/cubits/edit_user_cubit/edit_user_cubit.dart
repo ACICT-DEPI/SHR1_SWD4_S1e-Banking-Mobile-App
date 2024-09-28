@@ -9,7 +9,6 @@ class EditUserCubit extends Cubit<EditUserState> {
 
   Future<void> updateUser({
     required String fullName,
-    required String emailAddress,
     required String phoneNumber,
     required int birthDay,
     required int birthMonth,
@@ -19,7 +18,6 @@ class EditUserCubit extends Cubit<EditUserState> {
     try {
       await _editUserRepo.updateUser(
         fullName: fullName,
-        emailAddress: emailAddress,
         phoneNumber: phoneNumber,
         birthDay: birthDay,
         birthMonth: birthMonth,
