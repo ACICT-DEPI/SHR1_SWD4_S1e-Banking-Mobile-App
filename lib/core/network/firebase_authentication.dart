@@ -33,6 +33,8 @@ class FirebaseAuthentication {
 
     user.birthYear = DateTime.now().year;
 
+    user.monthlyLimit = 5000;
+
     // Store the user data in FireStore under the 'users' collection
     await _fireStore.collection('users').doc(user.userId).set(
           UserModel.toJson(user),

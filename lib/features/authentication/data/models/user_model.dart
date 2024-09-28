@@ -8,6 +8,7 @@ class UserModel {
   int? birthDay;
   int? birthMonth;
   int? birthYear;
+  double? monthlyLimit;
 
   UserModel({
     this.userId,
@@ -19,6 +20,7 @@ class UserModel {
     this.birthDay,
     this.birthMonth,
     this.birthYear,
+    this.monthlyLimit,
   });
 
   factory UserModel.fromJson(json) {
@@ -32,6 +34,7 @@ class UserModel {
       birthDay: json["birthDay"],
       birthMonth: json["birthMonth"],
       birthYear: json["birthYear"],
+      monthlyLimit: json["monthlyLimit"],
     );
   }
 
@@ -46,6 +49,7 @@ class UserModel {
       "birthDay": user.birthDay,
       "birthMonth": user.birthMonth,
       "birthYear": user.birthYear,
+      "monthlyLimit": user.monthlyLimit,
     };
   }
 }

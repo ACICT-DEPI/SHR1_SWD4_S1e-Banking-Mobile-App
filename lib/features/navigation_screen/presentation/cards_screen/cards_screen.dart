@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/network/firebase_service.dart';
 import '../../../../core/widgets/Loading_screen.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/error_screen.dart';
 import '../../../all_cards_screen/presentation/views/all_cards_screen.dart';
+import '../../../authentication/data/models/user_model.dart';
 import '../../../statistics/presentation/views/widgets/transaction_section.dart';
+import '../../data/models/card_model.dart';
 import '../../logic/home_screen_cubit.dart';
 import '../home/presentation/views/widgets/bank_card_design.dart';
 import 'widgets/spending_limit_section.dart';
@@ -30,7 +33,8 @@ class _CardsScreenState extends State<CardsScreen> {
     return BlocBuilder<HomeScreenCubit, HomeScreenState>(
       builder: (context, state) {
         if (state is HomeScreenSuccess) {
-          final cards = state.homeModel.cards;
+          final List<CardModel> cards = state.homeModel.cards;
+          final UserModel user = state.homeModel.userModel;
           return Padding(
             padding: const EdgeInsets.only(top: 20.0, right: 20.0, left: 20.0),
             child: Column(
@@ -86,7 +90,21 @@ class _CardsScreenState extends State<CardsScreen> {
                       ],
                       const SizedBox(height: 30),
                       // Spending Limit Section
-                      const SpendingLimitSection(),
+                      SpendingLimitSection(
+                        currentSliderValue: user.monthlyLimit!,
+                        onChanged: (value) {
+                          setState(() {
+                            user.monthlyLimit = value;
+                          });
+                        },
+                        onChangeEnd: (p0) async {
+                          await FirebaseService.updateUser(
+                            monthlyLimit: user.monthlyLimit,
+                          );
+                          BlocProvider.of<HomeScreenCubit>(context)
+                              .initialize();
+                        },
+                      ),
                     ],
                   ),
                 ),

@@ -1,8 +1,8 @@
-import 'package:bank_app/features/authentication/data/models/user_model.dart';
-import 'package:bank_app/features/statistics/data/models/month_model.dart';
-import 'package:bank_app/features/transaction_history/data/models/transaction_item_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../features/authentication/data/models/user_model.dart';
 import '../../features/navigation_screen/data/models/card_model.dart';
+import '../../features/statistics/data/models/month_model.dart';
+import '../../features/transaction_history/data/models/transaction_item_model.dart';
 import 'firebase_authentication.dart';
 
 class FirebaseService {
@@ -177,6 +177,7 @@ class FirebaseService {
     int? birthDay,
     int? birthMonth,
     int? birthYear,
+    double? monthlyLimit,
   }) async {
     UserModel defaultUser = await FirebaseAuthentication.getUserModel();
 
@@ -188,6 +189,7 @@ class FirebaseService {
       birthDay: birthDay ?? defaultUser.birthDay,
       birthMonth: birthMonth ?? defaultUser.birthMonth,
       birthYear: birthYear ?? defaultUser.birthYear,
+      monthlyLimit: monthlyLimit ?? defaultUser.monthlyLimit,
       joinedAt: defaultUser.joinedAt,
       userId: defaultUser.userId,
     );

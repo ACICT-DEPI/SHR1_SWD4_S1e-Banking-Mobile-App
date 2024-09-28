@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
 
-class SpendingLimitSection extends StatefulWidget {
-  const SpendingLimitSection({super.key});
+class SpendingLimitSection extends StatelessWidget {
+  const SpendingLimitSection({
+    super.key,
+    required this.currentSliderValue,
+    this.onChanged,
+    this.onChangeEnd,
+  });
 
-  @override
-  State<SpendingLimitSection> createState() => _SpendingLimitSectionState();
-}
-
-class _SpendingLimitSectionState extends State<SpendingLimitSection> {
-  double _currentSliderValue = 8545.00;
+  final double currentSliderValue;
+  final Function(double)? onChanged;
+  final Function(double)? onChangeEnd;
 
   @override
   Widget build(BuildContext context) {
@@ -35,20 +37,17 @@ class _SpendingLimitSectionState extends State<SpendingLimitSection> {
               children: [
                 const SizedBox(height: 10),
                 Text(
-                  "Amount: \$${_currentSliderValue.toStringAsFixed(2)}",
+                  "Amount: \$${currentSliderValue.toStringAsFixed(2)}",
                   style: TextsStyle.textStyleRegular13,
                 ),
                 Slider(
-                  value: _currentSliderValue,
+                  value: currentSliderValue,
                   min: 0,
                   max: 10000,
                   activeColor: AppColors.blue,
                   inactiveColor: Colors.grey.shade300,
-                  onChanged: (value) {
-                    setState(() {
-                      _currentSliderValue = value;
-                    });
-                  },
+                  onChanged: onChanged,
+                  onChangeEnd: onChangeEnd,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,7 +61,7 @@ class _SpendingLimitSectionState extends State<SpendingLimitSection> {
                       ),
                     ),
                     Text(
-                      "\$${_currentSliderValue.toStringAsFixed(2)}",
+                      "\$${currentSliderValue.toStringAsFixed(2)}",
                       style: TextsStyle.textStyleRegular15.copyWith(
                           color: AppColors.black, fontWeight: FontWeight.bold),
                     ),
