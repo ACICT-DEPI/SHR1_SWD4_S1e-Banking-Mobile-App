@@ -1,3 +1,4 @@
+import 'package:bank_app/core/styles/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,9 +16,8 @@ class PinCircles extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 4.0),
           child: CircleAvatar(
             radius: 8,
-            backgroundColor: index < enteredPin.length
-                ? Colors.greenAccent
-                : Colors.grey,
+            backgroundColor:
+                index < enteredPin.length ? AppColors.blue : AppColors.greyA7,
           ),
         );
       }),
