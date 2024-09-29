@@ -65,15 +65,15 @@ class Routing {
           return const OnboardingScreen();
         },
         redirect: (context, state) async {
-          // Implement the route guard logic here
+          // Synchronous check for user authentication
           if (FirebaseAuthentication.isUserLogin()) {
             SettingsModel? model = await LocalSettings.getSettings();
             if (model != null && model.supportBiometric && model.useBiometric) {
-              return localAuthScreen; // Redirect to login if not authenticated
+              return localAuthScreen; // Redirect to biometric auth screen
             }
-            return navigationScreen;
+            return navigationScreen; // Redirect to the navigation screen
           }
-          return null; // Continue to the requested route if authenticated
+          return onboardingScreen; // Redirect to login if not authenticated
         },
       ),
       GoRoute(
