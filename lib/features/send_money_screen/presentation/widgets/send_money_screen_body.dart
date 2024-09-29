@@ -111,10 +111,10 @@ class _SendMoneyScreenBodyState extends State<SendMoneyScreenBody> {
                             ),
                           ),
                           const SizedBox(height: 30),
-                          SendIdTextField(textController: context.read<SendMoneyCubit>().idController),
+                          SendIdTextField(
+                              textController:
+                                  context.read<SendMoneyCubit>().idController),
                           const SizedBox(height: 10),
-
-
                           SendMoneyTextField(textController: amountController),
                         ],
                       ),
@@ -128,9 +128,14 @@ class _SendMoneyScreenBodyState extends State<SendMoneyScreenBody> {
                             if (formKey.currentState!.validate()) {
                               BlocProvider.of<SendMoneyCubit>(context)
                                   .sendMoney(
-                                id: context.read<SendMoneyCubit>().idController.text,
+                                id: context
+                                    .read<SendMoneyCubit>()
+                                    .idController
+                                    .text,
                                 amount: double.parse(amountController.text),
                                 card: getAllCardsState.cards[selectedCardIndex],
+                                sender: getAllCardsState
+                                    .cards[selectedCardIndex].cardHolderName,
                               );
                             }
                           },
@@ -152,8 +157,8 @@ class _SendMoneyScreenBodyState extends State<SendMoneyScreenBody> {
 
   Future<SuccessModel> buildSuccessModel() async {
     UserModel senderUser = await (FirebaseAuthentication.getUserModel());
-    UserModel receiverUser =
-        await (FirebaseService.getUser(context.read<SendMoneyCubit>().idController.text)) as UserModel;
+    UserModel receiverUser = await (FirebaseService.getUser(
+        context.read<SendMoneyCubit>().idController.text)) as UserModel;
     return SuccessModel(
       currencyType: 'USD',
       amount: double.parse(amountController.text),

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../features/authentication/data/models/user_model.dart';
 import '../../features/navigation_screen/data/models/card_model.dart';
+import '../../features/notification/data/models/notification_model.dart';
 import '../../features/statistics/data/models/month_model.dart';
 import '../../features/transaction_history/data/models/transaction_item_model.dart';
 import 'firebase_authentication.dart';
@@ -250,7 +251,8 @@ class FirebaseService {
     }
   }
 
-  static Future<void> receiveMoney(String id, double amount) async {
+  static Future<void> receiveMoney(
+      String id, double amount, String sender) async {
     // Query the user collection to find the document matching the provided 'uid'
     var userSnapshot = await _userCollection.where('uid', isEqualTo: id).get();
 
@@ -270,6 +272,14 @@ class FirebaseService {
       var transactionsCollection = userDocRef.collection('transactions');
 
       addTransaction(transactionsCollection, amount);
+
+      var notificationsCollection = userDocRef.collection('notifications');
+
+      addReceiveNotification(
+        notificationsCollection: notificationsCollection,
+        amount: amount,
+        sender: sender,
+      );
     }
   }
 
@@ -299,5 +309,55 @@ class FirebaseService {
 
     // Update the document with the new balance
     await cardDocRef.update({'cardBalance': updatedBalance});
+  }
+
+  static Future<void> addReceiveNotification(
+      {required var notificationsCollection,
+      required double amount,
+      required String sender}) async {
+    await notificationsCollection.add(
+      NotificationModel.toJson(
+        NotificationModel(
+          title: "Payment Received",
+          subtitle: "You received \$$amount from $sender",
+          time: DateTime.now(),
+        ),
+      ),
+    );
+  }
+
+  static Future<void> addNewNotification(
+    NotificationModel notificationModel,
+  ) async {
+    await _userDocument.collection('notifications').add(
+          NotificationModel.toJson(
+            notificationModel,
+          ),
+        );
+  }
+
+  static Future<List<NotificationModel>> getAllNotifications() async {
+    List<NotificationModel> allNotifications = [];
+
+    final QuerySnapshot notificationsCollection =
+        await _userDocument.collection('notifications').orderBy("time").get();
+
+    for (var notificationDoc in notificationsCollection.docs) {
+      allNotifications.add(
+        NotificationModel.fromJson(
+            notificationDoc.data() as Map<String, dynamic>),
+      );
+    }
+
+    return allNotifications.reversed.toList();
+  }
+
+  static Future<void> removeAllNotifications() async {
+    final QuerySnapshot notificationsCollection =
+        await _userDocument.collection('notifications').get();
+
+    for (QueryDocumentSnapshot doc in notificationsCollection.docs) {
+      await doc.reference.delete();
+    }
   }
 }

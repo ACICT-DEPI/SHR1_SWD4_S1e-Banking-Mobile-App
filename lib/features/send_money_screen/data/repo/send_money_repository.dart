@@ -8,6 +8,7 @@ import '../../../navigation_screen/data/models/card_model.dart';
 class SendMoneyRepository {
   Future<bool> sendMoney(
       {required String id,
+      required String sender,
       required double amount,
       required CardModel card}) async {
     List<UserModel> allUsers = await FirebaseService.getAllUsers();
@@ -23,7 +24,7 @@ class SendMoneyRepository {
               ),
               card.cardNumber,
             ),
-            FirebaseService.receiveMoney(id, amount),
+            FirebaseService.receiveMoney(id, amount, sender),
           ]);
           return true;
         }

@@ -11,29 +11,29 @@ class NotificationsCubit extends Cubit<NotificationsState> {
     initializeNotifications();
   }
 
-  NotificationRepo notificationRepo = NotificationRepo();
+  final NotificationRepo _notificationRepo = NotificationRepo();
 
-  getAllNotifications() {
-    notificationRepo.getAllNotifications();
+  getAllNotifications() async {
+    await _notificationRepo.getAllNotifications();
     initializeNotifications();
   }
 
-  removeAllNotifications() {
-    notificationRepo.deleteAllNotifications();
+  removeAllNotifications() async {
+    await _notificationRepo.deleteAllNotifications();
     initializeNotifications();
   }
 
-  initializeNotifications() {
-    final notifications = notificationRepo.getAllNotifications();
-
-    emit(NotificationsInitial());
-
-    if (notifications.isEmpty) {
-      emit(EmptyNotifications());
-    } else if (notifications.isNotEmpty) {
-      emit(NotificationsSuccess(notifications: notifications));
-    } else {
-      emit(NotificationsError(message: "Something went wrong"));
+  initializeNotifications() async {
+    emit(NotificationsLoading());
+    try {
+      final notifications = await _notificationRepo.getAllNotifications();
+      if (notifications.isEmpty) {
+        emit(EmptyNotifications());
+      } else if (notifications.isNotEmpty) {
+        emit(NotificationsSuccess(notifications: notifications));
+      }
+    } catch (e) {
+      emit(NotificationsError(message: e.toString()));
     }
   }
 }

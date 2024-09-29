@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/helpers/functions.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/texts_style.dart';
 import '../../data/models/notification_model.dart';
@@ -24,14 +25,9 @@ class NotificationCard extends StatelessWidget {
       child: ListTile(
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-        leading: CircleAvatar(
-          radius: 24,
-          backgroundColor: AppColors.white,
-          // CircleAvatar background color set to white
-          child: Icon(
-            notification.icon,
-            color: AppColors.blue,
-          ), // Icon color changed to blue for contrast
+        leading: Icon(
+          Functions.getNotificationIcon(notification.title),
+          color: AppColors.blue,
         ),
         title: Text(
           notification.title,
@@ -49,14 +45,11 @@ class NotificationCard extends StatelessWidget {
           ),
         ),
         trailing: Text(
-          notification.time,
+          Functions.timeAgo(notification.time),
           style: TextsStyle.textStyleRegular12.copyWith(
             color: AppColors.greyA7,
           ), // Trailing time color kept grey
         ),
-        onTap: () {
-          // Handle tap on notification
-        },
       ),
     );
   }

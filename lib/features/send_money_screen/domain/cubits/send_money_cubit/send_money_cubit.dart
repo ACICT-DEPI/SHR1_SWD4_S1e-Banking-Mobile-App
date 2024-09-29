@@ -13,10 +13,12 @@ class SendMoneyCubit extends Cubit<SendMoneyState> {
     idController.text = id;
     emit(SendMoneyInitialState());
   }
+
   final SendMoneyRepository _moneyRepository = SendMoneyRepository();
 
   Future<void> sendMoney(
       {required String id,
+      required String sender,
       required double amount,
       required CardModel card}) async {
     emit(SendMoneyLoadingState());
@@ -25,6 +27,7 @@ class SendMoneyCubit extends Cubit<SendMoneyState> {
         id: id,
         amount: amount,
         card: card,
+        sender: sender,
       );
       if (result) {
         emit(SendMoneySuccessState());
