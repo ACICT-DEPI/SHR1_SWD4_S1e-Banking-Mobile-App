@@ -39,5 +39,4 @@ class FirebaseCards {
 
     return allCards.length;
   }
-
 }

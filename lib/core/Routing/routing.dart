@@ -20,9 +20,11 @@ import '../../features/send_money_screen/presentation/scan_qr_sacn_screen.dart';
 import '../../features/send_money_screen/presentation/send_money_screen.dart';
 import '../../features/send_money_screen/presentation/success_sending_screen.dart';
 import '../../features/service/presentation/service_view.dart';
+import '../../features/settings/data/models/settings_model.dart';
 import '../../features/transaction_history/presentation/views/transaction_history_view.dart';
 import '../network/firebase_authentication.dart';
 import '../network/firebase_cards.dart';
+import '../network/firebase_settings.dart';
 import '../widgets/error_screen.dart';
 
 class Routing {
@@ -65,7 +67,13 @@ class Routing {
         redirect: (context, state) async {
           // Implement the route guard logic here
           if (FirebaseAuthentication.isUserLogin()) {
-            return localAuthScreen; // Redirect to login if not authenticated
+            SettingsModel? model = await FirebaseSettings.getSettings();
+            if (model != null &&
+                model.appPassword != null &&
+                model.useBiometric != null) {
+              return localAuthScreen; // Redirect to login if not authenticated
+            }
+            return navigationScreen;
           }
           return null; // Continue to the requested route if authenticated
         },

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../domain/cubits/settings_cubit.dart';
 import 'widgets/settings_view_body.dart';
 
 class Setting extends StatelessWidget {
@@ -7,9 +9,12 @@ class Setting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
-        child: SettingsViewBody(),
+    return BlocProvider(
+      create: (context) => SettingsCubit()..getSettingsModel(),
+      child: const Scaffold(
+        body: SafeArea(
+          child: SettingsViewBody(),
+        ),
       ),
     );
   }

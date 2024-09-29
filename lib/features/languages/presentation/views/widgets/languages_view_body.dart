@@ -1,11 +1,10 @@
-import 'package:bank_app/core/helpers/images.dart';
-import 'package:bank_app/core/styles/texts_style.dart';
-import 'package:bank_app/features/languages/data/models/language_model.dart';
-import 'package:bank_app/features/languages/presentation/views/widgets/language_option.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/helpers/constants.dart';
 import '../../../../../core/styles/colors.dart';
+import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
+import 'language_option.dart';
 
 class LanguagesViewBody extends StatefulWidget {
   const LanguagesViewBody({super.key});
@@ -15,19 +14,6 @@ class LanguagesViewBody extends StatefulWidget {
 }
 
 class _LanguagesViewBodyState extends State<LanguagesViewBody> {
-  List<LanguageModel> languages = [
-    LanguageModel(
-      languageImage: Images.imagesArabic,
-      languageName: 'Arabic',
-      isSelected: false,
-    ),
-    LanguageModel(
-      languageImage: Images.imagesEnglish,
-      languageName: 'English',
-      isSelected: true,
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -65,19 +51,19 @@ class _LanguagesViewBodyState extends State<LanguagesViewBody> {
           const SizedBox(height: 20.0),
           Expanded(
             child: ListView.builder(
-              itemCount: languages.length,
+              itemCount: Constants.languages.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    for (var language in languages) {
+                    for (var language in Constants.languages) {
                       language.isSelected = false;
                     }
                     setState(() {
-                      languages[index].isSelected = true;
+                      Constants.languages[index].isSelected = true;
                     });
                   },
                   child: LanguageOption(
-                    languageModel: languages[index],
+                    languageModel: Constants.languages[index],
                   ),
                 );
               },

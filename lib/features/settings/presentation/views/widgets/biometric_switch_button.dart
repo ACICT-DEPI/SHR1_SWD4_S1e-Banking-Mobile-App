@@ -3,17 +3,15 @@ import 'package:flutter/material.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
 
-class BiometricSwitchButton extends StatefulWidget {
+class BiometricSwitchButton extends StatelessWidget {
   const BiometricSwitchButton({
     super.key,
+    this.onChanged,
+    required this.value,
   });
 
-  @override
-  State<BiometricSwitchButton> createState() => _BiometricSwitchButtonState();
-}
-
-class _BiometricSwitchButtonState extends State<BiometricSwitchButton> {
-  bool switchValue = false;
+  final Function(bool)? onChanged;
+  final bool value;
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +31,8 @@ class _BiometricSwitchButtonState extends State<BiometricSwitchButton> {
             flex: 4,
           ),
           Switch(
-            value: switchValue,
-            onChanged: (value) {
-              setState(() {
-                switchValue = value;
-              });
-            },
+            value: value,
+            onChanged: onChanged,
             activeColor: AppColors.blue,
             inactiveThumbColor: AppColors.white,
             inactiveTrackColor: AppColors.greyA7,

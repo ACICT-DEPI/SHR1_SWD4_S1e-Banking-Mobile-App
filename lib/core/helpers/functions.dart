@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:local_auth/local_auth.dart';
 
 import '../../features/navigation_screen/data/models/card_model.dart';
 import '../../features/transaction_history/data/models/transaction_item_model.dart';
@@ -252,6 +255,41 @@ class Functions {
         return Icons.local_offer;
       default:
         return Icons.notification_important_outlined;
+    }
+  }
+
+  static Future<bool> checkBiometricSupport() async {
+    final LocalAuthentication auth = LocalAuthentication();
+
+    try {
+      // Check if the device supports biometric authentication
+      bool canCheckBiometrics = await auth.canCheckBiometrics;
+
+      if (!canCheckBiometrics) {
+        return false; // No biometric support at all
+      }
+
+      // Get the available biometric types
+      List<BiometricType> availableBiometrics =
+          await auth.getAvailableBiometrics();
+
+      // Check if fingerprint is supported
+      return availableBiometrics.contains(BiometricType.fingerprint);
+    } catch (e) {
+      return false; // Return false if any error occurs
+    }
+  }
+
+  /// Get the device's current language as 'English' or 'Arabic' without using context
+  static String getDeviceLanguage() {
+    // Get the system locale
+    Locale deviceLocale = PlatformDispatcher.instance.locale;
+
+    // Check if the device language is Arabic ('ar'), otherwise return 'English'
+    if (deviceLocale.languageCode == 'ar') {
+      return 'العربية';
+    } else {
+      return 'English'; // Default to English for other languages
     }
   }
 }
