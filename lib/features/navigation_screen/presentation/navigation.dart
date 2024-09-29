@@ -20,12 +20,12 @@ class NavigationScreen extends StatefulWidget {
 
 class _NavigationScreenState extends State<NavigationScreen> {
   int pageIndex = 0;
-  final RefreshController _refreshController = RefreshController(initialRefresh: false);
+  final RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
 
   void _onRefresh() async {
-
-    await Future.delayed(Duration(milliseconds: 1000));
-      context.read<HomeScreenCubit>().initialize();
+    await Future.delayed(const Duration(milliseconds: 1000));
+    context.read<HomeScreenCubit>().initialize();
     _refreshController.refreshCompleted();
   }
 

@@ -46,15 +46,15 @@ class Routing {
   static String errorScreen = '/ErrorScreen';
   static String qrScanScreen = '/QrScanScreen';
   static String notificationsScreen = '/NotificationsScreen';
-  static String localauthscreen = '/LocalAuthScreen';
+  static String localAuthScreen = '/LocalAuthScreen';
   static final GoRouter _router = GoRouter(
     initialLocation: onboardingScreen, // Set your initial route here
 
     routes: <RouteBase>[
       GoRoute(
-        path: localauthscreen,
+        path: localAuthScreen,
         builder: (BuildContext context, GoRouterState state) {
-          return  LocalAuthScreen();
+          return const LocalAuthScreen();
         },
       ),
       GoRoute(
@@ -65,7 +65,7 @@ class Routing {
         redirect: (context, state) async {
           // Implement the route guard logic here
           if (FirebaseAuthentication.isUserLogin()) {
-            return localauthscreen; // Redirect to login if not authenticated
+            return localAuthScreen; // Redirect to login if not authenticated
           }
           return null; // Continue to the requested route if authenticated
         },
@@ -185,7 +185,7 @@ class Routing {
       GoRoute(
         path: notificationsScreen,
         builder: (BuildContext context, GoRouterState state) {
-          return  NotificationsScreen();
+          return const NotificationsScreen();
         },
       ),
       GoRoute(

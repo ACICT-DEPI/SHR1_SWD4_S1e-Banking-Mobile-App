@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../domain/biometric_auth.dart';
 import 'finger_auth.dart';
@@ -6,18 +5,18 @@ import 'finger_auth.dart';
 class NumberPad extends StatelessWidget {
   final Function(String) onNumberTapped;
 
-  NumberPad({Key? key, required this.onNumberTapped}) : super(key: key);
+  const NumberPad({super.key, required this.onNumberTapped});
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
       itemCount: 12,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         childAspectRatio: 1.5,
       ),
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         if (index < 9) {
           // Numbers 1 to 9
@@ -41,7 +40,9 @@ class NumberPad extends StatelessWidget {
         } else {
           // Fingerprint icon as the 12th button
           return FingerprintAuth(
-            onAuthenticate: () => BiometricAuth.authenticateWithBiometrics(context), // استدعاء الدالة هنا
+            onAuthenticate: () => BiometricAuth.authenticateWithBiometrics(
+              context,
+            ),
           );
         }
       },
@@ -56,11 +57,11 @@ class NumberButton extends StatelessWidget {
   final IconData? icon; // Optional icon parameter
 
   const NumberButton({
-    Key? key,
+    super.key,
     required this.label,
     required this.onTap,
     this.icon, // Initialize optional icon parameter
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -84,9 +85,12 @@ class NumberButton extends StatelessWidget {
               label == "Del"
                   ? Container()
                   : Text(
-                label,
-                style: TextStyle(fontSize: 26, color: Colors.white),
-              ),
+                      label,
+                      style: const TextStyle(
+                        fontSize: 26,
+                        color: Colors.white,
+                      ),
+                    ),
             ],
           ),
         ),

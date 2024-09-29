@@ -1,11 +1,10 @@
 import 'package:bank_app/core/styles/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PinCircles extends StatelessWidget {
   final String enteredPin;
 
-  const PinCircles({Key? key, required this.enteredPin}) : super(key: key);
+  const PinCircles({super.key, required this.enteredPin});
 
   @override
   Widget build(BuildContext context) {

@@ -8,30 +8,31 @@ part 'notifications_state.dart';
 
 class NotificationsCubit extends Cubit<NotificationsState> {
   NotificationsCubit() : super(NotificationsInitial()) {
-    intilizeNotifications();
+    initializeNotifications();
   }
 
   NotificationRepo notificationRepo = NotificationRepo();
 
   getAllNotifications() {
-     notificationRepo.getAllNotifications();
-    intilizeNotifications();
+    notificationRepo.getAllNotifications();
+    initializeNotifications();
   }
 
   removeAllNotifications() {
-     notificationRepo.deleteAllNotifications();
-    intilizeNotifications();
+    notificationRepo.deleteAllNotifications();
+    initializeNotifications();
   }
 
-  intilizeNotifications() {
+  initializeNotifications() {
     final notifications = notificationRepo.getAllNotifications();
+
     emit(NotificationsInitial());
+
     if (notifications.isEmpty) {
       emit(EmptyNotifications());
     } else if (notifications.isNotEmpty) {
-      emit(NotificationsLoaded(notifications: notifications));
-    }
-    else {
+      emit(NotificationsSuccess(notifications: notifications));
+    } else {
       emit(NotificationsError(message: "Something went wrong"));
     }
   }

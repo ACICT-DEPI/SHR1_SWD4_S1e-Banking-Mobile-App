@@ -1,30 +1,31 @@
-import 'package:bank_app/core/styles/colors.dart';
-import 'package:bank_app/features/local_auth/ui/widgits/finger_auth.dart';
-import 'package:bank_app/features/local_auth/ui/widgits/logo.dart';
-import 'package:bank_app/features/local_auth/ui/widgits/number_pad.dart';
-import 'package:bank_app/features/local_auth/ui/widgits/pin_input.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:local_auth/local_auth.dart';
 
 import '../../../core/Routing/Routing.dart';
 import '../domain/biometric_auth.dart';
+import 'widgits/finger_auth.dart';
+import 'widgits/logo.dart';
+import 'widgits/number_pad.dart';
+import 'widgits/pin_input.dart';
 
 // Main Auth Screen
 class LocalAuthScreen extends StatefulWidget {
+  const LocalAuthScreen({super.key});
+
   @override
-  _LocalAuthScreenState createState() => _LocalAuthScreenState();
+  State<LocalAuthScreen> createState() => _LocalAuthScreenState();
 }
 
 class _LocalAuthScreenState extends State<LocalAuthScreen> {
-
-  final LocalAuthentication _auth = LocalAuthentication();
+  //final LocalAuthentication _auth = LocalAuthentication();
   String enteredPin = "";
-@override
+
+  @override
   void initState() {
     super.initState();
     BiometricAuth.authenticateWithBiometrics(context);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,10 +35,10 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            LogoWidget(),
-            SizedBox(height: 20),
+            const LogoWidget(),
+            const SizedBox(height: 20),
             PinCircles(enteredPin: enteredPin),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             NumberPad(
               onNumberTapped: (number) {
                 setState(() {
@@ -45,10 +46,9 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
                 });
               },
             ),
-            SizedBox(height: 20),
-
-            SizedBox(height: 20),
-            ForgotPinText(),
+            const SizedBox(height: 20),
+            const SizedBox(height: 20),
+            const ForgotPinText(),
           ],
         ),
       ),
@@ -65,17 +65,13 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
     }
 
     if (enteredPin.length == 6) {
-      if (enteredPin == '123456') { // Replace '123456' with your actual PIN
+      if (enteredPin == '123456') {
+        // Replace '123456' with your actual PIN
         context.go(Routing.navigationScreen);
-
       } else {
         print('Incorrect PIN');
         enteredPin = ''; // Clear the entered PIN
       }
     }
   }
-
-
 }
-
-

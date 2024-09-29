@@ -12,14 +12,15 @@ class TransactionHistoryView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final RefreshController _refreshController = RefreshController(initialRefresh: false);
+    final RefreshController refreshController =
+        RefreshController(initialRefresh: false);
 
-    void _onRefresh() async {
-
-      await Future.delayed(Duration(milliseconds: 1000));
+    void onRefresh() async {
+      await Future.delayed(const Duration(milliseconds: 1000));
       context.read<HomeScreenCubit>().initialize();
-      _refreshController.refreshCompleted();
+      refreshController.refreshCompleted();
     }
+
     return BlocProvider(
       create: (context) => TransactionCubit()..getAllTransactions(),
       child: SmartRefresher(
@@ -27,9 +28,8 @@ class TransactionHistoryView extends StatelessWidget {
         header: const MaterialClassicHeader(
           color: AppColors.blue,
         ),
-
-        controller: _refreshController,
-        onRefresh: _onRefresh,
+        controller: refreshController,
+        onRefresh: onRefresh,
         child: const Scaffold(
           body: SafeArea(
             child: TransactionHistoryBody(),

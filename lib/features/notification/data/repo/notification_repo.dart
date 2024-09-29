@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../models/notification_model.dart';
 
 class NotificationRepo {
-
   final List<NotificationModel> notifications = [
     NotificationModel(
       title: "Payment Received",
@@ -22,12 +21,8 @@ class NotificationRepo {
   getAllNotifications() {
     return notifications;
   }
+
   deleteAllNotifications() {
     notifications.clear();
   }
-
-
-
-
-
 }

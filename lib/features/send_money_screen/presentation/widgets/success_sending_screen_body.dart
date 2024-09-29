@@ -18,8 +18,8 @@ class SuccessSendingScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width/400;
-    final height = MediaQuery.of(context).size.height/900;
+    final width = MediaQuery.of(context).size.width / 400;
+    final height = MediaQuery.of(context).size.height / 900;
     return Padding(
       padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
       child: Column(
@@ -28,7 +28,7 @@ class SuccessSendingScreenBody extends StatelessWidget {
         children: [
           // Success Icon Animation
           Lottie.asset('assets/images/success.json', width: 150, height: 150),
-          SizedBox(height: 16*height),
+          SizedBox(height: 16 * height),
 
           // Transaction Status Message
           AutoSizeText(
@@ -37,13 +37,12 @@ class SuccessSendingScreenBody extends StatelessWidget {
             textAlign: TextAlign.center,
             maxLines: 1,
           ),
-           SizedBox(height: 16*height),
+          SizedBox(height: 16 * height),
 
           // Transferred Amount with currency
-          Container(
-            width: 300*width,
+          SizedBox(
+            width: 300 * width,
             child: AutoSizeText(
-
               '${successModel.amount.toStringAsFixed(2)} ${successModel.currencyType}',
               textAlign: TextAlign.center,
               style: TextsStyle.textStyleSemiBold24
@@ -51,11 +50,10 @@ class SuccessSendingScreenBody extends StatelessWidget {
               maxLines: 1,
             ),
           ),
-          Container(
-            width: 300*width,
+          SizedBox(
+            width: 300 * width,
             child: AutoSizeText(
               textAlign: TextAlign.center,
-
               'Total amount transferred',
               style: TextsStyle.textStyleRegular15
                   .copyWith(color: AppColors.greyA7, fontSize: 18),
@@ -72,16 +70,16 @@ class SuccessSendingScreenBody extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    width: 300*width,
+                  SizedBox(
+                    width: 300 * width,
                     child: AutoSizeText(
                       successModel.senderName,
                       style: TextsStyle.textStyleMedium18,
                       maxLines: 1,
                     ),
                   ),
-                  Container(
-                    width: 300*width,
+                  SizedBox(
+                    width: 300 * width,
                     child: AutoSizeText(
                       "ID: ${successModel.senderId}",
                       style: TextsStyle.textStyleRegular15
@@ -103,18 +101,16 @@ class SuccessSendingScreenBody extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    width: 300*width,
-
+                  SizedBox(
+                    width: 300 * width,
                     child: AutoSizeText(
                       successModel.receiverName,
                       style: TextsStyle.textStyleMedium18,
                       maxLines: 1,
                     ),
                   ),
-                  Container(
-                    width: 300*width,
-
+                  SizedBox(
+                    width: 300 * width,
                     child: AutoSizeText(
                       "ID: ${successModel.receiverId}",
                       style: TextsStyle.textStyleRegular15
@@ -122,9 +118,8 @@ class SuccessSendingScreenBody extends StatelessWidget {
                       maxLines: 1,
                     ),
                   ),
-                  Container(
-                    width: 300*width,
-
+                  SizedBox(
+                    width: 300 * width,
                     child: AutoSizeText(
                       "phone: ${successModel.receiverPhone}",
                       style: TextsStyle.textStyleRegular15
@@ -145,9 +140,8 @@ class SuccessSendingScreenBody extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    width: 150*width,
-
+                  SizedBox(
+                    width: 150 * width,
                     child: AutoSizeText(
                       'Reference',
                       style: TextStyle(fontSize: 16, color: Colors.grey[600]),
@@ -164,16 +158,16 @@ class SuccessSendingScreenBody extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    width: 150*width,
+                  SizedBox(
+                    width: 150 * width,
                     child: AutoSizeText(
                       'Date',
                       style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                       maxLines: 1,
                     ),
                   ),
-                  Container(
-                    width: 150*width,
+                  SizedBox(
+                    width: 150 * width,
                     child: AutoSizeText(
                       "${successModel.date.year}/${successModel.date.month}/${successModel.date.day} ${successModel.date.hour}:${successModel.date.minute}",
                       style: TextsStyle.textStyleSemiBold18,

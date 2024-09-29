@@ -1,18 +1,18 @@
-import 'package:bank_app/core/Routing/Routing.dart';
-import 'package:bank_app/core/widgets/error_screen.dart';
-import 'package:bank_app/features/notification/presentation/widgits/notification_appbar.dart';
-import 'package:bank_app/features/notification/presentation/widgits/notification_card.dart';
 import 'package:flutter/material.dart';
-import 'package:bank_app/core/styles/texts_style.dart';
-import 'package:bank_app/core/styles/colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/Routing/Routing.dart';
+import '../../../core/widgets/error_screen.dart';
 import '../../../core/widgets/loading_screen.dart'; // Corrected case
 import '../data/models/notification_model.dart';
 import '../domain/notifications_cubit.dart';
+import 'widgits/notification_appbar.dart';
+import 'widgits/notification_card.dart';
 
 class NotificationsScreen extends StatelessWidget {
+  const NotificationsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     // Trigger fetching notifications once when the screen is built
@@ -22,25 +22,31 @@ class NotificationsScreen extends StatelessWidget {
       listener: (context, state) {
         if (state is NotificationsError) {
           // Navigate to the error screen if there's an error
-          context.go(Routing.errorScreen, extra: ErrorScreenData(
-            message: state.message,
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ));
+          context.go(
+            Routing.errorScreen,
+            extra: ErrorScreenData(
+              message: state.message,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          );
         }
       },
       builder: (context, state) {
-        return SafeArea(
-          child: Scaffold(
-            body: Padding(
-              padding: const EdgeInsets.all(8.0),
+        return Scaffold(
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                right: 20.0,
+                top: 20.0,
+                left: 20.0,
+              ),
               child: Column(
                 children: [
-                  const SizedBox(height: 16.0),
                   NotificationAppBar(
                     title: 'Notifications',
-                    onarrowPressed: () {
+                    onArrowPressed: () {
                       context.pop();
                     },
                     onClearAllPressed: () {
@@ -56,8 +62,9 @@ class NotificationsScreen extends StatelessWidget {
                       builder: (context, state) {
                         if (state is NotificationsInitial) {
                           return const LoadingScreen();
-                        } else if (state is NotificationsLoaded) {
-                          List<NotificationModel> notifications = state.notifications;
+                        } else if (state is NotificationsSuccess) {
+                          List<NotificationModel> notifications =
+                              state.notifications;
                           return ListView.builder(
                             itemCount: notifications.length,
                             itemBuilder: (context, index) {

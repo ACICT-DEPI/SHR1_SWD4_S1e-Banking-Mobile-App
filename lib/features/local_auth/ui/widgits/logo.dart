@@ -1,10 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LogoWidget extends StatelessWidget {
+  const LogoWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return const Text(
       'Bank App',
       style: TextStyle(
         fontSize: 40,
