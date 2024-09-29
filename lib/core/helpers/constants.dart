@@ -13,13 +13,11 @@ class Constants {
   static List<LanguageModel> languages = [
     LanguageModel(
       languageImage: Images.imagesArabic,
-      languageName: 'Arabic',
-      isSelected: false,
+      languageName: 'العربية',
     ),
     LanguageModel(
       languageImage: Images.imagesEnglish,
       languageName: 'English',
-      isSelected: true,
     ),
   ];
 }

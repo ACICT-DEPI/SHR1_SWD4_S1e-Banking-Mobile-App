@@ -1,11 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'core/Routing/Routing.dart';
 import 'core/styles/theme_style.dart';
 import 'features/navigation_screen/logic/home_screen_cubit.dart';
 import 'features/notification/domain/notifications_cubit.dart';
+import 'features/settings/data/models/settings_model.dart';
+import 'features/settings/domain/cubits/settings_cubit.dart';
 import 'features/statistics/domain/cubits/statistics_cubit/statistics_cubit.dart';
 import 'features/wifi_screen/Logic/conection_cubit.dart';
 import 'features/wifi_screen/Logic/conection_state.dart';
@@ -18,6 +21,10 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  await Hive.initFlutter();
+  Hive.registerAdapter(SettingsModelAdapter());
+  await Hive.openBox<SettingsModel>('settings');
+
   runApp(
     MultiBlocProvider(
       providers: [
@@ -26,6 +33,9 @@ void main() async {
         BlocProvider(create: (context) => ConnectionScreenCubit()),
         BlocProvider(
           create: (context) => StatisticsCubit()..initialize(),
+        ),
+        BlocProvider(
+          create: (context) => SettingsCubit()..getSettingsModel(),
         )
       ],
       child: const MyApp(),

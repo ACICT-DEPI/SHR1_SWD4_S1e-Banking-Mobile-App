@@ -19,4 +19,14 @@ class SettingsCubit extends Cubit<SettingsState> {
       emit(SettingsFailed(errMessage: e.toString()));
     }
   }
+
+  updateSettingsModel(SettingsModel model) async {
+    emit(SettingsLoading());
+    try {
+      await _settingsRepo.updateSettings(model);
+      getSettingsModel();
+    } catch (e) {
+      emit(SettingsFailed(errMessage: e.toString()));
+    }
+  }
 }

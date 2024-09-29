@@ -1,31 +1,25 @@
+import 'package:hive/hive.dart';
+
+part 'settings_model.g.dart';
+
+@HiveType(typeId: 0)
 class SettingsModel {
+  @HiveField(0)
   String language;
-  int? appPassword;
+  @HiveField(1)
+  int appPassword;
+  @HiveField(2)
   String themeMode;
-  bool? useBiometric;
+  @HiveField(3)
+  bool useBiometric;
+  @HiveField(4)
+  bool supportBiometric;
 
   SettingsModel({
     required this.language,
-    this.appPassword,
+    required this.appPassword,
     this.themeMode = 'light',
-    this.useBiometric,
+    required this.useBiometric,
+    required this.supportBiometric,
   });
-
-  factory SettingsModel.fromJson(json) {
-    return SettingsModel(
-      language: json['language'],
-      appPassword: json['appPassword'],
-      themeMode: json['themeMode'],
-      useBiometric: json['useBiometric'],
-    );
-  }
-
-  static toJson(SettingsModel model) {
-    return {
-      'language': model.language,
-      'appPassword': model.appPassword,
-      'themeMode': model.themeMode,
-      'useBiometric': model.useBiometric,
-    };
-  }
 }

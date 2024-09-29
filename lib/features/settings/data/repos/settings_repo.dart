@@ -1,21 +1,26 @@
 import '../../../../core/helpers/functions.dart';
-import '../../../../core/network/firebase_settings.dart';
+import '../../../../core/local/local_settings.dart';
 import '../models/settings_model.dart';
 
 class SettingsRepo {
   getSettingsModel() async {
-    SettingsModel? settingsModel = await FirebaseSettings.getSettings();
+    SettingsModel? settingsModel = await LocalSettings.getSettings();
     if (settingsModel == null) {
       bool biometricSupport = await Functions.checkBiometricSupport();
-      await FirebaseSettings.addSettings(
+      await LocalSettings.addSettings(
         SettingsModel(
           language: Functions.getDeviceLanguage(),
-          useBiometric: biometricSupport == true ? true : null,
-          appPassword: null,
+          useBiometric: false,
+          appPassword: 0,
           themeMode: 'Light',
+          supportBiometric: biometricSupport == true ? true : false,
         ),
       );
     }
-    return await FirebaseSettings.getSettings();
+    return await LocalSettings.getSettings();
+  }
+
+  updateSettings(SettingsModel model) async {
+    await LocalSettings.updateSettings(model);
   }
 }

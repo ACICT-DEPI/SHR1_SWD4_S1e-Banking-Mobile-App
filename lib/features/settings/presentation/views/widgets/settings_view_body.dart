@@ -5,8 +5,6 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/Routing/Routing.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
-import '../../../../all_cards_screen/presentation/views/all_cards_screen.dart';
-import '../../../../languages/presentation/views/languages_view.dart';
 import '../../../data/models/settings_model.dart';
 import '../../../domain/cubits/settings_cubit.dart';
 import 'biometric_switch_button.dart';
@@ -27,7 +25,6 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
       builder: (context, state) {
         if (state is SettingsSuccess) {
           SettingsModel settingsModel = state.settingsModel;
-
           return Padding(
             padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
             child: SingleChildScrollView(
@@ -42,12 +39,7 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
                   SettingsButton(
                     text: "Language",
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LanguagesView(),
-                        ),
-                      );
+                      GoRouter.of(context).push(Routing.languagesView);
                     },
                     label: settingsModel.language,
                   ),
@@ -64,12 +56,7 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
                   SettingsButton(
                     text: "All Cards",
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AllCardsScreen(),
-                        ),
-                      );
+                      GoRouter.of(context).push(Routing.allCardsScreen);
                     },
                   ),
                   const SizedBox(height: 24.0),
@@ -96,17 +83,17 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
                     text: "Contact Us",
                     onPressed: () {},
                   ),
-                  if (settingsModel.useBiometric != null) ...[
+                  if (settingsModel.supportBiometric) ...[
                     const SizedBox(height: 20),
                     const MainSectionTitle(text: "Use fingerprint or PIN code"),
                     const SizedBox(height: 8.0),
                     BiometricSwitchButton(
                       onChanged: (value) {
-                        setState(() {
-                          settingsModel.useBiometric = value;
-                        });
+                        settingsModel.useBiometric = value;
+                        BlocProvider.of<SettingsCubit>(context)
+                            .updateSettingsModel(settingsModel);
                       },
-                      value: settingsModel.useBiometric!,
+                      value: settingsModel.useBiometric,
                     ),
                   ]
                 ],

@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../../core/helpers/images.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
+import '../../../../settings/data/models/settings_model.dart';
 import '../../../data/models/language_model.dart';
 
 class LanguageOption extends StatelessWidget {
@@ -12,7 +13,10 @@ class LanguageOption extends StatelessWidget {
   const LanguageOption({
     super.key,
     required this.languageModel,
+    required this.settingsModel,
   });
+
+  final SettingsModel settingsModel;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +38,7 @@ class LanguageOption extends StatelessWidget {
               Text(languageModel.languageName,
                   style: TextsStyle.textStyleMedium16),
               const Spacer(flex: 4),
-              if (languageModel.isSelected)
+              if (languageModel.languageName == settingsModel.language)
                 SvgPicture.asset(
                   Images.imagesCheckIcon,
                 )
