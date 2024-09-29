@@ -3,9 +3,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/Routing/Routing.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
-import '../../../../change_password/presentation/views/change_password.dart';
+import '../../../../all_cards_screen/presentation/views/all_cards_screen.dart';
 import '../../../../languages/presentation/views/languages_view.dart';
-import '../../../../privacy_policy/presentation/views/privacy_policy.dart';
 import 'biometric_switch_button.dart';
 import 'main_section_title.dart';
 import 'settings_button.dart';
@@ -43,7 +42,7 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
               },
               label: "English",
             ),
-            const SizedBox(height: 28.0),
+            const SizedBox(height: 24.0),
             SettingsButton(
               text: "My Profile",
               onPressed: () {
@@ -52,40 +51,35 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
                 );
               },
             ),
-            const SizedBox(height: 28.0),
+            const SizedBox(height: 24.0),
             SettingsButton(
-              text: "Contact Us",
-              onPressed: () {},
+              text: "All Cards",
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AllCardsScreen(),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 32),
             const MainSectionTitle(text: "Security"),
             const SizedBox(height: 20.0),
             SettingsButton(
-              text: "Change Password",
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ChangePassword(),
-                  ),
-                );
-              },
-            ),
-            const SizedBox(height: 28.0),
-            SettingsButton(
               text: "Privacy Policy",
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const PrivacyPolicy(),
-                  ),
-                );
+                GoRouter.of(context).push(Routing.privacyPolicy);
               },
+            ),
+            const SizedBox(height: 24.0),
+            SettingsButton(
+              text: "Contact Us",
+              onPressed: () {},
             ),
             const SizedBox(height: 20),
             const MainSectionTitle(text: "Choose what data you share with us"),
-            const SizedBox(height: 16.0),
+            const SizedBox(height: 8.0),
             const BiometricSwitchButton(),
           ],
         ),

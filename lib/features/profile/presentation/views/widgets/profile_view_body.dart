@@ -7,7 +7,6 @@ import '../../../../../core/network/firebase_authentication.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/widgets/error_screen.dart';
-import '../../../../all_cards_screen/presentation/views/all_cards_screen.dart';
 import '../../../../authentication/data/models/user_model.dart';
 import '../../../../navigation_screen/logic/home_screen_cubit.dart';
 import 'profile_information.dart';
@@ -57,15 +56,10 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                   ),
                   const SizedBox(height: 28),
                   ProfileRow(
-                    text: "All Cards",
-                    icon: Icons.credit_card_sharp,
+                    text: "Change Password",
+                    icon: Icons.lock,
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AllCardsScreen(),
-                        ),
-                      );
+                      GoRouter.of(context).push(Routing.changePassword);
                     },
                   ),
                   const SizedBox(height: 28),
