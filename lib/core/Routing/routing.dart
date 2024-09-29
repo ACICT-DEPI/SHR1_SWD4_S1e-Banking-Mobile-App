@@ -22,7 +22,7 @@ import '../../features/send_money_screen/presentation/success_sending_screen.dar
 import '../../features/service/presentation/service_view.dart';
 import '../../features/transaction_history/presentation/views/transaction_history_view.dart';
 import '../network/firebase_authentication.dart';
-import '../network/firebase_service.dart';
+import '../network/firebase_cards.dart';
 import '../widgets/error_screen.dart';
 
 class Routing {
@@ -112,7 +112,7 @@ class Routing {
           return const NavigationScreen();
         },
         redirect: (context, state) async {
-          if (await FirebaseService.getNumberOfCards() == 0) {
+          if (await FirebaseCards.getNumberOfCards() == 0) {
             return allCardsScreen;
           } else {
             return null;

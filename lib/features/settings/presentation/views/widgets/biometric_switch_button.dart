@@ -25,10 +25,9 @@ class _BiometricSwitchButtonState extends State<BiometricSwitchButton> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
+          const Text(
             "Biometric",
-            style:
-                TextsStyle.textStyleMedium14.copyWith(color: AppColors.black),
+            style: TextsStyle.textStyleMedium16,
           ),
           const Spacer(
             flex: 4,

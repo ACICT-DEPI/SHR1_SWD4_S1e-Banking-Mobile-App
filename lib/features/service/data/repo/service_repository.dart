@@ -1,4 +1,4 @@
-import '../../../../core/network/firebase_service.dart';
+import '../../../../core/network/firebase_transactions.dart';
 import '../../../navigation_screen/data/models/card_model.dart';
 import '../../../transaction_history/data/models/transaction_item_model.dart';
 
@@ -8,7 +8,7 @@ class ServiceRepository {
       required TransactionItemModel transactionItemModel,
       required CardModel card}) async {
     if (card.cardBalance > transactionItemModel.amount.abs()) {
-      await FirebaseService.addNewTransaction(
+      await FirebaseTransactions.addNewTransaction(
         transactionItemModel,
         card.cardNumber,
       );

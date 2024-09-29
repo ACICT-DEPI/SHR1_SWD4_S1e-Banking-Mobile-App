@@ -1,11 +1,11 @@
-import '../../../../core/network/firebase_service.dart';
+import '../../../../core/network/firebase_notifications.dart';
 
 class NotificationRepo {
   getAllNotifications() async {
-    return await FirebaseService.getAllNotifications();
+    return await FirebaseNotifications.getAllNotifications();
   }
 
   deleteAllNotifications() async {
-    await FirebaseService.removeAllNotifications();
+    await FirebaseNotifications.removeAllNotifications();
   }
 }

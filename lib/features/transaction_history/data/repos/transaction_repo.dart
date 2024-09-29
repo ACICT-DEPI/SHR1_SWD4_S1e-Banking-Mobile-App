@@ -1,7 +1,7 @@
-import 'package:bank_app/core/network/firebase_service.dart';
+import '../../../../core/network/firebase_transactions.dart';
 
 class TransactionRepo {
   getAllTransaction() async {
-    return FirebaseService.getAllTransactions();
+    return FirebaseTransactions.getAllTransactions();
   }
 }

@@ -1,8 +1,9 @@
-import 'package:bank_app/features/transaction_history/data/models/transaction_item_model.dart';
 import 'package:bloc/bloc.dart';
 
 import '../../../../../core/helpers/functions.dart';
-import '../../../../../core/network/firebase_service.dart';
+import '../../../../../core/network/firebase_months.dart';
+import '../../../../../core/network/firebase_transactions.dart';
+import '../../../../transaction_history/data/models/transaction_item_model.dart';
 import '../../../data/models/month_model.dart';
 import '../../../data/models/statistics_model.dart';
 import '../../../data/repos/statistics_repo.dart';
@@ -22,7 +23,7 @@ class StatisticsCubit extends Cubit<StatisticsState> {
       double currentBalance = await _statisticsRepo.getCurrentBalance();
 
       // Fetch all months from Firebase
-      List<MonthModel> months = await FirebaseService.getAllMonths();
+      List<MonthModel> months = await FirebaseMonths.getAllMonths();
 
       // If no months are present or less than 6 months, initialize them
       if (months.isEmpty || months.length < 6) {
@@ -35,7 +36,7 @@ class StatisticsCubit extends Cubit<StatisticsState> {
 
       // If the last month does not match the current month, add the new month
       if (lastMonth.month != currentMonth) {
-        await FirebaseService.addNewMonth(
+        await FirebaseMonths.addNewMonth(
           MonthModel(
             index: lastMonth.index + 1, // Increment index for the new month
             month: currentMonth, // Set the current month
@@ -46,7 +47,7 @@ class StatisticsCubit extends Cubit<StatisticsState> {
 
       // If the balance in the last month doesn't match the current balance, update it
       if (lastMonth.balance != currentBalance) {
-        await FirebaseService.updateMonth(
+        await FirebaseMonths.updateMonth(
           MonthModel(
             index: lastMonth.index, // Keep the same index
             month: lastMonth.month, // Same month
@@ -72,7 +73,7 @@ class StatisticsCubit extends Cubit<StatisticsState> {
 
   // Method to initialize the last 6 months with current balance
   void initializeMonths(double currentBalance) {
-    FirebaseService.addMonths(
+    FirebaseMonths.addMonths(
       List.generate(
         6, // Generate 6 months
         (index) => MonthModel(
@@ -110,7 +111,7 @@ class StatisticsCubit extends Cubit<StatisticsState> {
     double maxBalance = Functions.getMaxBalance(lastSixMonthsBalance);
 
     List<TransactionItemModel> allTransactions =
-        await FirebaseService.getAllTransactions();
+        await FirebaseTransactions.getAllTransactions();
 
     double transactionPercent =
         Functions.getTransactionPercent('Transaction', allTransactions);
