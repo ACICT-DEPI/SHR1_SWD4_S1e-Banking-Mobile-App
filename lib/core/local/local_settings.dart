@@ -1,6 +1,7 @@
 import 'package:hive/hive.dart';
 
 import '../../features/settings/data/models/settings_model.dart';
+import '../helpers/functions.dart';
 
 class LocalSettings {
   static final _settingsBox = Hive.box<SettingsModel>("settings");
@@ -15,7 +16,7 @@ class LocalSettings {
     if (settingsModel == null) {
       return null;
     }
-
+    settingsModel.supportBiometric = await Functions.checkBiometricSupport();
     return settingsModel;
   }
 

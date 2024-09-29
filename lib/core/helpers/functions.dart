@@ -264,17 +264,15 @@ class Functions {
     try {
       // Check if the device supports biometric authentication
       bool canCheckBiometrics = await auth.canCheckBiometrics;
-
       if (!canCheckBiometrics) {
         return false; // No biometric support at all
       }
-
       // Get the available biometric types
       List<BiometricType> availableBiometrics =
           await auth.getAvailableBiometrics();
-
       // Check if fingerprint is supported
-      return availableBiometrics.contains(BiometricType.fingerprint);
+      return availableBiometrics.contains(BiometricType.fingerprint) ||
+          availableBiometrics.contains(BiometricType.strong);
     } catch (e) {
       return false; // Return false if any error occurs
     }

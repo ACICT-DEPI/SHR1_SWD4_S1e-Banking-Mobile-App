@@ -11,7 +11,7 @@ class SettingsRepo {
         SettingsModel(
           language: Functions.getDeviceLanguage(),
           useBiometric: false,
-          appPassword: 0,
+          appPassword: 123456,
           themeMode: 'Light',
           supportBiometric: biometricSupport == true ? true : false,
         ),
