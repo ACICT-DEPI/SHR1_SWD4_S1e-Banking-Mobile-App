@@ -12,7 +12,7 @@ import 'features/settings/domain/cubits/settings_cubit.dart';
 import 'features/statistics/domain/cubits/statistics_cubit/statistics_cubit.dart';
 import 'features/wifi_screen/Logic/conection_cubit.dart';
 import 'features/wifi_screen/Logic/conection_state.dart';
-import 'features/wifi_screen/ui/no_connection_screen.dart'; // No Connection UI
+import 'features/wifi_screen/ui/no_connection_screen.dart';
 import 'firebase_options.dart';
 
 void main() async {
