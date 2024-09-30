@@ -64,24 +64,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-class test extends StatelessWidget {
-  const test({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body:
-        Center(
-          child: ElevatedButton(onPressed: () {
-            CustomDialog(dialogTitle: 'test ', dialogSubText: 'are you sure', onSubmit: () {  }, onCancel: () {  },
-
-            );
-
-
-          }, child: const Text('test')),
-        ),
-      ),
-    );
-  }
-}
