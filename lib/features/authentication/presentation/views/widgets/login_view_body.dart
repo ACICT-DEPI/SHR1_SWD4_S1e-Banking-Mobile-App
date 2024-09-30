@@ -25,8 +25,6 @@ class LoginViewBody extends StatefulWidget {
 
 class _LoginViewBodyState extends State<LoginViewBody> {
   bool isObscureText = true;
-  final GlobalKey<FormState> formKey = GlobalKey();
-  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   final TextEditingController emailTextController = TextEditingController();
   final TextEditingController passwordTextController = TextEditingController();
   bool isLoading = false;
@@ -57,44 +55,37 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           physics: const BouncingScrollPhysics(),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Form(
-              key: formKey,
-              autovalidateMode: autoValidateMode,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 20),
-                  CustomAppIconButton(
-                    icon: Icons.arrow_back_ios_new_outlined,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  const SizedBox(height: 55),
-                  const Text("Sign In", style: TextsStyle.textStyleMedium32),
-                  const SizedBox(height: 40),
-                  LoginEmailAndPassword(
-                    emailTextController: emailTextController,
-                    passwordTextController: passwordTextController,
-                  ),
-                  CustomAppButton(
-                    title: "Sign In",
-                    onPressed: () {
-                      setState(() {
-                        autoValidateMode = AutovalidateMode.always;
-                        if (formKey.currentState!.validate()) {
-                          BlocProvider.of<LoginCubit>(context).userLogin(
-                            email: emailTextController.text.trim(),
-                            password: passwordTextController.text.trim(),
-                          );
-                        }
-                      });
-                    },
-                  ),
-                  const SizedBox(height: 30),
-                  const NewUserRow()
-                ],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 20),
+                CustomAppIconButton(
+                  icon: Icons.arrow_back_ios_new_outlined,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                const SizedBox(height: 55),
+                const Text("Sign In", style: TextsStyle.textStyleMedium32),
+                const SizedBox(height: 40),
+                LoginEmailAndPassword(
+                  emailTextController: emailTextController,
+                  passwordTextController: passwordTextController,
+                ),
+                CustomAppButton(
+                  title: "Sign In",
+                  onPressed: () {
+                    setState(() {
+                      BlocProvider.of<LoginCubit>(context).userLogin(
+                        email: emailTextController.text.trim(),
+                        password: passwordTextController.text.trim(),
+                      );
+                    });
+                  },
+                ),
+                const SizedBox(height: 30),
+                const NewUserRow()
+              ],
             ),
           ),
         ),

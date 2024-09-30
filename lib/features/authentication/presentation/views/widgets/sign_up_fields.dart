@@ -34,6 +34,14 @@ class _SignUpFieldsState extends State<SignUpFields> {
           title: "Full Name",
           prefixIcon: Icons.person,
           keyboardType: TextInputType.name,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return "This field is required";
+            } else if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(value)) {
+              return "Please enter a valid name";
+            }
+            return null; // Input is valid
+          },
         ),
         const SizedBox(height: 22),
         CustomAppTextFormField(
@@ -41,6 +49,15 @@ class _SignUpFieldsState extends State<SignUpFields> {
           title: "Phone Number",
           prefixIcon: Icons.phone,
           keyboardType: TextInputType.phone,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return "This field is required";
+            } else if (!RegExp(r'^[0-9]+$').hasMatch(value) ||
+                value.length < 11) {
+              return "Please enter a valid number";
+            }
+            return null; // Input is valid
+          },
         ),
         const SizedBox(height: 22),
         CustomAppTextFormField(
@@ -48,6 +65,15 @@ class _SignUpFieldsState extends State<SignUpFields> {
           title: "Email Address",
           prefixIcon: Icons.email_outlined,
           keyboardType: TextInputType.emailAddress,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return "This field is required";
+            } else if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                .hasMatch(value)) {
+              return "Please enter a valid email";
+            }
+            return null; // Input is valid
+          },
         ),
         const SizedBox(height: 22),
         CustomAppTextFormField(

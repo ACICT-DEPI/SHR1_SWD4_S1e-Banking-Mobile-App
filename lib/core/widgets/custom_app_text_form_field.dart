@@ -11,7 +11,10 @@ class CustomAppTextFormField extends StatelessWidget {
     this.obscureText,
     required this.prefixIcon,
     this.suffixIcon,
-    this.onPressedIcon, this.textEditingController, this.enable,
+    this.onPressedIcon,
+    this.textEditingController,
+    this.enable,
+    this.validator,
   });
 
   final String title;
@@ -21,6 +24,7 @@ class CustomAppTextFormField extends StatelessWidget {
   final bool? obscureText;
   final bool? enable;
   final Function()? onPressedIcon;
+  final String? Function(String?)? validator;
   final TextEditingController? textEditingController;
 
   @override
@@ -44,23 +48,23 @@ class CustomAppTextFormField extends StatelessWidget {
               child: TextFormField(
                 enabled: enable,
                 controller: textEditingController,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "This field is required";
-                  }
-                  if (obscureText ?? false) {
-                    if (value.length < 8) {
-                      return "The password must be 8 at least";
-                    }
-                    if (!RegExp(r'[A-Za-z]').hasMatch(value)) {
-                      return "The password must contain at least one letter";
-                    }
-                    if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(value)) {
-                      return "The password must contain at least one special character";
-                    }
-                  }
-                  return null;
-                },
+                validator: validator ??
+                    (value) {
+                      if (value!.isEmpty) {
+                        return "This field is required";
+                      }
+                      if (obscureText ?? false) {
+                        if (value.trim().length < 8) {
+                          return "The password must be 8 at least";
+                        } else if (!RegExp(r'[A-Za-z]').hasMatch(value)) {
+                          return "The password must contain at least one letter";
+                        } else if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]')
+                            .hasMatch(value)) {
+                          return "The password must contain at least one special character";
+                        }
+                      }
+                      return null;
+                    },
                 obscureText: obscureText ?? false,
                 decoration: const InputDecoration(
                   border: InputBorder.none,
