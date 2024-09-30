@@ -83,6 +83,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _navigateToService() {
-    GoRouter.of(context).push(Routing.serviceView);
+    GoRouter.of(context).push(Routing.servicesView);
   }
 }

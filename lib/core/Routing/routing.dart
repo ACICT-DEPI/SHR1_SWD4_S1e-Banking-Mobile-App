@@ -1,3 +1,4 @@
+import 'package:bank_app/features/service/data/model/service_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/add_new_card_page/presentation/add_card_page.dart';
@@ -20,6 +21,7 @@ import '../../features/send_money_screen/presentation/scan_qr_sacn_screen.dart';
 import '../../features/send_money_screen/presentation/send_money_screen.dart';
 import '../../features/send_money_screen/presentation/success_sending_screen.dart';
 import '../../features/service/presentation/service_view.dart';
+import '../../features/service/presentation/widgets/service_view_body.dart';
 import '../../features/settings/data/models/settings_model.dart';
 import '../../features/transaction_history/presentation/views/transaction_history_view.dart';
 import '../local/local_settings.dart';
@@ -49,6 +51,8 @@ class Routing {
   static String qrScanScreen = '/QrScanScreen';
   static String notificationsScreen = '/NotificationsScreen';
   static String localAuthScreen = '/LocalAuthScreen';
+  static String servicesView = '/ServicesView';
+
   static final GoRouter _router = GoRouter(
     initialLocation: onboardingScreen, // Set your initial route here
 
@@ -164,7 +168,14 @@ class Routing {
       GoRoute(
         path: serviceView,
         builder: (BuildContext context, GoRouterState state) {
-          return const ServiceView();
+          ServiceModel serviceModel = ServicesView as ServiceModel;
+          return  ServiceViewBody(service: serviceModel,);
+        },
+      ),
+      GoRoute(
+        path: servicesView,
+        builder: (BuildContext context, GoRouterState state) {
+          return  ServicesView();
         },
       ),
       GoRoute(

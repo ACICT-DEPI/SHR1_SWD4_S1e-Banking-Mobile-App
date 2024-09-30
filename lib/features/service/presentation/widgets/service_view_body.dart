@@ -1,3 +1,4 @@
+import 'package:bank_app/features/service/data/model/service_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -23,7 +24,8 @@ import 'payment_id_text_field.dart';
 import 'service_drop_button_list.dart';
 
 class ServiceViewBody extends StatefulWidget {
-  const ServiceViewBody({super.key});
+  ServiceModel service;
+   ServiceViewBody({super.key, required this.service});
 
   @override
   State<ServiceViewBody> createState() => _ServiceViewBodyState();
@@ -40,128 +42,133 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ServiceCubit, ServiceState>(
-      listener: (context, sendMoneyState) async {
-        if (sendMoneyState is ServiceSuccessState) {
-          BlocProvider.of<HomeScreenCubit>(context).initialize();
-          BlocProvider.of<StatisticsCubit>(context).initialize();
-          GoRouter.of(context).pushReplacement(
-            Routing.transactionHistoryView,
-          );
-        }
-      },
-      builder: (context, sendMoneyState) {
-        return BlocBuilder<GetCardsCubit, GetCardsState>(
-          builder: (context, getAllCardsState) {
-            if (sendMoneyState is ServiceLoadingState) {
-              return const LoadingScreen();
-            } else if (getAllCardsState is GetCardsFailedState) {
-              return ErrorScreen(
-                message: getAllCardsState.errMessage,
-                onPressed: () => GoRouter.of(context).pop(),
-              );
-            } else if (sendMoneyState is ServiceFailedState) {
-              return ErrorScreen(
-                message: sendMoneyState.message,
-                onPressed: () => GoRouter.of(context).pop(),
-              );
-            } else if (getAllCardsState is GetCardsSuccessState) {
-              return Form(
-                key: formKey,
-                autovalidateMode: autoValidateMode,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
-                  child: ListView(
-                    children: [
-                      CustomAppBar(
-                        appBarTitle: "Service",
-                        leftIcon: Icons.arrow_back_ios_new_outlined,
-                        onPressedLeft: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                      const SizedBox(height: 35),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: double.infinity,
-                            height: 220,
-                            child: PageView.builder(
-                              controller: pageController,
-                              itemCount: getAllCardsState.cards.length,
-                              itemBuilder: (context, index) {
-                                final CardModel card =
-                                    getAllCardsState.cards[index];
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: BankCardDesign(
-                                    card: CardModel(
-                                      cvv: card.cvv,
-                                      cardNumber: card.cardNumber,
-                                      cardHolderName: card.cardHolderName,
-                                      expiryDate: card.expiryDate,
-                                      cardType: card.cardType,
-                                    ),
-                                  ),
-                                );
-                              },
-                              onPageChanged: (index) {
-                                setState(() {
-                                  selectedCardIndex = index;
-                                });
-                              },
-                            ),
-                          ),
-                          const SizedBox(height: 30),
-                          PaymentIdTextField(
-                            textController: idController,
-                          ),
-                          const SizedBox(height: 16),
-                          AmountTextField(
-                            textController: amountController,
-                          ),
-                          const SizedBox(height: 16),
-                          ServiceDragButtonList(
-                            services: Constants.services,
-                            serviceIndex: serviceIndex,
-                            onChanged: (int? newValue) {
-                              setState(() {
-                                serviceIndex = newValue!;
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 30),
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: CustomAppButton(
-                          title: 'Continue',
-                          onPressed: () {
-                            autoValidateMode = AutovalidateMode.always;
-                            if (formKey.currentState!.validate()) {
-                              BlocProvider.of<ServiceCubit>(context).sendMoney(
-                                id: idController.text,
-                                transactionItem: buildTransactionItemModel(),
-                                card: getAllCardsState.cards[selectedCardIndex],
-                              );
-                            }
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ServiceCubit(),
+        ),
+        BlocProvider(
+          create: (context) => GetCardsCubit()..getAllCards(),
+        ),
+      ],
+      child: BlocConsumer<ServiceCubit, ServiceState>(
+        listener: (context, sendMoneyState) async {
+          if (sendMoneyState is ServiceSuccessState) {
+            BlocProvider.of<HomeScreenCubit>(context).initialize();
+            BlocProvider.of<StatisticsCubit>(context).initialize();
+            GoRouter.of(context).pushReplacement(
+              Routing.transactionHistoryView,
+            );
+          }
+        },
+        builder: (context, sendMoneyState) {
+          return BlocBuilder<GetCardsCubit, GetCardsState>(
+            builder: (context, getAllCardsState) {
+              if (sendMoneyState is ServiceLoadingState) {
+                return const LoadingScreen();
+              } else if (getAllCardsState is GetCardsFailedState) {
+                return ErrorScreen(
+                  message: getAllCardsState.errMessage,
+                  onPressed: () => GoRouter.of(context).pop(),
+                );
+              } else if (sendMoneyState is ServiceFailedState) {
+                return ErrorScreen(
+                  message: sendMoneyState.message,
+                  onPressed: () => GoRouter.of(context).pop(),
+                );
+              } else if (getAllCardsState is GetCardsSuccessState) {
+                return Form(
+                  key: formKey,
+                  autovalidateMode: autoValidateMode,
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
+                    child: ListView(
+                      children: [
+                        CustomAppBar(
+                          appBarTitle: "Service",
+                          leftIcon: Icons.arrow_back_ios_new_outlined,
+                          onPressedLeft: () {
+                            Navigator.pop(context);
                           },
                         ),
-                      ),
-                      const SizedBox(height: 50),
-                    ],
+                        const SizedBox(height: 35),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: double.infinity,
+                              height: 220,
+                              child: PageView.builder(
+                                controller: pageController,
+                                itemCount: getAllCardsState.cards.length,
+                                itemBuilder: (context, index) {
+                                  final CardModel card =
+                                      getAllCardsState.cards[index];
+                                  return Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: BankCardDesign(
+                                      card: CardModel(
+                                        cvv: card.cvv,
+                                        cardNumber: card.cardNumber,
+                                        cardHolderName: card.cardHolderName,
+                                        expiryDate: card.expiryDate,
+                                        cardType: card.cardType,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                onPageChanged: (index) {
+                                  setState(() {
+                                    selectedCardIndex = index;
+                                  });
+                                },
+                              ),
+                            ),
+                            const SizedBox(height: 30),
+                            PaymentIdTextField(
+                              textController: idController,
+                            ),
+                            const SizedBox(height: 16),
+                            AmountTextField(
+                              textController: amountController,
+                            ),
+                            const SizedBox(height: 16),
+                           Card(
+                             elevation: 2.0,
+                             child: Row(children: [Icon(widget.service.icon,), Text(widget.service.name)],),
+                           )
+                          ],
+                        ),
+                        const SizedBox(height: 30),
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: CustomAppButton(
+                            title: 'Continue',
+                            onPressed: () {
+                              autoValidateMode = AutovalidateMode.always;
+                              if (formKey.currentState!.validate()) {
+                                BlocProvider.of<ServiceCubit>(context).sendMoney(
+                                  id: idController.text,
+                                  transactionItem: buildTransactionItemModel(),
+                                  card: getAllCardsState.cards[selectedCardIndex],
+                                );
+                              }
+                            },
+                          ),
+                        ),
+                        const SizedBox(height: 50),
+                      ],
+                    ),
                   ),
-                ),
-              );
-            } else {
-              return const LoadingScreen();
-            }
-          },
-        );
-      },
+                );
+              } else {
+                return const LoadingScreen();
+              }
+            },
+          );
+        },
+      ),
     );
   }
 
