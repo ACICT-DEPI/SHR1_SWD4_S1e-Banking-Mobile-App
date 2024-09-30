@@ -168,7 +168,7 @@ class Routing {
       GoRoute(
         path: serviceView,
         builder: (BuildContext context, GoRouterState state) {
-          ServiceModel serviceModel = ServicesView as ServiceModel;
+          ServiceModel serviceModel = state.extra as ServiceModel;
           return  ServiceViewBody(service: serviceModel,);
         },
       ),

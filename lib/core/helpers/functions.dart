@@ -31,6 +31,7 @@ class Functions {
     return last6MonthsBalance.reduce((a, b) => a > b ? a : b);
   }
 
+
   static Icon getTransactionIcon(TransactionType transactionType) {
     switch (transactionType) {
       case TransactionType.spotify:
@@ -49,13 +50,55 @@ class Functions {
       case TransactionType.googlePlay:
         return const Icon(FontAwesomeIcons.googlePlay);
       case TransactionType.grocery:
-        return const Icon(
-          Icons.shopping_cart_outlined,
-        );
+        return const Icon(Icons.shopping_cart_outlined);
+      case TransactionType.netflix:                            // New case for Netflix
+        return const Icon(Icons.tv);
+      case TransactionType.uber:                               // New case for Uber
+        return const Icon(Icons.directions_car);
+      case TransactionType.waterBill:                          // New case for Water Bill
+        return const Icon(Icons.water);
+      case TransactionType.homeInternet:                       // New case for Home Internet
+        return const Icon(Icons.router);
+      case TransactionType.mobileBill:                         // New case for Mobile Bill
+        return const Icon(Icons.phone_android);
+      case TransactionType.mobileRecharge:                     // New case for Mobile Recharge
+        return const Icon(Icons.mobile_friendly);
+      case TransactionType.socialInsurance:                    // New case for Social Insurance
+        return const Icon(Icons.family_restroom);
+      case TransactionType.fawryPay:                           // New case for Fawry Pay
+        return const Icon(Icons.payment);
+      case TransactionType.landline:                            // New case for Landline
+        return const Icon(Icons.call);
+      case TransactionType.electricity:                        // New case for Electricity
+        return const Icon(Icons.electric_bolt);
+      case TransactionType.financeAndBanks:                    // New case for Finance and Banks
+        return const Icon(Icons.account_balance);
+      case TransactionType.donations:                           // New case for Donations
+        return const Icon(Icons.volunteer_activism);
+      case TransactionType.games:                               // New case for Games
+        return const Icon(Icons.gamepad);
+      case TransactionType.gas:                                 // New case for Gas
+        return const Icon(Icons.local_fire_department);
+      case TransactionType.tickets:                             // New case for Tickets
+        return const Icon(Icons.confirmation_num);
+      case TransactionType.microfinance:                        // New case for Microfinance
+        return const Icon(Icons.attach_money);
+      case TransactionType.education:                           // New case for Education
+        return const Icon(Icons.school);
+      case TransactionType.saveGaza:                            // New case for Save Gaza
+        return const Icon(Icons.flag);
+      case TransactionType.dailyWaste:                          // New case for Daily Waste
+        return const Icon(Icons.delete);
+      case TransactionType.payments:                            // New case for Payments
+        return const Icon(Icons.money);
+      case TransactionType.unions:                              // New case for Unions
+        return const Icon(Icons.badge);
       default:
         return const Icon(FontAwesomeIcons.moneyBillTransfer);
     }
   }
+
+
 
   static String getTransactionTitle(TransactionType transactionType) {
     switch (transactionType) {
@@ -73,6 +116,48 @@ class Functions {
         return "Amazon Pay";
       case TransactionType.paypal:
         return "Paypal";
+      case TransactionType.netflix:                            // New case for Netflix
+        return "Netflix";
+      case TransactionType.uber:                               // New case for Uber
+        return "Uber";
+      case TransactionType.waterBill:                          // New case for Water Bill
+        return "Water Bill";
+      case TransactionType.homeInternet:                       // New case for Home Internet
+        return "Home Internet";
+      case TransactionType.mobileBill:                         // New case for Mobile Bill
+        return "Mobile Bill";
+      case TransactionType.mobileRecharge:                     // New case for Mobile Recharge
+        return "Mobile Recharge";
+      case TransactionType.socialInsurance:                    // New case for Social Insurance
+        return "Social Insurance";
+      case TransactionType.fawryPay:                           // New case for Fawry Pay
+        return "Fawry Pay";
+      case TransactionType.landline:                            // New case for Landline
+        return "Landline";
+      case TransactionType.electricity:                        // New case for Electricity
+        return "Electricity";
+      case TransactionType.financeAndBanks:                    // New case for Finance and Banks
+        return "Finance and Banks";
+      case TransactionType.donations:                           // New case for Donations
+        return "Donations";
+      case TransactionType.games:                               // New case for Games
+        return "Games";
+      case TransactionType.gas:                                 // New case for Gas
+        return "Gas";
+      case TransactionType.tickets:                             // New case for Tickets
+        return "Tickets";
+      case TransactionType.microfinance:                        // New case for Microfinance
+        return "Microfinance";
+      case TransactionType.education:                           // New case for Education
+        return "Education";
+      case TransactionType.saveGaza:                            // New case for Save Gaza
+        return "Save Gaza";
+      case TransactionType.dailyWaste:                          // New case for Daily Waste
+        return "Daily Waste";
+      case TransactionType.payments:                            // New case for Payments
+        return "Payments";
+      case TransactionType.unions:                              // New case for Unions
+        return "Unions";
       default:
         return "Money Transfer";
     }
@@ -80,24 +165,54 @@ class Functions {
 
   static String getTransactionSubTitle(TransactionType transactionType) {
     switch (transactionType) {
+    // قسم الترفيه
       case TransactionType.spotify:
-        return "Music";
       case TransactionType.appleStore:
-        return "Entertainment";
-      case TransactionType.moneyTransfer:
-        return "Transaction";
-      case TransactionType.grocery:
-        return "Shopping";
       case TransactionType.googlePlay:
-        return "Entertainment";
-      case TransactionType.amazonPay:
-        return "Shopping";
+      case TransactionType.netflix:
+      case TransactionType.games:
+        return "Entertainment"; // جميع خدمات الترفيه
+
+    // قسم المرافق
+      case TransactionType.waterBill:
+      case TransactionType.electricity:
+      case TransactionType.gas:
+      case TransactionType.dailyWaste:
+        return "Utilities"; // جميع خدمات المرافق
+
+    // قسم الخدمات المالية
+      case TransactionType.moneyTransfer:
       case TransactionType.paypal:
-        return "Transaction";
+      case TransactionType.amazonPay:
+      case TransactionType.financeAndBanks:
+      case TransactionType.microfinance:
+      case TransactionType.fawryPay:
+      case TransactionType.donations:
+      case TransactionType.payments:
+        return "Financial Services"; // جميع خدمات المالية
+
+    // قسم الاتصالات
+      case TransactionType.homeInternet:
+      case TransactionType.mobileBill:
+      case TransactionType.landline:
+      case TransactionType.mobileRecharge:
+        return "Telecommunication"; // جميع خدمات الاتصالات
+
+    // قسم التسوق
+      case TransactionType.grocery:
+        return "Shopping"; // جميع خدمات التسوق
+      case TransactionType.amazonPay: // إعادة استخدام خدمات التسوق
+        return "Shopping"; // إذا كنت تريد أن تتضمن خدمة أمازون أيضًا
+
+    // قسم النقل
+      case TransactionType.uber:
+        return "Transport"; // خدمة النقل
+
       default:
-        return "Transaction";
+        return "Transaction"; // القيمة الافتراضية
     }
   }
+
 
   static TransactionType getTransactionType(String transactionTitle) {
     switch (transactionTitle) {
@@ -115,10 +230,53 @@ class Functions {
         return TransactionType.amazonPay;
       case "Paypal":
         return TransactionType.paypal;
+      case "Netflix":                              // New case for Netflix
+        return TransactionType.netflix;
+      case "Uber":                                 // New case for Uber
+        return TransactionType.uber;
+      case "Water Bill":                           // New case for Water Bill
+        return TransactionType.waterBill;
+      case "Home Internet":                        // New case for Home Internet
+        return TransactionType.homeInternet;
+      case "Mobile Bill":                          // New case for Mobile Bill
+        return TransactionType.mobileBill;
+      case "Mobile Recharge":                      // New case for Mobile Recharge
+        return TransactionType.mobileRecharge;
+      case "Social Insurance":                     // New case for Social Insurance
+        return TransactionType.socialInsurance;
+      case "Fawry Pay":                           // New case for Fawry Pay
+        return TransactionType.fawryPay;
+      case "Landline":                             // New case for Landline
+        return TransactionType.landline;
+      case "Electricity":                         // New case for Electricity
+        return TransactionType.electricity;
+      case "Finance and Banks":                    // New case for Finance and Banks
+        return TransactionType.financeAndBanks;
+      case "Donations":                            // New case for Donations
+        return TransactionType.donations;
+      case "Games":                                // New case for Games
+        return TransactionType.games;
+      case "Gas":                                  // New case for Gas
+        return TransactionType.gas;
+      case "Tickets":                              // New case for Tickets
+        return TransactionType.tickets;
+      case "Microfinance":                         // New case for Microfinance
+        return TransactionType.microfinance;
+      case "Education":                            // New case for Education
+        return TransactionType.education;
+      case "Save Gaza":                            // New case for Save Gaza
+        return TransactionType.saveGaza;
+      case "Daily Waste":                          // New case for Daily Waste
+        return TransactionType.dailyWaste;
+      case "Payments":                             // New case for Payments
+        return TransactionType.payments;
+      case "Unions":                               // New case for Unions
+        return TransactionType.unions;
       default:
         return TransactionType.moneyTransfer;
     }
   }
+
 
   static String getCurrentDate() {
     DateTime date = DateTime.now();

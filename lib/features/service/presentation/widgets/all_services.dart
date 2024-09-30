@@ -1,8 +1,8 @@
 import 'package:bank_app/features/service/presentation/widgets/service_card.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/widgets/custom_app_bar.dart';
 import '../../data/model/service_model.dart';
-
 
 class PaymentServicesScreen extends StatelessWidget {
   final List<ServiceModel> services = [
@@ -29,27 +29,37 @@ class PaymentServicesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Payment Services'),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, // 3 items per row
-            crossAxisSpacing: 10.0,
-            mainAxisSpacing: 10.0,
-            childAspectRatio: 0.8, // Adjust for icon-label ratio
-          ),
-          itemCount: services.length,
-          itemBuilder: (context, index) {
-            return ServiceCard(service: services[index]);
-          },
+        child: Column(
+          children: [
+            SizedBox(height: 20,),
+            CustomAppBar(
+              appBarTitle: "Services",
+              leftIcon: Icons.arrow_back_ios_new_outlined,
+              onPressedLeft: () {
+                Navigator.pop(context);
+              },
+            ),
+            SizedBox(height: 20,),
+
+            Expanded(
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3, // 3 items per row
+                  crossAxisSpacing: 10.0,
+                  mainAxisSpacing: 10.0,
+                  childAspectRatio: 0.8, // Adjust for icon-label ratio
+                ),
+                itemCount: services.length,
+                itemBuilder: (context, index) {
+                  return ServiceCard(service: services[index]);
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
-
-
-
