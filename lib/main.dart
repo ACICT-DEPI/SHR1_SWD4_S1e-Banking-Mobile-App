@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import 'core/Routing/Routing.dart';
 import 'core/styles/theme_style.dart';
+import 'core/widgets/custom_dialog.dart';
 import 'features/navigation_screen/logic/home_screen_cubit.dart';
 import 'features/notification/domain/notifications_cubit.dart';
 import 'features/settings/data/models/settings_model.dart';
@@ -60,6 +61,27 @@ class MyApp extends StatelessWidget {
           );
         }
       },
+    );
+  }
+}
+class test extends StatelessWidget {
+  const test({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body:
+        Center(
+          child: ElevatedButton(onPressed: () {
+            CustomDialog(dialogTitle: 'test ', dialogSubText: 'are you sure', onSubmit: () {  }, onCancel: () {  },
+
+            );
+
+
+          }, child: const Text('test')),
+        ),
+      ),
     );
   }
 }
