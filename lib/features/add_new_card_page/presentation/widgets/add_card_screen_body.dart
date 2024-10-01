@@ -7,6 +7,7 @@ import '../../../../core/widgets/Loading_screen.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_app_button.dart';
 import '../../../../core/widgets/error_screen.dart';
+import '../../../../generated/l10n.dart';
 import '../../../navigation_screen/data/models/card_model.dart';
 import '../../../navigation_screen/logic/home_screen_cubit.dart';
 import '../../../navigation_screen/presentation/home/presentation/views/widgets/bank_card_design.dart';
@@ -48,7 +49,7 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
       listener: (context, state) {
         if (state is AddCardSuccessState) {
           BlocProvider.of<HomeScreenCubit>(context).initialize();
-          BlocProvider.of<StatisticsCubit>(context).initialize();
+          BlocProvider.of<StatisticsCubit>(context).initialize(context);
           GoRouter.of(context).pop();
           GoRouter.of(context).pushReplacement(Routing.navigationScreen);
         }
@@ -67,7 +68,7 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CustomAppBar(
-                    appBarTitle: 'Add New Card',
+                    appBarTitle: S.of(context).AddNewCard,
                     leftIcon: Icons.arrow_back_ios_new_outlined,
                     onPressedLeft: () {
                       Navigator.pop(context);
@@ -80,7 +81,7 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                       cardNumber: _cardNumberController.text,
                       cardHolderName: _cardHolderNameController.text,
                       expiryDate: _expiryDateController.text,
-                      cardType: "Mastercard",
+                      cardType: S.of(context).Mastercard,
                     ),
                   ),
                   const SizedBox(height: 40),
@@ -90,9 +91,9 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                       children: [
                         // Cardholder Name Section
                         CardInputField(
-                          validator: CardValidator.validateName,
+                          validator: CardValidator(context).validateName,
                           keyboardType: TextInputType.name,
-                          label: 'Cardholder Name',
+                          label: S.of(context).CardholderName,
                           icon: Icons.person,
                           controller: _cardHolderNameController,
                           onChanged: updateCardInfo,
@@ -105,9 +106,10 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                           children: [
                             Expanded(
                               child: CardInputField(
-                                validator: CardValidator.validateExpiryDate,
+                                validator:
+                                    CardValidator(context).validateExpiryDate,
                                 keyboardType: TextInputType.number,
-                                label: 'Expiry Date',
+                                label: S.of(context).ExpiryDate,
                                 icon: Icons.calendar_today,
                                 controller: _expiryDateController,
                                 onChanged: updateCardInfo,
@@ -117,9 +119,9 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                             const SizedBox(width: 5),
                             Expanded(
                               child: CardInputField(
-                                validator: CardValidator.validateCvv,
+                                validator: CardValidator(context).validateCvv,
                                 keyboardType: TextInputType.number,
-                                label: 'CVV',
+                                label: S.of(context).CVV,
                                 icon: Icons.lock,
                                 controller: _cvvController,
                                 onChanged: updateCardInfo,
@@ -132,9 +134,9 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                         ),
                         const SizedBox(height: 30),
                         CardInputField(
-                          validator: CardValidator.validateCardNumber,
+                          validator: CardValidator(context).validateCardNumber,
                           keyboardType: TextInputType.number,
-                          label: 'Card Number',
+                          label: S.of(context).CardNumber,
                           icon: Icons.credit_card,
                           controller: _cardNumberController,
                           showCardIcons: true,
@@ -149,7 +151,7 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                     ),
                   ),
                   CustomAppButton(
-                    title: 'Add Card',
+                    title: S.of(context).AddCard,
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         BlocProvider.of<AddCardCubit>(context).addNewCard(
@@ -157,7 +159,7 @@ class _AddCardScreenBodyState extends State<AddCardScreenBody> {
                             cardNumber: _cardNumberController.text,
                             cardHolderName: _cardHolderNameController.text,
                             expiryDate: _expiryDateController.text,
-                            cardType: "Mastercard",
+                            cardType: S.of(context).Mastercard,
                             cvv: _cvvController.text,
                           ),
                         );

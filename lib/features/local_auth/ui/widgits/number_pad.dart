@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../generated/l10n.dart';
 import '../../domain/biometric_auth.dart';
 import 'finger_auth.dart';
 
@@ -27,8 +28,8 @@ class NumberPad extends StatelessWidget {
         } else if (index == 11) {
           // Del button
           return NumberButton(
-            label: "Del",
-            onTap: () => onNumberTapped("Del"),
+            label: S.of(context).Del,
+            onTap: () => onNumberTapped(S.of(context).Del),
             icon: Icons.delete,
           );
         } else if (index == 10) {
@@ -82,7 +83,7 @@ class NumberButton extends StatelessWidget {
                   size: 30, // Set the icon size
                   color: Colors.white,
                 ),
-              label == "Del"
+              label == S.of(context).Del
                   ? Container()
                   : Text(
                       label,

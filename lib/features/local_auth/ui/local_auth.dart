@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/Routing/Routing.dart';
 import '../../../core/widgets/Loading_screen.dart';
+import '../../../generated/l10n.dart';
 import '../../settings/data/models/settings_model.dart';
 import '../../settings/domain/cubits/settings_cubit.dart';
 import '../domain/biometric_auth.dart';
@@ -71,7 +72,7 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
   }
 
   void _handleNumberTap(String number, String password) {
-    if (number == "Del") {
+    if (number == S.of(context).Del) {
       if (enteredPin.isNotEmpty) {
         enteredPin = enteredPin.substring(0, enteredPin.length - 1);
       }
@@ -84,8 +85,7 @@ class _LocalAuthScreenState extends State<LocalAuthScreen> {
         // Replace '123456' with your actual PIN
         context.go(Routing.navigationScreen);
       } else {
-        print('Incorrect PIN');
-        enteredPin = ''; // Clear the entered PIN
+        enteredPin = '';
       }
     }
   }

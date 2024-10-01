@@ -1,3 +1,4 @@
+import 'package:bank_app/features/theme/domain/cubits/theme_cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -6,6 +7,7 @@ import '../../../../../core/helpers/constants.dart';
 
 import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../settings/data/models/settings_model.dart';
 import '../../../../settings/domain/cubits/settings_cubit.dart';
 import 'language_option.dart';
@@ -25,6 +27,7 @@ class _LanguagesViewBodyState extends State<LanguagesViewBody> {
     return BlocConsumer<SettingsCubit, SettingsState>(
       listener: (context, state) {
         if (state is SettingsSuccess && changeLanguage) {
+          BlocProvider.of<ThemeCubit>(context).updateTheme();
           GoRouter.of(context).pop();
         }
       },
@@ -36,7 +39,7 @@ class _LanguagesViewBodyState extends State<LanguagesViewBody> {
             child: Column(
               children: [
                 CustomAppBar(
-                  appBarTitle: "Languages",
+                  appBarTitle: S.of(context).Languages,
                   leftIcon: Icons.arrow_back_ios_new_outlined,
                   onPressedLeft: () {
                     Navigator.pop(context);

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/local/local_settings.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
+import '../../../../../generated/l10n.dart';
 
 class SpendingLimitSection extends StatelessWidget {
   const SpendingLimitSection({
@@ -22,15 +23,16 @@ class SpendingLimitSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Monthly spending limit",
+          S.of(context).MonthlySpendingLimit,
           style: TextsStyle.textStyleSemiBold24.copyWith(fontSize: 18),
         ),
         const SizedBox(height: 12.0),
         Container(
           decoration: BoxDecoration(
-            color: (LocalSettings.getSettings().themeMode == 'Light')
-                ? AppColors.greyF4
-                : AppColors.dark,
+            color:
+                (LocalSettings.getSettings().themeMode == S.of(context).Light)
+                    ? AppColors.greyF4
+                    : AppColors.dark,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Padding(
@@ -40,7 +42,8 @@ class SpendingLimitSection extends StatelessWidget {
               children: [
                 const SizedBox(height: 10),
                 Text(
-                  "Amount: \$${currentSliderValue.toStringAsFixed(2)}",
+                  S.of(context).Amount +
+                      ": \$${currentSliderValue.toStringAsFixed(2)}",
                   style: TextsStyle.textStyleRegular13,
                 ),
                 Slider(
@@ -66,10 +69,10 @@ class SpendingLimitSection extends StatelessWidget {
                     Text(
                       "\$${currentSliderValue.toStringAsFixed(2)}",
                       style: TextsStyle.textStyleRegular15.copyWith(
-                        color:
-                            (LocalSettings.getSettings().themeMode == 'Light')
-                                ? AppColors.black
-                                : AppColors.white,
+                        color: (LocalSettings.getSettings().themeMode ==
+                                S.of(context).Light)
+                            ? AppColors.black
+                            : AppColors.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../transaction_history/data/models/transaction_item_model.dart';
 import '../../../../transaction_history/presentation/views/transaction_history_view.dart';
 import 'transaction_items_column.dart';
@@ -21,8 +22,8 @@ class TransactionSection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              "Transaction",
+             Text(
+              S.of(context).Transaction,
               style: TextsStyle.textStyleMedium18,
             ),
             GestureDetector(
@@ -35,7 +36,7 @@ class TransactionSection extends StatelessWidget {
                 );
               },
               child: Text(
-                "See All",
+                S.of(context).SeeAll,
                 style: TextsStyle.textStyleMedium14
                     .copyWith(color: AppColors.blue),
               ),

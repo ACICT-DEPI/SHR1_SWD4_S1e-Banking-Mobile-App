@@ -3,6 +3,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../core/styles/colors.dart';
 import '../../../core/widgets/custom_app_button.dart';
+import '../../../generated/l10n.dart';
 import '../../authentication/presentation/views/login_view.dart';
 import 'widgets/onboarding_page.dart';
 
@@ -29,8 +30,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final double widthFactor = MediaQuery.of(context).size.width/411;
-    final double heightFactor = MediaQuery.of(context).size.height/890;
+    final double widthFactor = MediaQuery.of(context).size.width / 411;
+    final double heightFactor = MediaQuery.of(context).size.height / 890;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -38,36 +39,35 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           children: [
             PageView(
               controller: _controller,
-              children: const [
+              children: [
                 OnboardingPage(
                   imagePath: "assets/images/Onboarding_1.svg",
-                  title: "Fastest Payment in \nthe world",
-                  description:
-                      "Integrate multiple payment methods\n to help you up the process quickly",
+                  title: S.of(context).FastestPayment,
+                  description: S.of(context).FastestPaymentDescription,
                 ),
                 OnboardingPage(
                   imagePath: "assets/images/Onboarding_2.svg",
-                  title: "The most Secure\n Platform for Customers",
-                  description:
-                      "Built-in Fingerprint, face recognition\n and more, keeping you completely safe",
+                  title: S.of(context).SecurePlatform,
+                  description: S.of(context).SecurePlatformDescription,
                 ),
                 OnboardingPage(
                   imagePath: "assets/images/Onboarding_3.svg",
-                  title: "Paying for Everything is\n Easy and Convenient",
-                  description:
-                      "Built-in Fingerprint, face recognition\n and more, keeping you completely safe",
+                  title: S.of(context).PayingEverything,
+                  description: S.of(context).PayingEverythingDescription,
                 ),
               ],
             ),
             Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
-                padding:  EdgeInsets.symmetric(
-                  vertical: 40*heightFactor,
-                  horizontal: 16*widthFactor,
+                padding: EdgeInsets.symmetric(
+                  vertical: 40 * heightFactor,
+                  horizontal: 16 * widthFactor,
                 ),
                 child: CustomAppButton(
-                  title: _currentPage == 2 ? "Get Started" : "Next",
+                  title: _currentPage == 2
+                      ? S.of(context).GetStarted
+                      : S.of(context).Next,
                   onPressed: () {
                     if (_currentPage < 2) {
                       _controller.nextPage(
@@ -87,8 +87,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
             Positioned(
-              bottom: 320*heightFactor,
-              left: 150*widthFactor,
+              bottom: 320 * heightFactor,
+              left: 150 * widthFactor,
               child: SmoothPageIndicator(
                 controller: _controller,
                 count: 3,

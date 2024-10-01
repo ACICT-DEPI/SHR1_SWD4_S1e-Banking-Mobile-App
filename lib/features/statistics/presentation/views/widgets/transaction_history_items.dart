@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/transaction_item.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../transaction_history/data/models/transaction_item_model.dart';
 
 class TransactionHistoryItems extends StatelessWidget {
@@ -23,12 +24,12 @@ class TransactionHistoryItems extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              "Transaction History",
+             Text(
+              S.of(context).TransactionHistory,
               style: TextsStyle.textStyleMedium18,
             ),
             Text(
-              "See All",
+              S.of(context).SeeAll,
               style: TextsStyle.textStyleRegular14.copyWith(
                 color: AppColors.blue,
               ),
@@ -37,7 +38,7 @@ class TransactionHistoryItems extends StatelessWidget {
         ),
         const SizedBox(height: 18.0),
         Text(
-          " Today",
+          S.of(context).Today,
           style: TextsStyle.textStyleMedium14.copyWith(
             color: AppColors.greyA7,
           ),

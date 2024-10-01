@@ -33,11 +33,11 @@ class TransactionItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              Functions.getTransactionTitle(transactionItemModel.type),
+              Functions.getTransactionTitle(transactionItemModel.type,context),
               style: TextsStyle.textStyleMedium16,
             ),
             Text(
-              Functions.getTransactionSubTitle(transactionItemModel.type),
+              Functions.getTransactionSubTitle(transactionItemModel.type,context),
               style: TextsStyle.textStyleRegular12
                   .copyWith(color: AppColors.greyA7),
             ),

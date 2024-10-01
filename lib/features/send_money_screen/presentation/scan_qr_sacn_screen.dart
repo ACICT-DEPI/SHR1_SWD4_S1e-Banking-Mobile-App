@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:bank_app/core/styles/colors.dart';
 
+import '../../../generated/l10n.dart';
+
 // QR Scan Screen
 class QrScanScreen extends StatefulWidget {
   const QrScanScreen({super.key});
@@ -35,7 +37,7 @@ class _QrScanScreenState extends State<QrScanScreen> {
         },
       ),
       backgroundColor: AppColors.white,
-      title: const Text('QR Scanner'),
+      title: Text(S.of(context).QRScanner),
       actions: [
         IconButton(
           style: const ButtonStyle(
@@ -78,7 +80,8 @@ class _QrScanScreenState extends State<QrScanScreen> {
         if (value.barcodes.isEmpty) {
           return false;
         }
-        if (!(value.barcodes.first.rawValue?.contains('flutter.dev') ?? false)) {
+        if (!(value.barcodes.first.rawValue?.contains('flutter.dev') ??
+            false)) {
           return false;
         }
         return true;

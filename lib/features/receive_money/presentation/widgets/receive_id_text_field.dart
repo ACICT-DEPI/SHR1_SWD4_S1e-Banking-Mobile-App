@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/texts_style.dart';
 import '../../../../core/widgets/custom_snack_bar.dart';
+import '../../../../generated/l10n.dart';
 
 class ReceiveIdTextField extends StatelessWidget {
   const ReceiveIdTextField({super.key, required this.id});
@@ -30,7 +31,7 @@ class ReceiveIdTextField extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                "Copy ID",
+                S.of(context).CopyID,
                 style: TextsStyle.textStyleRegular12.copyWith(
                   color: AppColors.grey94,
                 ),
@@ -40,7 +41,7 @@ class ReceiveIdTextField extends StatelessWidget {
           Row(
             children: <Widget>[
               Text(
-                "ID",
+                S.of(context).Id,
                 style: TextsStyle.textStyleSemiBold24.copyWith(
                   color: AppColors.grey94,
                 ),
@@ -78,7 +79,8 @@ class ReceiveIdTextField extends StatelessWidget {
                       onPressed: () {
                         Clipboard.setData(ClipboardData(text: id));
 
-                        buildShowSnackBar(context, 'Copied to clipboard');
+                        buildShowSnackBar(
+                            context, S.of(context).CopiedToClipboard);
                       },
                       icon: const Icon(
                         Icons.copy,

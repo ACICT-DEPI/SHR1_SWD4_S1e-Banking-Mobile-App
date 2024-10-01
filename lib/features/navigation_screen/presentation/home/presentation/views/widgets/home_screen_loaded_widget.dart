@@ -40,7 +40,7 @@ class HomeScreenLoadedWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           HomePageAppBarDesign(
-            username: state.homeModel.userModel.fullName,
+            name: state.homeModel.userModel.fullName,
             imagePath: state.homeModel.userModel.image!,
             onSearchPressed: onNavigateToSearch,
           ),

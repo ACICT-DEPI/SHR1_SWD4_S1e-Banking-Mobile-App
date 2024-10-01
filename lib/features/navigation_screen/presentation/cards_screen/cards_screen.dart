@@ -6,6 +6,7 @@ import '../../../../core/widgets/Loading_screen.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_snack_bar.dart';
 import '../../../../core/widgets/error_screen.dart';
+import '../../../../generated/l10n.dart';
 import '../../../all_cards_screen/presentation/views/all_cards_screen.dart';
 import '../../../authentication/data/models/user_model.dart';
 import '../../../statistics/presentation/views/widgets/transaction_section.dart';
@@ -43,7 +44,7 @@ class _CardsScreenState extends State<CardsScreen> {
               children: [
                 // AppBar Section (Header remains fixed)
                 CustomAppBar(
-                  appBarTitle: "My Cards",
+                  appBarTitle: S.of(context).MyCards,
                   rightIcon: Icons.add,
                   onPressedRight: () {
                     Navigator.push(
@@ -104,7 +105,7 @@ class _CardsScreenState extends State<CardsScreen> {
                           );
                           buildShowSnackBar(
                             context,
-                            "Saved New Monthly Limit",
+                            S.of(context).SavedNewMonthlyLimit,
                           );
                         },
                       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
+import '../../../../../generated/l10n.dart';
 import '../signup_view.dart';
 
 class NewUserRow extends StatelessWidget {
@@ -14,8 +15,8 @@ class NewUserRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text(
-          "I’m a new user.",
+        Text(
+          S.of(context).INewUser,
           style: TextsStyle.textStyleRegular14,
         ),
         const SizedBox(width: 4.0),
@@ -29,7 +30,7 @@ class NewUserRow extends StatelessWidget {
             );
           },
           child: Text(
-            "Sign Up",
+            S.of(context).SignUp,
             style: TextsStyle.textStyleMedium14.copyWith(
               color: AppColors.blue,
             ),

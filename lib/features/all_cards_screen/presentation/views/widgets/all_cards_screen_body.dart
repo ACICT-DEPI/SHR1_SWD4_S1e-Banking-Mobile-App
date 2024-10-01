@@ -6,6 +6,7 @@ import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/widgets/custom_app_button.dart';
 import '../../../../../core/widgets/error_screen.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../add_new_card_page/presentation/add_card_page.dart';
 import '../../../../navigation_screen/logic/home_screen_cubit.dart';
 import '../../../../navigation_screen/presentation/home/presentation/views/widgets/bank_card_design.dart';
@@ -29,7 +30,7 @@ class _AllCardsScreenBodyState extends State<AllCardsScreenBody> {
             child: Column(
               children: [
                 CustomAppBar(
-                  appBarTitle: "All Cards",
+                  appBarTitle: S.of(context).AllCards,
                   leftIcon: (canPop(context))
                       ? Icons.arrow_back_ios_new_outlined
                       : null,
@@ -58,7 +59,7 @@ class _AllCardsScreenBodyState extends State<AllCardsScreenBody> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: CustomAppButton(
-                    title: 'Add Card',
+                    title: S.of(context).AddCard,
                     onPressed: () {
                       Navigator.push(
                         context,

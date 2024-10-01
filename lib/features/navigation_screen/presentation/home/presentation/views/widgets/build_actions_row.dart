@@ -3,6 +3,7 @@ import 'package:bank_app/core/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../../core/styles/texts_style.dart';
+import '../../../../../../../generated/l10n.dart';
 
 class BuildActionsRow extends StatefulWidget {
   final Function onPressedSent;
@@ -30,9 +31,10 @@ class _BuildActionsRowState extends State<BuildActionsRow> {
         children: [
           CircleAvatar(
             radius: 50,
-            backgroundColor: (LocalSettings.getSettings().themeMode == 'Light')
-                ? AppColors.greyF4
-                : AppColors.dark,
+            backgroundColor:
+                (LocalSettings.getSettings().themeMode == S.of(context).Light)
+                    ? AppColors.greyF4
+                    : AppColors.dark,
             // Background color for both CircleAvatar and IconButton
             child: IconButton(
               style: const ButtonStyle(
@@ -62,11 +64,21 @@ class _BuildActionsRowState extends State<BuildActionsRow> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        _buildActionButton(Icons.arrow_upward, "Sent", widget.onPressedSent),
         _buildActionButton(
-            Icons.arrow_downward, "Receive", widget.onPressedReceive),
+          Icons.arrow_upward,
+          S.of(context).Sent,
+          widget.onPressedSent,
+        ),
         _buildActionButton(
-            Icons.payment_rounded, "Service", widget.onPressedTopUp),
+          Icons.arrow_downward,
+          S.of(context).Receive,
+          widget.onPressedReceive,
+        ),
+        _buildActionButton(
+          Icons.payment_rounded,
+          S.of(context).Services,
+          widget.onPressedTopUp,
+        ),
       ],
     );
   }

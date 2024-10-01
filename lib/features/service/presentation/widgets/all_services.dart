@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/helpers/constants.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
+import '../../../../generated/l10n.dart';
 import '../../../search/presentation/views/widgets/search_text_field.dart';
 import '../../../transaction_history/data/models/transaction_item_model.dart';
 import 'service_card.dart';
@@ -26,7 +27,7 @@ class _PaymentServicesScreenState extends State<PaymentServicesScreen> {
       return services;
     } else {
       for (var service in services) {
-        String serviceName = Functions.getTransactionTitle(service);
+        String serviceName = Functions.getTransactionTitle(service,context);
         if (serviceName.toLowerCase().contains(query.toLowerCase())) {
           filteredServices.add(service);
         }
@@ -43,7 +44,7 @@ class _PaymentServicesScreenState extends State<PaymentServicesScreen> {
         child: Column(
           children: [
             CustomAppBar(
-              appBarTitle: "Services",
+              appBarTitle: S.of(context).Services,
               leftIcon: Icons.arrow_back_ios_new_outlined,
               onPressedLeft: () {
                 Navigator.pop(context);

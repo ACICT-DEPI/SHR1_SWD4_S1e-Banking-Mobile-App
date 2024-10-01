@@ -7,6 +7,7 @@ import '../../../../../core/network/firebase_authentication.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/widgets/error_screen.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../authentication/data/models/user_model.dart';
 import '../../../../navigation_screen/logic/home_screen_cubit.dart';
 import 'profile_information.dart';
@@ -32,7 +33,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
               child: Column(
                 children: [
                   CustomAppBar(
-                    appBarTitle: "Profile",
+                    appBarTitle: S.of(context).Profile,
                     leftIcon: Icons.arrow_back_ios_new_outlined,
                     onPressedLeft: () {
                       Navigator.pop(context);
@@ -46,7 +47,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                   ),
                   const SizedBox(height: 52),
                   ProfileRow(
-                    text: "Edit Profile",
+                    text: S.of(context).EditProfile,
                     icon: Icons.account_circle_outlined,
                     onPressed: () {
                       GoRouter.of(context).push(
@@ -56,7 +57,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                   ),
                   const SizedBox(height: 28),
                   ProfileRow(
-                    text: "Change Password",
+                    text: S.of(context).ChangePassword,
                     icon: Icons.lock,
                     onPressed: () {
                       GoRouter.of(context).push(Routing.changePassword);
@@ -64,7 +65,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                   ),
                   const SizedBox(height: 28),
                   ProfileRow(
-                    text: "Logout",
+                    text: S.of(context).Logout,
                     icon: Icons.exit_to_app,
                     onPressed: () async {
                       await FirebaseAuthentication.logoutUser();
@@ -78,7 +79,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                   ),
                   const SizedBox(height: 28),
                   ProfileRow(
-                    text: "Delete Account",
+                    text: S.of(context).DeleteAccount,
                     icon: Icons.delete_forever_sharp,
                     onPressed: () async {
                       await FirebaseAuthentication.deleteUser();

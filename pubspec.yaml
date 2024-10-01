@@ -68,9 +68,8 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   build_runner: ^2.4.11
-
-
-
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
@@ -94,6 +93,7 @@ flutter_launcher_icons:
 
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -134,4 +134,5 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
     - assets/images/
-
+flutter_intl:
+  enabled: true

@@ -37,7 +37,6 @@ class CardInfoWidget extends StatelessWidget {
     final cardType = detectCardType(cardNumber);
     String assetPath = 'assets/images/mastercard-svgrepo-com.svg';
 
-    // تحديد مسار الشعار بناءً على نوع البطاقة
     switch (cardType) {
       case 'visa':
         assetPath = 'assets/images/visa-svgrepo-com (1).svg';
@@ -55,10 +54,10 @@ class CardInfoWidget extends StatelessWidget {
         assetPath = 'assets/images/jcb-svgrepo-com.svg';
         break;
       case 'masar':
-        assetPath = 'assets/images/Meeza (1).svg'; // Path for Masar card logo
+        assetPath = 'assets/images/Meeza (1).svg';
         break;
       default:
-        assetPath = 'assets/images/money-bill-svgrepo-com.svg'; // شعار افتراضي
+        assetPath = 'assets/images/money-bill-svgrepo-com.svg';
         break;
     }
 

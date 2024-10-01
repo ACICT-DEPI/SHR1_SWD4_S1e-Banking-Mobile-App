@@ -1,6 +1,8 @@
+import 'package:bank_app/core/helpers/functions.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'core/Routing/Routing.dart';
@@ -16,6 +18,7 @@ import 'features/wifi_screen/Logic/conection_cubit.dart';
 import 'features/wifi_screen/Logic/conection_state.dart';
 import 'features/wifi_screen/ui/no_connection_screen.dart';
 import 'firebase_options.dart';
+import 'generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +38,7 @@ void main() async {
         BlocProvider(create: (context) => HomeScreenCubit()),
         BlocProvider(create: (context) => ConnectionScreenCubit()),
         BlocProvider(
-          create: (context) => StatisticsCubit()..initialize(),
+          create: (context) => StatisticsCubit()..initialize(context),
         ),
         BlocProvider(create: (context) => SettingsCubit()..getSettingsModel()),
         BlocProvider(create: (context) => ThemeCubit()),
@@ -58,8 +61,14 @@ class MyApp extends StatelessWidget {
               return const NoConnectionScreen();
             } else {
               return MaterialApp.router(
-                theme: (LocalSettings.getSettings().themeMode ==
-                        "Light")
+                locale: Locale(
+                  Functions.getLanguageCode(
+                    LocalSettings.getSettings().language,
+                  ),
+                ),
+                localizationsDelegates: localizationsDelegates(),
+                supportedLocales: S.delegate.supportedLocales,
+                theme: (LocalSettings.getSettings().themeMode == "Light")
                     ? ThemeStyle.lightThemeData
                     : ThemeStyle.darkThemeData,
                 debugShowCheckedModeBanner: false,
@@ -70,5 +79,14 @@ class MyApp extends StatelessWidget {
         );
       },
     );
+  }
+
+  List<LocalizationsDelegate<dynamic>> localizationsDelegates() {
+    return const [
+      S.delegate,
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+      GlobalCupertinoLocalizations.delegate,
+    ];
   }
 }

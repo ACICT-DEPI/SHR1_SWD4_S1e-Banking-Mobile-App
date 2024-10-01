@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/helpers/constants.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../settings/data/models/settings_model.dart';
 import '../../../../settings/domain/cubits/settings_cubit.dart';
 import '../../../domain/cubits/theme_cubit/theme_cubit.dart';
@@ -37,7 +38,7 @@ class _ThemeViewBodyState extends State<ThemeViewBody> {
             child: Column(
               children: [
                 CustomAppBar(
-                  appBarTitle: "Theme Mode",
+                  appBarTitle: S.of(context).ThemeMode,
                   leftIcon: Icons.arrow_back_ios_new_outlined,
                   onPressedLeft: () {
                     Navigator.pop(context);

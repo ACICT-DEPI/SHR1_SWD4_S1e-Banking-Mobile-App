@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/widgets/error_screen.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../transaction_history/data/models/transaction_item_model.dart';
 import '../../../domain/cubits/search_cubit.dart';
 import 'search_text_field.dart';
@@ -23,7 +24,7 @@ class SearchViewBody extends StatelessWidget {
           child: Column(
             children: [
               CustomAppBar(
-                appBarTitle: "Search",
+                appBarTitle: S.of(context).Search,
                 leftIcon: Icons.arrow_back_ios_new_outlined,
                 onPressedLeft: () {
                   Navigator.pop(context);
@@ -34,7 +35,7 @@ class SearchViewBody extends StatelessWidget {
                 searchController: searchController,
                 onChanged: (p0) {
                   BlocProvider.of<SearchCubit>(context).getTransactions(
-                    searchController.text,
+                    searchController.text,context
                   );
                 },
               ),
@@ -60,8 +61,8 @@ class SearchViewBody extends StatelessWidget {
               } else if (state is SearchFailed) ...{
                 ErrorScreen(message: state.errMessage),
               } else if (state is SearchInitial) ...{
-                const Center(
-                  child: Text("Start Searching..."),
+                Center(
+                  child: Text(S.of(context).StartSearching),
                 )
               } else ...{
                 const LoadingScreen()

@@ -4,6 +4,7 @@ import '../../../../core/helpers/functions.dart';
 import '../../../../core/local/local_settings.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/texts_style.dart';
+import '../../../../generated/l10n.dart';
 import '../../../transaction_history/data/models/transaction_item_model.dart';
 
 class ServiceContainer extends StatelessWidget {
@@ -18,7 +19,7 @@ class ServiceContainer extends StatelessWidget {
       width: MediaQuery.sizeOf(context).width,
       decoration: BoxDecoration(
         border: Border.all(
-          color: (LocalSettings.getSettings().themeMode == 'Light')
+          color: (LocalSettings.getSettings().themeMode == S.of(context).Light)
               ? AppColors.lightGrey
               : AppColors.dark,
         ),
@@ -29,7 +30,7 @@ class ServiceContainer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(
-            "Selected Service",
+            S.of(context).SelectedService,
             style: TextsStyle.textStyleRegular12.copyWith(
               color: AppColors.grey94,
             ),
@@ -39,7 +40,7 @@ class ServiceContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                Functions.getTransactionTitle(service),
+                Functions.getTransactionTitle(service,context),
                 style: TextsStyle.textStyleMedium16,
               ),
               Icon(Functions.getTransactionIcon(service)),

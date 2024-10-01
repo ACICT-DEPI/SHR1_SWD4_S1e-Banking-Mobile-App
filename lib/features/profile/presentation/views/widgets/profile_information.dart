@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
+import '../../../../../generated/l10n.dart';
 
 class ProfileInformation extends StatelessWidget {
   const ProfileInformation({
@@ -33,7 +34,7 @@ class ProfileInformation extends StatelessWidget {
             ),
             const SizedBox(height: 6.0),
             Text(
-              "Id: $id\$",
+              S.of(context).Id + " $id\$",
               style: TextsStyle.textStyleRegular12.copyWith(
                 color: AppColors.grey8D,
               ),

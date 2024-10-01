@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../core/styles/texts_style.dart';
 import '../../../core/styles/theme_style.dart';
 import '../../../core/widgets/custom_app_button.dart';
+import '../../../generated/l10n.dart';
 
 class NoConnectionScreen extends StatelessWidget {
   const NoConnectionScreen({super.key});
@@ -22,17 +23,17 @@ class NoConnectionScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Lottie.asset('assets/images/internet.json'),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
+               Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text(
-                  "No Internet Connection",
+                  S.of(context).NoInternetConnection,
                   textAlign: TextAlign.center,
                   style: TextsStyle.textStyleSemiBold26,
                 ),
               ),
               const SizedBox(height: 40),
               CustomAppButton(
-                title: "Open WiFi Settings",
+                title: S.of(context).OpenWiFiSettings,
                 onPressed: () {
                   _openWiFiSettings(context);
                 },
@@ -55,7 +56,7 @@ class NoConnectionScreen extends StatelessWidget {
       if (await canLaunchUrl(Uri(path: url))) {
         await launchUrl(Uri(path: url));
       } else {
-        throw 'Could not open WiFi settings';
+        throw S.of(context).CouldNotOpenWiFiSettings;
       }
     }
   }

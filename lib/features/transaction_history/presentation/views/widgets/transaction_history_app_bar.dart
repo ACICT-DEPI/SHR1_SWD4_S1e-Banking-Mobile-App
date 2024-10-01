@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/custom_app_bar.dart';
+import '../../../../../generated/l10n.dart';
 
 class TransactionHistoryAppBar extends StatelessWidget {
   const TransactionHistoryAppBar({
@@ -10,7 +11,7 @@ class TransactionHistoryAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomAppBar(
-      appBarTitle: "Transaction History",
+      appBarTitle: S.of(context).TransactionHistory,
       onPressedLeft: () {
         Navigator.pop(context);
       },

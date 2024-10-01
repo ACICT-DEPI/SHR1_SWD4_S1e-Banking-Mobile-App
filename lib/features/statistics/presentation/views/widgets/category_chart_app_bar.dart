@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/custom_app_icon_button.dart';
+import '../../../../../generated/l10n.dart';
 
 class CategoryChartAppBar extends StatelessWidget {
   const CategoryChartAppBar({
@@ -19,8 +20,8 @@ class CategoryChartAppBar extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        const Text(
-          "Category Chart",
+        Text(
+          S.of(context).CategoryChart,
           style: TextsStyle.textStyleMedium18,
         ),
         const SizedBox(width: 24)

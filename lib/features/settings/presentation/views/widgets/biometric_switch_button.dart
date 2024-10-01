@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/local/local_settings.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
+import '../../../../../generated/l10n.dart';
 
 class BiometricSwitchButton extends StatelessWidget {
   const BiometricSwitchButton({
@@ -19,8 +20,8 @@ class BiometricSwitchButton extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text(
-          "Biometric",
+        Text(
+          S.of(context).Biometric,
           style: TextsStyle.textStyleMedium16,
         ),
         const Spacer(
@@ -31,9 +32,10 @@ class BiometricSwitchButton extends StatelessWidget {
           onChanged: onChanged,
           activeColor: AppColors.blue,
           inactiveThumbColor: AppColors.white,
-          inactiveTrackColor: (LocalSettings.getSettings().themeMode == 'Light')
-              ? AppColors.greyA7
-              : AppColors.grey8D,
+          inactiveTrackColor:
+              (LocalSettings.getSettings().themeMode == S.of(context).Light)
+                  ? AppColors.greyA7
+                  : AppColors.grey8D,
         )
       ],
     );

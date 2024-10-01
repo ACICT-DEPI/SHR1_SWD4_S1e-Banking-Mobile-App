@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/local/local_settings.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/texts_style.dart';
+import '../../../../generated/l10n.dart';
 
 class AmountTextField extends StatefulWidget {
   final TextEditingController textController;
@@ -21,7 +22,7 @@ class _AmountTextFieldState extends State<AmountTextField> {
       width: MediaQuery.sizeOf(context).width,
       decoration: BoxDecoration(
         border: Border.all(
-          color: (LocalSettings.getSettings().themeMode == 'Light')
+          color: (LocalSettings.getSettings().themeMode == S.of(context).Light)
               ? AppColors.lightGrey
               : AppColors.dark,
         ),
@@ -34,7 +35,7 @@ class _AmountTextFieldState extends State<AmountTextField> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                "Enter amount",
+                S.of(context).EnterAmount,
                 style: TextsStyle.textStyleRegular12.copyWith(
                   color: AppColors.grey94,
                 ),
@@ -42,7 +43,7 @@ class _AmountTextFieldState extends State<AmountTextField> {
               TextButton(
                 onPressed: () {},
                 child: Text(
-                  "Change Currency?",
+                  S.of(context).ChangeCurrency,
                   style: TextsStyle.textStyleRegular12.copyWith(
                     color: AppColors.red,
                   ),
@@ -63,7 +64,7 @@ class _AmountTextFieldState extends State<AmountTextField> {
                 child: TextFormField(
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Please enter the amount';
+                      return S.of(context).EnterTheAmount;
                     }
                     return null;
                   },

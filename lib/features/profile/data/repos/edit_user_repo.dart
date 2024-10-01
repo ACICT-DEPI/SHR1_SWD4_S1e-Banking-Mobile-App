@@ -1,4 +1,5 @@
-import 'package:bank_app/core/network/firebase_service.dart';
+
+import '../../../../core/network/firebase_service.dart';
 
 class EditUserRepo {
   Future<void> updateUser({

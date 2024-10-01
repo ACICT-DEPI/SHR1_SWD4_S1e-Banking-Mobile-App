@@ -18,7 +18,7 @@ class SettingsModel {
   SettingsModel({
     required this.language,
     required this.appPassword,
-    this.themeMode = 'Light',
+    required this.themeMode,
     required this.useBiometric,
     required this.supportBiometric,
   });

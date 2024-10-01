@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../../../../../core/helpers/functions.dart';
 import '../../../../../core/network/firebase_months.dart';
@@ -16,7 +17,7 @@ class StatisticsCubit extends Cubit<StatisticsState> {
   final StatisticsRepo _statisticsRepo = StatisticsRepo();
 
   // This method initializes statistics by fetching necessary data.
-  initialize() async {
+  initialize(BuildContext context) async {
     emit(StatisticsLoadingState()); // Emit loading state before starting
     try {
       // Fetch the current balance from the repository
@@ -57,7 +58,7 @@ class StatisticsCubit extends Cubit<StatisticsState> {
       }
 
       // Build the statistics model after updating or adding months
-      StatisticsModel statisticsModel = await buildStatisticsModel();
+      StatisticsModel statisticsModel = await buildStatisticsModel(context);
 
       // Emit success state with the fetched statistics model
       emit(
@@ -88,7 +89,7 @@ class StatisticsCubit extends Cubit<StatisticsState> {
   }
 
   // Method to build the statistics model with data
-  Future<StatisticsModel> buildStatisticsModel() async {
+  Future<StatisticsModel> buildStatisticsModel(BuildContext context) async {
     // Fetch the current balance
     double currentBalance = await _statisticsRepo.getCurrentBalance();
 
@@ -114,22 +115,22 @@ class StatisticsCubit extends Cubit<StatisticsState> {
         await FirebaseTransactions.getAllTransactions();
 
     double financialServicesPercent =
-        Functions.getTransactionPercent('Financial Services', allTransactions);
+        Functions.getTransactionPercent('Financial Services', allTransactions,context);
 
     double utilitiesPercent =
-        Functions.getTransactionPercent('Utilities', allTransactions);
+        Functions.getTransactionPercent('Utilities', allTransactions,context);
 
     double entertainmentPercent =
-        Functions.getTransactionPercent('Entertainment', allTransactions);
+        Functions.getTransactionPercent('Entertainment', allTransactions,context);
 
     double shoppingPercent =
-        Functions.getTransactionPercent('Shopping', allTransactions);
+        Functions.getTransactionPercent('Shopping', allTransactions,context);
 
     double telecommunicationPercent =
-        Functions.getTransactionPercent('Telecommunication', allTransactions);
+        Functions.getTransactionPercent('Telecommunication', allTransactions,context);
 
     double transportPercent =
-        Functions.getTransactionPercent('Transport', allTransactions);
+        Functions.getTransactionPercent('Transport', allTransactions,context);
 
     // Return the statistics model with all the fetched data
     return StatisticsModel(

@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:bank_app/core/styles/colors.dart';
 import 'package:bank_app/core/styles/texts_style.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../../../../../add_new_card_page/presentation/widgets/card_type_detector.dart';
 import '../../../../../data/models/card_model.dart';
 
@@ -94,7 +95,7 @@ class BankCardDesign extends StatelessWidget {
                         SizedBox(
                           width: 80 * widthFactor, // Adjusted width
                           child: AutoSizeText(
-                            "Expiry Date:",
+                            "${S.of(context).ExpiryDate}:",
                             style: TextsStyle.textStyleRegular9.copyWith(
                               color: AppColors.grey8D,
                             ),
@@ -122,7 +123,7 @@ class BankCardDesign extends StatelessWidget {
                           width: 80 * widthFactor, // Adjusted width
                           child: AutoSizeText(
                             maxLines: 1,
-                            "CVV:",
+                            "${S.of(context).CVV}:",
                             style: TextsStyle.textStyleRegular9.copyWith(
                               color: AppColors.grey8D,
                             ),

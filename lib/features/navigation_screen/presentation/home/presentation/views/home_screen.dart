@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../../core/Routing/Routing.dart';
 import '../../../../../../core/widgets/error_screen.dart';
 import '../../../../../../core/widgets/Loading_screen.dart';
+import '../../../../../../generated/l10n.dart';
 import '../../../../logic/home_screen_cubit.dart';
 import 'widgets/home_screen_loaded_widget.dart';
 
@@ -38,9 +39,10 @@ class _HomeScreenState extends State<HomeScreen> {
           context.go(
             Routing.errorScreen,
             extra: ErrorScreenData(
-              message: "An error occurred",
+              message: S.of(context).ErrorOccurred,
               onPressed: () {
-                context.go(Routing.navigationScreen); // Navigate to the next screen
+                context.go(
+                    Routing.navigationScreen); // Navigate to the next screen
               },
             ),
           );
@@ -70,6 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
   void _navigateToSearch() {
     GoRouter.of(context).push(Routing.searchView);
   }

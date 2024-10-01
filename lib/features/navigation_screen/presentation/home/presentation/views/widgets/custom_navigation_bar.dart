@@ -4,42 +4,41 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../../../../core/local/local_settings.dart';
 import '../../../../../../../core/styles/colors.dart';
+import '../../../../../../../generated/l10n.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   final int bottomNavIndex;
   final ValueChanged<int> onTap;
 
-  CustomNavigationBar(
+  const CustomNavigationBar(
       {super.key, required this.bottomNavIndex, required this.onTap});
-
-  // Create a list of SVG asset paths and corresponding labels
-  final List<String> svgIcons = [
-    'assets/images/HomeIcon.svg',
-    'assets/images/MyCardsIcon.svg',
-    'assets/images/MyStatics.svg',
-    'assets/images/SettingsIcon.svg',
-  ];
-
-  final List<String> labels = [
-    'Home',
-    'My Cards',
-    'My Statistics',
-    'Settings',
-  ];
 
   @override
   Widget build(BuildContext context) {
     final double widthFactor = MediaQuery.of(context).size.width / 411;
     final double heightFactor = MediaQuery.of(context).size.height / 890;
-
+    // Create a list of SVG asset paths and corresponding labels
+    final List<String> svgIcons = [
+      'assets/images/HomeIcon.svg',
+      'assets/images/MyCardsIcon.svg',
+      'assets/images/MyStatics.svg',
+      'assets/images/SettingsIcon.svg',
+    ];
+    final List<String> labels = [
+      S.of(context).Home,
+      S.of(context).MyCards,
+      S.of(context).MyStatistics,
+      S.of(context).Settings,
+    ];
     return SizedBox(
       height: 90 * heightFactor, // Adjusted height for responsiveness
       child: AnimatedBottomNavigationBar.builder(
         borderColor: Colors.transparent,
         itemCount: svgIcons.length,
-        backgroundColor: (LocalSettings.getSettings().themeMode == 'Light')
-            ? AppColors.white
-            : AppColors.dark,
+        backgroundColor:
+            (LocalSettings.getSettings().themeMode == S.of(context).Light)
+                ? AppColors.white
+                : AppColors.dark,
         tabBuilder: (int index, bool isActive) {
           final color = isActive ? AppColors.blue : Colors.grey;
           return Column(

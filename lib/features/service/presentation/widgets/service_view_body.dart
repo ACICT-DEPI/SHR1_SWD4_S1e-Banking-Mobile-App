@@ -8,6 +8,7 @@ import '../../../../core/widgets/Loading_screen.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_app_button.dart';
 import '../../../../core/widgets/error_screen.dart';
+import '../../../../generated/l10n.dart';
 import '../../../navigation_screen/data/models/card_model.dart';
 import '../../../navigation_screen/logic/home_screen_cubit.dart';
 import '../../../navigation_screen/presentation/home/presentation/views/widgets/bank_card_design.dart';
@@ -49,7 +50,7 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
           listener: (context, sendMoneyState) {
             if (sendMoneyState is ServiceSuccessState) {
               BlocProvider.of<HomeScreenCubit>(context).initialize();
-              BlocProvider.of<StatisticsCubit>(context).initialize();
+              BlocProvider.of<StatisticsCubit>(context).initialize(context);
               GoRouter.of(context)
                   .pushReplacement(Routing.transactionHistoryView);
             }
@@ -146,7 +147,7 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: CustomAppButton(
-        title: 'Continue',
+        title: S.of(context).Continue,
         onPressed: () {
           setState(() {
             autoValidateMode = AutovalidateMode.always;
@@ -156,6 +157,7 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
               id: idController.text,
               transactionItem: _buildTransactionItemModel(),
               card: getAllCardsState.cards[selectedCardIndex],
+              context: context,
             );
           }
         },

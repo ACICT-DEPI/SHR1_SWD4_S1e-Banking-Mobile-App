@@ -9,6 +9,7 @@ import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/custom_app_button.dart';
 import '../../../../../core/widgets/custom_app_icon_button.dart';
 import '../../../../../core/widgets/custom_snack_bar.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../navigation_screen/logic/home_screen_cubit.dart';
 import '../../../../statistics/domain/cubits/statistics_cubit/statistics_cubit.dart';
 import '../../../domain/cubits/login_cubit/login_cubit.dart';
@@ -42,8 +43,11 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           isLoading = false;
           navigateHomeView(context);
           BlocProvider.of<HomeScreenCubit>(context).initialize();
-          BlocProvider.of<StatisticsCubit>(context).initialize();
-          buildShowSnackBar(context, 'Welcome ${state.user.emailAddress}');
+          BlocProvider.of<StatisticsCubit>(context).initialize(context);
+          buildShowSnackBar(
+            context,
+            S.of(context).Welcome + " " + state.user.emailAddress,
+          );
         }
       },
       builder: (context, state) => ModalProgressHUD(
@@ -66,19 +70,20 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   },
                 ),
                 const SizedBox(height: 55),
-                const Text("Sign In", style: TextsStyle.textStyleMedium32),
+                Text(S.of(context).SignIn, style: TextsStyle.textStyleMedium32),
                 const SizedBox(height: 40),
                 LoginEmailAndPassword(
                   emailTextController: emailTextController,
                   passwordTextController: passwordTextController,
                 ),
                 CustomAppButton(
-                  title: "Sign In",
+                  title: S.of(context).SignIn,
                   onPressed: () {
                     setState(() {
                       BlocProvider.of<LoginCubit>(context).userLogin(
                         email: emailTextController.text.trim(),
                         password: passwordTextController.text.trim(),
+                        context: context,
                       );
                     });
                   },

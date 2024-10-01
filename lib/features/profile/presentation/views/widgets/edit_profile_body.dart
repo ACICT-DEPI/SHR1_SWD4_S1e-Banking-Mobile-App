@@ -13,6 +13,7 @@ import '../../../../../core/widgets/custom_app_button.dart';
 import '../../../../../core/widgets/custom_app_text_form_field.dart';
 import '../../../../../core/widgets/custom_snack_bar.dart';
 import '../../../../../core/widgets/error_screen.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../authentication/data/models/user_model.dart';
 import '../../../../navigation_screen/logic/home_screen_cubit.dart';
 import '../../../domain/cubits/edit_user_cubit/edit_user_cubit.dart';
@@ -41,7 +42,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
         if (state is EditUserSuccessState) {
           BlocProvider.of<HomeScreenCubit>(context).initialize();
           GoRouter.of(context).pop();
-          buildShowSnackBar(context, "Profile edited successfully");
+          buildShowSnackBar(context, S.of(context).ProfileEditedSuccessfully);
         }
       },
       builder: (context, editUserState) {
@@ -68,7 +69,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     CustomAppBar(
-                      appBarTitle: "Edit Profile",
+                      appBarTitle: S.of(context).EditProfile,
                       onPressedLeft: () {
                         Navigator.pop(context);
                       },
@@ -106,9 +107,11 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                                 padding: const EdgeInsets.all(3),
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color:  (LocalSettings.getSettings().themeMode == 'Light')
-                                      ? AppColors.white.withOpacity(.7)
-                                      : AppColors.dark.withOpacity(.7),
+                                  color:
+                                      (LocalSettings.getSettings().themeMode ==
+                                              S.of(context).Light)
+                                          ? AppColors.white.withOpacity(.7)
+                                          : AppColors.dark.withOpacity(.7),
                                 ),
                                 child: const Icon(Icons.add),
                               ),
@@ -118,7 +121,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                     ),
                     const SizedBox(height: 50),
                     CustomAppTextFormField(
-                      title: "Full Name",
+                      title: S.of(context).FullName,
                       keyboardType: TextInputType.name,
                       prefixIcon: Icons.account_circle_outlined,
                       textEditingController: nameController,
@@ -126,7 +129,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                     ),
                     const SizedBox(height: 20),
                     CustomAppTextFormField(
-                      title: "Email Address",
+                      title: S.of(context).EmailAddress,
                       keyboardType: TextInputType.emailAddress,
                       prefixIcon: Icons.email_outlined,
                       textEditingController: emailController,
@@ -134,7 +137,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                     ),
                     const SizedBox(height: 20),
                     CustomAppTextFormField(
-                      title: "Phone Number",
+                      title: S.of(context).PhoneNumber,
                       keyboardType: TextInputType.phone,
                       prefixIcon: Icons.phone,
                       textEditingController: phoneController,
@@ -147,7 +150,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                     ),
                     const SizedBox(height: 20),
                     Text(
-                      'Joined at ${userModel.joinedAt}',
+                      S.of(context).JoinedAt + ' ${userModel.joinedAt}',
                       style: TextsStyle.textStyleMedium14.copyWith(
                         color: AppColors.greyA7,
                       ),
@@ -155,7 +158,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                     if (enabled) ...[
                       const Spacer(flex: 1),
                       CustomAppButton(
-                        title: "Save",
+                        title: S.of(context).Save,
                         onPressed: () {
                           BlocProvider.of<EditUserCubit>(context).updateUser(
                             fullName: nameController.text,

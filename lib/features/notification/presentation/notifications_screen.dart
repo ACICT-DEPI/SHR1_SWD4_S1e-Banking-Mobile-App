@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/Routing/Routing.dart';
 import '../../../core/widgets/error_screen.dart';
 import '../../../core/widgets/loading_screen.dart'; // Corrected case
+import '../../../generated/l10n.dart';
 import '../data/models/notification_model.dart';
 import '../domain/notifications_cubit.dart';
 import 'widgits/notification_appbar.dart';
@@ -45,7 +46,7 @@ class NotificationsScreen extends StatelessWidget {
               child: Column(
                 children: [
                   NotificationAppBar(
-                    title: 'Notifications',
+                    title: S.of(context).Notifications,
                     onArrowPressed: () {
                       context.pop();
                     },
@@ -79,11 +80,11 @@ class NotificationsScreen extends StatelessWidget {
                             message: state.message,
                           );
                         } else if (state is EmptyNotifications) {
-                          return const Center(
-                            child: Text("No Notifications"),
+                          return Center(
+                            child: Text(S.of(context).NoNotifications),
                           );
                         } else {
-                          return const Center(child: Text("Unknown state"));
+                          return Center(child: Text(S.of(context).Loading));
                         }
                       },
                     ),

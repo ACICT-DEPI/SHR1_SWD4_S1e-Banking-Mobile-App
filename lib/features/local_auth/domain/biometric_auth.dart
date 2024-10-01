@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:local_auth/local_auth.dart';
 
 import '../../../../core/Routing/Routing.dart';
+import '../../../generated/l10n.dart';
 
 class BiometricAuth {
   static final LocalAuthentication _auth = LocalAuthentication();
@@ -10,7 +11,7 @@ class BiometricAuth {
   static Future<void> authenticateWithBiometrics(BuildContext context) async {
     try {
       bool authenticated = await _auth.authenticate(
-        localizedReason: 'Please authenticate to access',
+        localizedReason: S.of(context).AuthenticateToAccess,
         options: const AuthenticationOptions(
           useErrorDialogs: true,
           stickyAuth: true,
@@ -20,11 +21,11 @@ class BiometricAuth {
 
       if (authenticated) {
         context.go(Routing.navigationScreen);
-      } else {
-        print('Authentication failed');
       }
     } catch (e) {
-      print(e);
+      ///
+      ///
+      ///
     }
   }
 }

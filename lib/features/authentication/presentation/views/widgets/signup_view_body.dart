@@ -1,4 +1,3 @@
-import 'package:bank_app/features/authentication/data/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -8,6 +7,8 @@ import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/custom_app_button.dart';
 import '../../../../../core/widgets/custom_app_icon_button.dart';
 import '../../../../../core/widgets/custom_snack_bar.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../data/models/user_model.dart';
 import '../../../domain/cubits/sign_up_cubit/sign_up_cubit.dart';
 import '../../../domain/cubits/sign_up_cubit/sign_up_state.dart';
 import 'already_have_account_row.dart';
@@ -41,7 +42,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
           isLoading = false;
         } else if (state is SignUpSuccessState) {
           Navigator.pop(context);
-          buildShowSnackBar(context, 'The email created successfully');
+          buildShowSnackBar(context, S.of(context).EmailCreatedSuccessfully);
           isLoading = false;
         }
       },
@@ -68,7 +69,8 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                     },
                   ),
                   const SizedBox(height: 55),
-                  const Text("Sign Up", style: TextsStyle.textStyleMedium32),
+                  Text(S.of(context).SignUp,
+                      style: TextsStyle.textStyleMedium32),
                   const SizedBox(height: 40),
                   SignUpFields(
                     nameTextController: nameTextController,
@@ -77,7 +79,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                     passwordTextController: passwordTextController,
                   ),
                   CustomAppButton(
-                    title: "Sign Up",
+                    title: S.of(context).SignUp,
                     onPressed: () {
                       setState(() {
                         autoValidateMode = AutovalidateMode.always;
@@ -89,6 +91,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                               emailAddress: emailTextController.text.trim(),
                               password: passwordTextController.text.trim(),
                             ),
+                            context: context,
                           );
                         }
                       });

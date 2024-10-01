@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/local/local_settings.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/texts_style.dart';
+import '../../../../generated/l10n.dart';
 import '../../../send_money_screen/presentation/scan_qr_sacn_screen.dart';
 
 class PaymentIdTextField extends StatelessWidget {
@@ -17,7 +18,7 @@ class PaymentIdTextField extends StatelessWidget {
       width: MediaQuery.sizeOf(context).width,
       decoration: BoxDecoration(
         border: Border.all(
-          color: (LocalSettings.getSettings().themeMode == 'Light')
+          color: (LocalSettings.getSettings().themeMode == S.of(context).Light)
               ? AppColors.lightGrey
               : AppColors.dark,
         ),
@@ -30,7 +31,7 @@ class PaymentIdTextField extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                "Enter Payment ID",
+                S.of(context).EnterPaymentID,
                 style: TextsStyle.textStyleRegular12.copyWith(
                   color: AppColors.grey94,
                 ),
@@ -40,7 +41,7 @@ class PaymentIdTextField extends StatelessWidget {
           Row(
             children: <Widget>[
               Text(
-                "ID",
+                S.of(context).ID,
                 style: TextsStyle.textStyleSemiBold24.copyWith(
                   color: AppColors.grey94,
                 ),
@@ -50,7 +51,7 @@ class PaymentIdTextField extends StatelessWidget {
                 child: TextFormField(
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Please enter the id';
+                      return S.of(context).EnterId;
                     }
                     return null;
                   },

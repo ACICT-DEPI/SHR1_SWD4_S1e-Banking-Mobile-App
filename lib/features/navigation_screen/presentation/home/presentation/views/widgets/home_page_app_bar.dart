@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import '../../../../../../../core/styles/colors.dart';
 import '../../../../../../../core/styles/texts_style.dart';
+import '../../../../../../../generated/l10n.dart';
 
 class HomePageAppBarDesign extends StatelessWidget {
-  final String username;
+  final String name;
   final String imagePath;
   final VoidCallback? onSearchPressed;
 
   const HomePageAppBarDesign({
     super.key,
-    required this.username,
+    required this.name,
     required this.imagePath,
     this.onSearchPressed,
   });
@@ -37,13 +38,13 @@ class HomePageAppBarDesign extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Welcome back,",
+                    S.of(context).WelcomeBack + ",",
                     style: TextsStyle.textStyleRegular12.copyWith(
                       color: AppColors.grey8D,
                     ),
                   ),
                   Text(
-                    username, // Use the parameter username
+                    name, // Use the parameter username
                     style: TextsStyle.textStyleMedium18,
                   ),
                 ],

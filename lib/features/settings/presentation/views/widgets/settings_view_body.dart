@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/Routing/Routing.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/models/settings_model.dart';
 import '../../../domain/cubits/settings_cubit.dart';
 import 'biometric_switch_button.dart';
@@ -32,12 +33,12 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CustomAppBar(appBarTitle: "Settings"),
+                  CustomAppBar(appBarTitle: S.of(context).Settings),
                   const SizedBox(height: 38),
-                  const MainSectionTitle(text: "General"),
+                  MainSectionTitle(text: S.of(context).General),
                   const SizedBox(height: 20.0),
                   SettingsButton(
-                    text: "Language",
+                    text: S.of(context).Language,
                     onPressed: () {
                       GoRouter.of(context).push(Routing.languagesView);
                     },
@@ -45,7 +46,7 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
                   ),
                   const SizedBox(height: 24.0),
                   SettingsButton(
-                    text: "My Profile",
+                    text: S.of(context).MyProfile,
                     onPressed: () {
                       GoRouter.of(context).push(
                         Routing.profileView,
@@ -54,36 +55,36 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
                   ),
                   const SizedBox(height: 24.0),
                   SettingsButton(
-                    text: "All Cards",
+                    text: S.of(context).AllCards,
                     onPressed: () {
                       GoRouter.of(context).push(Routing.allCardsScreen);
                     },
                   ),
                   const SizedBox(height: 24.0),
                   SettingsButton(
-                    text: "Theme Mode",
+                    text: S.of(context).ThemeMode,
                     onPressed: () {
                       GoRouter.of(context).push(Routing.themeView);
                     },
                     label: settingsModel.themeMode,
                   ),
                   const SizedBox(height: 32),
-                  const MainSectionTitle(text: "Security"),
+                  MainSectionTitle(text: S.of(context).Security),
                   const SizedBox(height: 20.0),
                   SettingsButton(
-                    text: "Privacy Policy",
+                    text: S.of(context).PrivacyPolicy,
                     onPressed: () {
                       GoRouter.of(context).push(Routing.privacyPolicy);
                     },
                   ),
                   const SizedBox(height: 24.0),
                   SettingsButton(
-                    text: "Contact Us",
+                    text: S.of(context).ContactUs,
                     onPressed: () {},
                   ),
                   if (settingsModel.supportBiometric) ...[
                     const SizedBox(height: 32),
-                    const MainSectionTitle(text: "Use fingerprint or PIN code"),
+                    MainSectionTitle(text: S.of(context).UseFingerprintPIN),
                     const SizedBox(height: 8.0),
                     BiometricSwitchButton(
                       onChanged: (value) {

@@ -4,6 +4,7 @@ import '../../../../core/helpers/functions.dart';
 import '../../../../core/local/local_settings.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/texts_style.dart';
+import '../../../../generated/l10n.dart';
 import '../../data/models/notification_model.dart';
 
 class NotificationCard extends StatelessWidget {
@@ -15,7 +16,7 @@ class NotificationCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shadowColor: AppColors.greyA7,
-      color: (LocalSettings.getSettings().themeMode == 'Light')
+      color: (LocalSettings.getSettings().themeMode == S.of(context).Light)
           ? AppColors.white
           : AppColors.dark,
       // Card background color set to white
@@ -43,7 +44,7 @@ class NotificationCard extends StatelessWidget {
           ),
         ),
         trailing: Text(
-          Functions.timeAgo(notification.time),
+          Functions.timeAgo(notification.time, context),
           style: TextsStyle.textStyleRegular12,
         ),
       ),

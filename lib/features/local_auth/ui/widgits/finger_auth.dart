@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../generated/l10n.dart';
+
 class FingerprintAuth extends StatelessWidget {
   final Future<void> Function() onAuthenticate;
 
@@ -36,12 +38,13 @@ class ForgotPinText extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        //       context.go(Routing.loginView);
+        ///
+        ///       context.go(Routing.loginView);
         /// create new PIN view
         ///
       },
       child: Text(
-        'Forgot PIN?',
+        S.of(context).ForgotPIN,
         style: TextStyle(
           color: Colors.white.withOpacity(0.7),
           fontSize: 16,

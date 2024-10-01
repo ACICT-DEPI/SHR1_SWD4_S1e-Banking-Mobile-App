@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../../core/local/local_settings.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
+import '../../../../../generated/l10n.dart';
 
 class SearchTextField extends StatefulWidget {
   const SearchTextField({
@@ -24,7 +25,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: (LocalSettings.getSettings().themeMode == 'Light')
+        color: (LocalSettings.getSettings().themeMode == S.of(context).Light)
             ? AppColors.greyF4
             : AppColors.dark,
         borderRadius: BorderRadius.circular(10.0),
@@ -49,7 +50,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
               color: AppColors.greyA7,
             ),
           ),
-          hintText: "Search...",
+          hintText: "${S.of(context).Search}...",
           hintStyle: TextsStyle.textStyleRegular14,
         ),
         onChanged: widget.onChanged,

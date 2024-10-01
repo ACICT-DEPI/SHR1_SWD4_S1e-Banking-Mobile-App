@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/custom_app_text_form_field.dart';
+import '../../../../../generated/l10n.dart';
 
 class LoginEmailAndPassword extends StatefulWidget {
   const LoginEmailAndPassword(
@@ -24,14 +25,14 @@ class _LoginEmailAndPasswordState extends State<LoginEmailAndPassword> {
       children: [
         CustomAppTextFormField(
           textEditingController: widget.emailTextController,
-          title: "Email Address",
+          title: S.of(context).EmailAddress,
           prefixIcon: Icons.email_outlined,
           keyboardType: TextInputType.emailAddress,
         ),
         const SizedBox(height: 22),
         CustomAppTextFormField(
           textEditingController: widget.passwordTextController,
-          title: "Password",
+          title: S.of(context).Password,
           prefixIcon: Icons.lock_outline,
           obscureText: isObscureText,
           suffixIcon: Icons.remove_red_eye_outlined,

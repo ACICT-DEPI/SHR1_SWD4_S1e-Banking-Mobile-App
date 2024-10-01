@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/custom_app_text_form_field.dart';
+import '../../../../../generated/l10n.dart';
 
 class SignUpFields extends StatefulWidget {
   const SignUpFields(
@@ -31,14 +32,14 @@ class _SignUpFieldsState extends State<SignUpFields> {
       children: [
         CustomAppTextFormField(
           textEditingController: widget.nameTextController,
-          title: "Full Name",
+          title:S.of(context).FullName,
           prefixIcon: Icons.person,
           keyboardType: TextInputType.name,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return "This field is required";
+              return S.of(context).FieldRequired;
             } else if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(value)) {
-              return "Please enter a valid name";
+              return S.of(context).EnterValidName;
             }
             return null; // Input is valid
           },
@@ -46,15 +47,15 @@ class _SignUpFieldsState extends State<SignUpFields> {
         const SizedBox(height: 22),
         CustomAppTextFormField(
           textEditingController: widget.phoneTextController,
-          title: "Phone Number",
+          title: S.of(context).PhoneNumber,
           prefixIcon: Icons.phone,
           keyboardType: TextInputType.phone,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return "This field is required";
+              return S.of(context).FieldRequired;
             } else if (!RegExp(r'^[0-9]+$').hasMatch(value) ||
                 value.length < 11) {
-              return "Please enter a valid number";
+              return S.of(context).EnterValidNumber;
             }
             return null; // Input is valid
           },
@@ -62,15 +63,15 @@ class _SignUpFieldsState extends State<SignUpFields> {
         const SizedBox(height: 22),
         CustomAppTextFormField(
           textEditingController: widget.emailTextController,
-          title: "Email Address",
+          title: S.of(context).EmailAddress,
           prefixIcon: Icons.email_outlined,
           keyboardType: TextInputType.emailAddress,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return "This field is required";
+              return S.of(context).FieldRequired;
             } else if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
                 .hasMatch(value)) {
-              return "Please enter a valid email";
+              return S.of(context).EnterValidEmail;
             }
             return null; // Input is valid
           },
@@ -78,7 +79,7 @@ class _SignUpFieldsState extends State<SignUpFields> {
         const SizedBox(height: 22),
         CustomAppTextFormField(
           textEditingController: widget.passwordTextController,
-          title: "Password",
+          title: S.of(context).Password,
           prefixIcon: Icons.lock_outline,
           obscureText: isObscureText,
           suffixIcon: Icons.remove_red_eye_outlined,

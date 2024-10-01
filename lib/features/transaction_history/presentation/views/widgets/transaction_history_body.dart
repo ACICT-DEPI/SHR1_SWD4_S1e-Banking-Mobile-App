@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/helpers/functions.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/error_screen.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/models/transaction_item_model.dart';
 import '../../../domain/cubits/transaction_cubit/transaction_cubit.dart';
 import '../../../domain/cubits/transaction_cubit/transaction_state.dart';
@@ -43,7 +44,7 @@ class TransactionHistoryBody extends StatelessWidget {
                   const SizedBox(height: 30),
                   if (todayTransactions.isNotEmpty) ...[
                     DayTransaction(
-                      day: "Today",
+                      day: S.of(context).Today,
                       listOfTransactions: todayTransactions,
                     ),
                     if (lastSevenTransactions.isNotEmpty ||
@@ -54,7 +55,7 @@ class TransactionHistoryBody extends StatelessWidget {
                   ],
                   if (lastSevenTransactions.isNotEmpty) ...[
                     DayTransaction(
-                      day: "Last 7 days",
+                      day: S.of(context).Last7Days,
                       listOfTransactions: lastSevenTransactions,
                     ),
                     if (lastThirtyTransactions.isNotEmpty) ...[
@@ -64,7 +65,7 @@ class TransactionHistoryBody extends StatelessWidget {
                   ],
                   if (lastThirtyTransactions.isNotEmpty) ...[
                     DayTransaction(
-                      day: "Last 30 days",
+                      day: S.of(context).Last30Days,
                       listOfTransactions: lastThirtyTransactions,
                     )
                   ],

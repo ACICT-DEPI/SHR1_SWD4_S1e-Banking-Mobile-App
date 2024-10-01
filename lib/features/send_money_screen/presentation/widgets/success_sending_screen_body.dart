@@ -185,7 +185,7 @@ class SuccessSendingScreenBody extends StatelessWidget {
             title: "Back to Home",
             onPressed: () {
               BlocProvider.of<HomeScreenCubit>(context).initialize();
-              BlocProvider.of<StatisticsCubit>(context).initialize();
+              BlocProvider.of<StatisticsCubit>(context).initialize(context);
               GoRouter.of(context).pop();
               GoRouter.of(context).pop();
             },

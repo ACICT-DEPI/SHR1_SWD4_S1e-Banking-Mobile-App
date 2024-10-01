@@ -1,17 +1,19 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../../../../../core/network/firebase_authentication.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/models/user_model.dart';
 import 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitialState());
 
-  Future<void> userLogin({
-    required String email,
-    required String password,
-  }) async {
+  Future<void> userLogin(
+      {required String email,
+      required String password,
+      required BuildContext context}) async {
     emit(LoginLoadingState());
     try {
       UserModel? user = await FirebaseAuthentication.loginUser(
@@ -22,35 +24,35 @@ class LoginCubit extends Cubit<LoginState> {
       if (user != null) {
         emit(LoginSuccessState(user: user));
       } else {
-        emit(LoginFailureState(errMessage: 'Login failed. Please try again.'));
+        emit(LoginFailureState(errMessage: S.of(context).LoginFailedTryAgain));
       }
     } on FirebaseAuthException catch (e) {
       String errorMessage;
       switch (e.code) {
         case 'user-not-found':
-          errorMessage = 'No user found for that email.';
+          errorMessage = S.of(context).NoUserFound;
           break;
         case 'wrong-password':
-          errorMessage = 'Wrong password provided for that user.';
+          errorMessage = S.of(context).WrongPassword;
           break;
         case 'invalid-email':
-          errorMessage = 'The email address is badly formatted.';
+          errorMessage = S.of(context).EmailBadlyFormatted;
           break;
         case 'invalid-credential':
-          errorMessage = 'The email or password is wrong.';
+          errorMessage = S.of(context).EmailOrPasswordWrong;
           break;
         case 'too-many-requests':
-          errorMessage = 'Too many login attempts. Please try again later.';
+          errorMessage = S.of(context).ManyLoginAttempts;
           break;
         case 'network-request-failed':
-          errorMessage = 'Network error. Please check your connection.';
+          errorMessage = S.of(context).NetworkError;
           break;
         default:
-          errorMessage = 'An unexpected error occurred.';
+          errorMessage = S.of(context).UnexpectedError;
       }
       emit(LoginFailureState(errMessage: errorMessage));
     } catch (e) {
-      emit(LoginFailureState(errMessage: 'An unexpected error occurred.'));
+      emit(LoginFailureState(errMessage: S.of(context).UnexpectedError));
     }
   }
 }

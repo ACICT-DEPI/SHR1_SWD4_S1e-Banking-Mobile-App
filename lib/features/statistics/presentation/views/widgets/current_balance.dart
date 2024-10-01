@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
+import '../../../../../generated/l10n.dart';
 
 class CurrentBalance extends StatelessWidget {
   const CurrentBalance({super.key, required this.currentBalance});
@@ -13,7 +14,7 @@ class CurrentBalance extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'Current Balance',
+         S.of(context).CurrentBalance,
           style: TextsStyle.textStyleRegular18.copyWith(
             color: AppColors.greyA7,
           ),

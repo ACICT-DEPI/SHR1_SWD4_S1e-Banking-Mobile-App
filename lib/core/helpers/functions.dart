@@ -7,6 +7,7 @@ import 'package:local_auth/local_auth.dart';
 
 import '../../features/navigation_screen/data/models/card_model.dart';
 import '../../features/transaction_history/data/models/transaction_item_model.dart';
+import '../../generated/l10n.dart';
 
 class Functions {
   static List<String> getDateLastSixMonths() {
@@ -93,83 +94,85 @@ class Functions {
     }
   }
 
-  static String getTransactionTitle(TransactionType transactionType) {
+  static String getTransactionTitle(
+      TransactionType transactionType, BuildContext context) {
     switch (transactionType) {
       case TransactionType.spotify:
-        return "Spotify";
+        return S.of(context).Spotify;
       case TransactionType.appleStore:
-        return "Apple Store";
+        return S.of(context).AppleStore;
       case TransactionType.moneyTransfer:
-        return "Money Transfer";
+        return S.of(context).MoneyTransfer;
       case TransactionType.grocery:
-        return "Grocery";
+        return S.of(context).Grocery;
       case TransactionType.googlePlay:
-        return "Google Play";
+        return S.of(context).GooglePlay;
       case TransactionType.amazonPay:
-        return "Amazon Pay";
+        return S.of(context).AmazonPay;
       case TransactionType.paypal:
-        return "Paypal";
+        return S.of(context).Paypal;
       case TransactionType.netflix:
-        return "Netflix";
+        return S.of(context).Netflix;
       case TransactionType.uber:
-        return "Uber";
+        return S.of(context).Uber;
       case TransactionType.waterBill:
-        return "Water Bill";
+        return S.of(context).WaterBill;
       case TransactionType.homeInternet:
-        return "Home Internet";
+        return S.of(context).HomeInternet;
       case TransactionType.mobileBill:
-        return "Mobile Bill";
+        return S.of(context).MobileBill;
       case TransactionType.mobileRecharge:
-        return "Mobile Recharge";
+        return S.of(context).MobileRecharge;
       case TransactionType.socialInsurance:
-        return "Social Insurance";
+        return S.of(context).SocialInsurance;
       case TransactionType.fawryPay:
-        return "Fawry Pay";
+        return S.of(context).FawryPay;
       case TransactionType.landline:
-        return "Landline";
+        return S.of(context).Landline;
       case TransactionType.electricity:
-        return "Electricity";
+        return S.of(context).Electricity;
       case TransactionType.financeAndBanks:
-        return "Finance and Banks";
+        return S.of(context).FinanceAndBanks;
       case TransactionType.donations:
-        return "Donations";
+        return S.of(context).Donations;
       case TransactionType.games:
-        return "Games";
+        return S.of(context).Games;
       case TransactionType.gas:
-        return "Gas";
+        return S.of(context).Gas;
       case TransactionType.tickets:
-        return "Tickets";
+        return S.of(context).Tickets;
       case TransactionType.microfinance:
-        return "Microfinance";
+        return S.of(context).Microfinance;
       case TransactionType.education:
-        return "Education";
+        return S.of(context).Education;
       case TransactionType.saveGaza:
-        return "Save Gaza";
+        return S.of(context).SaveGaza;
       case TransactionType.dailyWaste:
-        return "Daily Waste";
+        return S.of(context).DailyWaste;
       case TransactionType.payments:
-        return "Payments";
+        return S.of(context).Payments;
       case TransactionType.unions:
-        return "Unions";
+        return S.of(context).Unions;
       default:
-        return "Money Transfer";
+        return S.of(context).MoneyTransfer;
     }
   }
 
-  static String getTransactionSubTitle(TransactionType transactionType) {
+  static String getTransactionSubTitle(
+      TransactionType transactionType, BuildContext context) {
     switch (transactionType) {
       case TransactionType.spotify:
       case TransactionType.appleStore:
       case TransactionType.googlePlay:
       case TransactionType.netflix:
       case TransactionType.games:
-        return "Entertainment";
+        return S.of(context).Entertainment;
 
       case TransactionType.waterBill:
       case TransactionType.electricity:
       case TransactionType.gas:
       case TransactionType.dailyWaste:
-        return "Utilities";
+        return S.of(context).Utilities;
 
       case TransactionType.moneyTransfer:
       case TransactionType.paypal:
@@ -178,21 +181,21 @@ class Functions {
       case TransactionType.fawryPay:
       case TransactionType.donations:
       case TransactionType.payments:
-        return "Financial Services";
+        return S.of(context).FinancialServices;
 
       case TransactionType.homeInternet:
       case TransactionType.mobileBill:
       case TransactionType.landline:
       case TransactionType.mobileRecharge:
-        return "Telecommunication";
+        return S.of(context).Telecommunication;
 
       case TransactionType.grocery:
-        return "Shopping";
+        return S.of(context).Shopping;
       case TransactionType.uber:
-        return "Transport";
+        return S.of(context).Transport;
 
       default:
-        return "Financial Services";
+        return S.of(context).FinancialServices;
     }
   }
 
@@ -327,11 +330,13 @@ class Functions {
   }
 
   static List<TransactionItemModel> searchInTransactions(
-      List<TransactionItemModel> transactions, String title) {
+      List<TransactionItemModel> transactions,
+      String title,
+      BuildContext context) {
     List<TransactionItemModel> searchResult = [];
 
     for (var trans in transactions) {
-      if (getTransactionTitle(trans.type)
+      if (getTransactionTitle(trans.type, context)
           .toLowerCase()
           .contains(title.toLowerCase())) {
         searchResult.add(trans);
@@ -341,12 +346,12 @@ class Functions {
     return searchResult;
   }
 
-  static double getTransactionPercent(
-      String type, List<TransactionItemModel> allTransactions) {
+  static double getTransactionPercent(String type,
+      List<TransactionItemModel> allTransactions, BuildContext context) {
     int numOfTransactionType = 0;
 
     for (var trans in allTransactions) {
-      if (type == getTransactionSubTitle(trans.type)) {
+      if (type == getTransactionSubTitle(trans.type, context)) {
         numOfTransactionType++;
       }
     }
@@ -356,33 +361,39 @@ class Functions {
     return percent * 100;
   }
 
-  static String timeAgo(DateTime dateTime) {
+  static String timeAgo(DateTime dateTime, BuildContext context) {
     final now = DateTime.now();
     final difference = now.difference(dateTime);
 
     if (difference.inMinutes < 1) {
-      return 'Just now';
+      return S.of(context).JustNow;
     } else if (difference.inMinutes < 60) {
-      return '${difference.inMinutes} minutes ago';
+      return '${difference.inMinutes} ${S.of(context).MinutesAgo}';
     } else if (difference.inHours < 24) {
       if (difference.inHours == 1) {
-        return '1 hour ago';
+        return S.of(context).HourAgo;
       } else {
-        return '${difference.inHours} hours ago';
+        return '${difference.inHours} ${S.of(context).HoursAgo}';
       }
     } else if (difference.inDays == 1) {
-      return 'Yesterday';
+      return S.of(context).Yesterday;
     } else if (difference.inDays < 7) {
-      return '${difference.inDays} days ago';
+      return '${difference.inDays} ${S.of(context).DaysAgo}';
     } else if (difference.inDays < 30) {
       final weeks = (difference.inDays / 7).floor();
-      return weeks == 1 ? '1 week ago' : '$weeks weeks ago';
+      return weeks == 1
+          ? S.of(context).WeekAgo
+          : '$weeks ${S.of(context).WeeksAgo}';
     } else if (difference.inDays < 365) {
       final months = (difference.inDays / 30).floor();
-      return months == 1 ? '1 month ago' : '$months months ago';
+      return months == 1
+          ? S.of(context).MonthAgo
+          : '$months ${S.of(context).MonthsAgo}';
     } else {
       final years = (difference.inDays / 365).floor();
-      return years == 1 ? '1 year ago' : '$years years ago';
+      return years == 1
+          ? S.of(context).YearAgo
+          : '$years ${S.of(context).YearsAgo}';
     }
   }
 
@@ -427,6 +438,14 @@ class Functions {
       return 'العربية';
     } else {
       return 'English'; // Default to English for other languages
+    }
+  }
+
+  static String getLanguageCode(String language) {
+    if (language == 'English') {
+      return 'en';
+    } else {
+      return 'ar';
     }
   }
 }

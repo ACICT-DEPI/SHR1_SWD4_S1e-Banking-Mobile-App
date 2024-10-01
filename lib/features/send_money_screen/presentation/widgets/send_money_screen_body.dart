@@ -136,6 +136,7 @@ class _SendMoneyScreenBodyState extends State<SendMoneyScreenBody> {
                                 card: getAllCardsState.cards[selectedCardIndex],
                                 sender: getAllCardsState
                                     .cards[selectedCardIndex].cardHolderName,
+                                context: context,
                               );
                             }
                           },

@@ -11,6 +11,7 @@ import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/widgets/custom_app_button.dart';
 import '../../../../../core/widgets/custom_snack_bar.dart';
 import '../../../../../core/widgets/error_screen.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../authentication/data/models/user_model.dart';
 import '../../../domain/cubits/change_password_cubit/change_password_cubit.dart';
 import '../../../domain/cubits/change_password_cubit/change_password_state.dart';
@@ -41,7 +42,7 @@ class _ChangePasswordBodyState extends State<ChangePasswordBody> {
         if (state is ChangePasswordSuccessState) {
           buildShowSnackBar(
             context,
-            "The password changed successfully",
+            S.of(context).PasswordChangedSuccessfully,
           );
           GoRouter.of(context).pop();
         }
@@ -62,7 +63,7 @@ class _ChangePasswordBodyState extends State<ChangePasswordBody> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomAppBar(
-                    appBarTitle: "Change Password",
+                    appBarTitle: S.of(context).ChangePassword,
                     onPressedLeft: () {
                       Navigator.pop(context);
                     },
@@ -70,29 +71,29 @@ class _ChangePasswordBodyState extends State<ChangePasswordBody> {
                   ),
                   const SizedBox(height: 50),
                   ChangePasswordWidget(
-                    title: "Current Password",
+                    title: S.of(context).CurrentPassword,
                     textEditingController: currentPasswordController,
                   ),
                   const SizedBox(height: 30),
                   ChangePasswordWidget(
-                    title: "New Password",
+                    title: S.of(context).NewPassword,
                     textEditingController: newPasswordController,
                   ),
                   const SizedBox(height: 30),
                   ChangePasswordWidget(
-                    title: "Confirm New Password",
+                    title: S.of(context).ConfirmNewPassword,
                     textEditingController: confirmPasswordController,
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    "Both Passwords Must Match",
+                    S.of(context).PasswordsMustMatch,
                     style: TextsStyle.textStyleMedium14.copyWith(
                       color: AppColors.greyA7,
                     ),
                   ),
                   const Spacer(),
                   CustomAppButton(
-                    title: "Change Password",
+                    title: S.of(context).ChangePassword,
                     onPressed: () async {
                       autoValidate = AutovalidateMode.always;
                       if (formKey.currentState!.validate()) {
@@ -103,13 +104,13 @@ class _ChangePasswordBodyState extends State<ChangePasswordBody> {
                           } else {
                             buildShowSnackBar(
                               context,
-                              "Both nes Passwords must match!!",
+                              S.of(context).NewPasswordsMustMatch,
                             );
                           }
                         } else {
                           buildShowSnackBar(
                             context,
-                            "Enter the correct password!!",
+                            S.of(context).EnterCorrectPassword,
                           );
                         }
                       }

@@ -1,4 +1,5 @@
 import 'package:bank_app/core/helpers/functions.dart';
+import 'package:flutter/cupertino.dart';
 
 class TransactionItemModel {
   final TransactionType type;
@@ -19,9 +20,9 @@ class TransactionItemModel {
     );
   }
 
-  static toJson({required TransactionItemModel transactionModel}) {
+  static toJson({required TransactionItemModel transactionModel,required BuildContext context}) {
     return {
-      "type": Functions.getTransactionTitle(transactionModel.type),
+      "type": Functions.getTransactionTitle(transactionModel.type, context),
       "amount": transactionModel.amount,
       "createdAt": transactionModel.createdAt,
     };
@@ -36,27 +37,26 @@ enum TransactionType {
   googlePlay,
   amazonPay,
   paypal,
-  netflix,         // New Transaction Type
-  uber,            // New Transaction Type
-  waterBill,       // New Transaction Type
-  homeInternet,    // New Transaction Type
-  mobileBill,      // New Transaction Type
-  mobileRecharge,  // New Transaction Type
-  socialInsurance,  // New Transaction Type
-  fawryPay,       // New Transaction Type
-  landline,        // New Transaction Type
-  electricity,     // New Transaction Type
+  netflix, // New Transaction Type
+  uber, // New Transaction Type
+  waterBill, // New Transaction Type
+  homeInternet, // New Transaction Type
+  mobileBill, // New Transaction Type
+  mobileRecharge, // New Transaction Type
+  socialInsurance, // New Transaction Type
+  fawryPay, // New Transaction Type
+  landline, // New Transaction Type
+  electricity, // New Transaction Type
   financeAndBanks, // New Transaction Type
-  donations,       // New Transaction Type
-  games,           // New Transaction Type
-  gas,             // New Transaction Type
-  tickets,         // New Transaction Type
-  microfinance,    // New Transaction Type
-  education,       // New Transaction Type
-  saveGaza,        // New Transaction Type
-  dailyWaste,      // New Transaction Type
-  payments,        // New Transaction Type
-  unions, shopping           // New Transaction Type
+  donations, // New Transaction Type
+  games, // New Transaction Type
+  gas, // New Transaction Type
+  tickets, // New Transaction Type
+  microfinance, // New Transaction Type
+  education, // New Transaction Type
+  saveGaza, // New Transaction Type
+  dailyWaste, // New Transaction Type
+  payments, // New Transaction Type
+  unions,
+  shopping // New Transaction Type
 }
-
-

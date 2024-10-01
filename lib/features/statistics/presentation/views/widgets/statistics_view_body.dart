@@ -7,6 +7,7 @@ import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/widgets/error_screen.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/models/category_model.dart';
 import '../../../data/models/statistics_model.dart';
 import 'category_chart_body.dart';
@@ -32,7 +33,7 @@ class StatisticsViewBody extends StatelessWidget {
             child: Column(
               children: [
                 CustomAppBar(
-                  appBarTitle: "Statistics",
+                  appBarTitle: S.of(context).Statistics,
                   rightIcon: Icons.notifications_none,
                   onPressedRight: () {
                     context.push(Routing.notificationsScreen);
@@ -64,36 +65,36 @@ class StatisticsViewBody extends StatelessWidget {
                       ),
                       if (showCategoryChart(statisticsModel)) ...[
                         const Divider(height: 40),
-                        const Text(
-                          "Category Chart",
+                        Text(
+                          S.of(context).CategoryChart,
                           style: TextsStyle.textStyleMedium22,
                         ),
                         CategoryChartBody(
                           listOfCategoryModel: [
                             CategoryModel(
-                              category: "Financial Services",
+                              category: S.of(context).FinancialServices,
                               percentage:
                                   statisticsModel.financialServicesPercent,
                             ),
                             CategoryModel(
-                              category: "Entertainment",
+                              category: S.of(context).Entertainment,
                               percentage: statisticsModel.entertainmentPercent,
                             ),
                             CategoryModel(
-                              category: "Utilities",
+                              category: S.of(context).Utilities,
                               percentage: statisticsModel.utilitiesPercent,
                             ),
                             CategoryModel(
-                              category: "Shopping",
+                              category: S.of(context).Shopping,
                               percentage: statisticsModel.shoppingPercent,
                             ),
                             CategoryModel(
-                              category: "Telecommunication",
+                              category: S.of(context).Telecommunication,
                               percentage:
                                   statisticsModel.telecommunicationPercent,
                             ),
                             CategoryModel(
-                              category: "Transport",
+                              category: S.of(context).Transport,
                               percentage: statisticsModel.transportPercent,
                             ),
                           ],
@@ -109,11 +110,11 @@ class StatisticsViewBody extends StatelessWidget {
           return ErrorScreen(
             message: state.errMessage,
             onPressed: () {
-              BlocProvider.of<StatisticsCubit>(context).initialize();
+              BlocProvider.of<StatisticsCubit>(context).initialize(context);
             },
           );
         } else {
-          return const ErrorScreen(message: "error");
+          return ErrorScreen(message: S.of(context).Error);
         }
       },
     );
