@@ -1,3 +1,4 @@
+import 'package:bank_app/core/local/local_settings.dart';
 import 'package:bank_app/core/styles/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -21,15 +22,17 @@ class BuildActionsRow extends StatefulWidget {
 
 class _BuildActionsRowState extends State<BuildActionsRow> {
   Widget _buildActionButton(IconData icon, String label, Function onPressed) {
-    final double widthFactor = MediaQuery.of(context).size.width/411;
-   // final double heightFactor = MediaQuery.of(context).size.height/870;
+    final double widthFactor = MediaQuery.of(context).size.width / 411;
+    // final double heightFactor = MediaQuery.of(context).size.height/870;
     return SizedBox(
-      width: 60*widthFactor,
+      width: 60 * widthFactor,
       child: Column(
         children: [
           CircleAvatar(
             radius: 50,
-            backgroundColor: AppColors.greyF4,
+            backgroundColor: (LocalSettings.getSettings().themeMode == 'Light')
+                ? AppColors.greyF4
+                : AppColors.dark,
             // Background color for both CircleAvatar and IconButton
             child: IconButton(
               style: const ButtonStyle(
@@ -39,7 +42,6 @@ class _BuildActionsRowState extends State<BuildActionsRow> {
               ),
               icon: Icon(
                 icon,
-                color: Colors.black,
                 size: 30,
               ),
               onPressed: () => onPressed(),

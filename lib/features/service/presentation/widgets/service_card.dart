@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/Routing/Routing.dart';
 import '../../../../core/helpers/functions.dart';
+import '../../../../core/local/local_settings.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../transaction_history/data/models/transaction_item_model.dart';
 
@@ -19,10 +20,13 @@ class ServiceCard extends StatelessWidget {
         context.push(Routing.serviceView, extra: service);
       },
       child: Card(
-        shadowColor: AppColors.greyA7,
-        color: AppColors.white,
+        shadowColor: (LocalSettings.getSettings().themeMode == 'Light')
+            ? AppColors.greyA7
+            : AppColors.dark,
+        color: (LocalSettings.getSettings().themeMode == 'Light')
+            ? AppColors.white
+            : AppColors.dark,
         shape: RoundedRectangleBorder(
-          side: const BorderSide(color: AppColors.lightGrey, width: 0.5),
           borderRadius: BorderRadius.circular(10.0),
         ),
         margin: const EdgeInsets.symmetric(vertical: 8.0),

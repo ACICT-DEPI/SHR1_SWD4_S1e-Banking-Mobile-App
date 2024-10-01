@@ -21,9 +21,7 @@ class SettingsButton extends StatelessWidget {
             children: [
               Text(
                 text,
-                style: TextsStyle.textStyleMedium16.copyWith(
-                  color: AppColors.black,
-                ),
+                style: TextsStyle.textStyleMedium16,
               ),
               const Spacer(),
               if (label != null)
@@ -42,7 +40,6 @@ class SettingsButton extends StatelessWidget {
         ),
         const SizedBox(height: 14.0),
         const Divider(
-          color: AppColors.greyF4,
           height: 0,
         )
       ],

@@ -84,7 +84,9 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
   }
 
   Widget _buildServiceForm(
-      BuildContext context, GetCardsSuccessState getAllCardsState) {
+    BuildContext context,
+    GetCardsSuccessState getAllCardsState,
+  ) {
     return Form(
       key: formKey,
       autovalidateMode: autoValidateMode,

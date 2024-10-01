@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/helpers/functions.dart';
+import '../../../../../core/local/local_settings.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
 import '../../../../transaction_history/data/models/transaction_item_model.dart';
@@ -18,8 +19,10 @@ class SearchTransactionItem extends StatelessWidget {
     return Row(
       children: [
         Container(
-          decoration: const BoxDecoration(
-            color: AppColors.greyF4,
+          decoration: BoxDecoration(
+            color: (LocalSettings.getSettings().themeMode == 'Light')
+                ? AppColors.greyF4
+                : AppColors.dark,
             shape: BoxShape.circle,
           ),
           padding: const EdgeInsets.all(10),

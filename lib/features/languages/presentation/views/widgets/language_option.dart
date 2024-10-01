@@ -28,24 +28,27 @@ class LanguageOption extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CircleAvatar(
-                radius: 28,
+                radius: 26,
+                backgroundColor: AppColors.transparent,
                 child: SvgPicture.asset(
                   languageModel.languageImage,
                 ),
               ),
-
-              const SizedBox(width: 12), //
-              Text(languageModel.languageName,
-                  style: TextsStyle.textStyleMedium16),
+              const SizedBox(width: 12),
+              Text(
+                languageModel.languageName,
+                style: TextsStyle.textStyleMedium16,
+              ),
               const Spacer(flex: 4),
               if (languageModel.languageName == settingsModel.language)
                 SvgPicture.asset(
                   Images.imagesCheckIcon,
-                )
+                ),
             ],
           ),
+          const SizedBox(height: 12.0),
           const Divider(
-            color: AppColors.greyF4,
+            height: 0,
           )
         ],
       ),

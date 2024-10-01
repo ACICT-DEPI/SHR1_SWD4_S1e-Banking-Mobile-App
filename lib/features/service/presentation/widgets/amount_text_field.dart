@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/local/local_settings.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/texts_style.dart';
 
@@ -20,7 +21,9 @@ class _AmountTextFieldState extends State<AmountTextField> {
       width: MediaQuery.sizeOf(context).width,
       decoration: BoxDecoration(
         border: Border.all(
-          color: AppColors.lightGrey,
+          color: (LocalSettings.getSettings().themeMode == 'Light')
+              ? AppColors.lightGrey
+              : AppColors.dark,
         ),
         borderRadius: BorderRadius.circular(14),
       ),

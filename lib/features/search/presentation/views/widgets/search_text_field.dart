@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../../core/local/local_settings.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
 
@@ -23,7 +24,9 @@ class _SearchTextFieldState extends State<SearchTextField> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.greyF4,
+        color: (LocalSettings.getSettings().themeMode == 'Light')
+            ? AppColors.greyF4
+            : AppColors.dark,
         borderRadius: BorderRadius.circular(10.0),
       ),
       height: 44,

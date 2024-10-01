@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/local/local_settings.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/texts_style.dart';
 import '../../../send_money_screen/presentation/scan_qr_sacn_screen.dart';
@@ -16,7 +17,9 @@ class PaymentIdTextField extends StatelessWidget {
       width: MediaQuery.sizeOf(context).width,
       decoration: BoxDecoration(
         border: Border.all(
-          color: AppColors.lightGrey,
+          color: (LocalSettings.getSettings().themeMode == 'Light')
+              ? AppColors.lightGrey
+              : AppColors.dark,
         ),
         borderRadius: BorderRadius.circular(14),
       ),
@@ -101,22 +104,3 @@ class PaymentIdTextField extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

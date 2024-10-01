@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/helpers/functions.dart';
+import '../../../../core/local/local_settings.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/texts_style.dart';
 import '../../../transaction_history/data/models/transaction_item_model.dart';
@@ -17,7 +18,9 @@ class ServiceContainer extends StatelessWidget {
       width: MediaQuery.sizeOf(context).width,
       decoration: BoxDecoration(
         border: Border.all(
-          color: AppColors.lightGrey,
+          color: (LocalSettings.getSettings().themeMode == 'Light')
+              ? AppColors.lightGrey
+              : AppColors.dark,
         ),
         borderRadius: BorderRadius.circular(14),
       ),

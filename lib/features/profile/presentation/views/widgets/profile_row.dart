@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/local/local_settings.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
 
@@ -33,8 +34,11 @@ class ProfileRow extends StatelessWidget {
               ),
               Text(
                 text,
-                style: TextsStyle.textStyleRegular15
-                    .copyWith(color: AppColors.black),
+                style: TextsStyle.textStyleRegular15.copyWith(
+                  color: (LocalSettings.getSettings().themeMode == 'Light')
+                      ? AppColors.black
+                      : AppColors.white,
+                ),
               ),
               const Spacer(),
               const Icon(
@@ -46,7 +50,6 @@ class ProfileRow extends StatelessWidget {
         ),
         const SizedBox(height: 14.0),
         const Divider(
-          color: AppColors.greyF4,
           height: 0,
         )
       ],

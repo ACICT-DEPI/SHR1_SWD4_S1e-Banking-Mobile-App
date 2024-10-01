@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../core/local/local_settings.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
 import '../../../../authentication/data/models/user_model.dart';
@@ -37,7 +38,10 @@ class _BirthDateSelectorState extends State<BirthDateSelector> {
             Expanded(
               child: DropdownButtonFormField<int>(
                 decoration: _inputDecoration(),
-                dropdownColor: AppColors.white,
+                dropdownColor:
+                    (LocalSettings.getSettings().themeMode == 'Light')
+                        ? AppColors.white
+                        : AppColors.black,
                 value: widget.userModel.birthYear,
                 items: _yearItems(),
                 onChanged: widget.enabled
@@ -57,7 +61,10 @@ class _BirthDateSelectorState extends State<BirthDateSelector> {
               child: DropdownButtonFormField<int>(
                 decoration: _inputDecoration(),
                 value: widget.userModel.birthMonth,
-                dropdownColor: AppColors.white,
+                dropdownColor:
+                    (LocalSettings.getSettings().themeMode == 'Light')
+                        ? AppColors.white
+                        : AppColors.black,
                 items: _monthItems(),
                 onChanged: widget.enabled
                     ? (int? newValue) {
@@ -76,7 +83,10 @@ class _BirthDateSelectorState extends State<BirthDateSelector> {
               child: DropdownButtonFormField<int>(
                 decoration: _inputDecoration(),
                 value: widget.userModel.birthDay,
-                dropdownColor: AppColors.white,
+                dropdownColor:
+                    (LocalSettings.getSettings().themeMode == 'Light')
+                        ? AppColors.white
+                        : AppColors.black,
                 items: _dayItems(),
                 onChanged: widget.enabled
                     ? (int? newValue) {
@@ -94,15 +104,17 @@ class _BirthDateSelectorState extends State<BirthDateSelector> {
   }
 
   InputDecoration _inputDecoration() {
-    return const InputDecoration(
+    return InputDecoration(
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
         borderSide: BorderSide(
-          color: AppColors.greyF4,
+          color: (LocalSettings.getSettings().themeMode == 'Light')
+              ? AppColors.greyF4
+              : AppColors.dark,
           width: 2.0,
         ),
       ),
-      focusedBorder: OutlineInputBorder(
+      focusedBorder: const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(10)),
         borderSide: BorderSide(
           color: AppColors.blue,

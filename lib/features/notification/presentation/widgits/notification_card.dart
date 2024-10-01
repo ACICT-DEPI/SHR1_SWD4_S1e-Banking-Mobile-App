@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/helpers/functions.dart';
+import '../../../../core/local/local_settings.dart';
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/texts_style.dart';
 import '../../data/models/notification_model.dart';
@@ -14,10 +15,11 @@ class NotificationCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shadowColor: AppColors.greyA7,
-      color: AppColors.white,
+      color: (LocalSettings.getSettings().themeMode == 'Light')
+          ? AppColors.white
+          : AppColors.dark,
       // Card background color set to white
       shape: RoundedRectangleBorder(
-        side: const BorderSide(color: AppColors.lightGrey, width: 0.5),
         borderRadius: BorderRadius.circular(10.0),
       ),
 
@@ -31,24 +33,18 @@ class NotificationCard extends StatelessWidget {
         ),
         title: Text(
           notification.title,
-          style: TextsStyle.textStyleSemiBold18.copyWith(
-            color: AppColors.black,
-          ), // Title color set to black
+          style: TextsStyle.textStyleSemiBold18,
         ),
         subtitle: Padding(
           padding: const EdgeInsets.only(top: 4.0),
           child: Text(
             notification.subtitle,
-            style: TextsStyle.textStyleRegular14.copyWith(
-              color: AppColors.black,
-            ), // Subtitle color set to black
+            style: TextsStyle.textStyleRegular14,
           ),
         ),
         trailing: Text(
           Functions.timeAgo(notification.time),
-          style: TextsStyle.textStyleRegular12.copyWith(
-            color: AppColors.greyA7,
-          ), // Trailing time color kept grey
+          style: TextsStyle.textStyleRegular12,
         ),
       ),
     );

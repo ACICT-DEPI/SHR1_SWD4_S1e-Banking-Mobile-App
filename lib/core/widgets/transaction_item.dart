@@ -1,3 +1,4 @@
+import 'package:bank_app/core/local/local_settings.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/transaction_history/data/models/transaction_item_model.dart';
@@ -18,8 +19,10 @@ class TransactionItem extends StatelessWidget {
     return Row(
       children: [
         Container(
-          decoration: const BoxDecoration(
-            color: AppColors.greyF4,
+          decoration: BoxDecoration(
+            color: (LocalSettings.getSettings().themeMode == 'Light')
+                ? AppColors.greyF4
+                : AppColors.dark,
             shape: BoxShape.circle,
           ),
           padding: const EdgeInsets.all(10),

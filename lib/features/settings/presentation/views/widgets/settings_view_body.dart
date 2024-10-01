@@ -82,7 +82,7 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
                     onPressed: () {},
                   ),
                   if (settingsModel.supportBiometric) ...[
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 32),
                     const MainSectionTitle(text: "Use fingerprint or PIN code"),
                     const SizedBox(height: 8.0),
                     BiometricSwitchButton(

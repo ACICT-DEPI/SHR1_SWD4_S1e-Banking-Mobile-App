@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../../../../core/local/local_settings.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
@@ -105,7 +106,9 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                                 padding: const EdgeInsets.all(3),
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: AppColors.greyC1.withOpacity(.7),
+                                  color:  (LocalSettings.getSettings().themeMode == 'Light')
+                                      ? AppColors.white.withOpacity(.7)
+                                      : AppColors.dark.withOpacity(.7),
                                 ),
                                 child: const Icon(Icons.add),
                               ),

@@ -1,4 +1,3 @@
-import 'package:bank_app/features/navigation_screen/logic/home_screen_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
@@ -7,6 +6,7 @@ import '../../settings/presentation/views/settings.dart';
 import '../../statistics/presentation/views/statistics_view.dart';
 import '../../wifi_screen/Logic/conection_cubit.dart';
 import '../../wifi_screen/Logic/conection_state.dart';
+import '../logic/home_screen_cubit.dart';
 import 'cards_screen/cards_screen.dart';
 import 'home/presentation/views/home_screen.dart';
 import 'home/presentation/views/widgets/custom_navigation_bar.dart';
@@ -24,7 +24,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
       RefreshController(initialRefresh: false);
 
   void _onRefresh() async {
-    await Future.delayed(const Duration(milliseconds: 1000));
+    await Future.delayed(const Duration(milliseconds: 800));
     context.read<HomeScreenCubit>().initialize();
     _refreshController.refreshCompleted();
   }

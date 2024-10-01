@@ -25,7 +25,7 @@ class ThemeStyle {
     scaffoldBackgroundColor: AppColors.black, // Set a dark background color
     iconButtonTheme: const IconButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: WidgetStatePropertyAll(AppColors.grey94), // Darker grey for icons
+        backgroundColor: WidgetStatePropertyAll(AppColors.dark), // Darker grey for icons
       ),
     ),
     elevatedButtonTheme: const ElevatedButtonThemeData(

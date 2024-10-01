@@ -39,12 +39,9 @@ class _PaymentServicesScreenState extends State<PaymentServicesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(top: 20.0, right: 20.0, left: 20.0),
         child: Column(
           children: [
-            const SizedBox(
-              height: 20,
-            ),
             CustomAppBar(
               appBarTitle: "Services",
               leftIcon: Icons.arrow_back_ios_new_outlined,

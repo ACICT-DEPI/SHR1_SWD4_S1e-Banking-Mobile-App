@@ -2,6 +2,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../../../../core/local/local_settings.dart';
 import '../../../../../../../core/styles/colors.dart';
 
 class CustomNavigationBar extends StatelessWidget {
@@ -36,6 +37,9 @@ class CustomNavigationBar extends StatelessWidget {
       child: AnimatedBottomNavigationBar.builder(
         borderColor: Colors.transparent,
         itemCount: svgIcons.length,
+        backgroundColor: (LocalSettings.getSettings().themeMode == 'Light')
+            ? AppColors.white
+            : AppColors.dark,
         tabBuilder: (int index, bool isActive) {
           final color = isActive ? AppColors.blue : Colors.grey;
           return Column(

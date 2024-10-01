@@ -1,6 +1,9 @@
 import 'package:bank_app/core/styles/colors.dart';
+import 'package:bank_app/core/styles/texts_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import '../../../../core/local/local_settings.dart';
 
 class CardInputField extends StatelessWidget {
   final String label;
@@ -54,9 +57,10 @@ class CardInputField extends StatelessWidget {
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.zero,
                 ),
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: AppColors.black,
+                style: TextsStyle.textStyleRegular15.copyWith(
+                  color: (LocalSettings.getSettings().themeMode == 'Light')
+                      ? AppColors.black
+                      : AppColors.white,
                 ),
               ),
             ),

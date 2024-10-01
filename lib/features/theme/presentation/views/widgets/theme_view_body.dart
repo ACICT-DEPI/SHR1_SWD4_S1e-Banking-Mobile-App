@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/helpers/constants.dart';
-import '../../../../../core/styles/colors.dart';
-import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../settings/data/models/settings_model.dart';
@@ -53,27 +51,6 @@ class _ThemeViewBodyState extends State<ThemeViewBody> {
                       : null,
                 ),
                 const SizedBox(height: 32.0),
-                Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.greyF4,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Search Language",
-                      hintStyle: TextsStyle.textStyleRegular14.copyWith(
-                        color: AppColors.greyA7,
-                      ),
-                      prefixIcon: const Icon(
-                        Icons.search,
-                        color: AppColors.greyA7,
-                      ),
-                      border: InputBorder.none,
-                      contentPadding: const EdgeInsets.all(15),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20.0),
                 Expanded(
                   child: ListView.builder(
                     itemCount: Constants.themes.length,

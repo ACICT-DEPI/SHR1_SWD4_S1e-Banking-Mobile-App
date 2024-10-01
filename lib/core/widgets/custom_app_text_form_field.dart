@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../local/local_settings.dart';
 import '../styles/colors.dart';
 import '../styles/texts_style.dart';
 
@@ -71,29 +72,32 @@ class CustomAppTextFormField extends StatelessWidget {
                   contentPadding: EdgeInsets.zero,
                 ),
                 style: TextsStyle.textStyleRegular14.copyWith(
-                  color: AppColors.black,
+                  color: (LocalSettings.getSettings().themeMode == 'Light')
+                      ? AppColors.black
+                      : AppColors.white,
                 ),
                 keyboardType: keyboardType,
               ),
             ),
             if (obscureText != null)
               IconButton(
-                style: const ButtonStyle(
+                style: ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll(
-                    AppColors.white,
+                    (LocalSettings.getSettings().themeMode == 'Light')
+                        ? AppColors.white
+                        : AppColors.black,
                   ),
                 ),
                 onPressed: onPressedIcon,
                 icon: Icon(
                   suffixIcon,
-                  color: obscureText! ? AppColors.greyA7 : AppColors.grey37,
+                  color: obscureText! ? AppColors.greyA7 : AppColors.dark,
                   size: 22,
                 ),
               ),
           ],
         ),
         const Divider(
-          color: AppColors.greyF4,
           height: 0,
         ),
       ],

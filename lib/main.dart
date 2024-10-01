@@ -58,8 +58,8 @@ class MyApp extends StatelessWidget {
               return const NoConnectionScreen();
             } else {
               return MaterialApp.router(
-                theme: (LocalSettings.getSettings().themeMode.toLowerCase() ==
-                        "light")
+                theme: (LocalSettings.getSettings().themeMode ==
+                        "Light")
                     ? ThemeStyle.lightThemeData
                     : ThemeStyle.darkThemeData,
                 debugShowCheckedModeBanner: false,
