@@ -1,11 +1,15 @@
-import 'package:bank_app/features/service/presentation/widgets/service_card.dart';
+import 'package:bank_app/core/helpers/functions.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/helpers/constants.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../search/presentation/views/widgets/search_text_field.dart';
-import '../../data/model/service_model.dart';
+import '../../../transaction_history/data/models/transaction_item_model.dart';
+import 'service_card.dart';
 
 class PaymentServicesScreen extends StatefulWidget {
+  const PaymentServicesScreen({super.key});
+
   @override
   State<PaymentServicesScreen> createState() => _PaymentServicesScreenState();
 }
@@ -13,38 +17,20 @@ class PaymentServicesScreen extends StatefulWidget {
 class _PaymentServicesScreenState extends State<PaymentServicesScreen> {
   TextEditingController searchController = TextEditingController();
 
-  final List<ServiceModel> services = [
-    ServiceModel('Home Internet', Icons.router),
-    ServiceModel('Mobile Bill', Icons.phone_android),
-    ServiceModel('Mobile Recharge', Icons.mobile_friendly),
-    ServiceModel('Social Insurance', Icons.family_restroom),
-    ServiceModel('Fawry Pay', Icons.payment),
-    ServiceModel('Landline', Icons.call),
-    ServiceModel('Electricity', Icons.electric_bolt),
-    ServiceModel('Finance and Banks', Icons.account_balance),
-    ServiceModel('Donations', Icons.volunteer_activism),
-    ServiceModel('Games', Icons.gamepad),
-    ServiceModel('Gas', Icons.local_fire_department),
-    ServiceModel('Tickets', Icons.confirmation_num),
-    ServiceModel('Microfinance', Icons.attach_money),
-    ServiceModel('Education', Icons.school),
-    ServiceModel('Save Gaza', Icons.flag),
-    ServiceModel('Daily Waste', Icons.delete),
-    ServiceModel('Payments', Icons.money),
-    ServiceModel('Unions', Icons.badge),
-  ];
+  final List<TransactionType> services = Constants.services;
 
-  List<ServiceModel> getFilteredServices(String query) {
-    List<ServiceModel> filteredServices = [];
+  List<TransactionType> getFilteredServices(String query) {
+    List<TransactionType> filteredServices = [];
 
     if (query.isEmpty) {
       return services;
     } else {
-      services.forEach((service) {
-        if (service.name.toLowerCase().contains(query.toLowerCase())) {
+      for (var service in services) {
+        String serviceName = Functions.getTransactionTitle(service);
+        if (serviceName.toLowerCase().contains(query.toLowerCase())) {
           filteredServices.add(service);
         }
-      });
+      }
       return filteredServices;
     }
   }
@@ -56,7 +42,7 @@ class _PaymentServicesScreenState extends State<PaymentServicesScreen> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             CustomAppBar(
@@ -66,7 +52,7 @@ class _PaymentServicesScreenState extends State<PaymentServicesScreen> {
                 Navigator.pop(context);
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             SearchTextField(
@@ -77,12 +63,12 @@ class _PaymentServicesScreenState extends State<PaymentServicesScreen> {
               },
               searchController: searchController,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Expanded(
               child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3, // 3 items per row
                   crossAxisSpacing: 10.0,
                   mainAxisSpacing: 10.0,
@@ -91,8 +77,8 @@ class _PaymentServicesScreenState extends State<PaymentServicesScreen> {
                 itemCount: getFilteredServices(searchController.text).length,
                 itemBuilder: (context, index) {
                   return ServiceCard(
-                      service:
-                          getFilteredServices(searchController.text)[index]);
+                    service: getFilteredServices(searchController.text)[index],
+                  );
                 },
               ),
             ),

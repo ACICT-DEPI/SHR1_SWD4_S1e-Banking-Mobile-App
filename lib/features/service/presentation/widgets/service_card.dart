@@ -1,23 +1,22 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:bank_app/core/Routing/Routing.dart';
-import 'package:bank_app/features/service/presentation/widgets/service_view_body.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/Routing/Routing.dart';
+import '../../../../core/helpers/functions.dart';
 import '../../../../core/styles/colors.dart';
-import '../../data/model/service_model.dart';
+import '../../../transaction_history/data/models/transaction_item_model.dart';
 
 class ServiceCard extends StatelessWidget {
-  final ServiceModel service;
+  final TransactionType service;
 
-  ServiceCard({required this.service});
+  const ServiceCard({super.key, required this.service});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-       context.push(Routing.serviceView, extra: service);
+        context.push(Routing.serviceView, extra: service);
       },
       child: Card(
         shadowColor: AppColors.greyA7,
@@ -28,22 +27,20 @@ class ServiceCard extends StatelessWidget {
         ),
         margin: const EdgeInsets.symmetric(vertical: 8.0),
         elevation: 2.0,
-
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              service.icon,
-              size: 40.0,
+              Functions.getTransactionIcon(service), size: 40.0,
               color: Colors.blue, // Customize icon color
             ),
-            SizedBox(height: 10),
-            Container(
+            const SizedBox(height: 10),
+            SizedBox(
               width: 100,
               child: AutoSizeText(
-                service.name,
+                Functions.getTransactionTitle(service),
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),

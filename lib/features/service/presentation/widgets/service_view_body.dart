@@ -3,10 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/Routing/Routing.dart';
-import '../../../../core/helpers/constants.dart';
-import '../../../../core/helpers/functions.dart';
-import '../../../../core/styles/colors.dart';
-import '../../../../core/styles/texts_style.dart';
+
 import '../../../../core/widgets/Loading_screen.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_app_button.dart';
@@ -16,17 +13,16 @@ import '../../../navigation_screen/logic/home_screen_cubit.dart';
 import '../../../navigation_screen/presentation/home/presentation/views/widgets/bank_card_design.dart';
 import '../../../statistics/domain/cubits/statistics_cubit/statistics_cubit.dart';
 import '../../../transaction_history/data/models/transaction_item_model.dart';
-import '../../data/model/service_model.dart';
 import '../../domain/cubits/get_cards_cubit/get_cards_cubit.dart';
 import '../../domain/cubits/get_cards_cubit/get_cards_state.dart';
 import '../../domain/cubits/service_cubit/service_cubit.dart';
 import '../../domain/cubits/service_cubit/service_state.dart';
 import 'amount_text_field.dart';
 import 'payment_id_text_field.dart';
-import 'package:flutter/material.dart';
+import 'service_container.dart';
 
 class ServiceViewBody extends StatefulWidget {
-  final ServiceModel service;
+  final TransactionType service;
 
   const ServiceViewBody({super.key, required this.service});
 
@@ -54,13 +50,15 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
             if (sendMoneyState is ServiceSuccessState) {
               BlocProvider.of<HomeScreenCubit>(context).initialize();
               BlocProvider.of<StatisticsCubit>(context).initialize();
-              GoRouter.of(context).pushReplacement(Routing.transactionHistoryView);
+              GoRouter.of(context)
+                  .pushReplacement(Routing.transactionHistoryView);
             }
           },
           builder: (context, sendMoneyState) {
             return BlocBuilder<GetCardsCubit, GetCardsState>(
               builder: (context, getAllCardsState) {
-                if (sendMoneyState is ServiceLoadingState || getAllCardsState is GetCardsLoadingState) {
+                if (sendMoneyState is ServiceLoadingState ||
+                    getAllCardsState is GetCardsLoadingState) {
                   return const LoadingScreen();
                 } else if (getAllCardsState is GetCardsFailedState) {
                   return ErrorScreen(
@@ -85,7 +83,8 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
     );
   }
 
-  Widget _buildServiceForm(BuildContext context, GetCardsSuccessState getAllCardsState) {
+  Widget _buildServiceForm(
+      BuildContext context, GetCardsSuccessState getAllCardsState) {
     return Form(
       key: formKey,
       autovalidateMode: autoValidateMode,
@@ -107,7 +106,8 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
             const SizedBox(height: 16),
             AmountTextField(textController: amountController),
             const SizedBox(height: 16),
-            _buildServiceInfoCard(),
+            ServiceContainer(service: widget.service),
+            // _buildServiceInfoCard(),
             const SizedBox(height: 30),
             _buildSubmitButton(context, getAllCardsState),
             const SizedBox(height: 50),
@@ -139,33 +139,8 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
     );
   }
 
-  // Updated service info card with professional design
-  Widget _buildServiceInfoCard() {
-    return Card(
-      shadowColor: AppColors.greyA7,
-      color: AppColors.white,
-      shape: RoundedRectangleBorder(
-        side: const BorderSide(color: AppColors.lightGrey, width: 0.5),
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      margin: const EdgeInsets.symmetric(vertical: 8.0),
-      child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-        leading: Icon(
-          widget.service.icon,
-          color: AppColors.blue,
-        ),
-        title: Text(
-          widget.service.name,
-          style: TextsStyle.textStyleSemiBold18.copyWith(
-            color: AppColors.black,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSubmitButton(BuildContext context, GetCardsSuccessState getAllCardsState) {
+  Widget _buildSubmitButton(
+      BuildContext context, GetCardsSuccessState getAllCardsState) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: CustomAppButton(
@@ -188,7 +163,7 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
 
   TransactionItemModel _buildTransactionItemModel() {
     return TransactionItemModel(
-      type: Functions.getTransactionType(widget.service.name),
+      type: widget.service,
       amount: -double.parse(amountController.text),
     );
   }

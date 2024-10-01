@@ -23,7 +23,7 @@ class SearchTransactionItem extends StatelessWidget {
             shape: BoxShape.circle,
           ),
           padding: const EdgeInsets.all(10),
-          child: Functions.getTransactionIcon(transactionItemModel.type),
+          child: Icon(Functions.getTransactionIcon(transactionItemModel.type)),
         ),
         const SizedBox(width: 20.0),
         Column(

@@ -4,5 +4,5 @@ class ServiceModel {
   final String name;
   final IconData icon;
 
-  ServiceModel(this.name, this.icon);
+  ServiceModel({required this.name, required this.icon});
 }

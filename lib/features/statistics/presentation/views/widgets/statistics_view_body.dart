@@ -50,16 +50,17 @@ class StatisticsViewBody extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 18.0),
                         child: BalanceChart(
-                            lastSixMonthsModel:
-                                MonthModel.fromJsonBuildMonthModelList(
-                              {
-                                "lastSixMonthsDate":
-                                    statisticsModel.lastSixMonthsDate,
-                                "lastSixMonthsBalance":
-                                    statisticsModel.lastSixMonthsBalance,
-                              },
-                            ),
-                            maxBalance: statisticsModel.maxBalance),
+                          lastSixMonthsModel:
+                              MonthModel.fromJsonBuildMonthModelList(
+                            {
+                              "lastSixMonthsDate":
+                                  statisticsModel.lastSixMonthsDate,
+                              "lastSixMonthsBalance":
+                                  statisticsModel.lastSixMonthsBalance,
+                            },
+                          ),
+                          maxBalance: statisticsModel.maxBalance,
+                        ),
                       ),
                       if (showCategoryChart(statisticsModel)) ...[
                         const Divider(height: 40),

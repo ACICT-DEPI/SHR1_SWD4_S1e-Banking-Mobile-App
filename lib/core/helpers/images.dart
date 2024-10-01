@@ -3,8 +3,6 @@ abstract class Images {
   static const String imagesCardBackground = 'assets/images/CardBackground.png';
   static const String imagesChip1 = 'assets/images/chip_1.svg';
   static const String imagesChip2 = 'assets/images/chip_2.svg';
-  static const String imagesEllipse1 = 'assets/images/Ellipse_1.png';
-  static const String imagesEllipse2 = 'assets/images/Ellipse_2.png';
   static const String imagesEnglish = 'assets/images/english.svg';
   static const String imagesHomeIcon = 'assets/images/HomeIcon.svg';
   static const String imagesLogo = 'assets/images/Logo.png';

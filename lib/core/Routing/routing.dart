@@ -1,4 +1,3 @@
-import 'package:bank_app/features/service/data/model/service_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/add_new_card_page/presentation/add_card_page.dart';
@@ -23,6 +22,7 @@ import '../../features/send_money_screen/presentation/success_sending_screen.dar
 import '../../features/service/presentation/service_view.dart';
 import '../../features/service/presentation/widgets/service_view_body.dart';
 import '../../features/settings/data/models/settings_model.dart';
+import '../../features/transaction_history/data/models/transaction_item_model.dart';
 import '../../features/transaction_history/presentation/views/transaction_history_view.dart';
 import '../local/local_settings.dart';
 import '../network/firebase_authentication.dart';
@@ -168,14 +168,16 @@ class Routing {
       GoRoute(
         path: serviceView,
         builder: (BuildContext context, GoRouterState state) {
-          ServiceModel serviceModel = state.extra as ServiceModel;
-          return  ServiceViewBody(service: serviceModel,);
+          TransactionType service = state.extra as TransactionType;
+          return ServiceViewBody(
+            service: service,
+          );
         },
       ),
       GoRoute(
         path: servicesView,
         builder: (BuildContext context, GoRouterState state) {
-          return  ServicesView();
+          return const ServicesView();
         },
       ),
       GoRoute(

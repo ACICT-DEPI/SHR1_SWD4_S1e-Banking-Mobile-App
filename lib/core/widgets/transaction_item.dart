@@ -1,7 +1,7 @@
-import 'package:bank_app/core/helpers/functions.dart';
-import 'package:bank_app/features/transaction_history/data/models/transaction_item_model.dart';
 import 'package:flutter/material.dart';
 
+import '../../features/transaction_history/data/models/transaction_item_model.dart';
+import '../helpers/functions.dart';
 import '../styles/colors.dart';
 import '../styles/texts_style.dart';
 
@@ -23,7 +23,7 @@ class TransactionItem extends StatelessWidget {
             shape: BoxShape.circle,
           ),
           padding: const EdgeInsets.all(10),
-          child: Functions.getTransactionIcon(transactionItemModel.type),
+          child: Icon(Functions.getTransactionIcon(transactionItemModel.type)),
         ),
         const SizedBox(width: 20.0),
         Column(
