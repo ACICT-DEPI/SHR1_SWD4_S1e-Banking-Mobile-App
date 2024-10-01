@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -50,25 +51,19 @@ class ReceiveIdTextField extends StatelessWidget {
               Expanded(
                 child: Row(
                   children: [
+
                     Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintStyle: TextsStyle.textStyleRegular15.copyWith(
-                            color: AppColors.grey94,
-                          ),
-                          hintText: id,
-                          counterStyle: TextsStyle.textStyleSemiBold24.copyWith(
-                            color: AppColors.black,
-                          ),
-                          border: InputBorder.none,
-                        ),
+                      child: AutoSizeText(
+                        id, // Text that you want to display
                         style: TextsStyle.textStyleSemiBold24.copyWith(
                           color: AppColors.black,
                         ),
-                        enabled: false,
-                        keyboardType: TextInputType.number,
+                        minFontSize: 12, // Set a minimum font size
+                        maxLines: 1, // Limit to a single line
+                        overflow: TextOverflow.ellipsis, // Handle overflow with ellipsis
                       ),
                     ),
+
                     IconButton(
                       iconSize: 30,
                       style: const ButtonStyle(

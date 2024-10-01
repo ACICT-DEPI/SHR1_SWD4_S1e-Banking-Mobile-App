@@ -35,8 +35,8 @@ class ProfileRow extends StatelessWidget {
               Text(
                 text,
                 style: TextsStyle.textStyleRegular15.copyWith(
-                  color: (LocalSettings.getSettings().themeMode == "Light" ||
-                      LocalSettings.getSettings().themeMode == "فاتح")? AppColors.black
+                  color: (LocalSettings.getSettings().themeMode == 'Light' ||
+                      LocalSettings.getSettings().themeMode == 'فاتح')? AppColors.black
                       : AppColors.white,
                 ),
               ),
