@@ -47,6 +47,7 @@ class _ThemeViewBodyState extends State<ThemeViewBody> {
                       ? () {
                           BlocProvider.of<SettingsCubit>(context)
                               .updateSettingsModel(settingsModel);
+
                         }
                       : null,
                 ),

@@ -1,5 +1,7 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:bank_app/features/settings/domain/cubits/settings_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../../../core/local/local_settings.dart';
@@ -30,6 +32,8 @@ class CustomNavigationBar extends StatelessWidget {
       S.of(context).MyStatistics,
       S.of(context).Settings,
     ];
+    return BlocBuilder<SettingsCubit, SettingsState>(
+  builder: (context, state) {
     return SizedBox(
       height: 90 * heightFactor, // Adjusted height for responsiveness
       child: AnimatedBottomNavigationBar.builder(
@@ -68,5 +72,7 @@ class CustomNavigationBar extends StatelessWidget {
         onTap: onTap, // Use the callback here to notify the parent widget
       ),
     );
+  },
+);
   }
 }
