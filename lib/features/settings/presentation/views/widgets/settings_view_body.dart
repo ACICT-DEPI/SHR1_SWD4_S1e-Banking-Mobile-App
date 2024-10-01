@@ -63,9 +63,7 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
                   SettingsButton(
                     text: "Theme Mode",
                     onPressed: () {
-                      ///
-                      ///
-                      ///
+                      GoRouter.of(context).push(Routing.themeView);
                     },
                     label: settingsModel.themeMode,
                   ),

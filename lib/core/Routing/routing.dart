@@ -22,6 +22,7 @@ import '../../features/send_money_screen/presentation/success_sending_screen.dar
 import '../../features/service/presentation/service_view.dart';
 import '../../features/service/presentation/widgets/service_view_body.dart';
 import '../../features/settings/data/models/settings_model.dart';
+import '../../features/theme/presentation/views/theme_view.dart';
 import '../../features/transaction_history/data/models/transaction_item_model.dart';
 import '../../features/transaction_history/presentation/views/transaction_history_view.dart';
 import '../local/local_settings.dart';
@@ -52,6 +53,7 @@ class Routing {
   static String notificationsScreen = '/NotificationsScreen';
   static String localAuthScreen = '/LocalAuthScreen';
   static String servicesView = '/ServicesView';
+  static String themeView = '/ThemeView';
 
   static final GoRouter _router = GoRouter(
     initialLocation: onboardingScreen, // Set your initial route here
@@ -71,8 +73,8 @@ class Routing {
         redirect: (context, state) async {
           // Synchronous check for user authentication
           if (FirebaseAuthentication.isUserLogin()) {
-            SettingsModel? model = await LocalSettings.getSettings();
-            if (model != null && model.supportBiometric && model.useBiometric) {
+            SettingsModel model = LocalSettings.getSettings();
+            if (model.supportBiometric && model.useBiometric) {
               return localAuthScreen; // Redirect to biometric auth screen
             }
             return navigationScreen; // Redirect to the navigation screen
@@ -205,6 +207,12 @@ class Routing {
         path: notificationsScreen,
         builder: (BuildContext context, GoRouterState state) {
           return const NotificationsScreen();
+        },
+      ),
+      GoRoute(
+        path: themeView,
+        builder: (BuildContext context, GoRouterState state) {
+          return const ThemeView();
         },
       ),
       GoRoute(

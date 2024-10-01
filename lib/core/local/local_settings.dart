@@ -10,14 +10,28 @@ class LocalSettings {
     await _settingsBox.add(settingsModel);
   }
 
-  static Future<SettingsModel?> getSettings() async {
+  static SettingsModel getSettings() {
+    SettingsModel settingsModel = _settingsBox.values.first;
+
+    return settingsModel;
+  }
+
+  static Future<void> initializeSettings() async {
     SettingsModel? settingsModel = _settingsBox.values.firstOrNull;
 
+    bool checkBiometricSupport = await Functions.checkBiometricSupport();
+
     if (settingsModel == null) {
-      return null;
+      addSettings(
+        SettingsModel(
+          language: Functions.getDeviceLanguage(),
+          appPassword: -1,
+          useBiometric: false,
+          supportBiometric: checkBiometricSupport,
+          themeMode: 'Light'
+        ),
+      );
     }
-    settingsModel.supportBiometric = await Functions.checkBiometricSupport();
-    return settingsModel;
   }
 
   static Future<void> updateSettings(

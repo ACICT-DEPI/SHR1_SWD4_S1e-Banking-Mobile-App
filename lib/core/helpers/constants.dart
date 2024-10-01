@@ -34,4 +34,5 @@ class Constants {
       languageName: 'English',
     ),
   ];
+  static List<String> themes = ['Light', 'Dark'];
 }
