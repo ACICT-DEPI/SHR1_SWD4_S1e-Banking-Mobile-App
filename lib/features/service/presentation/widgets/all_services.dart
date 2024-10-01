@@ -2,9 +2,17 @@ import 'package:bank_app/features/service/presentation/widgets/service_card.dart
 import 'package:flutter/material.dart';
 
 import '../../../../core/widgets/custom_app_bar.dart';
+import '../../../search/presentation/views/widgets/search_text_field.dart';
 import '../../data/model/service_model.dart';
 
-class PaymentServicesScreen extends StatelessWidget {
+class PaymentServicesScreen extends StatefulWidget {
+  @override
+  State<PaymentServicesScreen> createState() => _PaymentServicesScreenState();
+}
+
+class _PaymentServicesScreenState extends State<PaymentServicesScreen> {
+  TextEditingController searchController = TextEditingController();
+
   final List<ServiceModel> services = [
     ServiceModel('Home Internet', Icons.router),
     ServiceModel('Mobile Bill', Icons.phone_android),
@@ -26,6 +34,21 @@ class PaymentServicesScreen extends StatelessWidget {
     ServiceModel('Unions', Icons.badge),
   ];
 
+  List<ServiceModel> getFilteredServices(String query) {
+    List<ServiceModel> filteredServices = [];
+
+    if (query.isEmpty) {
+      return services;
+    } else {
+      services.forEach((service) {
+        if (service.name.toLowerCase().contains(query.toLowerCase())) {
+          filteredServices.add(service);
+        }
+      });
+      return filteredServices;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +56,9 @@ class PaymentServicesScreen extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             CustomAppBar(
               appBarTitle: "Services",
               leftIcon: Icons.arrow_back_ios_new_outlined,
@@ -41,8 +66,20 @@ class PaymentServicesScreen extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
-            SizedBox(height: 20,),
-
+            SizedBox(
+              height: 20,
+            ),
+            SearchTextField(
+              onChanged: (value) {
+                setState(() {
+                  searchController.text = value;
+                });
+              },
+              searchController: searchController,
+            ),
+            SizedBox(
+              height: 20,
+            ),
             Expanded(
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -51,9 +88,11 @@ class PaymentServicesScreen extends StatelessWidget {
                   mainAxisSpacing: 10.0,
                   childAspectRatio: 0.8, // Adjust for icon-label ratio
                 ),
-                itemCount: services.length,
+                itemCount: getFilteredServices(searchController.text).length,
                 itemBuilder: (context, index) {
-                  return ServiceCard(service: services[index]);
+                  return ServiceCard(
+                      service:
+                          getFilteredServices(searchController.text)[index]);
                 },
               ),
             ),
