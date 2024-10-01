@@ -4,7 +4,6 @@ import '../../../../../core/helpers/functions.dart';
 import '../../../../../core/local/local_settings.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
-import '../../../../../generated/l10n.dart';
 import '../../../../transaction_history/data/models/transaction_item_model.dart';
 
 class SearchTransactionItem extends StatelessWidget {
@@ -21,7 +20,8 @@ class SearchTransactionItem extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: (LocalSettings.getSettings().themeMode == S.of(context).Light)
+            color: (LocalSettings.getSettings().themeMode == "Light" ||
+                    LocalSettings.getSettings().themeMode == "فاتح")
                 ? AppColors.greyF4
                 : AppColors.dark,
             shape: BoxShape.circle,
@@ -34,7 +34,7 @@ class SearchTransactionItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              Functions.getTransactionTitle(transactionItemModel.type,context),
+              Functions.getTransactionTitle(transactionItemModel.type, context),
               style: TextsStyle.textStyleMedium16,
             ),
             Text(

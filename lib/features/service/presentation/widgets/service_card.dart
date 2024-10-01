@@ -6,7 +6,6 @@ import '../../../../core/Routing/Routing.dart';
 import '../../../../core/helpers/functions.dart';
 import '../../../../core/local/local_settings.dart';
 import '../../../../core/styles/colors.dart';
-import '../../../../generated/l10n.dart';
 import '../../../transaction_history/data/models/transaction_item_model.dart';
 
 class ServiceCard extends StatelessWidget {
@@ -21,10 +20,12 @@ class ServiceCard extends StatelessWidget {
         context.push(Routing.serviceView, extra: service);
       },
       child: Card(
-        shadowColor: (LocalSettings.getSettings().themeMode == S.of(context).Light)
+        shadowColor: (LocalSettings.getSettings().themeMode == "Light" ||
+                LocalSettings.getSettings().themeMode == "فاتح")
             ? AppColors.greyA7
             : AppColors.dark,
-        color: (LocalSettings.getSettings().themeMode == S.of(context).Light)
+        color: (LocalSettings.getSettings().themeMode == "Light" ||
+                LocalSettings.getSettings().themeMode == "فاتح")
             ? AppColors.white
             : AppColors.dark,
         shape: RoundedRectangleBorder(
@@ -43,7 +44,7 @@ class ServiceCard extends StatelessWidget {
             SizedBox(
               width: 100,
               child: AutoSizeText(
-                Functions.getTransactionTitle(service,context),
+                Functions.getTransactionTitle(service, context),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 14,

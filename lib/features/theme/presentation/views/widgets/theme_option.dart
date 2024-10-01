@@ -6,7 +6,6 @@ import '../../../../../core/helpers/images.dart';
 import '../../../../../core/local/local_settings.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
-import '../../../../../generated/l10n.dart';
 import '../../../../settings/data/models/settings_model.dart';
 
 class ThemeOption extends StatelessWidget {
@@ -32,12 +31,16 @@ class ThemeOption extends StatelessWidget {
               CircleAvatar(
                 radius: 28,
                 backgroundColor:
-                    (LocalSettings.getSettings().themeMode == S.of(context).Light)
+                    (LocalSettings.getSettings().themeMode == "Light" ||
+                            LocalSettings.getSettings().themeMode == "فاتح")
                         ? AppColors.greyF4
                         : AppColors.dark,
                 child: Icon(
-                  (themeMode == S.of(context).Light) ? Icons.sunny : FontAwesomeIcons.moon,
-                  color: (LocalSettings.getSettings().themeMode == S.of(context).Light)
+                  (themeMode == "Light" || themeMode == "فاتح")
+                      ? Icons.sunny
+                      : FontAwesomeIcons.moon,
+                  color: (LocalSettings.getSettings().themeMode == "Light" ||
+                          LocalSettings.getSettings().themeMode == "فاتح")
                       ? AppColors.dark
                       : AppColors.white,
                 ),

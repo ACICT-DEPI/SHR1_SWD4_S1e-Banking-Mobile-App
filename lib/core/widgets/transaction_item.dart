@@ -20,7 +20,8 @@ class TransactionItem extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: (LocalSettings.getSettings().themeMode == 'Light')
+            color: (LocalSettings.getSettings().themeMode == "Light" ||
+                    LocalSettings.getSettings().themeMode == "فاتح")
                 ? AppColors.greyF4
                 : AppColors.dark,
             shape: BoxShape.circle,
@@ -33,11 +34,12 @@ class TransactionItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              Functions.getTransactionTitle(transactionItemModel.type,context),
+              Functions.getTransactionTitle(transactionItemModel.type, context),
               style: TextsStyle.textStyleMedium16,
             ),
             Text(
-              Functions.getTransactionSubTitle(transactionItemModel.type,context),
+              Functions.getTransactionSubTitle(
+                  transactionItemModel.type, context),
               style: TextsStyle.textStyleRegular12
                   .copyWith(color: AppColors.greyA7),
             ),

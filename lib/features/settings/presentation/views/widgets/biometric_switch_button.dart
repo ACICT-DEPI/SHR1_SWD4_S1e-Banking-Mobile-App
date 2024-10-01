@@ -33,7 +33,8 @@ class BiometricSwitchButton extends StatelessWidget {
           activeColor: AppColors.blue,
           inactiveThumbColor: AppColors.white,
           inactiveTrackColor:
-              (LocalSettings.getSettings().themeMode == S.of(context).Light)
+              (LocalSettings.getSettings().themeMode == "Light" ||
+                      LocalSettings.getSettings().themeMode == "فاتح")
                   ? AppColors.greyA7
                   : AppColors.grey8D,
         )

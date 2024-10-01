@@ -25,7 +25,8 @@ class _SearchTextFieldState extends State<SearchTextField> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: (LocalSettings.getSettings().themeMode == S.of(context).Light)
+        color: (LocalSettings.getSettings().themeMode == "Light" ||
+                LocalSettings.getSettings().themeMode == "فاتح")
             ? AppColors.greyF4
             : AppColors.dark,
         borderRadius: BorderRadius.circular(10.0),

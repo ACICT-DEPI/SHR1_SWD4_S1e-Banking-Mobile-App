@@ -23,7 +23,7 @@ class Functions {
   }
 
   static String getCurrentMonth() {
-    return DateFormat.MMM().format(DateTime.now());
+    return DateFormat.MMM('en').format(DateTime.now());
   }
 
   static double getMaxBalance(List<double> last6MonthsBalance) {

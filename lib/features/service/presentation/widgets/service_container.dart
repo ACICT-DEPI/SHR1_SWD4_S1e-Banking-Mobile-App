@@ -19,7 +19,8 @@ class ServiceContainer extends StatelessWidget {
       width: MediaQuery.sizeOf(context).width,
       decoration: BoxDecoration(
         border: Border.all(
-          color: (LocalSettings.getSettings().themeMode == S.of(context).Light)
+          color: (LocalSettings.getSettings().themeMode == "Light" ||
+                  LocalSettings.getSettings().themeMode == "فاتح")
               ? AppColors.lightGrey
               : AppColors.dark,
         ),
@@ -40,7 +41,7 @@ class ServiceContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                Functions.getTransactionTitle(service,context),
+                Functions.getTransactionTitle(service, context),
                 style: TextsStyle.textStyleMedium16,
               ),
               Icon(Functions.getTransactionIcon(service)),

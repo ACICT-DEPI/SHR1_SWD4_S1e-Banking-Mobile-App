@@ -35,10 +35,10 @@ class CustomNavigationBar extends StatelessWidget {
       child: AnimatedBottomNavigationBar.builder(
         borderColor: Colors.transparent,
         itemCount: svgIcons.length,
-        backgroundColor:
-            (LocalSettings.getSettings().themeMode == S.of(context).Light)
-                ? AppColors.white
-                : AppColors.dark,
+        backgroundColor: (LocalSettings.getSettings().themeMode == "Light" ||
+                LocalSettings.getSettings().themeMode == "فاتح")
+            ? AppColors.white
+            : AppColors.dark,
         tabBuilder: (int index, bool isActive) {
           final color = isActive ? AppColors.blue : Colors.grey;
           return Column(

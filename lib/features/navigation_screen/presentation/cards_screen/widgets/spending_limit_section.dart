@@ -29,10 +29,10 @@ class SpendingLimitSection extends StatelessWidget {
         const SizedBox(height: 12.0),
         Container(
           decoration: BoxDecoration(
-            color:
-                (LocalSettings.getSettings().themeMode == S.of(context).Light)
-                    ? AppColors.greyF4
-                    : AppColors.dark,
+            color: (LocalSettings.getSettings().themeMode == "Light" ||
+                    LocalSettings.getSettings().themeMode == "فاتح")
+                ? AppColors.greyF4
+                : AppColors.dark,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Padding(
@@ -42,8 +42,7 @@ class SpendingLimitSection extends StatelessWidget {
               children: [
                 const SizedBox(height: 10),
                 Text(
-                  S.of(context).Amount +
-                      ": \$${currentSliderValue.toStringAsFixed(2)}",
+                  "${S.of(context).Amount}: \$${currentSliderValue.toStringAsFixed(2)}",
                   style: TextsStyle.textStyleRegular13,
                 ),
                 Slider(
@@ -70,7 +69,8 @@ class SpendingLimitSection extends StatelessWidget {
                       "\$${currentSliderValue.toStringAsFixed(2)}",
                       style: TextsStyle.textStyleRegular15.copyWith(
                         color: (LocalSettings.getSettings().themeMode ==
-                                S.of(context).Light)
+                                    "Light" ||
+                                LocalSettings.getSettings().themeMode == "فاتح")
                             ? AppColors.black
                             : AppColors.white,
                         fontWeight: FontWeight.bold,

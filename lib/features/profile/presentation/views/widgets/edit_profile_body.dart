@@ -109,7 +109,10 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                                   shape: BoxShape.circle,
                                   color:
                                       (LocalSettings.getSettings().themeMode ==
-                                              S.of(context).Light)
+                                                  "Light" ||
+                                              LocalSettings.getSettings()
+                                                      .themeMode ==
+                                                  "فاتح")
                                           ? AppColors.white.withOpacity(.7)
                                           : AppColors.dark.withOpacity(.7),
                                 ),

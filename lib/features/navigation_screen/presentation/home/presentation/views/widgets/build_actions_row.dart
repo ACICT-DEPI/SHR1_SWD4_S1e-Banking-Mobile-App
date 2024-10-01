@@ -24,7 +24,6 @@ class BuildActionsRow extends StatefulWidget {
 class _BuildActionsRowState extends State<BuildActionsRow> {
   Widget _buildActionButton(IconData icon, String label, Function onPressed) {
     final double widthFactor = MediaQuery.of(context).size.width / 411;
-    // final double heightFactor = MediaQuery.of(context).size.height/870;
     return SizedBox(
       width: 60 * widthFactor,
       child: Column(
@@ -32,7 +31,8 @@ class _BuildActionsRowState extends State<BuildActionsRow> {
           CircleAvatar(
             radius: 50,
             backgroundColor:
-                (LocalSettings.getSettings().themeMode == S.of(context).Light)
+                (LocalSettings.getSettings().themeMode == "Light" ||
+                        LocalSettings.getSettings().themeMode == "فاتح")
                     ? AppColors.greyF4
                     : AppColors.dark,
             // Background color for both CircleAvatar and IconButton

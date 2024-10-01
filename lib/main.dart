@@ -68,7 +68,8 @@ class MyApp extends StatelessWidget {
                 ),
                 localizationsDelegates: localizationsDelegates(),
                 supportedLocales: S.delegate.supportedLocales,
-                theme: (LocalSettings.getSettings().themeMode == "Light")
+                theme: (LocalSettings.getSettings().themeMode == "Light" ||
+                        LocalSettings.getSettings().themeMode == "فاتح")
                     ? ThemeStyle.lightThemeData
                     : ThemeStyle.darkThemeData,
                 debugShowCheckedModeBanner: false,

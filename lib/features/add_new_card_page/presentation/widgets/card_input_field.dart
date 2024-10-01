@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../../core/local/local_settings.dart';
-import '../../../../generated/l10n.dart';
 
 class CardInputField extends StatelessWidget {
   final String label;
@@ -59,8 +58,8 @@ class CardInputField extends StatelessWidget {
                   contentPadding: EdgeInsets.zero,
                 ),
                 style: TextsStyle.textStyleRegular15.copyWith(
-                  color: (LocalSettings.getSettings().themeMode ==
-                          S.of(context).Light)
+                  color: (LocalSettings.getSettings().themeMode == "Light" ||
+                          LocalSettings.getSettings().themeMode == "فاتح")
                       ? AppColors.black
                       : AppColors.white,
                 ),

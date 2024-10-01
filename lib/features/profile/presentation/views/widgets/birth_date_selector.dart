@@ -39,10 +39,11 @@ class _BirthDateSelectorState extends State<BirthDateSelector> {
             Expanded(
               child: DropdownButtonFormField<int>(
                 decoration: _inputDecoration(),
-                dropdownColor: (LocalSettings.getSettings().themeMode ==
-                        S.of(context).Light)
-                    ? AppColors.white
-                    : AppColors.black,
+                dropdownColor:
+                    (LocalSettings.getSettings().themeMode == "Light" ||
+                            LocalSettings.getSettings().themeMode == "فاتح")
+                        ? AppColors.white
+                        : AppColors.black,
                 value: widget.userModel.birthYear,
                 items: _yearItems(),
                 onChanged: widget.enabled
@@ -62,10 +63,11 @@ class _BirthDateSelectorState extends State<BirthDateSelector> {
               child: DropdownButtonFormField<int>(
                 decoration: _inputDecoration(),
                 value: widget.userModel.birthMonth,
-                dropdownColor: (LocalSettings.getSettings().themeMode ==
-                        S.of(context).Light)
-                    ? AppColors.white
-                    : AppColors.black,
+                dropdownColor:
+                    (LocalSettings.getSettings().themeMode == "Light" ||
+                            LocalSettings.getSettings().themeMode == "فاتح")
+                        ? AppColors.white
+                        : AppColors.black,
                 items: _monthItems(),
                 onChanged: widget.enabled
                     ? (int? newValue) {
@@ -84,10 +86,11 @@ class _BirthDateSelectorState extends State<BirthDateSelector> {
               child: DropdownButtonFormField<int>(
                 decoration: _inputDecoration(),
                 value: widget.userModel.birthDay,
-                dropdownColor: (LocalSettings.getSettings().themeMode ==
-                        S.of(context).Light)
-                    ? AppColors.white
-                    : AppColors.black,
+                dropdownColor:
+                    (LocalSettings.getSettings().themeMode == "Light" ||
+                            LocalSettings.getSettings().themeMode == "فاتح")
+                        ? AppColors.white
+                        : AppColors.black,
                 items: _dayItems(),
                 onChanged: widget.enabled
                     ? (int? newValue) {
@@ -109,7 +112,8 @@ class _BirthDateSelectorState extends State<BirthDateSelector> {
       enabledBorder: OutlineInputBorder(
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         borderSide: BorderSide(
-          color: (LocalSettings.getSettings().themeMode == S.of(context).Light)
+          color: (LocalSettings.getSettings().themeMode == "Light" ||
+                  LocalSettings.getSettings().themeMode == "فاتح")
               ? AppColors.greyF4
               : AppColors.dark,
           width: 2.0,

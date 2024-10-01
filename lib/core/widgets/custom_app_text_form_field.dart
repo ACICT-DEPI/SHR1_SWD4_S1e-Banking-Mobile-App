@@ -72,7 +72,8 @@ class CustomAppTextFormField extends StatelessWidget {
                   contentPadding: EdgeInsets.zero,
                 ),
                 style: TextsStyle.textStyleRegular14.copyWith(
-                  color: (LocalSettings.getSettings().themeMode == 'Light')
+                  color: (LocalSettings.getSettings().themeMode == "Light" ||
+                          LocalSettings.getSettings().themeMode == "فاتح")
                       ? AppColors.black
                       : AppColors.white,
                 ),
@@ -83,7 +84,8 @@ class CustomAppTextFormField extends StatelessWidget {
               IconButton(
                 style: ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll(
-                    (LocalSettings.getSettings().themeMode == 'Light')
+                    (LocalSettings.getSettings().themeMode == "Light" ||
+                            LocalSettings.getSettings().themeMode == "فاتح")
                         ? AppColors.white
                         : AppColors.black,
                   ),

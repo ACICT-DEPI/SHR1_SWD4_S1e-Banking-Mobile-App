@@ -41,8 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
             extra: ErrorScreenData(
               message: S.of(context).ErrorOccurred,
               onPressed: () {
-                context.go(
-                    Routing.navigationScreen); // Navigate to the next screen
+                context.go(Routing.navigationScreen);
               },
             ),
           );

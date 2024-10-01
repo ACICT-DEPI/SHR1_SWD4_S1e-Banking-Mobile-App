@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/helpers/constants.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../generated/l10n.dart';
@@ -53,22 +52,33 @@ class _ThemeViewBodyState extends State<ThemeViewBody> {
                 ),
                 const SizedBox(height: 32.0),
                 Expanded(
-                  child: ListView.builder(
-                    itemCount: Constants.themes.length,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
+                  child: ListView(
+                    children: [
+                      GestureDetector(
                         onTap: () {
                           setState(() {
                             changeTheme = true;
                           });
-                          settingsModel.themeMode = Constants.themes[index];
+                          settingsModel.themeMode = S.of(context).Light;
                         },
                         child: ThemeOption(
-                          themeMode: Constants.themes[index],
+                          themeMode: S.of(context).Light,
                           settingsModel: settingsModel,
                         ),
-                      );
-                    },
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            changeTheme = true;
+                          });
+                          settingsModel.themeMode = S.of(context).Dark;
+                        },
+                        child: ThemeOption(
+                          themeMode: S.of(context).Dark,
+                          settingsModel: settingsModel,
+                        ),
+                      )
+                    ],
                   ),
                 )
               ],

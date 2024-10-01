@@ -18,7 +18,8 @@ class PaymentIdTextField extends StatelessWidget {
       width: MediaQuery.sizeOf(context).width,
       decoration: BoxDecoration(
         border: Border.all(
-          color: (LocalSettings.getSettings().themeMode == S.of(context).Light)
+          color: (LocalSettings.getSettings().themeMode == "Light" ||
+                  LocalSettings.getSettings().themeMode == "فاتح")
               ? AppColors.lightGrey
               : AppColors.dark,
         ),

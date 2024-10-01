@@ -28,7 +28,7 @@ class LocalSettings {
           appPassword: -1,
           useBiometric: false,
           supportBiometric: checkBiometricSupport,
-          themeMode: 'Light'
+          themeMode: 'Light',
         ),
       );
     }

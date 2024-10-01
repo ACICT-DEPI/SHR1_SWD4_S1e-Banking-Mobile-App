@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/Routing/Routing.dart';
+import '../../../../../core/local/local_settings.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../generated/l10n.dart';
@@ -66,7 +67,10 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
                     onPressed: () {
                       GoRouter.of(context).push(Routing.themeView);
                     },
-                    label: settingsModel.themeMode,
+                    label: (LocalSettings.getSettings().themeMode == "Light" ||
+                            LocalSettings.getSettings().themeMode == "فاتح")
+                        ? S.of(context).Light
+                        : S.of(context).Dark,
                   ),
                   const SizedBox(height: 32),
                   MainSectionTitle(text: S.of(context).Security),
