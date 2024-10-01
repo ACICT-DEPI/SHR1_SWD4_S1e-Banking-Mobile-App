@@ -21,7 +21,7 @@ class CircularChart extends StatefulWidget {
 }
 
 class _CircularChartState extends State<CircularChart> {
-  int touchedIndex = 0;
+  int touchedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -65,12 +65,20 @@ class _CircularChartState extends State<CircularChart> {
                       : "${widget.categoryModels[touchedIndex].percentage.toStringAsFixed(2)}%",
                   style: TextsStyle.textStyleSemiBold26,
                 ),
-                Text(
-                  (touchedIndex == -1)
-                      ? ""
-                      : widget.categoryModels[touchedIndex].category,
-                  style: TextsStyle.textStyleRegular18.copyWith(
-                    color: AppColors.greyA7,
+                SizedBox(
+                  width: MediaQuery.sizeOf(context).width / 3,
+                  child: Center(
+                    child: Text(
+                      (touchedIndex == -1)
+                          ? ""
+                          : widget.categoryModels[touchedIndex].category,
+                      style: TextsStyle.textStyleRegular18.copyWith(
+                        color: AppColors.greyA7,
+                      ),
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                    ),
                   ),
                 ),
               ],
@@ -82,7 +90,7 @@ class _CircularChartState extends State<CircularChart> {
   }
 
   List<PieChartSectionData> showingSections() {
-    return List.generate(4, (i) {
+    return List.generate(widget.categoryModels.length, (i) {
       final isTouched = i == touchedIndex;
       final radius = isTouched ? 33.0 : 25.0;
 

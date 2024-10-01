@@ -175,7 +175,6 @@ class Functions {
       case TransactionType.paypal:
       case TransactionType.amazonPay:
       case TransactionType.financeAndBanks:
-      case TransactionType.microfinance:
       case TransactionType.fawryPay:
       case TransactionType.donations:
       case TransactionType.payments:
@@ -193,7 +192,7 @@ class Functions {
         return "Transport";
 
       default:
-        return "Transaction";
+        return "Financial Services";
     }
   }
 

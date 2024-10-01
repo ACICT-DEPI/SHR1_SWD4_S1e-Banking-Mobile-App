@@ -10,29 +10,22 @@ class CategoryChartBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        left: 20.0,
-        right: 20.0,
-        top: 20.0,
-      ),
-      child: Column(
-        children: [
-          CircularChart(
-            firstsColor: CategoryModel.firstsCategoryColor,
-            secondsColor: CategoryModel.secondsCategoryColor,
-            categoryModels: listOfCategoryModel,
-          ),
-          const SizedBox(height: 40.0),
-          CategoriesRow(
-            length: 4,
-            secondsColor: CategoryModel.secondsCategoryColor,
-            firstsColor: CategoryModel.firstsCategoryColor,
-            categoryModels: listOfCategoryModel,
-          ),
-          const SizedBox(height: 40),
-        ],
-      ),
+    return Column(
+      children: [
+        const SizedBox(height: 20),
+        CircularChart(
+          firstsColor: CategoryModel.firstsCategoryColor,
+          secondsColor: CategoryModel.secondsCategoryColor,
+          categoryModels: listOfCategoryModel,
+        ),
+        const SizedBox(height: 40.0),
+        CategoriesRow(
+          secondsColor: CategoryModel.secondsCategoryColor,
+          firstsColor: CategoryModel.firstsCategoryColor,
+          categoryModels: listOfCategoryModel,
+        ),
+        const SizedBox(height: 40),
+      ],
     );
   }
 }

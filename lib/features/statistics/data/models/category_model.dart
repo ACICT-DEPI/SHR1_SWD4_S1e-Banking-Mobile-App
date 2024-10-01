@@ -12,12 +12,17 @@ class CategoryModel {
     AppColors.yellow,
     AppColors.pink,
     AppColors.greenC2,
-    AppColors.purple
+    AppColors.purple,
+    AppColors.lightBlue,
+    AppColors.greenC2,
   ];
+
   static final List<Color> secondsCategoryColor = [
     AppColors.orange,
     AppColors.purple,
     AppColors.greenC8,
-    AppColors.lightBlue
+    AppColors.lightBlue,
+    AppColors.purple,
+    AppColors.lightBlue,
   ];
 }

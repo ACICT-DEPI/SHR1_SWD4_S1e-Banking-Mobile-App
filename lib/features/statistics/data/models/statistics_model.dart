@@ -3,14 +3,18 @@ class StatisticsModel {
   final List<double> lastSixMonthsBalance;
   final double currentBalance;
   final double maxBalance;
-  final double transactionPercent;
-  final double musicPercent;
+  final double financialServicesPercent;
+  final double utilitiesPercent;
   final double entertainmentPercent;
   final double shoppingPercent;
+  final double telecommunicationPercent;
+  final double transportPercent;
 
   StatisticsModel({
-    required this.transactionPercent,
-    required this.musicPercent,
+    required this.financialServicesPercent,
+    required this.telecommunicationPercent,
+    required this.transportPercent,
+    required this.utilitiesPercent,
     required this.entertainmentPercent,
     required this.shoppingPercent,
     required this.lastSixMonthsBalance,

@@ -71,20 +71,30 @@ class StatisticsViewBody extends StatelessWidget {
                         CategoryChartBody(
                           listOfCategoryModel: [
                             CategoryModel(
-                              category: "Transaction",
-                              percentage: statisticsModel.transactionPercent,
+                              category: "Financial Services",
+                              percentage:
+                                  statisticsModel.financialServicesPercent,
                             ),
                             CategoryModel(
                               category: "Entertainment",
                               percentage: statisticsModel.entertainmentPercent,
                             ),
                             CategoryModel(
-                              category: "Music",
-                              percentage: statisticsModel.musicPercent,
+                              category: "Utilities",
+                              percentage: statisticsModel.utilitiesPercent,
                             ),
                             CategoryModel(
                               category: "Shopping",
                               percentage: statisticsModel.shoppingPercent,
+                            ),
+                            CategoryModel(
+                              category: "Telecommunication",
+                              percentage:
+                                  statisticsModel.telecommunicationPercent,
+                            ),
+                            CategoryModel(
+                              category: "Transport",
+                              percentage: statisticsModel.transportPercent,
                             ),
                           ],
                         ),
@@ -110,10 +120,12 @@ class StatisticsViewBody extends StatelessWidget {
   }
 
   bool showCategoryChart(StatisticsModel statisticsModel) {
-    return !(statisticsModel.transactionPercent +
+    return !(statisticsModel.financialServicesPercent +
             statisticsModel.entertainmentPercent +
-            statisticsModel.musicPercent +
-            statisticsModel.shoppingPercent)
+            statisticsModel.utilitiesPercent +
+            statisticsModel.shoppingPercent +
+            statisticsModel.telecommunicationPercent +
+            statisticsModel.transportPercent)
         .isNaN;
   }
 }

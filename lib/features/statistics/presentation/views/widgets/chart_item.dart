@@ -32,7 +32,13 @@ class ChartItem extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 8),
-        Text(text, style: TextsStyle.textStyleRegular13),
+        Expanded(
+          child: Text(
+            text,
+            style: TextsStyle.textStyleRegular13,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
       ],
     );
   }

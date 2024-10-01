@@ -16,7 +16,7 @@ class Constants {
     TransactionType.games,
     TransactionType.gas,
     TransactionType.tickets,
-    TransactionType.microfinance,
+    TransactionType.uber,
     TransactionType.education,
     TransactionType.dailyWaste,
     TransactionType.googlePlay,

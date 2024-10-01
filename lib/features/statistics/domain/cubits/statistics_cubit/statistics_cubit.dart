@@ -113,17 +113,23 @@ class StatisticsCubit extends Cubit<StatisticsState> {
     List<TransactionItemModel> allTransactions =
         await FirebaseTransactions.getAllTransactions();
 
-    double transactionPercent =
-        Functions.getTransactionPercent('Transaction', allTransactions);
+    double financialServicesPercent =
+        Functions.getTransactionPercent('Financial Services', allTransactions);
 
-    double musicPercent =
-        Functions.getTransactionPercent('Music', allTransactions);
+    double utilitiesPercent =
+        Functions.getTransactionPercent('Utilities', allTransactions);
 
     double entertainmentPercent =
         Functions.getTransactionPercent('Entertainment', allTransactions);
 
     double shoppingPercent =
         Functions.getTransactionPercent('Shopping', allTransactions);
+
+    double telecommunicationPercent =
+        Functions.getTransactionPercent('Telecommunication', allTransactions);
+
+    double transportPercent =
+        Functions.getTransactionPercent('Transport', allTransactions);
 
     // Return the statistics model with all the fetched data
     return StatisticsModel(
@@ -134,10 +140,12 @@ class StatisticsCubit extends Cubit<StatisticsState> {
       lastSixMonthsBalance: lastSixMonthsBalance,
       // List of balances
       currentBalance: currentBalance,
-      transactionPercent: transactionPercent,
-      musicPercent: musicPercent,
+      financialServicesPercent: financialServicesPercent,
+      utilitiesPercent: utilitiesPercent,
       entertainmentPercent: entertainmentPercent,
       shoppingPercent: shoppingPercent,
+      telecommunicationPercent: telecommunicationPercent,
+      transportPercent: transportPercent,
     );
   }
 }
