@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../core/local/local_settings.dart';
 import '../../../core/styles/texts_style.dart';
 import '../../../core/styles/theme_style.dart';
 import '../../../core/widgets/custom_app_button.dart';
-import '../../../generated/l10n.dart';
 
 class NoConnectionScreen extends StatelessWidget {
   const NoConnectionScreen({super.key});
@@ -14,7 +14,10 @@ class NoConnectionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeStyle.lightThemeData,
+      theme: (LocalSettings.getSettings().themeMode == "Light" ||
+              LocalSettings.getSettings().themeMode == "فاتح")
+          ? ThemeStyle.lightThemeData
+          : ThemeStyle.darkThemeData,
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Padding(
@@ -23,17 +26,21 @@ class NoConnectionScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Lottie.asset('assets/images/internet.json'),
-               Padding(
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text(
-                  S.of(context).NoInternetConnection,
+                  (LocalSettings.getSettings().language == "English")
+                      ? "No Internet Connection"
+                      : "لا يوجد اتصال بالإنترنت",
                   textAlign: TextAlign.center,
                   style: TextsStyle.textStyleSemiBold26,
                 ),
               ),
               const SizedBox(height: 40),
               CustomAppButton(
-                title: S.of(context).OpenWiFiSettings,
+                title: (LocalSettings.getSettings().language == "English")
+                    ? "Open WiFi Settings"
+                    : "فتح إعدادات WiFi",
                 onPressed: () {
                   _openWiFiSettings(context);
                 },
@@ -56,7 +63,9 @@ class NoConnectionScreen extends StatelessWidget {
       if (await canLaunchUrl(Uri(path: url))) {
         await launchUrl(Uri(path: url));
       } else {
-        throw S.of(context).CouldNotOpenWiFiSettings;
+        throw (LocalSettings.getSettings().language == "English")
+            ? "Could not open WiFi settings"
+            : "تعذر فتح إعدادات WiFi";
       }
     }
   }
