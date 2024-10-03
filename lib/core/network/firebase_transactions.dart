@@ -15,14 +15,12 @@ class FirebaseTransactions {
 
   static final DocumentReference _userDocument = _userCollection.doc(_userId);
 
-  static Future<void> addNewTransaction(
-      TransactionItemModel transactionModel, String cardNumber,BuildContext context) async {
+  static Future<void> addNewTransaction(TransactionItemModel transactionModel,
+      String cardNumber, BuildContext context) async {
     await sendMoney(-transactionModel.amount, cardNumber);
     await _userDocument.collection('transactions').add(
           TransactionItemModel.toJson(
-            transactionModel: transactionModel,
-            context: context
-          ),
+              transactionModel: transactionModel, context: context),
         );
   }
 
@@ -44,15 +42,15 @@ class FirebaseTransactions {
     return allTransactions.reversed.toList();
   }
 
-  static void addTransaction(var transactionsCollection, double amount,BuildContext context) {
+  static void addTransaction(
+      var transactionsCollection, double amount, BuildContext context) {
     transactionsCollection.add(
       TransactionItemModel.toJson(
-        transactionModel: TransactionItemModel(
-          type: TransactionType.moneyTransfer,
-          amount: amount,
-        ),
-        context: context
-      ),
+          transactionModel: TransactionItemModel(
+            type: TransactionType.moneyTransfer,
+            amount: amount,
+          ),
+          context: context),
     );
   }
 
@@ -83,7 +81,7 @@ class FirebaseTransactions {
   }
 
   static Future<void> receiveMoney(
-      String id, double amount, String sender,BuildContext context) async {
+      String id, double amount, String sender, BuildContext context) async {
     // Query the user collection to find the document matching the provided 'uid'
     var userSnapshot = await _userCollection.where('uid', isEqualTo: id).get();
 
@@ -102,7 +100,8 @@ class FirebaseTransactions {
 
       var transactionsCollection = userDocRef.collection('transactions');
 
-      FirebaseTransactions.addTransaction(transactionsCollection, amount,context);
+      FirebaseTransactions.addTransaction(
+          transactionsCollection, amount, context);
 
       var notificationsCollection = userDocRef.collection('notifications');
 
@@ -110,6 +109,7 @@ class FirebaseTransactions {
         notificationsCollection: notificationsCollection,
         amount: amount,
         sender: sender,
+        context: context,
       );
     }
   }

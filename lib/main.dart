@@ -37,9 +37,7 @@ void main() async {
         BlocProvider(create: (context) => NotificationsCubit()),
         BlocProvider(create: (context) => HomeScreenCubit()),
         BlocProvider(create: (context) => ConnectionScreenCubit()),
-        BlocProvider(
-          create: (context) => StatisticsCubit()..initialize(context),
-        ),
+        BlocProvider(create: (context) => StatisticsCubit()),
         BlocProvider(create: (context) => SettingsCubit()..getSettingsModel()),
         BlocProvider(create: (context) => ThemeCubit()),
       ],

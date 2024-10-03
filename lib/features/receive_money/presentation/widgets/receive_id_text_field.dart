@@ -51,24 +51,20 @@ class ReceiveIdTextField extends StatelessWidget {
               Expanded(
                 child: Row(
                   children: [
-
                     Expanded(
                       child: AutoSizeText(
-                        id, // Text that you want to display
-                        style: TextsStyle.textStyleSemiBold24.copyWith(
-                          color: AppColors.black,
-                        ),
-                        minFontSize: 12, // Set a minimum font size
-                        maxLines: 1, // Limit to a single line
-                        overflow: TextOverflow.ellipsis, // Handle overflow with ellipsis
+                        id,
+                        style: TextsStyle.textStyleSemiBold24,
+                        minFontSize: 12,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
-
                     IconButton(
                       iconSize: 30,
                       style: const ButtonStyle(
                         backgroundColor: WidgetStatePropertyAll(
-                          AppColors.white,
+                          AppColors.transparent,
                         ),
                       ),
                       onPressed: () {

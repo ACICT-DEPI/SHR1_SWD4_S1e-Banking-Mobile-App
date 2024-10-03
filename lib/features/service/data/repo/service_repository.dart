@@ -11,7 +11,8 @@ class ServiceRepository {
     required CardModel card,
     required BuildContext context,
   }) async {
-    if (card.cardBalance > transactionItemModel.amount.abs()) {
+    if (card.cardBalance > transactionItemModel.amount.abs() &&
+        transactionItemModel.amount.abs() > 0) {
       await FirebaseTransactions.addNewTransaction(
           transactionItemModel, card.cardNumber, context);
 

@@ -16,7 +16,7 @@ class Functions {
 
     for (int i = 5; i >= 0; i--) {
       DateTime month = DateTime(now.year, now.month - i);
-      months.add(DateFormat.MMM().format(month));
+      months.add(DateFormat.MMM('en').format(month));
     }
 
     return months;
@@ -202,60 +202,88 @@ class Functions {
   static TransactionType getTransactionType(String transactionTitle) {
     switch (transactionTitle) {
       case "Spotify":
+      case "سبوتيفاي":
         return TransactionType.spotify;
       case "Apple Store":
+      case "متجر آبل":
         return TransactionType.appleStore;
       case "Money Transfer":
+      case "تحويل الأموال":
         return TransactionType.moneyTransfer;
       case "Grocery":
+      case "بقالة":
         return TransactionType.grocery;
       case "Google Play":
+      case "جوجل بلاي":
         return TransactionType.googlePlay;
       case "Amazon Pay":
+      case "أمازون باي":
         return TransactionType.amazonPay;
       case "Paypal":
+      case "بايبال":
         return TransactionType.paypal;
-      case "Netflix": // New case for Netflix
+      case "Netflix":
+      case "نتفليكس":
         return TransactionType.netflix;
-      case "Uber": // New case for Uber
+      case "Uber":
+      case "أوبر":
         return TransactionType.uber;
-      case "Water Bill": // New case for Water Bill
+      case "Water Bill":
+      case "فاتورة المياه":
         return TransactionType.waterBill;
-      case "Home Internet": // New case for Home Internet
+      case "Home Internet":
+      case "إنترنت منزلي":
         return TransactionType.homeInternet;
-      case "Mobile Bill": // New case for Mobile Bill
+      case "Mobile Bill":
+      case "فاتورة الهاتف المحمول":
         return TransactionType.mobileBill;
-      case "Mobile Recharge": // New case for Mobile Recharge
+      case "Mobile Recharge":
+      case "شحن الهاتف المحمول":
         return TransactionType.mobileRecharge;
-      case "Social Insurance": // New case for Social Insurance
+      case "Social Insurance":
+      case "التأمين الاجتماعي":
         return TransactionType.socialInsurance;
-      case "Fawry Pay": // New case for Fawry Pay
+      case "Fawry Pay":
+      case "فوري باي":
         return TransactionType.fawryPay;
-      case "Landline": // New case for Landline
+      case "Landline":
+      case "خط أرضي":
         return TransactionType.landline;
-      case "Electricity": // New case for Electricity
+      case "Electricity":
+      case "الكهرباء":
         return TransactionType.electricity;
-      case "Finance and Banks": // New case for Finance and Banks
+      case "Finance and Banks":
+      case "المالية والبنوك":
         return TransactionType.financeAndBanks;
-      case "Donations": // New case for Donations
+      case "Donations":
+      case "التبرعات":
         return TransactionType.donations;
-      case "Games": // New case for Games
+      case "Games":
+      case "الألعاب":
         return TransactionType.games;
-      case "Gas": // New case for Gas
+      case "Gas":
+      case "غاز":
         return TransactionType.gas;
-      case "Tickets": // New case for Tickets
+      case "Tickets":
+      case "تذاكر":
         return TransactionType.tickets;
-      case "Microfinance": // New case for Microfinance
+      case "Microfinance":
+      case "تمويل صغير":
         return TransactionType.microfinance;
-      case "Education": // New case for Education
+      case "Education":
+      case "التعليم":
         return TransactionType.education;
-      case "Save Gaza": // New case for Save Gaza
+      case "Save Gaza":
+      case "أنقذ غزة":
         return TransactionType.saveGaza;
-      case "Daily Waste": // New case for Daily Waste
+      case "Daily Waste":
+      case "النفايات اليومية":
         return TransactionType.dailyWaste;
-      case "Payments": // New case for Payments
+      case "Payments":
+      case "المدفوعات":
         return TransactionType.payments;
-      case "Unions": // New case for Unions
+      case "Unions":
+      case "النقابات":
         return TransactionType.unions;
       default:
         return TransactionType.moneyTransfer;

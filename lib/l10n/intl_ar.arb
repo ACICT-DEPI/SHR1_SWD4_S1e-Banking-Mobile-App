@@ -168,5 +168,15 @@
   "MonthAgo": "منذ شهر",
   "MonthsAgo": "منذ أشهر",
   "YearAgo": "منذ عام",
-  "YearsAgo": "منذ سنوات"
+  "YearsAgo": "منذ سنوات",
+  "Send": "ارسال",
+  "SendMoney": "إرسال الأموال",
+  "EnterID": "أدخل المعرف",
+  "EnterValidId": "يرجى إدخال معرف صحيح",
+  "TransactionSuccessful": "تمت المعاملة بنجاح",
+  "TotalAmountTransferred": "إجمالي المبلغ المحول",
+  "Phone": "الهاتف",
+  "Reference": "المرجع",
+  "Date": "التاريخ",
+  "BackHome": "العودة إلى الرئيسية"
 }

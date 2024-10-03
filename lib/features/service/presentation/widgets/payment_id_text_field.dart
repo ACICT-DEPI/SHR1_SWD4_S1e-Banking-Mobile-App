@@ -62,14 +62,9 @@ class PaymentIdTextField extends StatelessWidget {
                     hintStyle: TextsStyle.textStyleRegular12.copyWith(
                       color: AppColors.grey94,
                     ),
-                    counterStyle: TextsStyle.textStyleSemiBold24.copyWith(
-                      color: AppColors.black,
-                    ),
                     border: InputBorder.none,
                   ),
-                  style: TextsStyle.textStyleSemiBold24.copyWith(
-                    color: AppColors.black,
-                  ),
+                  style: TextsStyle.textStyleSemiBold24,
                   keyboardType: TextInputType.number,
                 ),
               ),
@@ -77,7 +72,7 @@ class PaymentIdTextField extends StatelessWidget {
                 iconSize: 40,
                 style: const ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll(
-                    AppColors.white,
+                    AppColors.transparent,
                   ),
                 ),
                 onPressed: () async {

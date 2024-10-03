@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 import '../../features/notification/data/models/notification_model.dart';
+import '../../generated/l10n.dart';
 import 'firebase_authentication.dart';
 
 class FirebaseNotifications {
@@ -13,15 +15,18 @@ class FirebaseNotifications {
 
   static final DocumentReference _userDocument = _userCollection.doc(_userId);
 
-  static Future<void> addReceiveNotification(
-      {required var notificationsCollection,
-      required double amount,
-      required String sender}) async {
+  static Future<void> addReceiveNotification({
+    required var notificationsCollection,
+    required double amount,
+    required String sender,
+    required BuildContext context,
+  }) async {
     await notificationsCollection.add(
       NotificationModel.toJson(
         NotificationModel(
-          title: "Payment Received",
-          subtitle: "You received \$$amount from $sender",
+          title: S.of(context).PaymentReceived,
+          subtitle:
+              "${S.of(context).YouReceived} \$$amount ${S.of(context).From} $sender",
           time: DateTime.now(),
         ),
       ),

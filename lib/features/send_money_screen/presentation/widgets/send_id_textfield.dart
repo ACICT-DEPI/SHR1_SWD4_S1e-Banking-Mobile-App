@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:bank_app/core/styles/colors.dart';
-import 'package:bank_app/core/styles/texts_style.dart';
 
+import '../../../../core/styles/colors.dart';
+import '../../../../core/styles/texts_style.dart';
+import '../../../../generated/l10n.dart';
 import '../scan_qr_sacn_screen.dart';
 
 class SendIdTextField extends StatefulWidget {
@@ -30,7 +31,7 @@ class _SendIdTextFieldState extends State<SendIdTextField> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(
-            "Enter ID",
+            S.of(context).EnterID,
             style: TextsStyle.textStyleRegular12.copyWith(
               color: AppColors.grey94,
             ),
@@ -39,7 +40,7 @@ class _SendIdTextFieldState extends State<SendIdTextField> {
           Row(
             children: <Widget>[
               Text(
-                "ID",
+                S.of(context).ID,
                 style: TextsStyle.textStyleSemiBold24.copyWith(
                   color: AppColors.grey94,
                 ),
@@ -49,26 +50,19 @@ class _SendIdTextFieldState extends State<SendIdTextField> {
                 child: TextFormField(
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Please enter the id';
+                      return S.of(context).EnterId;
                     } else if (value.length < 25) {
-                      return 'Please enter a valid id';
+                      return S.of(context).EnterValidId;
                     }
                     return null;
                   },
                   controller: widget.textController,
                   cursorColor: AppColors.blue,
-                  decoration: InputDecoration(
-                    hintStyle: TextsStyle.textStyleRegular12.copyWith(
-                      color: AppColors.grey94,
-                    ),
-                    counterStyle: TextsStyle.textStyleSemiBold24.copyWith(
-                      color: AppColors.black,
-                    ),
+                  decoration: const InputDecoration(
+                    counterStyle: TextsStyle.textStyleSemiBold24,
                     border: InputBorder.none,
                   ),
-                  style: TextsStyle.textStyleSemiBold24.copyWith(
-                    color: AppColors.black,
-                  ),
+                  style: TextsStyle.textStyleSemiBold24,
                   keyboardType: TextInputType.number,
                 ),
               ),
@@ -76,7 +70,7 @@ class _SendIdTextFieldState extends State<SendIdTextField> {
                 iconSize: 40,
                 style: const ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll(
-                    AppColors.white,
+                    AppColors.transparent,
                   ),
                 ),
                 onPressed: () async {

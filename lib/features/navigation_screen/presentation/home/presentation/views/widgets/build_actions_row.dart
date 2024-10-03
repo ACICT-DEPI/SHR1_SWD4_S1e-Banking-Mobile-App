@@ -66,7 +66,7 @@ class _BuildActionsRowState extends State<BuildActionsRow> {
       children: [
         _buildActionButton(
           Icons.arrow_upward,
-          S.of(context).Sent,
+          S.of(context).Send,
           widget.onPressedSent,
         ),
         _buildActionButton(

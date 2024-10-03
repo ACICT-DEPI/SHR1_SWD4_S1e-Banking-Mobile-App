@@ -41,6 +41,8 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
+    assert(instance != null,
+        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
     return instance!;
   }
 
@@ -1743,6 +1745,136 @@ class S {
     return Intl.message(
       'years ago',
       name: 'YearsAgo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send Money`
+  String get SendMoney {
+    return Intl.message(
+      'Send Money',
+      name: 'SendMoney',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send`
+  String get Send {
+    return Intl.message(
+      'Send',
+      name: 'Send',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter ID`
+  String get EnterID {
+    return Intl.message(
+      'Enter ID',
+      name: 'EnterID',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid id`
+  String get EnterValidId {
+    return Intl.message(
+      'Please enter a valid id',
+      name: 'EnterValidId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transaction Successful`
+  String get TransactionSuccessful {
+    return Intl.message(
+      'Transaction Successful',
+      name: 'TransactionSuccessful',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total amount transferred`
+  String get TotalAmountTransferred {
+    return Intl.message(
+      'Total amount transferred',
+      name: 'TotalAmountTransferred',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `phone`
+  String get Phone {
+    return Intl.message(
+      'phone',
+      name: 'Phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reference`
+  String get Reference {
+    return Intl.message(
+      'Reference',
+      name: 'Reference',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date`
+  String get Date {
+    return Intl.message(
+      'Date',
+      name: 'Date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to Home`
+  String get BackHome {
+    return Intl.message(
+      'Back to Home',
+      name: 'BackHome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment Received`
+  String get PaymentReceived {
+    return Intl.message(
+      'Payment Received',
+      name: 'PaymentReceived',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You received`
+  String get YouReceived {
+    return Intl.message(
+      'You received',
+      name: 'YouReceived',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `from`
+  String get From {
+    return Intl.message(
+      'from',
+      name: 'From',
       desc: '',
       args: [],
     );

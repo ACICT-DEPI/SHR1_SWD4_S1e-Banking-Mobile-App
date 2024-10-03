@@ -7,6 +7,7 @@ import 'package:auto_size_text/auto_size_text.dart'; // Import the package
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/texts_style.dart';
 import '../../../../core/widgets/custom_app_button.dart';
+import '../../../../generated/l10n.dart';
 import '../../../navigation_screen/logic/home_screen_cubit.dart';
 import '../../../statistics/domain/cubits/statistics_cubit/statistics_cubit.dart';
 import '../../data/models/success_model.dart';
@@ -32,8 +33,8 @@ class SuccessSendingScreenBody extends StatelessWidget {
 
           // Transaction Status Message
           AutoSizeText(
-            'Transaction Successful',
-            style: TextsStyle.textStyleSemiBold24.copyWith(color: Colors.black),
+            S.of(context).TransactionSuccessful,
+            style: TextsStyle.textStyleSemiBold24,
             textAlign: TextAlign.center,
             maxLines: 1,
           ),
@@ -45,8 +46,7 @@ class SuccessSendingScreenBody extends StatelessWidget {
             child: AutoSizeText(
               '${successModel.amount.toStringAsFixed(2)} ${successModel.currencyType}',
               textAlign: TextAlign.center,
-              style: TextsStyle.textStyleSemiBold24
-                  .copyWith(color: Colors.black, fontSize: 36),
+              style: TextsStyle.textStyleSemiBold24.copyWith(fontSize: 36),
               maxLines: 1,
             ),
           ),
@@ -54,7 +54,7 @@ class SuccessSendingScreenBody extends StatelessWidget {
             width: 300 * width,
             child: AutoSizeText(
               textAlign: TextAlign.center,
-              'Total amount transferred',
+              S.of(context).TotalAmountTransferred,
               style: TextsStyle.textStyleRegular15
                   .copyWith(color: AppColors.greyA7, fontSize: 18),
               maxLines: 1,
@@ -81,7 +81,7 @@ class SuccessSendingScreenBody extends StatelessWidget {
                   SizedBox(
                     width: 300 * width,
                     child: AutoSizeText(
-                      "ID: ${successModel.senderId}",
+                      "${S.of(context).ID}: ${successModel.senderId}",
                       style: TextsStyle.textStyleRegular15
                           .copyWith(color: AppColors.greyA7),
                       maxLines: 1,
@@ -112,7 +112,7 @@ class SuccessSendingScreenBody extends StatelessWidget {
                   SizedBox(
                     width: 300 * width,
                     child: AutoSizeText(
-                      "ID: ${successModel.receiverId}",
+                      "${S.of(context).ID}: ${successModel.receiverId}",
                       style: TextsStyle.textStyleRegular15
                           .copyWith(color: AppColors.greyA7),
                       maxLines: 1,
@@ -121,7 +121,7 @@ class SuccessSendingScreenBody extends StatelessWidget {
                   SizedBox(
                     width: 300 * width,
                     child: AutoSizeText(
-                      "phone: ${successModel.receiverPhone}",
+                      "${S.of(context).Phone}: ${successModel.receiverPhone}",
                       style: TextsStyle.textStyleRegular15
                           .copyWith(color: AppColors.greyA7),
                       maxLines: 1,
@@ -143,7 +143,7 @@ class SuccessSendingScreenBody extends StatelessWidget {
                   SizedBox(
                     width: 150 * width,
                     child: AutoSizeText(
-                      'Reference',
+                      S.of(context).Reference,
                       style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                       maxLines: 1,
                     ),
@@ -161,7 +161,7 @@ class SuccessSendingScreenBody extends StatelessWidget {
                   SizedBox(
                     width: 150 * width,
                     child: AutoSizeText(
-                      'Date',
+                      S.of(context).Date,
                       style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                       maxLines: 1,
                     ),
@@ -182,7 +182,7 @@ class SuccessSendingScreenBody extends StatelessWidget {
 
           // Back to Home Button
           CustomAppButton(
-            title: "Back to Home",
+            title: S.of(context).BackHome,
             onPressed: () {
               BlocProvider.of<HomeScreenCubit>(context).initialize();
               BlocProvider.of<StatisticsCubit>(context).initialize(context);

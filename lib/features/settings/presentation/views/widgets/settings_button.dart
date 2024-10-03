@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/local/local_settings.dart';
 import '../../../../../core/styles/colors.dart';
 import '../../../../../core/styles/texts_style.dart';
 
@@ -31,8 +32,10 @@ class SettingsButton extends StatelessWidget {
                     color: AppColors.greyA7,
                   ),
                 ),
-              const Icon(
-                Icons.keyboard_arrow_right,
+              Icon(
+                (LocalSettings.getSettings().language == 'English')
+                    ? Icons.keyboard_arrow_right
+                    : Icons.keyboard_arrow_left,
                 color: AppColors.greyA7,
               ),
             ],

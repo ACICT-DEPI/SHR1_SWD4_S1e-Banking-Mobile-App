@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/texts_style.dart';
+import '../../../../generated/l10n.dart';
 
 class SendMoneyTextField extends StatefulWidget {
   final TextEditingController textController;
@@ -32,7 +33,7 @@ class _SendMoneyTextFieldState extends State<SendMoneyTextField> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                "Enter amount",
+                S.of(context).EnterAmount,
                 style: TextsStyle.textStyleRegular12.copyWith(
                   color: AppColors.grey94,
                 ),
@@ -40,7 +41,7 @@ class _SendMoneyTextFieldState extends State<SendMoneyTextField> {
               TextButton(
                 onPressed: () {},
                 child: Text(
-                  "Change Currency?",
+                  S.of(context).ChangeCurrency,
                   style: TextsStyle.textStyleRegular12.copyWith(
                     color: AppColors.red,
                   ),
@@ -62,7 +63,7 @@ class _SendMoneyTextFieldState extends State<SendMoneyTextField> {
                 child: TextFormField(
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Please enter the amount';
+                      return S.of(context).EnterAmount;
                     }
                     return null;
                   },
@@ -77,9 +78,7 @@ class _SendMoneyTextFieldState extends State<SendMoneyTextField> {
                     ),
                     border: InputBorder.none,
                   ),
-                  style: TextsStyle.textStyleSemiBold24.copyWith(
-                    color: AppColors.black,
-                  ),
+                  style: TextsStyle.textStyleSemiBold24,
                   keyboardType: TextInputType.number,
                 ),
               ),

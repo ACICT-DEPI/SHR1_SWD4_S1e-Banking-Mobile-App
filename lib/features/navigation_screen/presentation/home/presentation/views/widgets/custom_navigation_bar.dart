@@ -33,46 +33,47 @@ class CustomNavigationBar extends StatelessWidget {
       S.of(context).Settings,
     ];
     return BlocBuilder<SettingsCubit, SettingsState>(
-  builder: (context, state) {
-    return SizedBox(
-      height: 90 * heightFactor, // Adjusted height for responsiveness
-      child: AnimatedBottomNavigationBar.builder(
-        borderColor: Colors.transparent,
-        itemCount: svgIcons.length,
-        backgroundColor: (LocalSettings.getSettings().themeMode == "Light" ||
-                LocalSettings.getSettings().themeMode == "فاتح")
-            ? AppColors.white
-            : AppColors.dark,
-        tabBuilder: (int index, bool isActive) {
-          final color = isActive ? AppColors.blue : Colors.grey;
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset(
-                svgIcons[index],
-                color: color,
-                height: 24 * heightFactor, // Adjusted height of icons
-              ),
-              SizedBox(height: 4 * heightFactor),
-              // Adjusted spacing between icon and text
-              Text(
-                labels[index],
-                style: TextStyle(
-                  color: color,
-                  fontSize: 12 * widthFactor, // Adjusted font size
-                ),
-              ),
-            ],
-          );
-        },
-        activeIndex: bottomNavIndex,
-        notchSmoothness: NotchSmoothness.defaultEdge,
-        gapLocation: GapLocation.none,
-        onTap: onTap, // Use the callback here to notify the parent widget
-      ),
+      builder: (context, state) {
+        return SizedBox(
+          height: 90 * heightFactor, // Adjusted height for responsiveness
+          child: AnimatedBottomNavigationBar.builder(
+            borderColor: Colors.transparent,
+            itemCount: svgIcons.length,
+            backgroundColor:
+                (LocalSettings.getSettings().themeMode == "Light" ||
+                        LocalSettings.getSettings().themeMode == "فاتح")
+                    ? AppColors.white
+                    : AppColors.dark,
+            tabBuilder: (int index, bool isActive) {
+              final color = isActive ? AppColors.blue : Colors.grey;
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    svgIcons[index],
+                    color: color,
+                    height: 24 * heightFactor, // Adjusted height of icons
+                  ),
+                  SizedBox(height: 4 * heightFactor),
+                  // Adjusted spacing between icon and text
+                  Text(
+                    labels[index],
+                    style: TextStyle(
+                      color: color,
+                      fontSize: 12 * widthFactor, // Adjusted font size
+                    ),
+                  ),
+                ],
+              );
+            },
+            activeIndex: bottomNavIndex,
+            notchSmoothness: NotchSmoothness.defaultEdge,
+            gapLocation: GapLocation.none,
+            onTap: onTap, // Use the callback here to notify the parent widget
+          ),
+        );
+      },
     );
-  },
-);
   }
 }

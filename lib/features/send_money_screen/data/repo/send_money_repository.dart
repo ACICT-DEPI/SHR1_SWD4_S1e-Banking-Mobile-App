@@ -16,7 +16,7 @@ class SendMoneyRepository {
     required BuildContext context,
   }) async {
     List<UserModel> allUsers = await FirebaseService.getAllUsers();
-    if (card.cardBalance > amount) {
+    if (card.cardBalance > amount && amount.abs() > 0) {
       for (UserModel user in allUsers) {
         if (user.userId == id &&
             user.userId != FirebaseAuthentication.getUserId()) {
@@ -28,7 +28,7 @@ class SendMoneyRepository {
                 ),
                 card.cardNumber,
                 context),
-            FirebaseTransactions.receiveMoney(id, amount, sender,context),
+            FirebaseTransactions.receiveMoney(id, amount, sender, context),
           ]);
           return true;
         }

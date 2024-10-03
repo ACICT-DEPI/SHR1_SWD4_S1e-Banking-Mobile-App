@@ -10,6 +10,7 @@ import '../../../../core/widgets/Loading_screen.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_app_button.dart';
 import '../../../../core/widgets/error_screen.dart';
+import '../../../../generated/l10n.dart';
 import '../../../authentication/data/models/user_model.dart';
 import '../../../navigation_screen/data/models/card_model.dart';
 import '../../../navigation_screen/presentation/home/presentation/views/widgets/bank_card_design.dart';
@@ -71,7 +72,7 @@ class _SendMoneyScreenBodyState extends State<SendMoneyScreenBody> {
                   child: Column(
                     children: [
                       CustomAppBar(
-                        appBarTitle: "Send Money",
+                        appBarTitle: S.of(context).SendMoney,
                         leftIcon: Icons.arrow_back_ios_new_outlined,
                         onPressedLeft: () {
                           Navigator.pop(context);
@@ -122,7 +123,7 @@ class _SendMoneyScreenBodyState extends State<SendMoneyScreenBody> {
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: CustomAppButton(
-                          title: 'Send Money',
+                          title: S.of(context).SendMoney,
                           onPressed: () {
                             autoValidateMode = AutovalidateMode.always;
                             if (formKey.currentState!.validate()) {

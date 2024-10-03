@@ -17,8 +17,19 @@ import '../../../domain/cubits/statistics_cubit/statistics_state.dart';
 import 'balance_chart.dart';
 import 'current_balance.dart';
 
-class StatisticsViewBody extends StatelessWidget {
+class StatisticsViewBody extends StatefulWidget {
   const StatisticsViewBody({super.key});
+
+  @override
+  State<StatisticsViewBody> createState() => _StatisticsViewBodyState();
+}
+
+class _StatisticsViewBodyState extends State<StatisticsViewBody> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<StatisticsCubit>(context).initialize(context);
+  }
 
   @override
   Widget build(BuildContext context) {

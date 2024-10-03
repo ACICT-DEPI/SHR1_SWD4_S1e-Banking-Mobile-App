@@ -75,14 +75,9 @@ class _AmountTextFieldState extends State<AmountTextField> {
                     hintStyle: TextsStyle.textStyleRegular12.copyWith(
                       color: AppColors.grey94,
                     ),
-                    counterStyle: TextsStyle.textStyleSemiBold24.copyWith(
-                      color: AppColors.black,
-                    ),
                     border: InputBorder.none,
                   ),
-                  style: TextsStyle.textStyleSemiBold24.copyWith(
-                    color: AppColors.black,
-                  ),
+                  style: TextsStyle.textStyleSemiBold24,
                   keyboardType: TextInputType.number,
                 ),
               ),

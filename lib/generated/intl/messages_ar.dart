@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "AppleStore": MessageLookupByLibrary.simpleMessage("متجر آبل"),
         "AuthenticateToAccess":
             MessageLookupByLibrary.simpleMessage("يرجى المصادقة للوصول"),
+        "BackHome": MessageLookupByLibrary.simpleMessage("العودة إلى الرئيسية"),
         "BankApp": MessageLookupByLibrary.simpleMessage("تطبيق البنك"),
         "Biometric": MessageLookupByLibrary.simpleMessage("بيومترية"),
         "BirthDate": MessageLookupByLibrary.simpleMessage("تاريخ الميلاد"),
@@ -60,6 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("كلمة المرور الحالية"),
         "DailyWaste": MessageLookupByLibrary.simpleMessage("النفايات اليومية"),
         "Dark": MessageLookupByLibrary.simpleMessage("داكن"),
+        "Date": MessageLookupByLibrary.simpleMessage("التاريخ"),
         "DateFormat":
             MessageLookupByLibrary.simpleMessage("التنسيق هو (MM/YY)"),
         "DaysAgo": MessageLookupByLibrary.simpleMessage("منذ أيام"),
@@ -85,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "EnterAmount": MessageLookupByLibrary.simpleMessage("إدخال المبلغ"),
         "EnterCorrectPassword": MessageLookupByLibrary.simpleMessage(
             "يرجى إدخال كلمة المرور الصحيحة!"),
+        "EnterID": MessageLookupByLibrary.simpleMessage("أدخل المعرف"),
         "EnterId": MessageLookupByLibrary.simpleMessage("يرجى إدخال المعرف"),
         "EnterPaymentID":
             MessageLookupByLibrary.simpleMessage("إدخال معرف الدفع"),
@@ -92,6 +95,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("يرجى إدخال المبلغ"),
         "EnterValidEmail": MessageLookupByLibrary.simpleMessage(
             "يرجى إدخال بريد إلكتروني صحيح"),
+        "EnterValidId":
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال معرف صحيح"),
         "EnterValidName":
             MessageLookupByLibrary.simpleMessage("يرجى إدخال اسم صحيح"),
         "EnterValidNumber":
@@ -194,6 +199,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "بصمة الإصبع، التعرف على الوجه\n والمزيد، مما يحافظ عليك آمنًا تمامًا"),
         "Payments": MessageLookupByLibrary.simpleMessage("المدفوعات"),
         "Paypal": MessageLookupByLibrary.simpleMessage("بايبال"),
+        "Phone": MessageLookupByLibrary.simpleMessage("الهاتف"),
         "PhoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "PrivacyPolicy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "Profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
@@ -202,6 +208,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "QRScanner": MessageLookupByLibrary.simpleMessage("ماسح QR"),
         "Receive": MessageLookupByLibrary.simpleMessage("استلام"),
         "ReceiveMoney": MessageLookupByLibrary.simpleMessage("استلام الأموال"),
+        "Reference": MessageLookupByLibrary.simpleMessage("المرجع"),
         "Save": MessageLookupByLibrary.simpleMessage("حفظ"),
         "SaveGaza": MessageLookupByLibrary.simpleMessage("أنقذ غزة"),
         "SavedNewMonthlyLimit": MessageLookupByLibrary.simpleMessage(
@@ -215,6 +222,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "SeeAll": MessageLookupByLibrary.simpleMessage("عرض الكل"),
         "SelectedService":
             MessageLookupByLibrary.simpleMessage("الخدمة المختارة"),
+        "Send": MessageLookupByLibrary.simpleMessage("ارسال"),
+        "SendMoney": MessageLookupByLibrary.simpleMessage("إرسال الأموال"),
         "Sent": MessageLookupByLibrary.simpleMessage("تم الإرسال"),
         "Services": MessageLookupByLibrary.simpleMessage("الخدمات"),
         "Settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
@@ -230,9 +239,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "ThemeMode": MessageLookupByLibrary.simpleMessage("وضع السمة"),
         "Tickets": MessageLookupByLibrary.simpleMessage("تذاكر"),
         "Today": MessageLookupByLibrary.simpleMessage("اليوم"),
+        "TotalAmountTransferred":
+            MessageLookupByLibrary.simpleMessage("إجمالي المبلغ المحول"),
         "Transaction": MessageLookupByLibrary.simpleMessage("معاملة"),
         "TransactionHistory":
             MessageLookupByLibrary.simpleMessage("تاريخ المعاملات"),
+        "TransactionSuccessful":
+            MessageLookupByLibrary.simpleMessage("تمت المعاملة بنجاح"),
         "Transport": MessageLookupByLibrary.simpleMessage("النقل"),
         "Uber": MessageLookupByLibrary.simpleMessage("أوبر"),
         "UnexpectedError":

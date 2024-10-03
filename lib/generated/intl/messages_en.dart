@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "AppleStore": MessageLookupByLibrary.simpleMessage("Apple Store"),
         "AuthenticateToAccess": MessageLookupByLibrary.simpleMessage(
             "Please authenticate to access"),
+        "BackHome": MessageLookupByLibrary.simpleMessage("Back to Home"),
         "BankApp": MessageLookupByLibrary.simpleMessage("Bank App"),
         "Biometric": MessageLookupByLibrary.simpleMessage("Biometric"),
         "BirthDate": MessageLookupByLibrary.simpleMessage("Birth Date"),
@@ -61,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Current Password"),
         "DailyWaste": MessageLookupByLibrary.simpleMessage("Daily Waste"),
         "Dark": MessageLookupByLibrary.simpleMessage("Dark"),
+        "Date": MessageLookupByLibrary.simpleMessage("Date"),
         "DateFormat": MessageLookupByLibrary.simpleMessage("format is (MM/YY)"),
         "DaysAgo": MessageLookupByLibrary.simpleMessage("days ago"),
         "Del": MessageLookupByLibrary.simpleMessage("Del"),
@@ -83,6 +85,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "EnterAmount": MessageLookupByLibrary.simpleMessage("Enter amount"),
         "EnterCorrectPassword": MessageLookupByLibrary.simpleMessage(
             "Enter the correct password!!"),
+        "EnterID": MessageLookupByLibrary.simpleMessage("Enter ID"),
         "EnterId": MessageLookupByLibrary.simpleMessage("Please enter the id"),
         "EnterPaymentID":
             MessageLookupByLibrary.simpleMessage("Enter Payment ID"),
@@ -90,6 +93,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter the amount"),
         "EnterValidEmail":
             MessageLookupByLibrary.simpleMessage("Please enter a valid email"),
+        "EnterValidId":
+            MessageLookupByLibrary.simpleMessage("Please enter a valid id"),
         "EnterValidName":
             MessageLookupByLibrary.simpleMessage("Please enter a valid name"),
         "EnterValidNumber":
@@ -113,6 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "FinancialServices":
             MessageLookupByLibrary.simpleMessage("Financial Services"),
         "ForgotPIN": MessageLookupByLibrary.simpleMessage("Forgot PIN?"),
+        "From": MessageLookupByLibrary.simpleMessage("from"),
         "FullName": MessageLookupByLibrary.simpleMessage("Full Name"),
         "Games": MessageLookupByLibrary.simpleMessage("Games"),
         "Gas": MessageLookupByLibrary.simpleMessage("Gas"),
@@ -189,8 +195,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Paying for Everything is\n Easy and Convenient"),
         "PayingEverythingDescription": MessageLookupByLibrary.simpleMessage(
             "Built-in Fingerprint, face recognition\n and more, keeping you completely safe"),
+        "PaymentReceived":
+            MessageLookupByLibrary.simpleMessage("Payment Received"),
         "Payments": MessageLookupByLibrary.simpleMessage("Payments"),
         "Paypal": MessageLookupByLibrary.simpleMessage("Paypal"),
+        "Phone": MessageLookupByLibrary.simpleMessage("phone"),
         "PhoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "PrivacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "Profile": MessageLookupByLibrary.simpleMessage("Profile"),
@@ -199,6 +208,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "QRScanner": MessageLookupByLibrary.simpleMessage("QR Scanner"),
         "Receive": MessageLookupByLibrary.simpleMessage("Receive"),
         "ReceiveMoney": MessageLookupByLibrary.simpleMessage("Receive Money"),
+        "Reference": MessageLookupByLibrary.simpleMessage("Reference"),
         "Save": MessageLookupByLibrary.simpleMessage("Save"),
         "SaveGaza": MessageLookupByLibrary.simpleMessage("Save Gaza"),
         "SavedNewMonthlyLimit":
@@ -212,6 +222,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "SeeAll": MessageLookupByLibrary.simpleMessage("See All"),
         "SelectedService":
             MessageLookupByLibrary.simpleMessage("Selected Service"),
+        "Send": MessageLookupByLibrary.simpleMessage("Send"),
+        "SendMoney": MessageLookupByLibrary.simpleMessage("Send Money"),
         "Sent": MessageLookupByLibrary.simpleMessage("Sent"),
         "Services": MessageLookupByLibrary.simpleMessage("Services"),
         "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
@@ -229,9 +241,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "ThemeMode": MessageLookupByLibrary.simpleMessage("Theme Mode"),
         "Tickets": MessageLookupByLibrary.simpleMessage("Tickets"),
         "Today": MessageLookupByLibrary.simpleMessage("Today"),
+        "TotalAmountTransferred":
+            MessageLookupByLibrary.simpleMessage("Total amount transferred"),
         "Transaction": MessageLookupByLibrary.simpleMessage("Transaction"),
         "TransactionHistory":
             MessageLookupByLibrary.simpleMessage("Transaction History"),
+        "TransactionSuccessful":
+            MessageLookupByLibrary.simpleMessage("Transaction Successful"),
         "Transport": MessageLookupByLibrary.simpleMessage("Transport"),
         "Uber": MessageLookupByLibrary.simpleMessage("Uber"),
         "UnexpectedError": MessageLookupByLibrary.simpleMessage(
@@ -250,6 +266,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "YearAgo": MessageLookupByLibrary.simpleMessage("1 year ago"),
         "YearsAgo": MessageLookupByLibrary.simpleMessage("years ago"),
         "Yesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
+        "YouReceived": MessageLookupByLibrary.simpleMessage("You received"),
         "dateInPast":
             MessageLookupByLibrary.simpleMessage("date is in the past")
       };

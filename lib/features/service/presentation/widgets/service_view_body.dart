@@ -96,7 +96,7 @@ class _ServiceViewBodyState extends State<ServiceViewBody> {
         child: ListView(
           children: [
             CustomAppBar(
-              appBarTitle: "Service",
+              appBarTitle: S.of(context).Services,
               leftIcon: Icons.arrow_back_ios_new_outlined,
               onPressedLeft: () {
                 Navigator.pop(context);

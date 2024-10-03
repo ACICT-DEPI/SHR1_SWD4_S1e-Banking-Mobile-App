@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import '../../../../../core/helpers/functions.dart';
 import '../../../../../core/network/firebase_months.dart';
 import '../../../../../core/network/firebase_transactions.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../transaction_history/data/models/transaction_item_model.dart';
 import '../../../data/models/month_model.dart';
 import '../../../data/models/statistics_model.dart';
@@ -114,23 +115,23 @@ class StatisticsCubit extends Cubit<StatisticsState> {
     List<TransactionItemModel> allTransactions =
         await FirebaseTransactions.getAllTransactions();
 
-    double financialServicesPercent =
-        Functions.getTransactionPercent('Financial Services', allTransactions,context);
+    double financialServicesPercent = Functions.getTransactionPercent(
+        S.of(context).FinancialServices, allTransactions, context);
 
-    double utilitiesPercent =
-        Functions.getTransactionPercent('Utilities', allTransactions,context);
+    double utilitiesPercent = Functions.getTransactionPercent(
+        S.of(context).Utilities, allTransactions, context);
 
-    double entertainmentPercent =
-        Functions.getTransactionPercent('Entertainment', allTransactions,context);
+    double entertainmentPercent = Functions.getTransactionPercent(
+        S.of(context).Entertainment, allTransactions, context);
 
-    double shoppingPercent =
-        Functions.getTransactionPercent('Shopping', allTransactions,context);
+    double shoppingPercent = Functions.getTransactionPercent(
+        S.of(context).Shopping, allTransactions, context);
 
-    double telecommunicationPercent =
-        Functions.getTransactionPercent('Telecommunication', allTransactions,context);
+    double telecommunicationPercent = Functions.getTransactionPercent(
+        S.of(context).Telecommunication, allTransactions, context);
 
-    double transportPercent =
-        Functions.getTransactionPercent('Transport', allTransactions,context);
+    double transportPercent = Functions.getTransactionPercent(
+        S.of(context).Transport, allTransactions, context);
 
     // Return the statistics model with all the fetched data
     return StatisticsModel(
