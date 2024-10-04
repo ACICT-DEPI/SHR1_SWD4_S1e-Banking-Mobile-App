@@ -84,7 +84,9 @@ class _SettingsViewBodyState extends State<SettingsViewBody> {
                   const SizedBox(height: 24.0),
                   SettingsButton(
                     text: S.of(context).ContactUs,
-                    onPressed: () {},
+                    onPressed: () {
+                      GoRouter.of(context).push(Routing.contactUsView);
+                    },
                   ),
                   if (settingsModel.supportBiometric) ...[
                     const SizedBox(height: 32),
