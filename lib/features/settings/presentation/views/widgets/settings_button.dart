@@ -14,38 +14,41 @@ class SettingsButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        GestureDetector(
-          onTap: onPressed,
-          child: Row(
-            children: [
-              Text(
-                text,
-                style: TextsStyle.textStyleMedium16,
-              ),
-              const Spacer(),
-              if (label != null)
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        color: AppColors.transparent,
+        child: Column(
+          children: [
+            Row(
+              children: [
                 Text(
-                  label!,
-                  style: TextsStyle.textStyleMedium14.copyWith(
-                    color: AppColors.greyA7,
-                  ),
+                  text,
+                  style: TextsStyle.textStyleMedium16,
                 ),
-              Icon(
-                (LocalSettings.getSettings().language == 'English')
-                    ? Icons.keyboard_arrow_right
-                    : Icons.keyboard_arrow_left,
-                color: AppColors.greyA7,
-              ),
-            ],
-          ),
+                const Spacer(),
+                if (label != null)
+                  Text(
+                    label!,
+                    style: TextsStyle.textStyleMedium14.copyWith(
+                      color: AppColors.greyA7,
+                    ),
+                  ),
+                Icon(
+                  (LocalSettings.getSettings().language == 'English')
+                      ? Icons.keyboard_arrow_right
+                      : Icons.keyboard_arrow_left,
+                  color: AppColors.greyA7,
+                ),
+              ],
+            ),
+            const SizedBox(height: 14.0),
+            const Divider(
+              height: 0,
+            )
+          ],
         ),
-        const SizedBox(height: 14.0),
-        const Divider(
-          height: 0,
-        )
-      ],
+      ),
     );
   }
 }

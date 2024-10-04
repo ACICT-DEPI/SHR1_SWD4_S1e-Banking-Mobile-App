@@ -18,41 +18,45 @@ class ProfileRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        GestureDetector(
-          onTap: onPressed,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Icon(
-                icon,
-                color: AppColors.greyA7,
-              ),
-              const SizedBox(
-                width: 16.0,
-              ),
-              Text(
-                text,
-                style: TextsStyle.textStyleRegular15.copyWith(
-                  color: (LocalSettings.getSettings().themeMode == 'Light' ||
-                      LocalSettings.getSettings().themeMode == 'فاتح')? AppColors.black
-                      : AppColors.white,
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        color: AppColors.transparent,
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(
+                  icon,
+                  color: AppColors.greyA7,
                 ),
-              ),
-              const Spacer(),
-              const Icon(
-                Icons.arrow_forward_ios_sharp,
-                color: AppColors.greyA7,
-              ),
-            ],
-          ),
+                const SizedBox(
+                  width: 16.0,
+                ),
+                Text(
+                  text,
+                  style: TextsStyle.textStyleRegular15.copyWith(
+                    color: (LocalSettings.getSettings().themeMode == 'Light' ||
+                            LocalSettings.getSettings().themeMode == 'فاتح')
+                        ? AppColors.black
+                        : AppColors.white,
+                  ),
+                ),
+                const Spacer(),
+                const Icon(
+                  Icons.arrow_forward_ios_sharp,
+                  color: AppColors.greyA7,
+                ),
+              ],
+            ),
+            const SizedBox(height: 14.0),
+            const Divider(
+              height: 0,
+            )
+          ],
         ),
-        const SizedBox(height: 14.0),
-        const Divider(
-          height: 0,
-        )
-      ],
+      ),
     );
   }
 }
