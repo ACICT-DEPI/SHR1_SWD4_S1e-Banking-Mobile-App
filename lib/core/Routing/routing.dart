@@ -10,7 +10,7 @@ import '../../features/local_auth/ui/local_auth.dart';
 import '../../features/navigation_screen/presentation/navigation.dart';
 import '../../features/notification/presentation/notifications_screen.dart';
 import '../../features/onboardingScreen/presentation/onboarding_screen.dart';
-import '../../features/privacy_policy/presentation/views/privacy_policy.dart';
+import '../../features/privacy_policy/presentation/views/privacy_policy_view.dart';
 import '../../features/profile/presentation/views/edit_profile.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/receive_money/presentation/receive_money_view.dart';
@@ -134,7 +134,7 @@ class Routing {
       GoRoute(
         path: privacyPolicy,
         builder: (BuildContext context, GoRouterState state) {
-          return const PrivacyPolicy();
+          return const PrivacyPolicyView();
         },
       ),
       GoRoute(
