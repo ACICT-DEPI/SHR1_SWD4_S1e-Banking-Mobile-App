@@ -1,7 +1,7 @@
-import 'package:bank_app/core/local/local_settings.dart';
-import 'package:bank_app/core/styles/colors.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../../../core/local/local_settings.dart';
+import '../../../../../../../core/styles/colors.dart';
 import '../../../../../../../core/styles/texts_style.dart';
 import '../../../../../../../generated/l10n.dart';
 
@@ -45,6 +45,10 @@ class _BuildActionsRowState extends State<BuildActionsRow> {
               icon: Icon(
                 icon,
                 size: 30,
+                color: (LocalSettings.getSettings().themeMode == "Light" ||
+                        LocalSettings.getSettings().themeMode == "فاتح")
+                    ? AppColors.dark
+                    : AppColors.white,
               ),
               onPressed: () => onPressed(),
             ),

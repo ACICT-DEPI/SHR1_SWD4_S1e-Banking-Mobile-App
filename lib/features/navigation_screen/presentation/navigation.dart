@@ -1,10 +1,10 @@
-import 'package:bank_app/core/local/local_settings.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_inapp_notifications/flutter_inapp_notifications.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
+import 'package:toastification/toastification.dart';
+
 import '../../../core/Routing/Routing.dart';
 import '../../../core/network/firebase_authentication.dart';
 import '../../../core/network/firebase_notifications.dart';
@@ -18,6 +18,7 @@ import '../logic/home_screen_cubit.dart';
 import 'cards_screen/cards_screen.dart';
 import 'home/presentation/views/home_screen.dart';
 import 'home/presentation/views/widgets/custom_navigation_bar.dart';
+import 'home/presentation/views/widgets/notification_container.dart';
 
 class NavigationScreen extends StatefulWidget {
   const NavigationScreen({super.key});
@@ -47,12 +48,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
       const StatisticsView(),
       const Setting(),
     ];
-    bool isThemeLight = LocalSettings.getSettings().themeMode == 'Light' ||
-        LocalSettings.getSettings().themeMode == 'فاتح';
-
-    InAppNotifications.instance
-      ..textColor = isThemeLight ? AppColors.dark : AppColors.white
-      ..backgroundColor = isThemeLight ? AppColors.white : AppColors.dark;
 
     return Scaffold(
       body: StreamBuilder<QuerySnapshot>(
@@ -67,30 +62,40 @@ class _NavigationScreenState extends State<NavigationScreen> {
               List<NotificationModel> allNotifications = snapshot.data!.docs
                   .map((doc) => NotificationModel.fromJson(doc))
                   .toList();
-              if (allNotifications.isNotEmpty) {
-                if (!allNotifications.last.isAppear) {
-                  InAppNotifications.show(
-                      title: allNotifications.last.title,
-                      leading: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: CircleAvatar(
-                          backgroundColor: AppColors.blue,
-                          child: Icon(Icons.notifications_active,
-                              color: Colors.white, size: 24.0),
+
+              if (allNotifications.isNotEmpty &&
+                  !allNotifications.last.isAppear) {
+                // Use addPostFrameCallback to avoid calling setState during the build phase
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  toastification.showCustom(
+                    context: context,
+                    autoCloseDuration: const Duration(seconds: 10),
+                    alignment: Alignment.topRight,
+                    builder: (BuildContext context, ToastificationItem holder) {
+                      return GestureDetector(
+                        onTap: () {
+                          GoRouter.of(context).push(
+                            Routing.notificationsScreen,
+                          );
+                        },
+                        child: NotificationContainer(
+                          lastNotification: allNotifications.last,
                         ),
-                      ),
-                      duration: const Duration(seconds: 10),
-                      description: allNotifications.last.subtitle,
-                      onTap: () {
-                        GoRouter.of(context).push(Routing.notificationsScreen);
-                      });
+                      );
+                    },
+                  );
+
+                  // Update the 'isAppear' field in FireStore
                   allNotifications.last.isAppear = true;
                   FirebaseNotifications.updateNotification(
                     allNotifications.last,
                   );
-                }
+
+                  BlocProvider.of<HomeScreenCubit>(context).initialize();
+                });
               }
             }
+
             return BlocBuilder<ConnectionScreenCubit, WifiState>(
               builder: (context, state) {
                 if (state is Connected) {

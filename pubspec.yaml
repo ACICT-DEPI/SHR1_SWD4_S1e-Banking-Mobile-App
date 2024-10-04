@@ -70,7 +70,7 @@ dependencies:
   build_runner: ^2.4.11
   flutter_localizations:
     sdk: flutter
-  flutter_inapp_notifications: ^1.0.0
+  toastification: ^2.3.0
 
 dev_dependencies:
   flutter_test:

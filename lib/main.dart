@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_inapp_notifications/flutter_inapp_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -60,7 +59,6 @@ class MyApp extends StatelessWidget {
               return const NoConnectionScreen();
             } else {
               return MaterialApp.router(
-                builder: InAppNotifications.init(),
                 locale: Locale(
                   Functions.getLanguageCode(
                     LocalSettings.getSettings().language,
