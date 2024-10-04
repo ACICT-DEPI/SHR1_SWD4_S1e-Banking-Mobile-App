@@ -14,6 +14,8 @@ class SettingsModel {
   bool useBiometric;
   @HiveField(4)
   bool supportBiometric;
+  @HiveField(5)
+  bool isLogIn;
 
   SettingsModel({
     required this.language,
@@ -21,5 +23,6 @@ class SettingsModel {
     required this.themeMode,
     required this.useBiometric,
     required this.supportBiometric,
+    required this.isLogIn,
   });
 }

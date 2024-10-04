@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/Routing/Routing.dart';
+import '../../../../../core/local/local_settings.dart';
 import '../../../../../core/network/firebase_authentication.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
@@ -10,6 +11,7 @@ import '../../../../../core/widgets/error_screen.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../authentication/data/models/user_model.dart';
 import '../../../../navigation_screen/logic/home_screen_cubit.dart';
+import '../../../../settings/data/models/settings_model.dart';
 import 'profile_information.dart';
 import 'profile_row.dart';
 
@@ -69,6 +71,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                     icon: Icons.exit_to_app,
                     onPressed: () async {
                       await FirebaseAuthentication.logoutUser();
+                      await editLocalSettings();
                       while (GoRouter.of(context).canPop()) {
                         GoRouter.of(context).pop();
                       }
@@ -83,6 +86,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                     icon: Icons.delete_forever_sharp,
                     onPressed: () async {
                       await FirebaseAuthentication.deleteUser();
+                      await editLocalSettings();
                       while (GoRouter.of(context).canPop()) {
                         GoRouter.of(context).pop();
                       }
@@ -101,6 +105,21 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
           return const LoadingScreen();
         }
       },
+    );
+  }
+
+  Future<void> editLocalSettings() async {
+    SettingsModel defaultSettings = LocalSettings.getSettings();
+
+    await LocalSettings.updateSettings(
+      SettingsModel(
+        language: defaultSettings.language,
+        appPassword: defaultSettings.appPassword,
+        themeMode: defaultSettings.themeMode,
+        useBiometric: defaultSettings.useBiometric,
+        supportBiometric: defaultSettings.supportBiometric,
+        isLogIn: false,
+      ),
     );
   }
 }

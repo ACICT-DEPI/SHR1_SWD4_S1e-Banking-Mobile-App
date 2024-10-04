@@ -4,7 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../features/authentication/data/models/user_model.dart';
+import '../../features/settings/data/models/settings_model.dart';
 import '../helpers/functions.dart';
+import '../local/local_settings.dart';
 
 class FirebaseAuthentication {
   // Firebase Authentication instance
@@ -61,8 +63,25 @@ class FirebaseAuthentication {
     // Retrieve the user ID from the signed-in user
     String userId = userCredential.user!.uid;
 
+    await editSettingsModel();
+
     // Return the user data as a UserModel
     return _getUserInformation(userId);
+  }
+
+  static Future<void> editSettingsModel() async {
+    SettingsModel defaultSettings = LocalSettings.getSettings();
+
+    await LocalSettings.updateSettings(
+      SettingsModel(
+        language: defaultSettings.language,
+        appPassword: defaultSettings.appPassword,
+        themeMode: defaultSettings.themeMode,
+        useBiometric: defaultSettings.useBiometric,
+        supportBiometric: defaultSettings.supportBiometric,
+        isLogIn: true,
+      ),
+    );
   }
 
   static Future<void> logoutUser() async {
@@ -111,13 +130,5 @@ class FirebaseAuthentication {
     final user = _auth.currentUser;
     String userId = user!.uid;
     return userId;
-  }
-
-  // Method to check if a user is currently logged in
-  static bool isUserLogin() {
-    final user = _auth.currentUser;
-
-    // Return true if the user is logged in, otherwise false
-    return user != null;
   }
 }

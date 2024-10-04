@@ -9,10 +9,6 @@ class FirebaseService {
   static final CollectionReference _userCollection =
       _fireStore.collection('users');
 
-  // static final String _userId = FirebaseAuthentication.getUserId();
-  //
-  // static final DocumentReference _userDocument = _userCollection.doc(_userId);
-
   static final FirebaseAuth _auth = FirebaseAuth.instance;
 
   static Future<List<UserModel>> getAllUsers() async {

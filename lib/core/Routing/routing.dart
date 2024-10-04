@@ -26,8 +26,8 @@ import '../../features/settings/data/models/settings_model.dart';
 import '../../features/theme/presentation/views/theme_view.dart';
 import '../../features/transaction_history/data/models/transaction_item_model.dart';
 import '../../features/transaction_history/presentation/views/transaction_history_view.dart';
+import '../helpers/functions.dart';
 import '../local/local_settings.dart';
-import '../network/firebase_authentication.dart';
 import '../network/firebase_cards.dart';
 import '../widgets/error_screen.dart';
 
@@ -74,7 +74,7 @@ class Routing {
         },
         redirect: (context, state) async {
           // Synchronous check for user authentication
-          if (FirebaseAuthentication.isUserLogin()) {
+          if (Functions.isUserLogin()) {
             SettingsModel model = LocalSettings.getSettings();
             if (model.supportBiometric && model.useBiometric) {
               return localAuthScreen; // Redirect to biometric auth screen

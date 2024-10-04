@@ -29,6 +29,7 @@ class LocalSettings {
           useBiometric: false,
           supportBiometric: checkBiometricSupport,
           themeMode: 'Light',
+          isLogIn: false,
         ),
       );
     }

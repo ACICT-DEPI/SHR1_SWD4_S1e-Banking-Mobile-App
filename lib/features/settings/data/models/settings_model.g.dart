@@ -18,6 +18,7 @@ class SettingsModelAdapter extends TypeAdapter<SettingsModel> {
       themeMode: reader.readString(),
       useBiometric: reader.readBool(),
       supportBiometric: reader.readBool(),
+      isLogIn: reader.readBool(),
     );
   }
 
@@ -28,5 +29,6 @@ class SettingsModelAdapter extends TypeAdapter<SettingsModel> {
     writer.writeString(obj.themeMode);
     writer.writeBool(obj.useBiometric);
     writer.writeBool(obj.supportBiometric);
+    writer.writeBool(obj.isLogIn);
   }
 }

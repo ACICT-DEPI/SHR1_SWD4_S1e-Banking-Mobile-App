@@ -1,4 +1,3 @@
-import 'package:bank_app/core/helpers/functions.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'core/Routing/Routing.dart';
+import 'core/helpers/functions.dart';
 import 'core/local/local_settings.dart';
 import 'core/styles/theme_style.dart';
 import 'features/navigation_screen/logic/home_screen_cubit.dart';

@@ -8,6 +8,7 @@ import 'package:local_auth/local_auth.dart';
 import '../../features/navigation_screen/data/models/card_model.dart';
 import '../../features/transaction_history/data/models/transaction_item_model.dart';
 import '../../generated/l10n.dart';
+import '../local/local_settings.dart';
 
 class Functions {
   static List<String> getDateLastSixMonths() {
@@ -475,5 +476,10 @@ class Functions {
     } else {
       return 'ar';
     }
+  }
+
+  // Method to check if a user is currently logged in
+  static bool isUserLogin() {
+    return LocalSettings.getSettings().isLogIn;
   }
 }
