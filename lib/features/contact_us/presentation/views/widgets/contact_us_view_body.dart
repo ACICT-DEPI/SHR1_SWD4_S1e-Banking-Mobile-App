@@ -17,7 +17,7 @@ class ContactUsViewBody extends StatelessWidget {
 
     final Color textColor = isLightTheme ? AppColors.grey533 : AppColors.white;
     final Color cardBackgroundColor =
-    isLightTheme ? AppColors.white : AppColors.dark;
+        isLightTheme ? AppColors.white : AppColors.dark;
 
     return Padding(
       padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
@@ -36,33 +36,29 @@ class ContactUsViewBody extends StatelessWidget {
               child: Column(
                 children: [
                   _buildContactCard(
-                    title: "1. Customer Support",
-                    content:
-                    "For any inquiries, issues, or support, feel free to reach out to our customer support team via email at support@bankapp.com or call us at +123 456 7890.",
+                    title: S.of(context).CustomerSupport,
+                    content: S.of(context).CustomerSupportDescription,
                     textColor: textColor,
                     cardBackgroundColor: cardBackgroundColor,
                   ),
                   const SizedBox(height: 20),
                   _buildContactCard(
-                    title: "2. Office Address",
-                    content:
-                    "Our main office is located at 123 Bank Street, Suite 456, Financial City, Country. Visit us during our business hours from 9 AM to 5 PM, Monday to Friday.",
+                    title: S.of(context).OfficeAddress,
+                    content: S.of(context).OfficeAddressDescription,
                     textColor: textColor,
                     cardBackgroundColor: cardBackgroundColor,
                   ),
                   const SizedBox(height: 20),
                   _buildContactCard(
-                    title: "3. Feedback",
-                    content:
-                    "We value your feedback to help improve our services. Please send your comments or suggestions to feedback@bankapp.com.",
+                    title: S.of(context).Feedback,
+                    content: S.of(context).FeedbackDescription,
                     textColor: textColor,
                     cardBackgroundColor: cardBackgroundColor,
                   ),
                   const SizedBox(height: 20),
                   _buildContactCard(
-                    title: "4. Social Media",
-                    content:
-                    "Connect with us on social media for updates and announcements: Twitter @BankApp, Facebook @BankAppOfficial, Instagram @BankApp.",
+                    title: S.of(context).SocialMedia,
+                    content: S.of(context).SocialMediaDescription,
                     textColor: textColor,
                     cardBackgroundColor: cardBackgroundColor,
                   ),

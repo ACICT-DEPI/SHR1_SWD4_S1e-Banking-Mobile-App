@@ -59,8 +59,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "CurrentBalance": MessageLookupByLibrary.simpleMessage("الرصيد الحالي"),
         "CurrentPassword":
             MessageLookupByLibrary.simpleMessage("كلمة المرور الحالية"),
+        "CustomerSupport":
+            MessageLookupByLibrary.simpleMessage("1. دعم العملاء"),
+        "CustomerSupportDescription": MessageLookupByLibrary.simpleMessage(
+            "لأي استفسارات أو مشكلات أو دعم، لا تتردد في التواصل مع فريق دعم العملاء عبر البريد الإلكتروني على support@bankapp.com أو الاتصال بنا على +123 456 7890."),
         "DailyWaste": MessageLookupByLibrary.simpleMessage("النفايات اليومية"),
         "Dark": MessageLookupByLibrary.simpleMessage("داكن"),
+        "DataSecurity":
+            MessageLookupByLibrary.simpleMessage("4. أمان البيانات"),
+        "DataSecurityDescription": MessageLookupByLibrary.simpleMessage(
+            "نقوم بتنفيذ تدابير أمان صارمة لحماية معلوماتك الشخصية من الوصول غير المصرح به، أو الإفصاح، أو الفقد."),
         "Date": MessageLookupByLibrary.simpleMessage("التاريخ"),
         "DateFormat":
             MessageLookupByLibrary.simpleMessage("التنسيق هو (MM/YY)"),
@@ -112,6 +120,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "FastestPaymentDescription": MessageLookupByLibrary.simpleMessage(
             "دمج طرق الدفع المتعددة\n لمساعدتك في تسريع العملية"),
         "FawryPay": MessageLookupByLibrary.simpleMessage("فوري باي"),
+        "Feedback": MessageLookupByLibrary.simpleMessage("3. ملاحظات"),
+        "FeedbackDescription": MessageLookupByLibrary.simpleMessage(
+            "نحن نقدر ملاحظاتكم لمساعدتنا في تحسين خدماتنا. يرجى إرسال تعليقاتكم أو اقتراحاتكم إلى feedback@bankapp.com."),
         "FieldRequired":
             MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
         "FinanceAndBanks":
@@ -131,9 +142,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "HomeInternet": MessageLookupByLibrary.simpleMessage("إنترنت منزلي"),
         "HourAgo": MessageLookupByLibrary.simpleMessage("منذ ساعة"),
         "HoursAgo": MessageLookupByLibrary.simpleMessage("منذ ساعات"),
+        "HowWeUseYourInformation":
+            MessageLookupByLibrary.simpleMessage("3. كيف نستخدم معلوماتك"),
+        "HowWeUseYourInformationDescription": MessageLookupByLibrary.simpleMessage(
+            "تُستخدم معلوماتك لتسهيل المعاملات المصرفية، وتقديم الدعم الفني، وتحسين خدماتنا. نحن لا نشارك معلوماتك مع أطراف ثالثة إلا إذا كان ذلك مطلوبًا بموجب القانون."),
         "ID": MessageLookupByLibrary.simpleMessage("معرف"),
         "INewUser": MessageLookupByLibrary.simpleMessage("أنا مستخدم جديد."),
         "Id": MessageLookupByLibrary.simpleMessage("معرف:"),
+        "InformationWeCollect":
+            MessageLookupByLibrary.simpleMessage("2. المعلومات التي نجمعها"),
+        "InformationWeCollectDescription": MessageLookupByLibrary.simpleMessage(
+            "نجمع معلومات شخصية مثل الاسم، وعنوان البريد الإلكتروني، ورقم الهاتف، وتفاصيل الدفع لتقديم الخدمات المصرفية. قد نجمع أيضًا معلومات الجهاز وبيانات استخدام التطبيق لأغراض الأمان وتحسين الأداء."),
+        "Introduction": MessageLookupByLibrary.simpleMessage("1. مقدمة"),
+        "IntroductionDescription": MessageLookupByLibrary.simpleMessage(
+            "مرحبًا بكم في تطبيقنا المصرفي. نحن نقدر خصوصيتكم وملتزمون بحماية معلوماتكم الشخصية. توضح سياسة الخصوصية هذه كيفية جمع بياناتكم واستخدامها وحمايتها عند استخدامكم لتطبيقنا."),
         "JoinedAt": MessageLookupByLibrary.simpleMessage("انضم في"),
         "JustNow": MessageLookupByLibrary.simpleMessage("الآن"),
         "Landline": MessageLookupByLibrary.simpleMessage("خط أرضي"),
@@ -184,6 +206,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "NoUserFound": MessageLookupByLibrary.simpleMessage(
             "لا يوجد مستخدم بهذا البريد الإلكتروني."),
         "Notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+        "OfficeAddress":
+            MessageLookupByLibrary.simpleMessage("2. عنوان المكتب"),
+        "OfficeAddressDescription": MessageLookupByLibrary.simpleMessage(
+            "يقع مكتبنا الرئيسي في 123 شارع البنك، جناح 456، المدينة المالية، الدولة. زورونا خلال ساعات العمل من 9 صباحًا إلى 5 مساءً، من الاثنين إلى الجمعة."),
         "OpenWiFiSettings":
             MessageLookupByLibrary.simpleMessage("فتح إعدادات WiFi"),
         "Password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
@@ -232,6 +258,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "SignUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
         "SocialInsurance":
             MessageLookupByLibrary.simpleMessage("التأمين الاجتماعي"),
+        "SocialMedia":
+            MessageLookupByLibrary.simpleMessage("4. وسائل التواصل الاجتماعي"),
+        "SocialMediaDescription": MessageLookupByLibrary.simpleMessage(
+            "تواصل معنا عبر وسائل التواصل الاجتماعي للحصول على التحديثات والإعلانات: تويتر @BankApp، فيسبوك @BankAppOfficial، إنستغرام @BankApp."),
         "Spotify": MessageLookupByLibrary.simpleMessage("سبوتيفاي"),
         "StartSearching": MessageLookupByLibrary.simpleMessage("ابدأ البحث..."),
         "Statistics": MessageLookupByLibrary.simpleMessage("الإحصائيات"),
@@ -264,6 +294,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "YearAgo": MessageLookupByLibrary.simpleMessage("منذ عام"),
         "YearsAgo": MessageLookupByLibrary.simpleMessage("منذ سنوات"),
         "Yesterday": MessageLookupByLibrary.simpleMessage("أمس"),
+        "YourConsent": MessageLookupByLibrary.simpleMessage("5. موافقتك"),
+        "YourConsentDescription": MessageLookupByLibrary.simpleMessage(
+            "من خلال استخدام تطبيقنا، فإنك توافق على شروط سياسة الخصوصية هذه. إذا كنت لا توافق على ممارساتنا، يرجى عدم استخدام التطبيق."),
         "dateInPast": MessageLookupByLibrary.simpleMessage("التاريخ في الماضي")
       };
 }

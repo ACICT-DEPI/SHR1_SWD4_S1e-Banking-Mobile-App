@@ -35,41 +35,36 @@ class PrivacyPolicyViewBody extends StatelessWidget {
               child: Column(
                 children: [
                   _buildPrivacyCard(
-                    title: "1. Introduction",
-                    content:
-                        "Welcome to our Banking App. We value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and protect your data when you use our app.",
+                    title: S.of(context).Introduction,
+                    content: S.of(context).IntroductionDescription,
                     textColor: textColor,
                     cardBackgroundColor: cardBackgroundColor,
                   ),
                   const SizedBox(height: 20),
                   _buildPrivacyCard(
-                    title: "2. Information We Collect",
-                    content:
-                        "We collect personal information such as your name, email address, phone number, and payment details to provide banking services. We may also collect device information and app usage data for security and performance optimization.",
+                    title: S.of(context).InformationWeCollect,
+                    content: S.of(context).InformationWeCollectDescription,
                     textColor: textColor,
                     cardBackgroundColor: cardBackgroundColor,
                   ),
                   const SizedBox(height: 20),
                   _buildPrivacyCard(
-                    title: "3. How We Use Your Information",
-                    content:
-                        "Your information is used to facilitate banking transactions, provide customer support, and improve our services. We do not share your information with third parties unless required by law.",
+                    title: S.of(context).HowWeUseYourInformation,
+                    content: S.of(context).HowWeUseYourInformationDescription,
                     textColor: textColor,
                     cardBackgroundColor: cardBackgroundColor,
                   ),
                   const SizedBox(height: 20),
                   _buildPrivacyCard(
-                    title: "4. Data Security",
-                    content:
-                        "We implement strict security measures to protect your personal information from unauthorized access, disclosure, or loss.",
+                    title: S.of(context).DataSecurity,
+                    content: S.of(context).DataSecurityDescription,
                     textColor: textColor,
                     cardBackgroundColor: cardBackgroundColor,
                   ),
                   const SizedBox(height: 20),
                   _buildPrivacyCard(
-                    title: "5. Your Consent",
-                    content:
-                        "By using our app, you consent to the terms of this Privacy Policy. If you do not agree with our practices, please do not use the app.",
+                    title: S.of(context).YourConsent,
+                    content: S.of(context).YourConsentDescription,
                     textColor: textColor,
                     cardBackgroundColor: cardBackgroundColor,
                   ),

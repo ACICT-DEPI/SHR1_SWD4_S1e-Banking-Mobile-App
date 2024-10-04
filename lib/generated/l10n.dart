@@ -1879,6 +1879,186 @@ class S {
       args: [],
     );
   }
+
+  /// `1. Introduction`
+  String get Introduction {
+    return Intl.message(
+      '1. Introduction',
+      name: 'Introduction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome to our Banking App. We value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and protect your data when you use our app.`
+  String get IntroductionDescription {
+    return Intl.message(
+      'Welcome to our Banking App. We value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and protect your data when you use our app.',
+      name: 'IntroductionDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `2. Information We Collect`
+  String get InformationWeCollect {
+    return Intl.message(
+      '2. Information We Collect',
+      name: 'InformationWeCollect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We collect personal information such as your name, email address, phone number, and payment details to provide banking services. We may also collect device information and app usage data for security and performance optimization.`
+  String get InformationWeCollectDescription {
+    return Intl.message(
+      'We collect personal information such as your name, email address, phone number, and payment details to provide banking services. We may also collect device information and app usage data for security and performance optimization.',
+      name: 'InformationWeCollectDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `3. How We Use Your Information`
+  String get HowWeUseYourInformation {
+    return Intl.message(
+      '3. How We Use Your Information',
+      name: 'HowWeUseYourInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your information is used to facilitate banking transactions, provide customer support, and improve our services. We do not share your information with third parties unless required by law.`
+  String get HowWeUseYourInformationDescription {
+    return Intl.message(
+      'Your information is used to facilitate banking transactions, provide customer support, and improve our services. We do not share your information with third parties unless required by law.',
+      name: 'HowWeUseYourInformationDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `4. Data Security`
+  String get DataSecurity {
+    return Intl.message(
+      '4. Data Security',
+      name: 'DataSecurity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We implement strict security measures to protect your personal information from unauthorized access, disclosure, or loss.`
+  String get DataSecurityDescription {
+    return Intl.message(
+      'We implement strict security measures to protect your personal information from unauthorized access, disclosure, or loss.',
+      name: 'DataSecurityDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `5. Your Consent`
+  String get YourConsent {
+    return Intl.message(
+      '5. Your Consent',
+      name: 'YourConsent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By using our app, you consent to the terms of this Privacy Policy. If you do not agree with our practices, please do not use the app.`
+  String get YourConsentDescription {
+    return Intl.message(
+      'By using our app, you consent to the terms of this Privacy Policy. If you do not agree with our practices, please do not use the app.',
+      name: 'YourConsentDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `1. Customer Support`
+  String get CustomerSupport {
+    return Intl.message(
+      '1. Customer Support',
+      name: 'CustomerSupport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `For any inquiries, issues, or support, feel free to reach out to our customer support team via email at support@bankapp.com or call us at +123 456 7890.`
+  String get CustomerSupportDescription {
+    return Intl.message(
+      'For any inquiries, issues, or support, feel free to reach out to our customer support team via email at support@bankapp.com or call us at +123 456 7890.',
+      name: 'CustomerSupportDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `2. Office Address`
+  String get OfficeAddress {
+    return Intl.message(
+      '2. Office Address',
+      name: 'OfficeAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Our main office is located at 123 Bank Street, Suite 456, Financial City, Country. Visit us during our business hours from 9 AM to 5 PM, Monday to Friday.`
+  String get OfficeAddressDescription {
+    return Intl.message(
+      'Our main office is located at 123 Bank Street, Suite 456, Financial City, Country. Visit us during our business hours from 9 AM to 5 PM, Monday to Friday.',
+      name: 'OfficeAddressDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `3. Feedback`
+  String get Feedback {
+    return Intl.message(
+      '3. Feedback',
+      name: 'Feedback',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We value your feedback to help improve our services. Please send your comments or suggestions to feedback@bankapp.com.`
+  String get FeedbackDescription {
+    return Intl.message(
+      'We value your feedback to help improve our services. Please send your comments or suggestions to feedback@bankapp.com.',
+      name: 'FeedbackDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `4. Social Media`
+  String get SocialMedia {
+    return Intl.message(
+      '4. Social Media',
+      name: 'SocialMedia',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connect with us on social media for updates and announcements: Twitter @BankApp, Facebook @BankAppOfficial, Instagram @BankApp.`
+  String get SocialMediaDescription {
+    return Intl.message(
+      'Connect with us on social media for updates and announcements: Twitter @BankApp, Facebook @BankAppOfficial, Instagram @BankApp.',
+      name: 'SocialMediaDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

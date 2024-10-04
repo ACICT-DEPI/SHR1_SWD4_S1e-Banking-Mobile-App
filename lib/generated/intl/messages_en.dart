@@ -60,8 +60,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Current Balance"),
         "CurrentPassword":
             MessageLookupByLibrary.simpleMessage("Current Password"),
+        "CustomerSupport":
+            MessageLookupByLibrary.simpleMessage("1. Customer Support"),
+        "CustomerSupportDescription": MessageLookupByLibrary.simpleMessage(
+            "For any inquiries, issues, or support, feel free to reach out to our customer support team via email at support@bankapp.com or call us at +123 456 7890."),
         "DailyWaste": MessageLookupByLibrary.simpleMessage("Daily Waste"),
         "Dark": MessageLookupByLibrary.simpleMessage("Dark"),
+        "DataSecurity":
+            MessageLookupByLibrary.simpleMessage("4. Data Security"),
+        "DataSecurityDescription": MessageLookupByLibrary.simpleMessage(
+            "We implement strict security measures to protect your personal information from unauthorized access, disclosure, or loss."),
         "Date": MessageLookupByLibrary.simpleMessage("Date"),
         "DateFormat": MessageLookupByLibrary.simpleMessage("format is (MM/YY)"),
         "DaysAgo": MessageLookupByLibrary.simpleMessage("days ago"),
@@ -111,6 +119,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "FastestPaymentDescription": MessageLookupByLibrary.simpleMessage(
             "Integrate multiple payment methods\n to help you up the process quickly"),
         "FawryPay": MessageLookupByLibrary.simpleMessage("Fawry Pay"),
+        "Feedback": MessageLookupByLibrary.simpleMessage("3. Feedback"),
+        "FeedbackDescription": MessageLookupByLibrary.simpleMessage(
+            "We value your feedback to help improve our services. Please send your comments or suggestions to feedback@bankapp.com."),
         "FieldRequired":
             MessageLookupByLibrary.simpleMessage("This Field is required"),
         "FinanceAndBanks":
@@ -130,9 +141,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "HomeInternet": MessageLookupByLibrary.simpleMessage("Home Internet"),
         "HourAgo": MessageLookupByLibrary.simpleMessage("1 hour ago"),
         "HoursAgo": MessageLookupByLibrary.simpleMessage("hours ago"),
+        "HowWeUseYourInformation": MessageLookupByLibrary.simpleMessage(
+            "3. How We Use Your Information"),
+        "HowWeUseYourInformationDescription": MessageLookupByLibrary.simpleMessage(
+            "Your information is used to facilitate banking transactions, provide customer support, and improve our services. We do not share your information with third parties unless required by law."),
         "ID": MessageLookupByLibrary.simpleMessage("ID"),
         "INewUser": MessageLookupByLibrary.simpleMessage("I’m a new user."),
         "Id": MessageLookupByLibrary.simpleMessage("Id:"),
+        "InformationWeCollect":
+            MessageLookupByLibrary.simpleMessage("2. Information We Collect"),
+        "InformationWeCollectDescription": MessageLookupByLibrary.simpleMessage(
+            "We collect personal information such as your name, email address, phone number, and payment details to provide banking services. We may also collect device information and app usage data for security and performance optimization."),
+        "Introduction": MessageLookupByLibrary.simpleMessage("1. Introduction"),
+        "IntroductionDescription": MessageLookupByLibrary.simpleMessage(
+            "Welcome to our Banking App. We value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and protect your data when you use our app."),
         "JoinedAt": MessageLookupByLibrary.simpleMessage("Joined at"),
         "JustNow": MessageLookupByLibrary.simpleMessage("Just now"),
         "Landline": MessageLookupByLibrary.simpleMessage("Landline"),
@@ -182,6 +204,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "NoUserFound": MessageLookupByLibrary.simpleMessage(
             "No user found for that email."),
         "Notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+        "OfficeAddress":
+            MessageLookupByLibrary.simpleMessage("2. Office Address"),
+        "OfficeAddressDescription": MessageLookupByLibrary.simpleMessage(
+            "Our main office is located at 123 Bank Street, Suite 456, Financial City, Country. Visit us during our business hours from 9 AM to 5 PM, Monday to Friday."),
         "OpenWiFiSettings":
             MessageLookupByLibrary.simpleMessage("Open WiFi Settings"),
         "Password": MessageLookupByLibrary.simpleMessage("Password"),
@@ -232,6 +258,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "SignUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "SocialInsurance":
             MessageLookupByLibrary.simpleMessage("Social Insurance"),
+        "SocialMedia": MessageLookupByLibrary.simpleMessage("4. Social Media"),
+        "SocialMediaDescription": MessageLookupByLibrary.simpleMessage(
+            "Connect with us on social media for updates and announcements: Twitter @BankApp, Facebook @BankAppOfficial, Instagram @BankApp."),
         "Spotify": MessageLookupByLibrary.simpleMessage("Spotify"),
         "StartSearching":
             MessageLookupByLibrary.simpleMessage("Start Searching..."),
@@ -267,6 +296,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "YearsAgo": MessageLookupByLibrary.simpleMessage("years ago"),
         "Yesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
         "YouReceived": MessageLookupByLibrary.simpleMessage("You received"),
+        "YourConsent": MessageLookupByLibrary.simpleMessage("5. Your Consent"),
+        "YourConsentDescription": MessageLookupByLibrary.simpleMessage(
+            "By using our app, you consent to the terms of this Privacy Policy. If you do not agree with our practices, please do not use the app."),
         "dateInPast":
             MessageLookupByLibrary.simpleMessage("date is in the past")
       };
