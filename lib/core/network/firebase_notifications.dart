@@ -67,4 +67,23 @@ class FirebaseNotifications {
       await doc.reference.delete();
     }
   }
+
+  static Future<void> updateNotification(
+      NotificationModel notificationModel) async {
+    var querySnapshot = await _userDocument
+        .collection('notifications')
+        .where('time', isEqualTo: notificationModel.time)
+        .get();
+
+    if (querySnapshot.docs.isNotEmpty) {
+      var docRef = querySnapshot.docs.first.reference;
+
+      await docRef.set(
+        NotificationModel.toJson(notificationModel),
+        SetOptions(
+          merge: true,
+        ),
+      );
+    }
+  }
 }

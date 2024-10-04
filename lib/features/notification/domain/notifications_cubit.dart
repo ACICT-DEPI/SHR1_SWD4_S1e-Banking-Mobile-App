@@ -19,8 +19,11 @@ class NotificationsCubit extends Cubit<NotificationsState> {
   }
 
   removeAllNotifications() async {
+    emit(NotificationsLoading());
+
     await _notificationRepo.deleteAllNotifications();
     initializeNotifications();
+    emit(EmptyNotifications());
   }
 
   initializeNotifications() async {

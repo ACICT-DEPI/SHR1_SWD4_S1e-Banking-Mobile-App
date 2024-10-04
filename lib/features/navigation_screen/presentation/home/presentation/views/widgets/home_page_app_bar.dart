@@ -38,7 +38,7 @@ class HomePageAppBarDesign extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    S.of(context).WelcomeBack + ",",
+                    "${S.of(context).WelcomeBack},",
                     style: TextsStyle.textStyleRegular12.copyWith(
                       color: AppColors.grey8D,
                     ),

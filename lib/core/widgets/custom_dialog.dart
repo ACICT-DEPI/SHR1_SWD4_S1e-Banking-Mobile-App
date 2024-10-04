@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-
 import '../local/local_settings.dart';
 import '../styles/colors.dart';
 import '../styles/texts_style.dart';
