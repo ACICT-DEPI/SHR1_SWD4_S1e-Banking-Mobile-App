@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "AmazonPay": MessageLookupByLibrary.simpleMessage("أمازون باي"),
         "Amount": MessageLookupByLibrary.simpleMessage("المبلغ"),
         "AppleStore": MessageLookupByLibrary.simpleMessage("متجر آبل"),
+        "AreYouSure": MessageLookupByLibrary.simpleMessage("هل أنت متأكد؟"),
         "AuthenticateToAccess":
             MessageLookupByLibrary.simpleMessage("يرجى المصادقة للوصول"),
         "BackHome": MessageLookupByLibrary.simpleMessage("العودة إلى الرئيسية"),
@@ -37,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Biometric": MessageLookupByLibrary.simpleMessage("بيومترية"),
         "BirthDate": MessageLookupByLibrary.simpleMessage("تاريخ الميلاد"),
         "CVV": MessageLookupByLibrary.simpleMessage("CVV"),
+        "Cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
         "CardNumber": MessageLookupByLibrary.simpleMessage("رقم البطاقة"),
         "CardholderName":
             MessageLookupByLibrary.simpleMessage("اسم حامل البطاقة"),
@@ -74,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("التنسيق هو (MM/YY)"),
         "DaysAgo": MessageLookupByLibrary.simpleMessage("منذ أيام"),
         "Del": MessageLookupByLibrary.simpleMessage("حذف"),
+        "Delete": MessageLookupByLibrary.simpleMessage("حذف"),
         "DeleteAccount": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
         "Donations": MessageLookupByLibrary.simpleMessage("التبرعات"),
         "EditProfile":
@@ -215,6 +218,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "Password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "PasswordChangedSuccessfully":
             MessageLookupByLibrary.simpleMessage("تم تغيير كلمة المرور بنجاح"),
+        "PasswordMustBe8AtLeast": MessageLookupByLibrary.simpleMessage(
+            "يجب أن يكون طول كلمة المرور 8 على الأقل"),
+        "PasswordMustContainOneLetter": MessageLookupByLibrary.simpleMessage(
+            "يجب أن تحتوي كلمة المرور على حرف واحد على الأقل"),
+        "PasswordMustContainOneSpecialCharacter":
+            MessageLookupByLibrary.simpleMessage(
+                "يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل"),
         "PasswordWeak":
             MessageLookupByLibrary.simpleMessage("كلمة المرور ضعيفة جدًا."),
         "PasswordsMustMatch":

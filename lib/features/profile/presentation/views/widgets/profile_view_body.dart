@@ -7,6 +7,7 @@ import '../../../../../core/local/local_settings.dart';
 import '../../../../../core/network/firebase_authentication.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
+import '../../../../../core/widgets/custom_dialog.dart';
 import '../../../../../core/widgets/error_screen.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../authentication/data/models/user_model.dart';
@@ -69,14 +70,26 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                   ProfileRow(
                     text: S.of(context).Logout,
                     icon: Icons.exit_to_app,
-                    onPressed: () async {
-                      await FirebaseAuthentication.logoutUser();
-                      await editLocalSettings();
-                      while (GoRouter.of(context).canPop()) {
-                        GoRouter.of(context).pop();
-                      }
-                      GoRouter.of(context).pushReplacement(
-                        Routing.onboardingScreen,
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context2) => CustomDialog(
+                          dialogTitle: S.of(context).Logout,
+                          dialogSubText: S.of(context).AreYouSure,
+                          onSubmit: () async {
+                            await FirebaseAuthentication.logoutUser();
+                            await editLocalSettings();
+                            while (GoRouter.of(context).canPop()) {
+                              GoRouter.of(context).pop();
+                            }
+                            GoRouter.of(context).pushReplacement(
+                              Routing.onboardingScreen,
+                            );
+                          },
+                          onCancel: () {},
+                          onCancelText: S.of(context).Cancel,
+                          onSubmitText: S.of(context).Logout,
+                        ),
                       );
                     },
                   ),
@@ -85,13 +98,25 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                     text: S.of(context).DeleteAccount,
                     icon: Icons.delete_forever_sharp,
                     onPressed: () async {
-                      await FirebaseAuthentication.deleteUser();
-                      await editLocalSettings();
-                      while (GoRouter.of(context).canPop()) {
-                        GoRouter.of(context).pop();
-                      }
-                      GoRouter.of(context).pushReplacement(
-                        Routing.onboardingScreen,
+                      showDialog(
+                        context: context,
+                        builder: (context2) => CustomDialog(
+                          dialogTitle: S.of(context).DeleteAccount,
+                          dialogSubText: S.of(context).AreYouSure,
+                          onSubmit: () async {
+                            await FirebaseAuthentication.deleteUser();
+                            await editLocalSettings();
+                            while (GoRouter.of(context).canPop()) {
+                              GoRouter.of(context).pop();
+                            }
+                            GoRouter.of(context).pushReplacement(
+                              Routing.onboardingScreen,
+                            );
+                          },
+                          onCancel: () {},
+                          onCancelText: S.of(context).Cancel,
+                          onSubmitText: S.of(context).Delete,
+                        ),
                       );
                     },
                   ),

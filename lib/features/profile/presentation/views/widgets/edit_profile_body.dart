@@ -11,6 +11,7 @@ import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/widgets/custom_app_button.dart';
 import '../../../../../core/widgets/custom_app_text_form_field.dart';
+import '../../../../../core/widgets/custom_dialog.dart';
 import '../../../../../core/widgets/custom_snack_bar.dart';
 import '../../../../../core/widgets/error_screen.dart';
 import '../../../../../generated/l10n.dart';
@@ -153,7 +154,7 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                     ),
                     const SizedBox(height: 20),
                     Text(
-                      S.of(context).JoinedAt + ' ${userModel.joinedAt}',
+                      '${S.of(context).JoinedAt} ${userModel.joinedAt}',
                       style: TextsStyle.textStyleMedium14.copyWith(
                         color: AppColors.greyA7,
                       ),
@@ -163,13 +164,27 @@ class _EditProfileBodyState extends State<EditProfileBody> {
                       CustomAppButton(
                         title: S.of(context).Save,
                         onPressed: () {
-                          BlocProvider.of<EditUserCubit>(context).updateUser(
-                            fullName: nameController.text,
-                            phoneNumber: phoneController.text,
-                            birthDay: userModel.birthDay!,
-                            birthMonth: userModel.birthMonth!,
-                            birthYear: userModel.birthYear!,
-                            image: userModel.image,
+                          showDialog(
+                            context: context,
+                            builder: (context2) => CustomDialog(
+                              dialogTitle:
+                                  "${S.of(context).Save} ${S.of(context).Profile}",
+                              dialogSubText: S.of(context).AreYouSure,
+                              onSubmit: () {
+                                BlocProvider.of<EditUserCubit>(context)
+                                    .updateUser(
+                                  fullName: nameController.text,
+                                  phoneNumber: phoneController.text,
+                                  birthDay: userModel.birthDay!,
+                                  birthMonth: userModel.birthMonth!,
+                                  birthYear: userModel.birthYear!,
+                                  image: userModel.image,
+                                );
+                              },
+                              onCancel: () {},
+                              onSubmitText: S.of(context).Save,
+                              onCancelText: S.of(context).Cancel,
+                            ),
                           );
                         },
                       ),

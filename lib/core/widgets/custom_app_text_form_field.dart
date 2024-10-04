@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../generated/l10n.dart';
 import '../local/local_settings.dart';
 import '../styles/colors.dart';
 import '../styles/texts_style.dart';
@@ -52,16 +53,18 @@ class CustomAppTextFormField extends StatelessWidget {
                 validator: validator ??
                     (value) {
                       if (value!.isEmpty) {
-                        return "This field is required";
+                        return S.of(context).FieldRequired;
                       }
                       if (obscureText ?? false) {
                         if (value.trim().length < 8) {
-                          return "The password must be 8 at least";
+                          return S.of(context).PasswordMustBe8AtLeast;
                         } else if (!RegExp(r'[A-Za-z]').hasMatch(value)) {
-                          return "The password must contain at least one letter";
+                          return S.of(context).PasswordMustContainOneLetter;
                         } else if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]')
                             .hasMatch(value)) {
-                          return "The password must contain at least one special character";
+                          return S
+                              .of(context)
+                              .PasswordMustContainOneSpecialCharacter;
                         }
                       }
                       return null;

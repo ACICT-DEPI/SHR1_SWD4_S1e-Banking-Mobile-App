@@ -199,5 +199,11 @@
   "Feedback": "3. Feedback",
   "FeedbackDescription": "We value your feedback to help improve our services. Please send your comments or suggestions to feedback@bankapp.com.",
   "SocialMedia": "4. Social Media",
-  "SocialMediaDescription": "Connect with us on social media for updates and announcements: Twitter @BankApp, Facebook @BankAppOfficial, Instagram @BankApp."
+  "SocialMediaDescription": "Connect with us on social media for updates and announcements: Twitter @BankApp, Facebook @BankAppOfficial, Instagram @BankApp.",
+  "Delete": "Delete",
+  "Cancel": "Cancel",
+  "AreYouSure": "Are you sure?",
+  "PasswordMustBe8AtLeast": "The password must be 8 at least",
+  "PasswordMustContainOneLetter": "The password must contain at least one letter",
+  "PasswordMustContainOneSpecialCharacter": "The password must contain at least one special character"
 }

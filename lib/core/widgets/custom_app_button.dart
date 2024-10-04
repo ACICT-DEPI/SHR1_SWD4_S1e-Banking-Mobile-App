@@ -15,10 +15,8 @@ class CustomAppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-
       onPressed: onPressed,
       style: ButtonStyle(
-
         fixedSize: WidgetStatePropertyAll(
           Size(MediaQuery.sizeOf(context).width, 56),
         ),

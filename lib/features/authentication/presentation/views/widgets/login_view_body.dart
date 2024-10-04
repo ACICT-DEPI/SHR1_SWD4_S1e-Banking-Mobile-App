@@ -46,7 +46,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           BlocProvider.of<StatisticsCubit>(context).initialize(context);
           buildShowSnackBar(
             context,
-            S.of(context).Welcome + " " + state.user.emailAddress,
+            "${S.of(context).Welcome} ${state.user.emailAddress}",
           );
         }
       },
@@ -88,7 +88,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     });
                   },
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 24.0),
                 const NewUserRow()
               ],
             ),

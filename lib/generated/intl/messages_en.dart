@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "AmazonPay": MessageLookupByLibrary.simpleMessage("Amazon Pay"),
         "Amount": MessageLookupByLibrary.simpleMessage("Amount"),
         "AppleStore": MessageLookupByLibrary.simpleMessage("Apple Store"),
+        "AreYouSure": MessageLookupByLibrary.simpleMessage("Are you sure?"),
         "AuthenticateToAccess": MessageLookupByLibrary.simpleMessage(
             "Please authenticate to access"),
         "BackHome": MessageLookupByLibrary.simpleMessage("Back to Home"),
@@ -37,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Biometric": MessageLookupByLibrary.simpleMessage("Biometric"),
         "BirthDate": MessageLookupByLibrary.simpleMessage("Birth Date"),
         "CVV": MessageLookupByLibrary.simpleMessage("CVV"),
+        "Cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "CardNumber": MessageLookupByLibrary.simpleMessage("Card Number"),
         "CardholderName":
             MessageLookupByLibrary.simpleMessage("Cardholder Name"),
@@ -74,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "DateFormat": MessageLookupByLibrary.simpleMessage("format is (MM/YY)"),
         "DaysAgo": MessageLookupByLibrary.simpleMessage("days ago"),
         "Del": MessageLookupByLibrary.simpleMessage("Del"),
+        "Delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "DeleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
         "Donations": MessageLookupByLibrary.simpleMessage("Donations"),
         "EditProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
@@ -213,6 +216,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "Password": MessageLookupByLibrary.simpleMessage("Password"),
         "PasswordChangedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "The password changed successfully"),
+        "PasswordMustBe8AtLeast": MessageLookupByLibrary.simpleMessage(
+            "The password must be 8 at least"),
+        "PasswordMustContainOneLetter": MessageLookupByLibrary.simpleMessage(
+            "The password must contain at least one letter"),
+        "PasswordMustContainOneSpecialCharacter":
+            MessageLookupByLibrary.simpleMessage(
+                "The password must contain at least one special character"),
         "PasswordWeak":
             MessageLookupByLibrary.simpleMessage("The password is too weak."),
         "PasswordsMustMatch":

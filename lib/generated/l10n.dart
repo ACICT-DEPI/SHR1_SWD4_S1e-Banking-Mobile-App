@@ -2059,6 +2059,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Delete`
+  String get Delete {
+    return Intl.message(
+      'Delete',
+      name: 'Delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get Cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'Cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure?`
+  String get AreYouSure {
+    return Intl.message(
+      'Are you sure?',
+      name: 'AreYouSure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The password must be 8 at least`
+  String get PasswordMustBe8AtLeast {
+    return Intl.message(
+      'The password must be 8 at least',
+      name: 'PasswordMustBe8AtLeast',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The password must contain at least one letter`
+  String get PasswordMustContainOneLetter {
+    return Intl.message(
+      'The password must contain at least one letter',
+      name: 'PasswordMustContainOneLetter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The password must contain at least one special character`
+  String get PasswordMustContainOneSpecialCharacter {
+    return Intl.message(
+      'The password must contain at least one special character',
+      name: 'PasswordMustContainOneSpecialCharacter',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

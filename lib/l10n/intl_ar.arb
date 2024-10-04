@@ -196,5 +196,11 @@
   "Feedback": "3. ملاحظات",
   "FeedbackDescription": "نحن نقدر ملاحظاتكم لمساعدتنا في تحسين خدماتنا. يرجى إرسال تعليقاتكم أو اقتراحاتكم إلى feedback@bankapp.com.",
   "SocialMedia": "4. وسائل التواصل الاجتماعي",
-  "SocialMediaDescription": "تواصل معنا عبر وسائل التواصل الاجتماعي للحصول على التحديثات والإعلانات: تويتر @BankApp، فيسبوك @BankAppOfficial، إنستغرام @BankApp."
+  "SocialMediaDescription": "تواصل معنا عبر وسائل التواصل الاجتماعي للحصول على التحديثات والإعلانات: تويتر @BankApp، فيسبوك @BankAppOfficial، إنستغرام @BankApp.",
+  "Delete": "حذف",
+  "Cancel": "إلغاء",
+  "AreYouSure": "هل أنت متأكد؟",
+  "PasswordMustBe8AtLeast": "يجب أن يكون طول كلمة المرور 8 على الأقل",
+  "PasswordMustContainOneLetter": "يجب أن تحتوي كلمة المرور على حرف واحد على الأقل",
+  "PasswordMustContainOneSpecialCharacter": "يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل"
 }

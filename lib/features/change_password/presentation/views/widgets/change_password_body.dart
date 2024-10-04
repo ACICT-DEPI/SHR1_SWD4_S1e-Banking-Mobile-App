@@ -9,6 +9,7 @@ import '../../../../../core/styles/texts_style.dart';
 import '../../../../../core/widgets/Loading_screen.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/widgets/custom_app_button.dart';
+import '../../../../../core/widgets/custom_dialog.dart';
 import '../../../../../core/widgets/custom_snack_bar.dart';
 import '../../../../../core/widgets/error_screen.dart';
 import '../../../../../generated/l10n.dart';
@@ -99,8 +100,23 @@ class _ChangePasswordBodyState extends State<ChangePasswordBody> {
                       if (formKey.currentState!.validate()) {
                         if (await checkOldPassword()) {
                           if (matchNewPasswords()) {
-                            BlocProvider.of<ChangePasswordCubit>(context)
-                                .updatePassword(newPasswordController.text);
+                            showDialog(
+                              context: context,
+                              builder: (context2) => CustomDialog(
+                                dialogTitle:
+                                    "${S.of(context).Save} ${S.of(context).Password}",
+                                dialogSubText: S.of(context).AreYouSure,
+                                onSubmit: () {
+                                  BlocProvider.of<ChangePasswordCubit>(context)
+                                      .updatePassword(
+                                    newPasswordController.text,
+                                  );
+                                },
+                                onCancel: () {},
+                                onSubmitText: S.of(context).Save,
+                                onCancelText: S.of(context).Cancel,
+                              ),
+                            );
                           } else {
                             buildShowSnackBar(
                               context,

@@ -22,6 +22,7 @@ class LanguageOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
+      color: AppColors.transparent,
       child: Column(
         children: [
           Row(
