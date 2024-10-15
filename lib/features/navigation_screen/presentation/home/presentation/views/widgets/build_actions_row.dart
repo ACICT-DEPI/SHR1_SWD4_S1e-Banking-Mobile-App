@@ -58,6 +58,7 @@ class _BuildActionsRowState extends State<BuildActionsRow> {
             width: 60 * widthFactor,
             alignment: Alignment.center,
             child: AutoSizeText(
+              maxLines: 1,
               label,
               style: TextsStyle.textStyleRegular12,
             ),
