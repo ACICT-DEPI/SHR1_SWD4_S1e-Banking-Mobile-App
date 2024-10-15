@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../../core/local/local_settings.dart';
@@ -53,9 +54,13 @@ class _BuildActionsRowState extends State<BuildActionsRow> {
               onPressed: () => onPressed(),
             ),
           ),
-          Text(
-            label,
-            style: TextsStyle.textStyleRegular12,
+          Container(
+            width: 60 * widthFactor,
+            alignment: Alignment.center,
+            child: AutoSizeText(
+              label,
+              style: TextsStyle.textStyleRegular12,
+            ),
           ),
         ],
       ),
