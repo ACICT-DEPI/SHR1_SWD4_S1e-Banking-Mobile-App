@@ -77,6 +77,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
                           GoRouter.of(context).push(
                             Routing.notificationsScreen,
                           );
+                          toastification.dismissAll();
                         },
                         child: NotificationContainer(
                           lastNotification: allNotifications.last,
